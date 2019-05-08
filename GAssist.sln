@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.202
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GAssist", "GAssist\GAssist.csproj", "{06D30D14-1ECF-4EA6-87CE-AF0AA6FA46A9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GAssist.Tizen.Wearable", "GAssist.Tizen.Wearable\GAssist.Tizen.Wearable.csproj", "{FC8F3A01-51EC-4792-8DDF-6631E0F61195}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{06D30D14-1ECF-4EA6-87CE-AF0AA6FA46A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06D30D14-1ECF-4EA6-87CE-AF0AA6FA46A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06D30D14-1ECF-4EA6-87CE-AF0AA6FA46A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06D30D14-1ECF-4EA6-87CE-AF0AA6FA46A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC8F3A01-51EC-4792-8DDF-6631E0F61195}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC8F3A01-51EC-4792-8DDF-6631E0F61195}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC8F3A01-51EC-4792-8DDF-6631E0F61195}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC8F3A01-51EC-4792-8DDF-6631E0F61195}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {573D2C1D-DF0A-4910-9506-EF9EB989990D}
+	EndGlobalSection
+EndGlobal

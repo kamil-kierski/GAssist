@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<cui:CirclePage xmlns="http://xamarin.com/schemas/2014/forms"
+				xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+				xmlns:cui="clr-namespace:Tizen.Wearable.CircularUI.Forms;assembly=Tizen.Wearable.CircularUI.Forms"
+				x:Class="GAssist.MainPage">
+    <cui:CirclePage.ActionButton>
+        <cui:ActionButtonItem x:Name="actionButton"
+                              Text="Listen"
+                              BackgroundColor="Default"
+                              Command="{Binding ActionButton_ButtonClicked}" />
+    </cui:CirclePage.ActionButton>
+    <cui:CirclePage.Content>
+        <Label          x:Name="label"
+						FontSize="Small"
+                        VerticalOptions="CenterAndExpand"
+                        HorizontalOptions="Center"
+						HorizontalTextAlignment="Center"
+                        VerticalTextAlignment="Center"
+						Text="{Binding Text}" />
+          
+    </cui:CirclePage.Content>
+</cui:CirclePage>

@@ -1,0 +1,12 @@
+C:\Users\cyber\repos_new\GAssist\GAssist\bin\Debug\tizen40\tpkroot\bin\Tizen.Wearable.CircularUI.Forms.Renderer.dll
+C:\Users\cyber\repos_new\GAssist\GAssist\bin\Debug\tizen40\tpkroot\bin\Tizen.Wearable.CircularUI.Forms.dll
+C:\Users\cyber\repos_new\GAssist\GAssist\bin\Debug\tizen40\tpkroot\bin\Xamarin.Forms.Core.dll
+C:\Users\cyber\repos_new\GAssist\GAssist\bin\Debug\tizen40\tpkroot\bin\Xamarin.Forms.Platform.Tizen.dll
+C:\Users\cyber\repos_new\GAssist\GAssist\bin\Debug\tizen40\tpkroot\bin\Xamarin.Forms.Platform.dll
+C:\Users\cyber\repos_new\GAssist\GAssist\bin\Debug\tizen40\tpkroot\bin\Xamarin.Forms.Xaml.dll
+C:\Users\cyber\repos_new\GAssist\GAssist\bin\Debug\tizen40\tpkroot\bin\GAssist.dll
+C:\Users\cyber\repos_new\GAssist\GAssist\bin\Debug\tizen40\tpkroot\bin\GAssist.pdb
+C:\Users\cyber\repos_new\GAssist\GAssist\bin\Debug\tizen40\tpkroot\res\xml\accessoryservices.xml
+C:\Users\cyber\repos_new\GAssist\GAssist\bin\Debug\tizen40\tpkroot\shared\res\GAssist.png
+C:\Users\cyber\repos_new\GAssist\GAssist\bin\Debug\tizen40\tpkroot\tizen-manifest.xml
+C:\Users\cyber\repos_new\GAssist\GAssist\bin\Debug\tizen40\org.tizen.example.GAssist-1.0.0.tpk

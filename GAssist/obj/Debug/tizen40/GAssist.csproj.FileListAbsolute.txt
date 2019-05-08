@@ -1,0 +1,12 @@
+C:\Users\cyber\repos_new\GAssist\GAssist\bin\Debug\tizen40\GAssist.deps.json
+C:\Users\cyber\repos_new\GAssist\GAssist\bin\Debug\tizen40\GAssist.dll
+C:\Users\cyber\repos_new\GAssist\GAssist\obj\Debug\tizen40\GAssist.csproj.CoreCompileInputs.cache
+C:\Users\cyber\repos_new\GAssist\GAssist\obj\Debug\tizen40\GAssist.AssemblyInfoInputs.cache
+C:\Users\cyber\repos_new\GAssist\GAssist\obj\Debug\tizen40\GAssist.AssemblyInfo.cs
+C:\Users\cyber\repos_new\GAssist\GAssist\bin\Debug\tizen40\GAssist.pdb
+C:\Users\cyber\repos_new\GAssist\GAssist\obj\Debug\tizen40\XamlC.stamp
+C:\Users\cyber\repos_new\GAssist\GAssist\obj\Debug\tizen40\GAssist.dll
+C:\Users\cyber\repos_new\GAssist\GAssist\obj\Debug\tizen40\GAssist.pdb
+C:\Users\cyber\repos_new\GAssist\GAssist\obj\Debug\tizen40\GAssist.csprojAssemblyReference.cache
+C:\Users\cyber\repos_new\GAssist\GAssist\obj\Debug\tizen40\GAssist.Properties.Resources.resources
+C:\Users\cyber\repos_new\GAssist\GAssist\obj\Debug\tizen40\GAssist.csproj.GenerateResource.cache

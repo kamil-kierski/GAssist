@@ -1,0 +1,10 @@
+C:\Users\cyber\repos_new\GAssist\GAssist.Tizen.Wearable\bin\Release\tizen40\GAssist.Tizen.Wearable.deps.json
+C:\Users\cyber\repos_new\GAssist\GAssist.Tizen.Wearable\bin\Release\tizen40\GAssist.Tizen.Wearable.dll
+C:\Users\cyber\repos_new\GAssist\GAssist.Tizen.Wearable\bin\Release\tizen40\GAssist.dll
+C:\Users\cyber\repos_new\GAssist\GAssist.Tizen.Wearable\bin\Release\tizen40\GAssist.pdb
+C:\Users\cyber\repos_new\GAssist\GAssist.Tizen.Wearable\obj\Release\tizen40\GAssist.Tizen.Wearable.csprojAssemblyReference.cache
+C:\Users\cyber\repos_new\GAssist\GAssist.Tizen.Wearable\obj\Release\tizen40\GAssist.Tizen.Wearable.csproj.CoreCompileInputs.cache
+C:\Users\cyber\repos_new\GAssist\GAssist.Tizen.Wearable\obj\Release\tizen40\GAssist.Tizen.Wearable.AssemblyInfoInputs.cache
+C:\Users\cyber\repos_new\GAssist\GAssist.Tizen.Wearable\obj\Release\tizen40\GAssist.Tizen.Wearable.AssemblyInfo.cs
+C:\Users\cyber\repos_new\GAssist\GAssist.Tizen.Wearable\obj\Release\tizen40\GAssist.Tizen.Wearable.csproj.CopyComplete
+C:\Users\cyber\repos_new\GAssist\GAssist.Tizen.Wearable\obj\Release\tizen40\GAssist.Tizen.Wearable.dll

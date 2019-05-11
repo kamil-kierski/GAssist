@@ -1,0 +1,13 @@
+C:\Users\cyber\repos_new\GAssist\GAssist.Tizen.Wearable\bin\Release\tizen40\tpkroot\bin\Tizen.Wearable.CircularUI.Forms.Renderer.dll
+C:\Users\cyber\repos_new\GAssist\GAssist.Tizen.Wearable\bin\Release\tizen40\tpkroot\bin\Tizen.Wearable.CircularUI.Forms.dll
+C:\Users\cyber\repos_new\GAssist\GAssist.Tizen.Wearable\bin\Release\tizen40\tpkroot\bin\Xamarin.Forms.Core.dll
+C:\Users\cyber\repos_new\GAssist\GAssist.Tizen.Wearable\bin\Release\tizen40\tpkroot\bin\Xamarin.Forms.Platform.Tizen.dll
+C:\Users\cyber\repos_new\GAssist\GAssist.Tizen.Wearable\bin\Release\tizen40\tpkroot\bin\Xamarin.Forms.Platform.dll
+C:\Users\cyber\repos_new\GAssist\GAssist.Tizen.Wearable\bin\Release\tizen40\tpkroot\bin\Xamarin.Forms.Xaml.dll
+C:\Users\cyber\repos_new\GAssist\GAssist.Tizen.Wearable\bin\Release\tizen40\tpkroot\bin\GAssist.dll
+C:\Users\cyber\repos_new\GAssist\GAssist.Tizen.Wearable\bin\Release\tizen40\tpkroot\bin\GAssist.pdb
+C:\Users\cyber\repos_new\GAssist\GAssist.Tizen.Wearable\bin\Release\tizen40\tpkroot\bin\GAssist.Tizen.Wearable.dll
+C:\Users\cyber\repos_new\GAssist\GAssist.Tizen.Wearable\bin\Release\tizen40\tpkroot\res\xml\accessoryservices.xml
+C:\Users\cyber\repos_new\GAssist\GAssist.Tizen.Wearable\bin\Release\tizen40\tpkroot\shared\res\GAssist.Tizen.Wearable.png
+C:\Users\cyber\repos_new\GAssist\GAssist.Tizen.Wearable\bin\Release\tizen40\tpkroot\tizen-manifest.xml
+C:\Users\cyber\repos_new\GAssist\GAssist.Tizen.Wearable\bin\Release\tizen40\org.tizen.cybernetic87.GAssist.Tizen.Wearable-0.1.0.tpk

@@ -23,11 +23,16 @@ namespace GAssist
         private AudioRecorder audioRecorder;
         private AudioPlayer audioPlayer;
         const int bufferSize = 1024;
+        private System.Timers.Timer reconnectTimer;
 
         private bool isPlaying;
 
         public MainPage()
         {
+            reconnectTimer = new System.Timers.Timer(3000);
+            reconnectTimer.Elapsed += ReconnectTimer_Elapsed;
+            reconnectTimer.AutoReset = true;
+
             Connect();
             InitializeComponent();
 
@@ -40,20 +45,7 @@ namespace GAssist
             actionButton.BackgroundColor = Color.Default;
             label.Text = "GAssist.Net Demo";
 
-            AppControl appControl = new AppControl();
-            appControl.Operation = AppControlOperations.Default;
-            appControl.ApplicationId = "com.samsung.w-manager-service";
-            appControl.ExtraData.Add("deeplink", "cybernetic87://gassist");
-            appControl.ExtraData.Add("type", "phone");
-
-            try
-            {
-                AppControl.SendLaunchRequest(appControl);
-            }
-            catch (Exception e)
-            {
-                Tizen.Log.Debug("APPLAUNCH", "APP NOT FOUND ?");
-            }
+            LaunchApp();
 
             //Tizen.System.Display.StateChanged += OnDisplayOn;
 
@@ -80,6 +72,24 @@ namespace GAssist
 
         //}
 
+        private void LaunchApp()
+        {
+            AppControl appControl = new AppControl();
+            appControl.Operation = AppControlOperations.Default;
+            appControl.ApplicationId = "com.samsung.w-manager-service";
+            appControl.ExtraData.Add("deeplink", "cybernetic87://gassist");
+            appControl.ExtraData.Add("type", "phone");
+
+            try
+            {
+                AppControl.SendLaunchRequest(appControl);
+            }
+            catch (Exception e)
+            {
+                ShowMessage("APPLAUNCH", "APP NOT FOUND ?");
+            }
+        }
+
         private async void Connect()
         {
             try
@@ -96,10 +106,14 @@ namespace GAssist
                     connection.StatusChanged -= Connection_StatusChanged;
                     connection.StatusChanged += Connection_StatusChanged;
                     await connection.Open();
+                    if (reconnectTimer.Enabled == true) reconnectTimer.Stop();
+                    actionButton.IsEnable = true;
                 }
                 else
                 {
-                    ShowMessage("Any peer not found");
+                    ShowMessage("Any peer not found, trying to launch app");
+                    LaunchApp();
+                    Connect();
                 }
             }
             catch (Exception ex)
@@ -107,9 +121,7 @@ namespace GAssist
                 ShowMessage(ex.Message, ex.ToString());
             }
             audioRecorder = new AudioRecorder(connection, agent, bufferSize);
-            audioPlayer = new AudioPlayer(OnStopCallback);
-
-            actionButton.IsEnable = true;
+            audioPlayer = new AudioPlayer(OnStopCallback);    
         }
 
         private void PeerStatusChanged(object sender, PeerStatusEventArgs e)
@@ -125,7 +137,7 @@ namespace GAssist
         {
             if (IsBase64(Encoding.UTF8.GetString(e.Data)))
             {
-                audioPlayer.ClearBuffer();
+                //audioPlayer.ClearBuffer();
                 label.Text = Encoding.UTF8.GetString(Convert.FromBase64String(Encoding.UTF8.GetString(e.Data)));
                 //ShowMessage(Encoding.UTF8.GetString(Convert.FromBase64String(Encoding.UTF8.GetString(e.Data))));
             }
@@ -245,7 +257,8 @@ namespace GAssist
             if (e.Reason == ConnectionStatus.ConnectionClosed ||
                 e.Reason == ConnectionStatus.ConnectionLost)
             {
-                ShowMessage(e.Reason.ToString());
+
+                ShowMessage("Lost connection, will try to reconnect in 3 seconds");
                 if (audioRecorder.isRecording)
                 {
                     audioRecorder.StopRecording();
@@ -264,12 +277,21 @@ namespace GAssist
                 connection = null;
                 peer = null;
                 agent = null;
+
+                reconnectTimer.Start();
             }
+        }
+
+        private void ReconnectTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            ShowMessage("Reconnecting...");
+            LaunchApp();
+            Connect();
         }
 
         private void ShowMessage(string message, string debugLog = null)
         {
-            Toast.DisplayText(message, 1500);
+            Toast.DisplayText(message, 500);
             if (debugLog != null)
             {
                 debugLog = message;

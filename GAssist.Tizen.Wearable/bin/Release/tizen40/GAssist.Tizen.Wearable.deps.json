@@ -1,0 +1,124 @@
+{
+  "runtimeTarget": {
+    "name": "Tizen,Version=v4.0/",
+    "signature": "368a5ccef7cff8ffe6225058139cec659916e2f9"
+  },
+  "compilationOptions": {},
+  "targets": {
+    "Tizen,Version=v4.0": {},
+    "Tizen,Version=v4.0/": {
+      "GAssist.Tizen.Wearable/1.0.0": {
+        "dependencies": {
+          "GAssist": "1.0.0",
+          "Tizen.NET": "4.0.0",
+          "Tizen.NET.Sdk": "1.0.1"
+        },
+        "runtime": {
+          "GAssist.Tizen.Wearable.dll": {}
+        }
+      },
+      "Samsung.Sap/1.0.0": {
+        "dependencies": {
+          "Tizen.NET": "4.0.0"
+        }
+      },
+      "Tizen.NET/4.0.0": {},
+      "Tizen.NET.Sdk/1.0.1": {},
+      "Tizen.Wearable.CircularUI/1.2.0": {
+        "dependencies": {
+          "Tizen.NET": "4.0.0",
+          "Xamarin.Forms": "3.5.0.129452"
+        },
+        "runtime": {
+          "lib/tizen40/Tizen.Wearable.CircularUI.Forms.Renderer.dll": {
+            "assemblyVersion": "1.2.0.0",
+            "fileVersion": "1.2.0.0"
+          },
+          "lib/tizen40/Tizen.Wearable.CircularUI.Forms.dll": {
+            "assemblyVersion": "1.2.0.0",
+            "fileVersion": "1.2.0.0"
+          }
+        }
+      },
+      "Xamarin.Forms/3.5.0.129452": {
+        "dependencies": {
+          "Tizen.NET": "4.0.0"
+        },
+        "runtime": {
+          "lib/tizen40/Xamarin.Forms.Core.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.0.0.0"
+          },
+          "lib/tizen40/Xamarin.Forms.Platform.Tizen.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.0.0.0"
+          },
+          "lib/tizen40/Xamarin.Forms.Platform.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          },
+          "lib/tizen40/Xamarin.Forms.Xaml.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.0.0.0"
+          }
+        }
+      },
+      "GAssist/1.0.0": {
+        "dependencies": {
+          "Samsung.Sap": "1.0.0",
+          "Tizen.Wearable.CircularUI": "1.2.0"
+        },
+        "runtime": {
+          "GAssist.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "GAssist.Tizen.Wearable/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Samsung.Sap/1.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-+FTgLWUXMUUU1YFWCX1BLi8tTEejxj8ezGhNX7f7bLUNavQhXm1ZRZCmWawuDXK/cowrWsDDqn+6BSZG0c7+XA==",
+      "path": "samsung.sap/1.0.0",
+      "hashPath": "samsung.sap.1.0.0.nupkg.sha512"
+    },
+    "Tizen.NET/4.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-e/q/gwwzrcR6LRsQiZbpKYN+GJsiA7/lh6p8ztANDoJLnIlKPmiNsBXxm6Tt8yHzwMywmAXBwyp4mpLCRG0J+A==",
+      "path": "tizen.net/4.0.0",
+      "hashPath": "tizen.net.4.0.0.nupkg.sha512"
+    },
+    "Tizen.NET.Sdk/1.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-g3LzVzxalGn3F1H9yf2lXFT4CHlRlrzqEU8MmSASMphWc8cWYCOkVEYM8eSX4fCmAAPhSklAQR42YYXclSMa8A==",
+      "path": "tizen.net.sdk/1.0.1",
+      "hashPath": "tizen.net.sdk.1.0.1.nupkg.sha512"
+    },
+    "Tizen.Wearable.CircularUI/1.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-UdS/8RBb2tmM/KRAUFv5/QwNm5asB+1mFYiAh6gXAipQDQ6Eqf9IqhdbjzfGRngrcCGhZohwrOnxtc77JU3S3w==",
+      "path": "tizen.wearable.circularui/1.2.0",
+      "hashPath": "tizen.wearable.circularui.1.2.0.nupkg.sha512"
+    },
+    "Xamarin.Forms/3.5.0.129452": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-gdoGJ7U7J+WDMmtp0PIZ5Bex/5KGy1wL1TMHyR2+5jbxPxVy/htyiR5wqKDmOXVJoVbeqWjcj0/7yl8ZHM7akQ==",
+      "path": "xamarin.forms/3.5.0.129452",
+      "hashPath": "xamarin.forms.3.5.0.129452.nupkg.sha512"
+    },
+    "GAssist/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

@@ -5,24 +5,25 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using Tizen.Applications;
+using Tizen.System;
 using Tizen.Wearable.CircularUI.Forms;
-using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Xamarin.Forms;
 
 namespace GAssist
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainPage : CirclePage
     {
+
         private Agent agent;
         private Connection connection;
         private Peer peer;
+        private Feedback feedback;
         private AudioRecorder audioRecorder;
         private AudioPlayer audioPlayer;
-        const int bufferSize = 2048;
+        const int bufferSize = 1024;
 
-
-        // = false;
         private bool isPlaying;
 
         public MainPage()
@@ -31,10 +32,12 @@ namespace GAssist
             InitializeComponent();
 
             PermissionChecker.CheckAndRequestPermission(PermissionChecker.recorderPermission);
+            feedback = new Feedback();
 
             //listView.ItemTapped += ListView_ItemTapped;s
             actionButton.Clicked += ActionButton_ButtonClicked;
             actionButton.IsEnable = false;
+            actionButton.BackgroundColor = Color.Default;
             label.Text = "GAssist.Net Demo";
 
             AppControl appControl = new AppControl();
@@ -51,10 +54,31 @@ namespace GAssist
             {
                 Tizen.Log.Debug("APPLAUNCH", "APP NOT FOUND ?");
             }
-            //Feedback feedback = new Feedback();
+
+            //Tizen.System.Display.StateChanged += OnDisplayOn;
+
         }
 
+        //public void OnDisplayOn(object sender, DisplayStateChangedEventArgs args)
+        //{
+        //    Tizen.Log.Debug("DISPLAYSTATE", args.State.ToString());
+        //    if(args.State == DisplayState.Normal)
+        //    {
+        //        Connect();
+        //        OnScreenOnListening();
 
+        //        if (label.Text == "Google")
+        //        {
+        //            AppControl appControl = new AppControl();
+        //            appControl.Operation = AppControlOperations.Default;
+        //            appControl.ApplicationId = Tizen.Applications.Application.Current.ApplicationInfo.ApplicationId;
+        //            AppControl.SendLaunchRequest(appControl);
+
+        //        }
+
+        //    }
+
+        //}
 
         private async void Connect()
         {
@@ -83,7 +107,7 @@ namespace GAssist
                 ShowMessage(ex.Message, ex.ToString());
             }
             audioRecorder = new AudioRecorder(connection, agent, bufferSize);
-            audioPlayer = new AudioPlayer();
+            audioPlayer = new AudioPlayer(OnStopCallback);
 
             actionButton.IsEnable = true;
         }
@@ -102,7 +126,6 @@ namespace GAssist
             if (IsBase64(Encoding.UTF8.GetString(e.Data)))
             {
                 audioPlayer.ClearBuffer();
-                audioPlayer.isStopped = false;
                 label.Text = Encoding.UTF8.GetString(Convert.FromBase64String(Encoding.UTF8.GetString(e.Data)));
                 //ShowMessage(Encoding.UTF8.GetString(Convert.FromBase64String(Encoding.UTF8.GetString(e.Data))));
             }
@@ -113,16 +136,21 @@ namespace GAssist
                     audioPlayer.buffer.Put(e.Data);
                 }
 
-                if (audioRecorder.isRecording && !audioPlayer.isStopped)
+                if (audioRecorder.isRecording && !isPlaying)
                 {
                     audioRecorder.StopRecording();
                     isPlaying = true;
-                    actionButton.Text = "Listen";
                     audioPlayer.StartPlaying();
+
                     actionButton.IsEnable = true;
                     actionButton.BackgroundColor = Color.Red;
                     actionButton.Text = "Stop";
                 }
+
+                //if (e.Data.Length == 1)
+                //{
+                //    audioPlayer.isEnd = true;
+                //}
 
                 //stopwatch.Stop();
 
@@ -144,6 +172,12 @@ namespace GAssist
         //    }
         //}
 
+        private void OnStopCallback()
+        {
+            actionButton.Text = "Listen";
+            isPlaying = false;
+        }
+
         private void ActionButton_ButtonClicked(object sender, EventArgs e)
         {
             if (connection != null && agent != null && agent.Channels.Count > 0)
@@ -151,16 +185,36 @@ namespace GAssist
                 if (isPlaying)
                 {
                     audioPlayer.Stop();
-                    isPlaying = false;
                 }
                 else
                 {
+                    feedback.Play(FeedbackType.Sound, "Tap");
+
                     audioRecorder.StartRecording();
                     actionButton.IsEnable = false;
                 }
 
             }
         }
+
+        //private void OnScreenOnListening()
+        //{
+        //    if (connection != null && agent != null && agent.Channels.Count > 0)
+        //    {
+        //        if (isPlaying)
+        //        {
+        //            audioPlayer.Stop();
+        //            isPlaying = false;
+        //        }
+        //        else
+        //        {
+        //            feedback.Play(FeedbackType.Sound, "Tap");
+
+        //            audioRecorder.StartRecording();
+        //            actionButton.IsEnable = false;
+        //        }
+        //    }
+        //}
 
         //private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
         //{
@@ -187,11 +241,11 @@ namespace GAssist
 
         private void Connection_StatusChanged(object sender, ConnectionStatusEventArgs e)
         {
-            ShowMessage(e.Reason.ToString());
-
+            
             if (e.Reason == ConnectionStatus.ConnectionClosed ||
                 e.Reason == ConnectionStatus.ConnectionLost)
             {
+                ShowMessage(e.Reason.ToString());
                 if (audioRecorder.isRecording)
                 {
                     audioRecorder.StopRecording();
@@ -203,7 +257,7 @@ namespace GAssist
                     audioPlayer.Stop();
                     isPlaying = false;
                 }
-
+                actionButton.IsEnable = false;
                 connection.DataReceived -= Connection_DataReceived;
                 connection.StatusChanged -= Connection_StatusChanged;
                 connection.Close();
@@ -248,6 +302,5 @@ namespace GAssist
         {
             actionButton.BackgroundColor = Color.Default;
         }
-
     }
 }

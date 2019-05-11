@@ -9,18 +9,34 @@ namespace GAssist
     {
         private AudioPlayback audioPlayback;
         public CircularBuffer<byte[]> buffer;
-        public volatile bool isStopped;
         private Task player;
         CancellationTokenSource source;
         CancellationToken token;
+        private System.Timers.Timer timer;
+        private Action OnStopCallback;
 
-        public AudioPlayer()
+        public AudioPlayer(Action OnStopCallback)
         {
+            this.OnStopCallback = OnStopCallback;
+
             audioPlayback = new AudioPlayback(16000, AudioChannel.Mono, AudioSampleType.S16Le);
             AudioManager.VolumeController.Level[AudioVolumeType.Media] = 15;
             buffer = new CircularBuffer<byte[]>(1000);
-            isStopped = true;
+
+
+            timer = new System.Timers.Timer(200);
+            timer.Elapsed += Timer_Elapsed;
+            timer.AutoReset = false;
+
         }
+
+        private void Timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            timer.Stop();
+            Tizen.Log.Debug("AUDIOPLAYER", "STOP: ");
+            Stop();
+        }
+
         //Action<String> OnStopCallback
         public void StartPlaying()
         {
@@ -29,7 +45,7 @@ namespace GAssist
             token = source.Token;
 
             player = new Task(() =>
-            {
+            {   
                 while (true)
                 {
                     if (token.IsCancellationRequested)
@@ -38,17 +54,14 @@ namespace GAssist
                     }
                     if (!buffer.IsEmpty)
                     {
-                        audioPlayback.Write(buffer.Get());
-                    }
-                    else
-                    {
-                        Stop();
+                        timer.Interval += (double)audioPlayback.Write(buffer.Get()) / 16000.00 / 2.00;
+                        if(!timer.Enabled) timer.Start();
                     }
                 }
             }, token);
 
             if (player.Status != TaskStatus.Running)
-            {
+            { 
                 player.Start();
             }
         }
@@ -58,8 +71,7 @@ namespace GAssist
             source.Cancel();
             audioPlayback.Unprepare();
             ClearBuffer();
-            isStopped = true;
-            //audioPlayback = null;
+            OnStopCallback();
         }
 
         public void ClearBuffer()

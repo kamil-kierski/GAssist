@@ -1,22 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<cui:CirclePage xmlns="http://xamarin.com/schemas/2014/forms"
-				xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-				xmlns:cui="clr-namespace:Tizen.Wearable.CircularUI.Forms;assembly=Tizen.Wearable.CircularUI.Forms"
-				x:Class="GAssist.MainPage">
+<cui:CirclePage
+    x:Class="GAssist.MainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:cui="clr-namespace:Tizen.Wearable.CircularUI.Forms;assembly=Tizen.Wearable.CircularUI.Forms"
+    RotaryFocusObject="{x:Reference ScrollView}">
+    <AbsoluteLayout>
+        <cui:CircleScrollView
+            x:Name="ScrollView"
+            AbsoluteLayout.LayoutBounds="0.5,30,0.8,1"
+            AbsoluteLayout.LayoutFlags="XProportional,SizeProportional">
+
+            <Label
+                x:Name="label"
+                FontSize="Small"
+                FormattedText="{Binding Text}"
+                HorizontalTextAlignment="Center"
+                VerticalTextAlignment="Center" />
+        </cui:CircleScrollView>
+    </AbsoluteLayout>
     <cui:CirclePage.ActionButton>
-        <cui:ActionButtonItem x:Name="actionButton"
-                              Text="Listen"
-                              BackgroundColor="Default"
-                              Command="{Binding ActionButton_ButtonClicked}" />
+        <cui:ActionButtonItem
+            x:Name="actionButton"
+            BackgroundColor="Default"
+            Text="Listen" />
     </cui:CirclePage.ActionButton>
-    <cui:CirclePage.Content>
-        <Label          x:Name="label"
-						FontSize="Small"
-                        VerticalOptions="CenterAndExpand"
-                        HorizontalOptions="Center"
-						HorizontalTextAlignment="Center"
-                        VerticalTextAlignment="Center"
-						Text="{Binding Text}" />
-          
-    </cui:CirclePage.Content>
 </cui:CirclePage>

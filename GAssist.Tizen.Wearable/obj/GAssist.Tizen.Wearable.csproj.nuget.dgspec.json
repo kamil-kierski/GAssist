@@ -14,7 +14,7 @@
         "outputPath": "C:\\Users\\cyber\\repos_new\\GAssist\\GAssist.Tizen.Wearable\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\ProgramData\\Xamarin\\NuGet\\",
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
@@ -75,7 +75,7 @@
         "outputPath": "C:\\Users\\cyber\\repos_new\\GAssist\\GAssist\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\ProgramData\\Xamarin\\NuGet\\",
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
@@ -104,6 +104,22 @@
       "frameworks": {
         "netstandard2.0": {
           "dependencies": {
+            "Google.Api.Gax.Grpc": {
+              "target": "Package",
+              "version": "[2.7.0, )"
+            },
+            "Google.Protobuf": {
+              "target": "Package",
+              "version": "[3.7.0, )"
+            },
+            "GoogleApi": {
+              "target": "Package",
+              "version": "[3.8.6, )"
+            },
+            "NAudio": {
+              "target": "Package",
+              "version": "[1.9.0, )"
+            },
             "NETStandard.Library": {
               "suppressParent": "All",
               "target": "Package",
@@ -116,7 +132,7 @@
             },
             "Tizen.Wearable.CircularUI": {
               "target": "Package",
-              "version": "[1.0.0-pre2-00065, )"
+              "version": "[1.2.0, )"
             }
           },
           "imports": [

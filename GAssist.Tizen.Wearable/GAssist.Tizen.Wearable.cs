@@ -27,6 +27,8 @@ namespace GAssist
             LoadApplication(new App());
         }
 
+
+
         private static void Main(string[] args)
         {
             var app = new Program();
@@ -34,7 +36,5 @@ namespace GAssist
             global::Tizen.Wearable.CircularUI.Forms.Renderer.FormsCircularUI.Init();
             app.Run(args);
         }
-
-
     }
 }

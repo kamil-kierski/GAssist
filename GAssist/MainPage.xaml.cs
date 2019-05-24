@@ -1,43 +1,46 @@
-﻿
+﻿using Google.Assistant.Embedded.V1Alpha2;
 using Samsung.Sap;
 using System;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
-using System.Text;
+using System.Threading.Tasks;
 using Tizen.Applications;
 using Tizen.System;
 using Tizen.Wearable.CircularUI.Forms;
-using Xamarin.Forms.Xaml;
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 
 namespace GAssist
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainPage : CirclePage
     {
-
         private Agent agent;
         private Connection connection;
         private Peer peer;
-        private Feedback feedback;
         private AudioRecorder audioRecorder;
         private AudioPlayer audioPlayer;
-        const int bufferSize = 1024;
+        private const int bufferSize = 1600;
+
+        private static string filePath = StorageManager.Storages.First().GetAbsolutePath(DirectoryType.Others)
+                                + @"temp.mp3";
+
         private System.Timers.Timer reconnectTimer;
+        private FileStream fs;
 
         private bool isPlaying;
 
         public MainPage()
         {
+            InitializeComponent();
+
             reconnectTimer = new System.Timers.Timer(3000);
             reconnectTimer.Elapsed += ReconnectTimer_Elapsed;
             reconnectTimer.AutoReset = true;
 
-            Connect();
-            InitializeComponent();
-
             PermissionChecker.CheckAndRequestPermission(PermissionChecker.recorderPermission);
-            feedback = new Feedback();
+            PermissionChecker.CheckAndRequestPermission(PermissionChecker.mediaStoragePermission);
 
             //listView.ItemTapped += ListView_ItemTapped;s
             actionButton.Clicked += ActionButton_ButtonClicked;
@@ -45,10 +48,19 @@ namespace GAssist
             actionButton.BackgroundColor = Color.Default;
             label.Text = "GAssist.Net Demo";
 
-            LaunchApp();
-
+            StartAndConnect();
             //Tizen.System.Display.StateChanged += OnDisplayOn;
+        }
 
+        protected override bool OnBackButtonPressed()
+        {
+            connection.DataReceived -= Connection_DataReceived;
+            connection.StatusChanged -= Connection_StatusChanged;
+            connection.Close();
+            connection = null;
+            peer = null;
+            agent = null;
+            return base.OnBackButtonPressed();
         }
 
         //public void OnDisplayOn(object sender, DisplayStateChangedEventArgs args)
@@ -84,7 +96,7 @@ namespace GAssist
             {
                 AppControl.SendLaunchRequest(appControl);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 ShowMessage("APPLAUNCH", "APP NOT FOUND ?");
             }
@@ -106,14 +118,17 @@ namespace GAssist
                     connection.StatusChanged -= Connection_StatusChanged;
                     connection.StatusChanged += Connection_StatusChanged;
                     await connection.Open();
-                    if (reconnectTimer.Enabled == true) reconnectTimer.Stop();
+                    if (reconnectTimer.Enabled == true)
+                    {
+                        reconnectTimer.Stop();
+                    }
+
                     actionButton.IsEnable = true;
                 }
                 else
                 {
                     ShowMessage("Any peer not found, trying to launch app");
-                    LaunchApp();
-                    Connect();
+                    StartAndConnect();
                 }
             }
             catch (Exception ex)
@@ -121,7 +136,7 @@ namespace GAssist
                 ShowMessage(ex.Message, ex.ToString());
             }
             audioRecorder = new AudioRecorder(connection, agent, bufferSize);
-            audioPlayer = new AudioPlayer(OnStopCallback);    
+            audioPlayer = new AudioPlayer(OnStopCallback);
         }
 
         private void PeerStatusChanged(object sender, PeerStatusEventArgs e)
@@ -129,65 +144,113 @@ namespace GAssist
             if (e.Peer == peer)
             {
                 ShowMessage($"Peer Available: {e.Available}, Status: {e.Peer.Status}");
-               
             }
         }
 
         private void Connection_DataReceived(object sender, Samsung.Sap.DataReceivedEventArgs e)
         {
-            if (IsBase64(Encoding.UTF8.GetString(e.Data)))
+            AssistResponse ar = AssistResponse.Parser.ParseFrom(e.Data);
+
+            if (ar.SpeechResults != null)
             {
-                //audioPlayer.ClearBuffer();
-                label.Text = Encoding.UTF8.GetString(Convert.FromBase64String(Encoding.UTF8.GetString(e.Data)));
-                //ShowMessage(Encoding.UTF8.GetString(Convert.FromBase64String(Encoding.UTF8.GetString(e.Data))));
-            }
-            else
-            {
-                if (e.Data.Length != 0 || e.Data != null)
+                if (ar.SpeechResults.Any() && ar.SpeechResults.First().Stability > 0.01)
                 {
-                    audioPlayer.buffer.Put(e.Data);
+                    label.Text = ar.SpeechResults.First().Transcript;
+
+                    if (ar.SpeechResults.First().Stability == 1)
+                    {
+                        audioRecorder.StopRecording();
+                        updateLabel(ar.SpeechResults.First().Transcript);
+
+                        if (File.Exists(filePath))
+                        {
+                            File.Delete(filePath);
+                        }
+                        fs = File.Create(filePath);
+                    }
                 }
+            }
 
-                if (audioRecorder.isRecording && !isPlaying)
+            if (ar.DialogStateOut != null && ar.DialogStateOut.SupplementalDisplayText != "")
+            {
+                updateLabel(ar.DialogStateOut.SupplementalDisplayText);
+            }
+
+            if (ar.ScreenOut != null)
+            {
+                updateLabel(ar.ScreenOut.Data.ToStringUtf8());
+            }
+
+            if (ar.AudioOut != null && ar.AudioOut.AudioData.Length != 0)
+            {
+                fs.Write(ar.AudioOut.AudioData.ToByteArray(), 0, ar.AudioOut.AudioData.Length);
+                fs.FlushAsync();
+
+                if (!isPlaying)
                 {
-                    audioRecorder.StopRecording();
                     isPlaying = true;
-                    audioPlayer.StartPlaying();
-
+                    audioPlayer.Play(fs.Name);
                     actionButton.IsEnable = true;
                     actionButton.BackgroundColor = Color.Red;
                     actionButton.Text = "Stop";
                 }
-
-                //if (e.Data.Length == 1)
-                //{
-                //    audioPlayer.isEnd = true;
-                //}
-
-                //stopwatch.Stop();
-
-                //if (!isPlaying && !audioPlayer.isStopped)
-                //{//OnStopCallback
-
-                //}
-
- 
             }
         }
 
-        //private void Disconnect()
+        private void updateLabel(string text)
+        {
+            label.Text = text;
+        }
+
+        //if (IsBase64(Encoding.UTF8.GetString(e.Data)))
         //{
-        //    if (connection != null)
+        //    //audioPlayer.ClearBuffer();
+        //    label.Text = Encoding.UTF8.GetString(Convert.FromBase64String(Encoding.UTF8.GetString(e.Data)));
+        //    //ShowMessage(Encoding.UTF8.GetString(Convert.FromBase64String(Encoding.UTF8.GetString(e.Data))));
+        //    if (Encoding.UTF8.GetString(Convert.FromBase64String(Encoding.UTF8.GetString(e.Data))).StartsWith("Response:"))
         //    {
+        //        if (audioRecorder.isRecording) audioRecorder.StopRecording();
+        //        label.Text = Encoding.UTF8.GetString(Convert.FromBase64String(Encoding.UTF8.GetString(e.Data)));
+
+        //        if (File.Exists(filePath))
+        //        {
+        //            File.Delete(filePath);
+        //        }
+        //        fs = File.Create(filePath);
+        //    }
+        //}
+        //else
+        //{
+        //    if (e.Data.Length != 0 || e.Data != null)
+        //    {
+        //        fs.Write(e.Data, 0, e.Data.Length);
+        //        fs.Flush();
+        //    }
+
+        //    if (!isPlaying)
+        //    {
+        //        isPlaying = true;
+        //        audioPlayer.Play(fs.Name);
         //        actionButton.IsEnable = true;
-        //        connection.Close();
+        //        actionButton.BackgroundColor = Color.Red;
+        //        actionButton.Text = "Stop";
         //    }
         //}
 
         private void OnStopCallback()
         {
-            actionButton.Text = "Listen";
-            isPlaying = false;
+            Task.Factory.StartNew(() =>
+            {
+                fs.Close();
+                actionButton.Text = "Listen";
+                isPlaying = false;
+            });
+        }
+
+        private async void StartAndConnect()
+        {
+            await Task.Run(() => LaunchApp());
+            await Task.Run(() => Connect());
         }
 
         private void ActionButton_ButtonClicked(object sender, EventArgs e)
@@ -200,12 +263,9 @@ namespace GAssist
                 }
                 else
                 {
-                    feedback.Play(FeedbackType.Sound, "Tap");
-
                     audioRecorder.StartRecording();
                     actionButton.IsEnable = false;
                 }
-
             }
         }
 
@@ -228,36 +288,11 @@ namespace GAssist
         //    }
         //}
 
-        //private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
-        //{
-        //    try
-        //    {
-        //        switch (e.Item as string)
-        //        {
-        //            case "Connect":
-        //                Connect();
-        //                break;
-
-        //            case "Record":
-        //                break;
-
-        //            case "Play":
-        //                break;
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        ShowMessage(ex.Message, ex.ToString());
-        //    }
-        //}
-
         private void Connection_StatusChanged(object sender, ConnectionStatusEventArgs e)
         {
-            
             if (e.Reason == ConnectionStatus.ConnectionClosed ||
-                e.Reason == ConnectionStatus.ConnectionLost)
+                e.Reason == ConnectionStatus.ConnectionLost || e.Reason == ConnectionStatus.Unknown)
             {
-
                 ShowMessage("Lost connection, will try to reconnect in 3 seconds");
                 if (audioRecorder.isRecording)
                 {
@@ -285,8 +320,7 @@ namespace GAssist
         private void ReconnectTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
             ShowMessage("Reconnecting...");
-            LaunchApp();
-            Connect();
+            StartAndConnect();
         }
 
         private void ShowMessage(string message, string debugLog = null)
@@ -318,11 +352,6 @@ namespace GAssist
                 // Handle the exception
             }
             return false;
-        }
-
-        private void OnStopCallback(String callback)
-        {
-            actionButton.BackgroundColor = Color.Default;
         }
     }
 }

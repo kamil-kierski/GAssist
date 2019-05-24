@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace GAssist
+﻿namespace GAssist
 {
-    class Preferences
+    internal class Preferences
     {
         public void SetRecordOnStart(bool setting)
         {
@@ -15,6 +11,5 @@ namespace GAssist
         {
             return Tizen.Applications.Preference.Get<bool>("record_on_start");
         }
-
     }
 }

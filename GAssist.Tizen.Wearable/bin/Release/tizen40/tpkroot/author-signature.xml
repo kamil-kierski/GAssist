@@ -4,7 +4,7 @@
     <SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256" />
     <Reference URI="tizen-manifest.xml">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
-      <DigestValue>KeVzAYdQZCHht1LOD5AwR9rBR1PDa9MSWPxIOqE1NCA=</DigestValue>
+      <DigestValue>JH+JbUdBLSpA2OzzHQhzUrIuijvll/69GSm9wSUXT7c=</DigestValue>
     </Reference>
     <Reference URI="shared%2Fres%2FGAssist.Tizen.Wearable.png">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
@@ -38,17 +38,97 @@
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
       <DigestValue>2C/hDnr4gSUNBKUyrS08ujKECN+nXPAjdOmGbAVzTuY=</DigestValue>
     </Reference>
+    <Reference URI="bin%2FSystem.Interactive.Async.dll">
+      <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
+      <DigestValue>N5SlYJHpOQ/iAfMdstozuSsPtzyKqD8OJoC50cXY0UY=</DigestValue>
+    </Reference>
+    <Reference URI="bin%2Fruntimes%2Fwin%2Fnative%2Fgrpc_csharp_ext.x86.dll">
+      <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
+      <DigestValue>t0wipYL0h9G/wbADsNnhL5D65FnIL8byRV5DiSyKCLI=</DigestValue>
+    </Reference>
+    <Reference URI="bin%2Fruntimes%2Fwin%2Fnative%2Fgrpc_csharp_ext.x64.dll">
+      <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
+      <DigestValue>5hi61RCh+Z6ATow2KCUanoT1SHrCsNir+/QsCzIRZ7E=</DigestValue>
+    </Reference>
+    <Reference URI="bin%2Fruntimes%2Fosx%2Fnative%2Flibgrpc_csharp_ext.x86.dylib">
+      <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
+      <DigestValue>rpq0aHFLDKlRHsKLX+Stl2n5Cjvm1K+ZVFYKvtscQMk=</DigestValue>
+    </Reference>
+    <Reference URI="bin%2Fruntimes%2Fosx%2Fnative%2Flibgrpc_csharp_ext.x64.dylib">
+      <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
+      <DigestValue>uj8EAtF5IZcqlc+rrEwnjlErscABWaGqoG4fVNcUcD8=</DigestValue>
+    </Reference>
+    <Reference URI="bin%2Fruntimes%2Flinux%2Fnative%2Flibgrpc_csharp_ext.x86.so">
+      <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
+      <DigestValue>DnTCA62+QR5SFDsVnMGvra/CUhK9ZEUHc+dIhDafyVo=</DigestValue>
+    </Reference>
+    <Reference URI="bin%2Fruntimes%2Flinux%2Fnative%2Flibgrpc_csharp_ext.x64.so">
+      <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
+      <DigestValue>ufbWx4/TCimV/c2rMyinvizArmvyzDmPWM9KwSjQVwI=</DigestValue>
+    </Reference>
+    <Reference URI="bin%2FNewtonsoft.Json.dll">
+      <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
+      <DigestValue>gkIipvi93hhq6PE+WvoKU82xCfBcfl2PTHNjD3enxt4=</DigestValue>
+    </Reference>
+    <Reference URI="bin%2FNAudio.dll">
+      <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
+      <DigestValue>FhIHkl8KW8BlJknx8ltcy3JwssUeB4L9UwgVhZa/fBo=</DigestValue>
+    </Reference>
+    <Reference URI="bin%2FGrpc.Core.dll">
+      <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
+      <DigestValue>GSbTFRdjEBSzij8La2BNJTAHsCyydYi8n8MGgyL/9J8=</DigestValue>
+    </Reference>
+    <Reference URI="bin%2FGrpc.Core.Api.dll">
+      <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
+      <DigestValue>u3Ct4ov210P3EH0tXnmckL2ZU4rJzvE4uJR2VdNBG8Q=</DigestValue>
+    </Reference>
+    <Reference URI="bin%2FGrpc.Auth.dll">
+      <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
+      <DigestValue>53FRrjKpN82VYxuMf4hfMdXrfdwhgDyOiWSWVk+MOig=</DigestValue>
+    </Reference>
+    <Reference URI="bin%2FGoogle.Protobuf.dll">
+      <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
+      <DigestValue>Fte5BEmWK2/Uglc1XGVyDdAlcylszdWFAMSCsNjklTQ=</DigestValue>
+    </Reference>
+    <Reference URI="bin%2FGoogle.Apis.dll">
+      <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
+      <DigestValue>MjQsT/8+wCFczjqxAmwL+hH3RhsBTIXD2frA6tUr7+E=</DigestValue>
+    </Reference>
+    <Reference URI="bin%2FGoogle.Apis.Core.dll">
+      <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
+      <DigestValue>3kGXvH+kH1weDoCGFtITvpGW6VBGEvKWNo/ArRj64Ss=</DigestValue>
+    </Reference>
+    <Reference URI="bin%2FGoogle.Apis.Auth.PlatformServices.dll">
+      <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
+      <DigestValue>7W7SZ86BYMpX53MTeq/aIxsYlpMszh6fTZklyZAjySY=</DigestValue>
+    </Reference>
+    <Reference URI="bin%2FGoogle.Apis.Auth.dll">
+      <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
+      <DigestValue>OAn/IuZQCPu65BAZW3MJK1Er2uC0tGoFwcVNtTkO2UE=</DigestValue>
+    </Reference>
+    <Reference URI="bin%2FGoogle.Api.Gax.Grpc.dll">
+      <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
+      <DigestValue>jiv6xXSj1oOsvfffpHO4T+fMSuz75JdNX9ufnk7+Aa8=</DigestValue>
+    </Reference>
+    <Reference URI="bin%2FGoogle.Api.Gax.dll">
+      <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
+      <DigestValue>io59w3tXErFGVBzr54nXL/1eny1/ftVU8pBtzOhhTV0=</DigestValue>
+    </Reference>
+    <Reference URI="bin%2FGoogle.Api.CommonProtos.dll">
+      <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
+      <DigestValue>4rLp4Kd7XZeE37UazAC4SOPDGsoDqJQEBJYM8G5kd4Y=</DigestValue>
+    </Reference>
     <Reference URI="bin%2FGAssist.Tizen.Wearable.dll">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
       <DigestValue>AktIsgBzKw3f4fOXDPSBsdQR6KcvAAJLWrnf1saKS3Y=</DigestValue>
     </Reference>
     <Reference URI="bin%2FGAssist.pdb">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
-      <DigestValue>JYmT9wd9qo+EF4W0zz0Pow53fHPYBbux2Xs5vUw1Q5w=</DigestValue>
+      <DigestValue>DpolhITRrFS4Nc1LJ1t2YFhlXvOkiWVszK7DXyJGmqg=</DigestValue>
     </Reference>
     <Reference URI="bin%2FGAssist.dll">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
-      <DigestValue>NeIFW/S7BHsJMxlfroSCbD54zFHmKMBbNtjtxavAGQo=</DigestValue>
+      <DigestValue>HYbI9rw5jakgVFMUlGI3Q8BT+er5m8RMe6xYeo3A/bE=</DigestValue>
     </Reference>
     <Reference URI="#prop">
       <Transforms>
@@ -59,11 +139,11 @@
     </Reference>
   </SignedInfo>
   <SignatureValue>
-J7YEdYkHH3Yy+LXPtIdANT+NWu6OEQ3qnns/AWZ+P8GRgKrlijpGOhN7FJu496kFdEY5XcKYT9x0
-aQuYTBM6uTwn9eXDmoxdm/VbsTr+W8a+DGo1Pa1lwQPch8bOw5vR/xJZfP+omiPoWGucds04eHIt
-zxh/3b/gtcsElXXmZKqiQAfkZ0hnUrZGIqggoN1picbKQ4uXVnem199pacFUvnUYkJeVmePLOiBg
-l/Ft4Y2dN6/mpDqVWiHzNbDlCiZVaJFvs3Jlxz7sDqF1P1gGwL6dykd/50IiJ5jVlyqPTDDoZ0l+
-ff26YM5ExAKiwvb5/Hf8c0FhdO3IIt7iIDxVtg==
+SHMRxabBYUgflcwEuITpDL7/sfpuwjI2QnCD+4a8rM+J7QibyU147QQcv1/yvPVyxHarY1l3aYAD
+MOYPBRk9pUrphWVEHGFXDdTPfjBxpHvPRqjER+fCu2tSXxgCDxRIpevD4MkmnvCS0hjHA2G90a4g
+o241iW24gHPMmLKEHwWEVMwGQWE+MH4E2JB+hAKqXqKC4Aej9TUuW9HUFYsVKCbr4Gc+W3VnVLQM
+QdBATf48CIpb5yxTgs6LD8yUS4TKOgJyK+45h7sum7f4IPG8fdUWtlQLP7gRuCfUbdbFq5ytZmba
+k4Ip2SquvZMTtpdaeGQs3fw3oZRqvV2o9XSyRQ==
 </SignatureValue>
   <KeyInfo>
     <X509Data>

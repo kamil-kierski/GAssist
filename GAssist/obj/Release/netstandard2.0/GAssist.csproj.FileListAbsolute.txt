@@ -8,3 +8,4 @@ C:\Users\cyber\repos_new\GAssist\GAssist\obj\Release\netstandard2.0\GAssist.Asse
 C:\Users\cyber\repos_new\GAssist\GAssist\obj\Release\netstandard2.0\XamlC.stamp
 C:\Users\cyber\repos_new\GAssist\GAssist\obj\Release\netstandard2.0\GAssist.dll
 C:\Users\cyber\repos_new\GAssist\GAssist\obj\Release\netstandard2.0\GAssist.pdb
+C:\Users\cyber\repos_new\GAssist\GAssist\obj\Release\netstandard2.0\GAssist.csprojAssemblyReference.cache

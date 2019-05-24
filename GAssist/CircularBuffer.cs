@@ -16,7 +16,7 @@ namespace GAssist
     /// </summary>
     /// <typeparam name="T">Specifies the type of elements in the buffer.</typeparam>
     /// <remarks>
-    /// <para>The capacity of a <see cref="CircularBuffer{T}" /> is the number of elements the <see cref="CircularBuffer{T}"/> can 
+    /// <para>The capacity of a <see cref="CircularBuffer{T}" /> is the number of elements the <see cref="CircularBuffer{T}"/> can
     /// hold. If an attempt is made to put more items in the buffer than available capacity, items at the start of the buffer are
     /// automatically overwritten. This behavior can be modified via the <see cref="AllowOverwrite"/> property.</para>
     /// <para>CircularBuffer{T} accepts <c>null</c> as a valid value for reference types and allows duplicate elements.</para>
@@ -33,7 +33,7 @@ namespace GAssist
         [NonSerialized]
         private object _syncRoot;
 
-        #endregion
+        #endregion Fields
 
         #region Constructors
 
@@ -66,7 +66,7 @@ namespace GAssist
             this.AllowOverwrite = allowOverwrite;
         }
 
-        #endregion
+        #endregion Constructors
 
         #region Properties
 
@@ -83,7 +83,7 @@ namespace GAssist
         /// <exception cref="System.ArgumentOutOfRangeException">Thrown if the specified new capacity is smaller than the current contents of the buffer.</exception>
         public int Capacity
         {
-            get { return _capacity; }
+            get => _capacity;
             set
             {
                 if (value != _capacity)
@@ -118,20 +118,14 @@ namespace GAssist
         /// Gets a value indicating whether the buffer is empty.
         /// </summary>
         /// <value><c>true</c> if buffer is empty; otherwise, <c>false</c>.</value>
-        public virtual bool IsEmpty
-        {
-            get { return this.Size == 0; }
-        }
+        public virtual bool IsEmpty => this.Size == 0;
 
         /// <summary>
         /// Gets a value indicating whether the buffer is full.
         /// </summary>
         /// <value><c>true</c> if the buffer is full; otherwise, <c>false</c>.</value>
         /// <remarks>The <see cref="IsFull"/> property always returns <c>false</c> if the <see cref="AllowOverwrite"/> property is set to <c>true</c>.</remarks>
-        public virtual bool IsFull
-        {
-            get { return !this.AllowOverwrite && this.Size == this.Capacity; }
-        }
+        public virtual bool IsFull => !this.AllowOverwrite && this.Size == this.Capacity;
 
         /// <summary>
         /// Gets the number of elements contained in the <see cref="CircularBuffer{T}"/>.
@@ -145,7 +139,7 @@ namespace GAssist
         /// <value>The index of the last element in the buffer.</value>
         public int Tail { get; protected set; }
 
-        #endregion
+        #endregion Properties
 
         #region Methods
 
@@ -202,7 +196,7 @@ namespace GAssist
         }
 
         /// <summary>
-        /// Copies and removes the specified number elements from the <see cref="CircularBuffer{T}"/> to a compatible one-dimensional array, starting at the beginning of the target array. 
+        /// Copies and removes the specified number elements from the <see cref="CircularBuffer{T}"/> to a compatible one-dimensional array, starting at the beginning of the target array.
         /// </summary>
         /// <param name="array">The one-dimensional <see cref="Array"/> that is the destination of the elements copied from <see cref="CircularBuffer{T}"/>. The <see cref="Array"/> must have zero-based indexing.</param>
         /// <returns>The actual number of elements copied into <paramref name="array"/>.</returns>
@@ -212,7 +206,7 @@ namespace GAssist
         }
 
         /// <summary>
-        /// Copies and removes the specified number elements from the <see cref="CircularBuffer{T}"/> to a compatible one-dimensional array, starting at the specified index of the target array. 
+        /// Copies and removes the specified number elements from the <see cref="CircularBuffer{T}"/> to a compatible one-dimensional array, starting at the specified index of the target array.
         /// </summary>
         /// <param name="array">The one-dimensional <see cref="Array"/> that is the destination of the elements copied from <see cref="CircularBuffer{T}"/>. The <see cref="Array"/> must have zero-based indexing.</param>
         /// <param name="arrayIndex">The zero-based index in <paramref name="array"/> at which copying begins.</param>
@@ -493,7 +487,7 @@ namespace GAssist
             return bufferIndex;
         }
 
-        #endregion
+        #endregion Methods
 
         #region ICollection Interface
 
@@ -511,19 +505,13 @@ namespace GAssist
         /// Gets the number of elements contained in the <see cref="ICollection" />.
         /// </summary>
         /// <value>The number of elements actually contained in the <see cref="ICollection" />.</value>
-        int ICollection.Count
-        {
-            get { return this.Size; }
-        }
+        int ICollection.Count => this.Size;
 
         /// <summary>
         /// Gets a value indicating whether access to the <see cref="T:System.Collections.ICollection" /> is synchronized (thread safe).
         /// </summary>
         /// <value><c>true</c> if access to the <see cref="ICollection"/> is synchronized (thread safe); otherwise, <c>false</c>. In the default implementation of <see cref="CircularBuffer{T}"/>, this property always returns <c>false</c>.</value>
-        bool ICollection.IsSynchronized
-        {
-            get { return false; }
-        }
+        bool ICollection.IsSynchronized => false;
 
         /// <summary>
         /// Gets an object that can be used to synchronize access to the <see cref="T:System.Collections.ICollection" />.
@@ -542,7 +530,7 @@ namespace GAssist
             }
         }
 
-        #endregion
+        #endregion ICollection Interface
 
         #region ICollection<T> Interface
 
@@ -643,20 +631,14 @@ namespace GAssist
         /// Gets the number of elements contained in the <see cref="ICollection{T}" />.
         /// </summary>
         /// <value>The number of elements actually contained in the <see cref="ICollection{T}" />.</value>
-        int ICollection<T>.Count
-        {
-            get { return this.Size; }
-        }
+        int ICollection<T>.Count => this.Size;
 
         /// <summary>
         /// Gets a value indicating whether the <see cref="T:System.Collections.Generic.ICollection`1" /> is read-only.
         /// </summary>
         /// <value><c>true</c> if the <see cref="ICollection{T}"/> is read-only; otherwise, <c>false</c>. In the default implementation of <see cref="CircularBuffer{T}"/>, this property always returns <c>false</c>.</value>
-        bool ICollection<T>.IsReadOnly
-        {
-            get { return false; }
-        }
+        bool ICollection<T>.IsReadOnly => false;
 
-        #endregion
+        #endregion ICollection<T> Interface
     }
 }

@@ -6,15 +6,15 @@ using Tizen.Multimedia;
 
 namespace GAssist
 {
-    class AudioRecorder
+    internal class AudioRecorder
     {
         private Agent agent;
         private Connection connection;
         private byte[] chunk;
         public volatile bool isRecording;
         private int bufferSize;
-        CancellationTokenSource source;
-        CancellationToken token;
+        private CancellationTokenSource source;
+        private CancellationToken token;
 
         private AudioCapture audioCapture;
 
@@ -27,7 +27,6 @@ namespace GAssist
 
         public void StartRecording()
         {
-
             if (isRecording)
             {
                 Tizen.Log.Debug("AUDIORECORDER", "BAD!:RECORDING FLAG TRUE ON START RECORDING");
@@ -44,6 +43,7 @@ namespace GAssist
         {
             source.Cancel();
             chunk = null;
+            audioCapture.Flush();
             audioCapture.Unprepare();
             isRecording = false;
         }
@@ -56,7 +56,7 @@ namespace GAssist
                 {
                     if (token.IsCancellationRequested)
                     {
-                        token.ThrowIfCancellationRequested();
+                        return;
                     }
                     chunk = new byte[bufferSize];
                     chunk = audioCapture.Read(bufferSize);
@@ -68,6 +68,5 @@ namespace GAssist
                 }
             }, token);
         }
-
     }
 }

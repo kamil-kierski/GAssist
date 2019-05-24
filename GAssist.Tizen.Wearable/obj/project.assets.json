@@ -2,6 +2,182 @@
   "version": 3,
   "targets": {
     "Tizen,Version=v4.0": {
+      "Google.Api.CommonProtos/1.6.0": {
+        "type": "package",
+        "dependencies": {
+          "Google.Protobuf": "3.6.1",
+          "NETStandard.Library": "1.6.1"
+        },
+        "compile": {
+          "lib/netstandard1.3/Google.Api.CommonProtos.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/Google.Api.CommonProtos.dll": {}
+        }
+      },
+      "Google.Api.Gax/2.7.0": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "11.0.2",
+          "System.Interactive.Async": "3.2.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Google.Api.Gax.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Google.Api.Gax.dll": {}
+        }
+      },
+      "Google.Api.Gax.Grpc/2.7.0": {
+        "type": "package",
+        "dependencies": {
+          "Google.Api.CommonProtos": "1.6.0",
+          "Google.Api.Gax": "2.7.0",
+          "Google.Apis.Auth": "1.39.0",
+          "Grpc.Auth": "1.20.1",
+          "Grpc.Core": "1.20.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/Google.Api.Gax.Grpc.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Google.Api.Gax.Grpc.dll": {}
+        }
+      },
+      "Google.Apis/1.39.0": {
+        "type": "package",
+        "dependencies": {
+          "Google.Apis.Core": "1.39.0",
+          "Newtonsoft.Json": "10.0.2"
+        },
+        "compile": {
+          "lib/netstandard2.0/Google.Apis.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Google.Apis.dll": {}
+        }
+      },
+      "Google.Apis.Auth/1.39.0": {
+        "type": "package",
+        "dependencies": {
+          "Google.Apis": "1.39.0",
+          "Google.Apis.Core": "1.39.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Google.Apis.Auth.PlatformServices.dll": {},
+          "lib/netstandard2.0/Google.Apis.Auth.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Google.Apis.Auth.PlatformServices.dll": {},
+          "lib/netstandard2.0/Google.Apis.Auth.dll": {}
+        }
+      },
+      "Google.Apis.Core/1.39.0": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "10.0.2"
+        },
+        "compile": {
+          "lib/netstandard2.0/Google.Apis.Core.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Google.Apis.Core.dll": {}
+        }
+      },
+      "Google.Protobuf/3.7.0": {
+        "type": "package",
+        "dependencies": {
+          "NETStandard.Library": "1.6.1"
+        },
+        "compile": {
+          "lib/netstandard1.0/Google.Protobuf.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.0/Google.Protobuf.dll": {}
+        }
+      },
+      "Grpc.Auth/1.20.1": {
+        "type": "package",
+        "dependencies": {
+          "Google.Apis.Auth": "1.21.0",
+          "Grpc.Core": "1.20.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/Grpc.Auth.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Grpc.Auth.dll": {}
+        }
+      },
+      "Grpc.Core/1.20.1": {
+        "type": "package",
+        "dependencies": {
+          "Grpc.Core.Api": "1.20.1",
+          "System.Interactive.Async": "3.2.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Grpc.Core.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Grpc.Core.dll": {}
+        },
+        "runtimeTargets": {
+          "runtimes/linux/native/libgrpc_csharp_ext.x64.so": {
+            "assetType": "native",
+            "rid": "linux"
+          },
+          "runtimes/linux/native/libgrpc_csharp_ext.x86.so": {
+            "assetType": "native",
+            "rid": "linux"
+          },
+          "runtimes/osx/native/libgrpc_csharp_ext.x64.dylib": {
+            "assetType": "native",
+            "rid": "osx"
+          },
+          "runtimes/osx/native/libgrpc_csharp_ext.x86.dylib": {
+            "assetType": "native",
+            "rid": "osx"
+          },
+          "runtimes/win/native/grpc_csharp_ext.x64.dll": {
+            "assetType": "native",
+            "rid": "win"
+          },
+          "runtimes/win/native/grpc_csharp_ext.x86.dll": {
+            "assetType": "native",
+            "rid": "win"
+          }
+        }
+      },
+      "Grpc.Core.Api/1.20.1": {
+        "type": "package",
+        "dependencies": {
+          "System.Interactive.Async": "3.2.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Grpc.Core.Api.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Grpc.Core.Api.dll": {}
+        }
+      },
+      "NAudio/1.9.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/NAudio.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/NAudio.dll": {}
+        }
+      },
+      "Newtonsoft.Json/11.0.2": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+        }
+      },
       "Samsung.Sap/1.0.0": {
         "type": "package",
         "dependencies": {
@@ -9,6 +185,15 @@
         },
         "compile": {
           "ref/netstandard2.0/Samsung.Sap.dll": {}
+        }
+      },
+      "System.Interactive.Async/3.2.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/System.Interactive.Async.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Interactive.Async.dll": {}
         }
       },
       "Tizen.NET/4.0.0": {
@@ -152,6 +337,9 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
+          "Google.Api.Gax.Grpc": "2.7.0",
+          "Google.Protobuf": "3.7.0",
+          "NAudio": "1.9.0",
           "Samsung.Sap": "1.0.0",
           "Tizen.Wearable.CircularUI": "1.2.0"
         },
@@ -165,6 +353,271 @@
     }
   },
   "libraries": {
+    "Google.Api.CommonProtos/1.6.0": {
+      "sha512": "/Bclx4K+zptvxIk+AQSzmIkuMNAnAdgjBv0bwhsZn0d6SLOof16lVe/tfD+ZFrmKVcOHJDJIDSiSzan3FIglQw==",
+      "type": "package",
+      "path": "google.api.commonprotos/1.6.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "google.api.commonprotos.1.6.0.nupkg.sha512",
+        "google.api.commonprotos.nuspec",
+        "lib/net45/Google.Api.CommonProtos.dll",
+        "lib/net45/Google.Api.CommonProtos.pdb",
+        "lib/net45/Google.Api.CommonProtos.xml",
+        "lib/netstandard1.3/Google.Api.CommonProtos.dll",
+        "lib/netstandard1.3/Google.Api.CommonProtos.pdb",
+        "lib/netstandard1.3/Google.Api.CommonProtos.xml"
+      ]
+    },
+    "Google.Api.Gax/2.7.0": {
+      "sha512": "HDZFdXYrAUukdQnF3gMl9oAazq1oHWlbbNoLJ7aYIJFPlznmbsUE+VD+tn5S/4qYJat7jUNrraUOX4meoTE4Qw==",
+      "type": "package",
+      "path": "google.api.gax/2.7.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "google.api.gax.2.7.0.nupkg.sha512",
+        "google.api.gax.nuspec",
+        "lib/net45/Google.Api.Gax.dll",
+        "lib/net45/Google.Api.Gax.pdb",
+        "lib/net45/Google.Api.Gax.xml",
+        "lib/netstandard1.3/Google.Api.Gax.dll",
+        "lib/netstandard1.3/Google.Api.Gax.pdb",
+        "lib/netstandard1.3/Google.Api.Gax.xml",
+        "lib/netstandard2.0/Google.Api.Gax.dll",
+        "lib/netstandard2.0/Google.Api.Gax.pdb",
+        "lib/netstandard2.0/Google.Api.Gax.xml"
+      ]
+    },
+    "Google.Api.Gax.Grpc/2.7.0": {
+      "sha512": "J5tjiK6DAACEt+2g7EY1+mTEb+r2kQQ/zwbQXOFzGOTix/J7Fuj5754icsX7YYy/q2YSn4+4Sm/sMFy3y0Ai7Q==",
+      "type": "package",
+      "path": "google.api.gax.grpc/2.7.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "google.api.gax.grpc.2.7.0.nupkg.sha512",
+        "google.api.gax.grpc.nuspec",
+        "lib/net45/Google.Api.Gax.Grpc.dll",
+        "lib/net45/Google.Api.Gax.Grpc.pdb",
+        "lib/net45/Google.Api.Gax.Grpc.xml",
+        "lib/netstandard1.5/Google.Api.Gax.Grpc.dll",
+        "lib/netstandard1.5/Google.Api.Gax.Grpc.pdb",
+        "lib/netstandard1.5/Google.Api.Gax.Grpc.xml",
+        "lib/netstandard2.0/Google.Api.Gax.Grpc.dll",
+        "lib/netstandard2.0/Google.Api.Gax.Grpc.pdb",
+        "lib/netstandard2.0/Google.Api.Gax.Grpc.xml"
+      ]
+    },
+    "Google.Apis/1.39.0": {
+      "sha512": "Xu9rUYKUpGu6AYg0KRQtq5AueObZ6HpOq7zhkEVqCP6Dndf0PaTjNdkiDvG2AoDY5wo5Z4AOMnCjWR7AaIoHZw==",
+      "type": "package",
+      "path": "google.apis/1.39.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "google.apis.1.39.0.nupkg.sha512",
+        "google.apis.nuspec",
+        "lib/net45/Google.Apis.PlatformServices.dll",
+        "lib/net45/Google.Apis.dll",
+        "lib/net45/Google.Apis.pdb",
+        "lib/net45/Google.Apis.xml",
+        "lib/netstandard1.3/Google.Apis.dll",
+        "lib/netstandard1.3/Google.Apis.pdb",
+        "lib/netstandard1.3/Google.Apis.xml",
+        "lib/netstandard2.0/Google.Apis.dll",
+        "lib/netstandard2.0/Google.Apis.pdb",
+        "lib/netstandard2.0/Google.Apis.xml"
+      ]
+    },
+    "Google.Apis.Auth/1.39.0": {
+      "sha512": "gvcNdiPJnzl9YDRuQVLOzch5pJXmvW7kL9DYHB5UOMWQ5LS/7FnZixtugbyAOnD7+Wof+Lw/DRGrZ/bY3icKfQ==",
+      "type": "package",
+      "path": "google.apis.auth/1.39.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "google.apis.auth.1.39.0.nupkg.sha512",
+        "google.apis.auth.nuspec",
+        "lib/net45/Google.Apis.Auth.PlatformServices.dll",
+        "lib/net45/Google.Apis.Auth.dll",
+        "lib/net45/Google.Apis.Auth.pdb",
+        "lib/net45/Google.Apis.Auth.xml",
+        "lib/netstandard1.3/Google.Apis.Auth.PlatformServices.dll",
+        "lib/netstandard1.3/Google.Apis.Auth.dll",
+        "lib/netstandard1.3/Google.Apis.Auth.pdb",
+        "lib/netstandard1.3/Google.Apis.Auth.xml",
+        "lib/netstandard2.0/Google.Apis.Auth.PlatformServices.dll",
+        "lib/netstandard2.0/Google.Apis.Auth.dll",
+        "lib/netstandard2.0/Google.Apis.Auth.pdb",
+        "lib/netstandard2.0/Google.Apis.Auth.xml"
+      ]
+    },
+    "Google.Apis.Core/1.39.0": {
+      "sha512": "GJtdPO3/Yc78lvVZu/rhww2AztgMpKB7k1V06zrRjvEnKAgSWG8GTNpfMlPMbnxMews/T2NKik1tpeSGT67FnQ==",
+      "type": "package",
+      "path": "google.apis.core/1.39.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "google.apis.core.1.39.0.nupkg.sha512",
+        "google.apis.core.nuspec",
+        "lib/net45/Google.Apis.Core.dll",
+        "lib/net45/Google.Apis.Core.pdb",
+        "lib/net45/Google.Apis.Core.xml",
+        "lib/netstandard1.3/Google.Apis.Core.dll",
+        "lib/netstandard1.3/Google.Apis.Core.pdb",
+        "lib/netstandard1.3/Google.Apis.Core.xml",
+        "lib/netstandard2.0/Google.Apis.Core.dll",
+        "lib/netstandard2.0/Google.Apis.Core.pdb",
+        "lib/netstandard2.0/Google.Apis.Core.xml"
+      ]
+    },
+    "Google.Protobuf/3.7.0": {
+      "sha512": "OvssyqQTrpJgdH4fjztsCV9AhUo9jgGpDbZ5XAAqC+X6MIUsifHk8Woeom1HXlHdqo/XebiEMpYySE9AxybJ9g==",
+      "type": "package",
+      "path": "google.protobuf/3.7.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "google.protobuf.3.7.0.nupkg.sha512",
+        "google.protobuf.nuspec",
+        "lib/net45/Google.Protobuf.dll",
+        "lib/net45/Google.Protobuf.pdb",
+        "lib/net45/Google.Protobuf.xml",
+        "lib/netstandard1.0/Google.Protobuf.dll",
+        "lib/netstandard1.0/Google.Protobuf.pdb",
+        "lib/netstandard1.0/Google.Protobuf.xml"
+      ]
+    },
+    "Grpc.Auth/1.20.1": {
+      "sha512": "P3IY3iWXHE5/QEV8qWPlAbQ/KIGEY2oq1i1TPvXCCuSV8hXp0FLZoMIrsKeTCphus2928sBXBZsxKzlUivCotg==",
+      "type": "package",
+      "path": "grpc.auth/1.20.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "grpc.auth.1.20.1.nupkg.sha512",
+        "grpc.auth.nuspec",
+        "lib/net45/Grpc.Auth.dll",
+        "lib/net45/Grpc.Auth.pdb",
+        "lib/net45/Grpc.Auth.xml",
+        "lib/netstandard1.5/Grpc.Auth.dll",
+        "lib/netstandard1.5/Grpc.Auth.pdb",
+        "lib/netstandard1.5/Grpc.Auth.xml",
+        "lib/netstandard2.0/Grpc.Auth.dll",
+        "lib/netstandard2.0/Grpc.Auth.pdb",
+        "lib/netstandard2.0/Grpc.Auth.xml"
+      ]
+    },
+    "Grpc.Core/1.20.1": {
+      "sha512": "69bHUrKzD8O6js+aFzU8mEWMF0Nt7jEqlloONcVpauuxsg/1pDdIxBAisWu/K+IY5SEeshn+4oAchf9rJoFQzw==",
+      "type": "package",
+      "path": "grpc.core/1.20.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "build/MonoAndroid10/Grpc.Core.targets",
+        "build/Xamarin.iOS10/Grpc.Core.targets",
+        "build/net45/Grpc.Core.targets",
+        "grpc.core.1.20.1.nupkg.sha512",
+        "grpc.core.nuspec",
+        "lib/net45/Grpc.Core.dll",
+        "lib/net45/Grpc.Core.pdb",
+        "lib/net45/Grpc.Core.xml",
+        "lib/netstandard1.5/Grpc.Core.dll",
+        "lib/netstandard1.5/Grpc.Core.pdb",
+        "lib/netstandard1.5/Grpc.Core.xml",
+        "lib/netstandard2.0/Grpc.Core.dll",
+        "lib/netstandard2.0/Grpc.Core.pdb",
+        "lib/netstandard2.0/Grpc.Core.xml",
+        "native/android/arm64-v8a/libgrpc_csharp_ext.so",
+        "native/android/armeabi-v7a/libgrpc_csharp_ext.so",
+        "native/android/x86/libgrpc_csharp_ext.so",
+        "native/ios/universal/libgrpc.a",
+        "native/ios/universal/libgrpc_csharp_ext.a",
+        "runtimes/linux/native/libgrpc_csharp_ext.x64.so",
+        "runtimes/linux/native/libgrpc_csharp_ext.x86.so",
+        "runtimes/osx/native/libgrpc_csharp_ext.x64.dylib",
+        "runtimes/osx/native/libgrpc_csharp_ext.x86.dylib",
+        "runtimes/win/native/grpc_csharp_ext.x64.dll",
+        "runtimes/win/native/grpc_csharp_ext.x86.dll"
+      ]
+    },
+    "Grpc.Core.Api/1.20.1": {
+      "sha512": "gXJoNYR97iQ3mlQ34TCCENJWQUTEl61Y/23/Sjv3dmYv59MppAPUjgSaXzHa20Rj4mNNvddgxTgwOGB+srprEQ==",
+      "type": "package",
+      "path": "grpc.core.api/1.20.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "grpc.core.api.1.20.1.nupkg.sha512",
+        "grpc.core.api.nuspec",
+        "lib/net45/Grpc.Core.Api.dll",
+        "lib/net45/Grpc.Core.Api.pdb",
+        "lib/net45/Grpc.Core.Api.xml",
+        "lib/netstandard1.5/Grpc.Core.Api.dll",
+        "lib/netstandard1.5/Grpc.Core.Api.pdb",
+        "lib/netstandard1.5/Grpc.Core.Api.xml",
+        "lib/netstandard2.0/Grpc.Core.Api.dll",
+        "lib/netstandard2.0/Grpc.Core.Api.pdb",
+        "lib/netstandard2.0/Grpc.Core.Api.xml"
+      ]
+    },
+    "NAudio/1.9.0": {
+      "sha512": "PjcPhL5AnbF1YmZxqFYuAEVVRNCNWWIm6Gi32AGQ0dmHF9+s7TUFfVxEo46MbeIfpUE+Wz60ZNTLMXTxBI1m9w==",
+      "type": "package",
+      "path": "naudio/1.9.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net35/NAudio.dll",
+        "lib/net35/NAudio.xml",
+        "lib/netstandard2.0/NAudio.dll",
+        "lib/netstandard2.0/NAudio.xml",
+        "lib/uap10.0.10240/NAudio.dll",
+        "lib/uap10.0.10240/NAudio.pri",
+        "lib/uap10.0.10240/NAudio.xml",
+        "naudio.1.9.0.nupkg.sha512",
+        "naudio.nuspec"
+      ]
+    },
+    "Newtonsoft.Json/11.0.2": {
+      "sha512": "IvJe1pj7JHEsP8B8J8DwlMEx8UInrs/x+9oVY+oCD13jpLu4JbJU2WCIsMRn5C4yW9+DgkaO8uiVE5VHKjpmdQ==",
+      "type": "package",
+      "path": "newtonsoft.json/11.0.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "lib/net20/Newtonsoft.Json.dll",
+        "lib/net20/Newtonsoft.Json.xml",
+        "lib/net35/Newtonsoft.Json.dll",
+        "lib/net35/Newtonsoft.Json.xml",
+        "lib/net40/Newtonsoft.Json.dll",
+        "lib/net40/Newtonsoft.Json.xml",
+        "lib/net45/Newtonsoft.Json.dll",
+        "lib/net45/Newtonsoft.Json.xml",
+        "lib/netstandard1.0/Newtonsoft.Json.dll",
+        "lib/netstandard1.0/Newtonsoft.Json.xml",
+        "lib/netstandard1.3/Newtonsoft.Json.dll",
+        "lib/netstandard1.3/Newtonsoft.Json.xml",
+        "lib/netstandard2.0/Newtonsoft.Json.dll",
+        "lib/netstandard2.0/Newtonsoft.Json.xml",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.dll",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.xml",
+        "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.dll",
+        "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.xml",
+        "newtonsoft.json.11.0.2.nupkg.sha512",
+        "newtonsoft.json.nuspec"
+      ]
+    },
     "Samsung.Sap/1.0.0": {
       "sha512": "+FTgLWUXMUUU1YFWCX1BLi8tTEejxj8ezGhNX7f7bLUNavQhXm1ZRZCmWawuDXK/cowrWsDDqn+6BSZG0c7+XA==",
       "type": "package",
@@ -175,6 +628,27 @@
         "ref/netstandard2.0/Samsung.Sap.dll",
         "samsung.sap.1.0.0.nupkg.sha512",
         "samsung.sap.nuspec"
+      ]
+    },
+    "System.Interactive.Async/3.2.0": {
+      "sha512": "C07p0dAA5lGqYUPiPCK3paR709gqS4aMDDsje0v0pvffwzLaxmsn5YQTfZbyNG5qrudPx+BCxTqISnncQ3wIoQ==",
+      "type": "package",
+      "path": "system.interactive.async/3.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net45/System.Interactive.Async.dll",
+        "lib/net45/System.Interactive.Async.xml",
+        "lib/net46/System.Interactive.Async.dll",
+        "lib/net46/System.Interactive.Async.xml",
+        "lib/netstandard1.0/System.Interactive.Async.dll",
+        "lib/netstandard1.0/System.Interactive.Async.xml",
+        "lib/netstandard1.3/System.Interactive.Async.dll",
+        "lib/netstandard1.3/System.Interactive.Async.xml",
+        "lib/netstandard2.0/System.Interactive.Async.dll",
+        "lib/netstandard2.0/System.Interactive.Async.xml",
+        "system.interactive.async.3.2.0.nupkg.sha512",
+        "system.interactive.async.nuspec"
       ]
     },
     "Tizen.NET/4.0.0": {
@@ -834,7 +1308,7 @@
   },
   "packageFolders": {
     "C:\\Users\\cyber\\.nuget\\packages\\": {},
-    "C:\\ProgramData\\Xamarin\\NuGet\\": {},
+    "C:\\Microsoft\\Xamarin\\NuGet\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
@@ -847,7 +1321,7 @@
       "outputPath": "C:\\Users\\cyber\\repos_new\\GAssist\\GAssist.Tizen.Wearable\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\ProgramData\\Xamarin\\NuGet\\",
+        "C:\\Microsoft\\Xamarin\\NuGet\\",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [

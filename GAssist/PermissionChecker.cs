@@ -3,23 +3,21 @@ using Tizen.Security;
 
 namespace GAssist
 {
-    class PermissionChecker
+    internal class PermissionChecker
     {
         public const string recorderPermission = "http://tizen.org/privilege/recorder";
+        public const string mediaStoragePermission = "http://tizen.org/privilege/mediastorage";
 
         public PermissionChecker()
         {
             //const string audioRecorderPermission = "http://tizen.org/privilege/audiorecorder";
-            
+
             //SetupPPMHandler(audioRecorderPermission);
-            
         }
-        
 
-
-        public static void  CheckAndRequestPermission(String permission)
+        public static void CheckAndRequestPermission(String permission)
         {
-            SetupPPMHandler(recorderPermission);
+            SetupPPMHandler(permission);
             try
             {
                 CheckResult result = PrivacyPrivilegeManager.CheckPermission(permission);
@@ -28,15 +26,17 @@ namespace GAssist
                     case CheckResult.Allow:
                         /// Update UI and start accessing protected functionality
                         break;
+
                     case CheckResult.Deny:
                         PrivacyPrivilegeManager.RequestPermission(permission);
                         break;
+
                     case CheckResult.Ask:
                         PrivacyPrivilegeManager.RequestPermission(permission);
                         break;
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 /// Handle exception
             }
@@ -64,14 +64,15 @@ namespace GAssist
                 case RequestResult.AllowForever:
                     /// Update UI and start accessing protected functionality
                     break;
+
                 case RequestResult.DenyForever:
                     /// Show a message and terminate the application
                     break;
+
                 case RequestResult.DenyOnce:
                     /// Show a message with explanation
                     break;
             }
         }
-
     }
 }

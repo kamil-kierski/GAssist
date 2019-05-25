@@ -14,20 +14,22 @@
  * limitations under the License.
  */
 
+using Tizen.Applications;
+
 namespace GAssist
 {
     internal class Program : global::Xamarin.Forms.Platform.Tizen.FormsApplication
     {
-
         protected override void OnCreate()
         {
             base.OnCreate();
-
-           // CheckAndRequestPermission(audioRecorderPermission);
             LoadApplication(new App());
         }
 
-
+        protected override void OnAppControlReceived(AppControlReceivedEventArgs e)
+        {
+            base.OnAppControlReceived(e);
+        }
 
         private static void Main(string[] args)
         {

@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Tizen.Applications;
+using Tizen.Multimedia;
 using Tizen.System;
 using Tizen.Wearable.CircularUI.Forms;
 using Xamarin.Forms;
@@ -33,6 +34,8 @@ namespace GAssist
 
         public MainPage()
         {
+            //AudioManager.VolumeController.Level[AudioVolumeType.Media] = 15;
+
             InitializeComponent();
 
             reconnectTimer = new System.Timers.Timer(3000);
@@ -42,7 +45,6 @@ namespace GAssist
             PermissionChecker.CheckAndRequestPermission(PermissionChecker.recorderPermission);
             PermissionChecker.CheckAndRequestPermission(PermissionChecker.mediaStoragePermission);
 
-            //listView.ItemTapped += ListView_ItemTapped;s
             actionButton.Clicked += ActionButton_ButtonClicked;
             actionButton.IsEnable = false;
             actionButton.BackgroundColor = Color.Default;
@@ -106,7 +108,7 @@ namespace GAssist
         {
             try
             {
-                agent = await Agent.GetAgent("gassist");
+                agent = await Agent.GetAgent("/org/cybernetic87/gassist");
                 agent.PeerStatusChanged += PeerStatusChanged;
                 var peers = await agent.FindPeers();
                 if (peers.Count() > 0)
@@ -176,6 +178,13 @@ namespace GAssist
                 updateLabel(ar.DialogStateOut.SupplementalDisplayText);
             }
 
+            if (ar.DialogStateOut != null && ar.DialogStateOut.VolumePercentage != 0)
+            {
+                int newVolumeLevel = Convert.ToInt32(15 * ar.DialogStateOut.VolumePercentage / 100);
+                AudioManager.VolumeController.Level[AudioVolumeType.Media] = newVolumeLevel;
+                actionButton.IsEnable = true;
+            }
+
             if (ar.ScreenOut != null)
             {
                 updateLabel(ar.ScreenOut.Data.ToStringUtf8());
@@ -183,16 +192,27 @@ namespace GAssist
 
             if (ar.AudioOut != null && ar.AudioOut.AudioData.Length != 0)
             {
-                fs.Write(ar.AudioOut.AudioData.ToByteArray(), 0, ar.AudioOut.AudioData.Length);
-                fs.FlushAsync();
-
-                if (!isPlaying)
+                try
                 {
-                    isPlaying = true;
-                    audioPlayer.Play(fs.Name);
-                    actionButton.IsEnable = true;
-                    actionButton.BackgroundColor = Color.Red;
-                    actionButton.Text = "Stop";
+                    fs.Write(ar.AudioOut.AudioData.ToByteArray(), 0, ar.AudioOut.AudioData.Length);
+                    if (fs.Length != 0)
+                    {
+                        fs.Flush();
+                    }
+
+                    if (!isPlaying && fs.Length >= 1600)
+                    {
+                        isPlaying = true;
+                        audioPlayer.Play(fs.Name);
+                        actionButton.IsEnable = true;
+                        actionButton.BackgroundColor = Color.Red;
+                        actionButton.Text = "Stop";
+                    }
+                }
+                catch (System.ObjectDisposedException)
+                {
+                    Tizen.Log.Debug("AUDIO RESPONSE", "Tried to write to closed FileStream, Knownbug");
+                    return;
                 }
             }
         }
@@ -242,6 +262,7 @@ namespace GAssist
             Task.Factory.StartNew(() =>
             {
                 fs.Close();
+                fs.Dispose();
                 actionButton.Text = "Listen";
                 isPlaying = false;
             });

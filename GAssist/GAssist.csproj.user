@@ -3,9 +3,4 @@
   <PropertyGroup>
     <ActiveDebugProfile>GAssist</ActiveDebugProfile>
   </PropertyGroup>
-  <ItemGroup>
-    <Compile Update="TimerPlus.cs">
-      <SubType>Component</SubType>
-    </Compile>
-  </ItemGroup>
 </Project>

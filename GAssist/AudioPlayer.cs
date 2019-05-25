@@ -12,13 +12,12 @@ namespace GAssist
         public AudioPlayer(Action OnStopCallback)
         {
             this.OnStopCallback = OnStopCallback;
-            player = new Player();
-            player.PlaybackCompleted += Player_PlaybackCompleted;
-            AudioManager.VolumeController.Level[AudioVolumeType.Media] = 15;
         }
 
         public void Play(String fileName)
         {
+            player = new Player();
+            player.PlaybackCompleted += Player_PlaybackCompleted;
             player.SetSource(new MediaUriSource(fileName));
             player.PrepareAsync().Wait();
             player.Start();
@@ -30,6 +29,7 @@ namespace GAssist
             {
                 player.Stop();
                 player.Unprepare();
+                player.Dispose();
                 mediaBufferSource = null;
                 OnStopCallback();
             };

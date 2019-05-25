@@ -45,6 +45,7 @@ namespace GAssist
             chunk = null;
             audioCapture.Flush();
             audioCapture.Unprepare();
+            audioCapture.Dispose();
             isRecording = false;
         }
 
@@ -58,7 +59,7 @@ namespace GAssist
                     {
                         return;
                     }
-                    chunk = new byte[bufferSize];
+                    //chunk = new byte[bufferSize];
                     chunk = audioCapture.Read(bufferSize);
 
                     if (connection != null && agent != null && agent.Channels.Count > 0)

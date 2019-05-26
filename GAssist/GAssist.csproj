@@ -2,6 +2,9 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <ApplicationIcon />
+    <OutputType>Library</OutputType>
+    <StartupObject />
   </PropertyGroup>
 
   <ItemGroup>
@@ -9,9 +12,14 @@
     <PackageReference Include="Google.Protobuf" Version="3.8.0-rc.1" />
     <PackageReference Include="Microsoft.NETCore.Platforms" Version="3.0.0-preview5.19224.8" />
     <PackageReference Include="Samsung.Sap" Version="1.0.0" />
-    <PackageReference Include="Tizen.NET" Version="6.0.0.14791" />
+    <PackageReference Include="Tizen.NET" Version="4.0.0" />
     <PackageReference Include="Tizen.Wearable.CircularUI" Version="1.2.0" />
-    <PackageReference Include="Xamarin.Forms" Version="4.0.0.425677" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="MainPage.xaml.cs">
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
   </ItemGroup>
 
 </Project>

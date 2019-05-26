@@ -4,7 +4,7 @@
     <SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256" />
     <Reference URI="tizen-manifest.xml">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
-      <DigestValue>SwZCZvu29rS7fbUu2lEsgmWP7CKUdqaFbck7iHRwdIU=</DigestValue>
+      <DigestValue>YzlGkwaV5gm9bOAbXcsbEATBhQFJaHF7aITdZ4edJgs=</DigestValue>
     </Reference>
     <Reference URI="shared%2Fres%2FGAssist.Tizen.Wearable.png">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
@@ -12,23 +12,23 @@
     </Reference>
     <Reference URI="res%2Fxml%2Faccessoryservices.xml">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
-      <DigestValue>JXkbLWaSVZaMbOd1IwCjTuq9iU27we/gdjh2GWYkvAA=</DigestValue>
+      <DigestValue>8cn6aB2DHay77kzBNrOprpsMRqaPRkFa1D6KY1WoWnY=</DigestValue>
     </Reference>
     <Reference URI="bin%2FXamarin.Forms.Xaml.dll">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
-      <DigestValue>doVQHw+tLLiOufs1rfjjpaLi5KPHtVyhWOQQF6RVP8s=</DigestValue>
+      <DigestValue>6yjFiUGTCDKDF8Pe6k5NSIASW1Id7P8cDsN85Od2aRc=</DigestValue>
     </Reference>
     <Reference URI="bin%2FXamarin.Forms.Platform.Tizen.dll">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
-      <DigestValue>xtt2VppZwiMuyaSqQae2sYCaO9u+HX0lDIHguMZZYNE=</DigestValue>
+      <DigestValue>3TPugJ+EiMTOsI3dYaZVmsD4HSwkqB+WCiUIKMYQ+xY=</DigestValue>
     </Reference>
     <Reference URI="bin%2FXamarin.Forms.Platform.dll">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
-      <DigestValue>/ve0n4PKixQ68P9MdMciW7UYqrjXn0nRRmkhlUXxy24=</DigestValue>
+      <DigestValue>Y7gVBBozAxlVCyhPb6Sgxv+xYMWVhWRBImzThygPdG8=</DigestValue>
     </Reference>
     <Reference URI="bin%2FXamarin.Forms.Core.dll">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
-      <DigestValue>n23oqlzVAMkPon2EZ4l3+0zUpHMgTgUqowbVx0gNDgQ=</DigestValue>
+      <DigestValue>VsR6FOYvZ+UGg85xQRHByDhiaoHxrc2AeyQ56NEDcT0=</DigestValue>
     </Reference>
     <Reference URI="bin%2FTizen.Wearable.CircularUI.Forms.Renderer.dll">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
@@ -56,19 +56,19 @@
     </Reference>
     <Reference URI="bin%2FGAssist.Tizen.Wearable.pdb">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
-      <DigestValue>8IHUrislivprzdcwggO3E73ovgTst3ZyLtb0+gZPEco=</DigestValue>
+      <DigestValue>Gwhpg47CPifAlk46KfcaA1C8Q13DI9ude7PxC3n8bOA=</DigestValue>
     </Reference>
     <Reference URI="bin%2FGAssist.Tizen.Wearable.dll">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
-      <DigestValue>gaIQ2Jj+pCW/BRKZxC09WMQDFKdDbftzpEfE8xWDH2Q=</DigestValue>
+      <DigestValue>fTit/nlig2A0PWznKQpEcPtWHGBE6/R70NOIbFbVa/0=</DigestValue>
     </Reference>
     <Reference URI="bin%2FGAssist.pdb">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
-      <DigestValue>OP5r0bS/4Z78otZtVe0p+dBUGe96djkAB08xCCwdMD0=</DigestValue>
+      <DigestValue>5NtpvXC8cM/QhyWEUsFXtwr1XE/oYKwu00d4E+htYDc=</DigestValue>
     </Reference>
     <Reference URI="bin%2FGAssist.dll">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
-      <DigestValue>6sWywl9vvXjHGgn6WkuQmb2+/NXLGHyCtAb/eM7k2XU=</DigestValue>
+      <DigestValue>4MgS8u9ISC5DXPNpXFr5Y9R9JY/kOMMwty9T0bRLF94=</DigestValue>
     </Reference>
     <Reference URI="#prop">
       <Transforms>
@@ -79,11 +79,11 @@
     </Reference>
   </SignedInfo>
   <SignatureValue>
-QKSaXeOVxs110xihp38LR/XeTIgC0wZ+1sovoD/fEMn5PtWH6xNarAbSXwGUGNhuKA33Cv2/r4DD
-kRACYzZAM4Inpe/rrrETTJhFl3KbjMxE413ALPdYKqu2X1YX3YN2EecJNmGjc5l11CaV5x1w5nzA
-5YlD1oXPKv67SE23x+Fos/uGTva+SaHiOvmYRCqRSFtbZ2QrfCzkAM7MQHLydZeXd+4RnI/vY0Nm
-Pbi4gma6kByn6WPY5VocawUmMOT7lQDscDzpUM7BeS+1Nh0LgG9GOwgRQ3xQR3RGMzuKWIlnJbjq
-Z85dHyGzQi+iFeZOTZiQPisej6ghHkftoAyATQ==
+G8otmHs+DzutWncN4KfUn6s4hWQE96HLgMwNjrE3wr3TYuipJBvFG3D4qhFc3ZvR7rYAGEoZHbJA
+P7j+pBNXe1x1RHrmnxIzXzjezTnCsgx1SI7G32IYPInN5z3lem9rqDK/6EKoAseMZnDQEeEACzal
+UgITkV5U18ZQQeMTDE7wnpspWZLQWeYCFTYzaO/EnwBcf/UyLnMZwsnnNJn2stXxxgab5YXVEhXh
+tR09km6zAwaGXjlzV3fdT2gsXdWueJZoFiES+4Axx6LyfaAGP+wrt0Iynu7l58xFFwIHAtcSU4f6
+UlKNWgnXrK6/EMOgVAc/uBD2yllA2vsqicjj5Q==
 </SignatureValue>
   <KeyInfo>
     <X509Data>

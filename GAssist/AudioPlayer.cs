@@ -1,41 +1,81 @@
 ﻿using System;
+using System.IO;
+using System.Linq;
+using Tizen;
 using Tizen.Multimedia;
+using Tizen.System;
 
 namespace GAssist
 {
-    internal class AudioPlayer
+    internal static class AudioPlayer
     {
-        private Player player;
-        private Action OnStopCallback;
-        public MediaBufferSource mediaBufferSource;
+        public static Action OnStopCallback;
+        private static Player _player;
+        public static bool IsPlaying;
 
-        public AudioPlayer(Action OnStopCallback)
+
+        public static FileStream BufferFileStream { get; set; }
+
+        private static string BufferFilePath { get; } =
+            StorageManager.Storages.First().GetAbsolutePath(DirectoryType.Others)
+            + @"temp.mp3";
+
+        public static void Prepare()
         {
-            this.OnStopCallback = OnStopCallback;
+            if (File.Exists(BufferFilePath)) File.Delete(BufferFilePath);
+            BufferFileStream = File.Create(BufferFilePath);
+
+            _player = new Player();
+            _player.PlaybackCompleted += Player_PlaybackCompleted;
         }
 
-        public void Play(String fileName)
+        public static void WriteBuffer(byte[] dataBytes)
         {
-            player = new Player();
-            player.PlaybackCompleted += Player_PlaybackCompleted;
-            player.SetSource(new MediaUriSource(fileName));
-            player.PrepareAsync().Wait();
-            player.Start();
-        }
-
-        public void Stop()
-        {
-            if (player.State == PlayerState.Playing)
+            try
             {
-                player.Stop();
-                player.Unprepare();
-                player.Dispose();
-                mediaBufferSource = null;
-                OnStopCallback();
-            };
+                BufferFileStream.Write(dataBytes, 0, dataBytes.Length);
+                if (BufferFileStream.Length != 0) BufferFileStream.Flush();
+            }
+
+            catch (ObjectDisposedException)
+            {
+                Log.Debug("AUDIO RESPONSE", "Tried to write to closed FileStream, Knownbug");
+            }
         }
 
-        private void Player_PlaybackCompleted(object sender, EventArgs e)
+        public static void Play()
+        {
+            _player.SetSource(new MediaUriSource(BufferFilePath));
+            _player.PrepareAsync().Wait();
+            _player.Start();
+        }
+
+        public static void Stop()
+        {
+            try
+            {
+                if (_player.State == PlayerState.Playing)
+                {
+                    _player.Stop();
+                    _player.Unprepare();
+                    _player.Dispose();
+
+                    BufferFileStream.Close();
+                    BufferFileStream.Dispose();
+
+                    OnStopCallback();
+
+                    if (File.Exists(BufferFilePath)) File.Delete(BufferFilePath);
+                    BufferFileStream = File.Create(BufferFilePath);
+                }
+            }
+            catch (ObjectDisposedException)
+            {
+                OnStopCallback();
+            }
+        }
+
+        private static void Player_PlaybackCompleted(object sender, EventArgs e)
         {
             Stop();
         }

@@ -1,15 +1,24 @@
-﻿namespace GAssist
+﻿using Tizen.Applications;
+
+namespace GAssist
 {
     internal class Preferences
     {
         public void SetRecordOnStart(bool setting)
         {
-            Tizen.Applications.Preference.Set("record_on_start", setting);
+            Preference.Set("record_on_resume", setting);
         }
 
         public bool GetRecordOnStart()
         {
-            return Tizen.Applications.Preference.Get<bool>("record_on_start");
+            if (Preference.Contains("record_on_resume"))
+            {
+                return Preference.Get<bool>("record_on_resume");
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

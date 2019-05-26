@@ -1,7 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest package="org.tizen.cybernetic87.GAssist.Tizen.Wearable" version="0.3.1" api-version="4" xmlns="http://tizen.org/ns/packages">
+
+<manifest package="org.tizen.cybernetic87.GAssist.Tizen.Wearable" version="0.3.1" api-version="4"
+          xmlns="http://tizen.org/ns/packages">
   <profile name="wearable" />
-  <ui-application appid="org.tizen.cybernetic87.GAssist" exec="GAssist.Tizen.Wearable.dll" multiple="false" nodisplay="false" taskmanage="true" type="dotnet" hw-acceleration="off" splash-screen-display="false" launch_mode="single">
+  <ui-application appid="org.tizen.cybernetic87.GAssist" exec="GAssist.Tizen.Wearable.dll" multiple="false"
+                  nodisplay="false" taskmanage="true" type="dotnet" hw-acceleration="off" splash-screen-display="false"
+                  launch_mode="single">
     <label>GAssistNet</label>
     <icon>GAssist.Tizen.Wearable.png</icon>
     <metadata key="accessory-services-location" value="/res/xml/accessoryservices.xml" />

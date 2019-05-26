@@ -1,7 +1,7 @@
 {
-  "profiles": {
-    "GAssist.Tizen.Wearable": {
-      "commandName": "Project"
-    }
-  }
+	"profiles": {
+		"GAssist.Tizen.Wearable": {
+			"commandName": "Project"
+		}
+	}
 }

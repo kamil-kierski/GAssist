@@ -15,10 +15,12 @@
  */
 
 using Tizen.Applications;
+using Tizen.Wearable.CircularUI.Forms.Renderer;
+using Xamarin.Forms.Platform.Tizen;
 
 namespace GAssist
 {
-    internal class Program : global::Xamarin.Forms.Platform.Tizen.FormsApplication
+    internal class Program : FormsApplication
     {
         protected override void OnCreate()
         {
@@ -34,8 +36,8 @@ namespace GAssist
         private static void Main(string[] args)
         {
             var app = new Program();
-            global::Xamarin.Forms.Platform.Tizen.Forms.Init(app);
-            global::Tizen.Wearable.CircularUI.Forms.Renderer.FormsCircularUI.Init();
+            Forms.Init(app);
+            FormsCircularUI.Init();
             app.Run(args);
         }
     }

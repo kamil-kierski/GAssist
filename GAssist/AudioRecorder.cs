@@ -1,73 +1,51 @@
-﻿using Samsung.Sap;
-using System.Linq;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
+using Tizen;
 using Tizen.Multimedia;
 
 namespace GAssist
 {
-    internal class AudioRecorder
+    internal static class AudioRecorder
     {
-        private Agent agent;
-        private Connection connection;
-        private byte[] chunk;
-        public volatile bool isRecording;
-        private int bufferSize;
-        private CancellationTokenSource source;
-        private CancellationToken token;
+        private static readonly int _bufferSize = 1600;
 
-        private AudioCapture audioCapture;
+        private static AudioCapture _audioCapture;
+        public static volatile bool IsRecording;
+        private static CancellationTokenSource _source;
+        private static CancellationToken _token;
 
-        public AudioRecorder(Connection connection, Agent agent, int bufferSize)
+
+        public static void StartRecording()
         {
-            this.connection = connection;
-            this.agent = agent;
-            this.bufferSize = bufferSize;
-        }
-
-        public void StartRecording()
-        {
-            if (isRecording)
-            {
-                Tizen.Log.Debug("AUDIORECORDER", "BAD!:RECORDING FLAG TRUE ON START RECORDING");
-            }
-            audioCapture = new AudioCapture(16000, AudioChannel.Mono, AudioSampleType.S16Le);
-            isRecording = true;
-            source = new CancellationTokenSource();
-            token = source.Token;
-            audioCapture.Prepare();
+            if (IsRecording) Log.Debug("AUDIORECORDER", "BAD!:RECORDING FLAG TRUE ON START RECORDING");
+            _audioCapture = new AudioCapture(16000, AudioChannel.Mono, AudioSampleType.S16Le);
+            IsRecording = true;
+            _source = new CancellationTokenSource();
+            _token = _source.Token;
+            _audioCapture.Prepare();
             Record();
+           //MainPage.createProgressPopup();
         }
 
-        public void StopRecording()
+        public static void StopRecording()
         {
-            source.Cancel();
-            chunk = null;
-            audioCapture.Flush();
-            audioCapture.Unprepare();
-            audioCapture.Dispose();
-            isRecording = false;
+            _source.Cancel();
+            _audioCapture.Flush();
+            _audioCapture.Unprepare();
+            _audioCapture.Dispose();
+            IsRecording = false;
         }
 
-        public void Record()
+        private static void Record()
         {
             Task.Factory.StartNew(() =>
             {
-                while (isRecording)
+                while (IsRecording)
                 {
-                    if (token.IsCancellationRequested)
-                    {
-                        return;
-                    }
-                    //chunk = new byte[bufferSize];
-                    chunk = audioCapture.Read(bufferSize);
-
-                    if (connection != null && agent != null && agent.Channels.Count > 0)
-                    {
-                        connection.Send(agent.Channels.First().Value, chunk);
-                    }
+                    if (_token.IsCancellationRequested) return;
+                    SapService.SendData(_audioCapture.Read(_bufferSize));
                 }
-            }, token);
+            }, _token);
         }
     }
 }

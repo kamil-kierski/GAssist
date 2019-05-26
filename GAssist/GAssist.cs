@@ -1,3 +1,4 @@
+using System;
 using Xamarin.Forms;
 
 namespace GAssist
@@ -6,7 +7,15 @@ namespace GAssist
     {
         public App()
         {
-            MainPage = new MainPage();
+            MainPage = new MainPage(this);
+        }
+
+        public Action OnResumeCallback { get; set; }
+
+        protected override void OnResume()
+        {
+            OnResumeCallback?.Invoke();
+            base.OnResume();
         }
     }
 }

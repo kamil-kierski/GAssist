@@ -10,3 +10,4 @@ C:\Users\cyber\repos_new\GAssist\GAssist\obj\Debug\tizen40\GAssist.pdb
 C:\Users\cyber\repos_new\GAssist\GAssist\obj\Debug\tizen40\GAssist.csprojAssemblyReference.cache
 C:\Users\cyber\repos_new\GAssist\GAssist\obj\Debug\tizen40\GAssist.Properties.Resources.resources
 C:\Users\cyber\repos_new\GAssist\GAssist\obj\Debug\tizen40\GAssist.csproj.GenerateResource.cache
+C:\Users\cyber\repos_new\GAssist\GAssist\obj\Debug\tizen40\MainPage.xaml.g.cs

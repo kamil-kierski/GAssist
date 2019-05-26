@@ -8,19 +8,12 @@ namespace GAssist
         public const string recorderPermission = "http://tizen.org/privilege/recorder";
         public const string mediaStoragePermission = "http://tizen.org/privilege/mediastorage";
 
-        public PermissionChecker()
-        {
-            //const string audioRecorderPermission = "http://tizen.org/privilege/audiorecorder";
-
-            //SetupPPMHandler(audioRecorderPermission);
-        }
-
-        public static void CheckAndRequestPermission(String permission)
+        public static void CheckAndRequestPermission(string permission)
         {
             SetupPPMHandler(permission);
             try
             {
-                CheckResult result = PrivacyPrivilegeManager.CheckPermission(permission);
+                var result = PrivacyPrivilegeManager.CheckPermission(permission);
                 switch (result)
                 {
                     case CheckResult.Allow:
@@ -46,18 +39,14 @@ namespace GAssist
         {
             PrivacyPrivilegeManager.ResponseContext context = null;
             if (PrivacyPrivilegeManager.GetResponseContext(privilege).TryGetTarget(out context))
-            {
                 context.ResponseFetched += PPMResponseHandler;
-            }
         }
 
         private static void PPMResponseHandler(object sender, RequestResponseEventArgs e)
         {
             if (e.cause == CallCause.Error)
-            {
                 /// Handle errors
                 return;
-            }
 
             switch (e.result)
             {

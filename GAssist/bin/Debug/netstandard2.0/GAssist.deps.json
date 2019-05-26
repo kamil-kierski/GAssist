@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETStandard,Version=v2.0/",
-    "signature": "5ae2df8c41b8ce266dfb90d6bbc8c3452e4168ae"
+    "signature": "271f418eb7e905ba4b16c3e156ee1c52fde676f6"
   },
   "compilationOptions": {},
   "targets": {
@@ -14,9 +14,8 @@
           "Microsoft.NETCore.Platforms": "3.0.0-preview5.19224.8",
           "NETStandard.Library": "2.0.3",
           "Samsung.Sap": "1.0.0",
-          "Tizen.NET": "6.0.0.14791",
-          "Tizen.Wearable.CircularUI": "1.2.0",
-          "Xamarin.Forms": "4.0.0.425677"
+          "Tizen.NET": "4.0.0",
+          "Tizen.Wearable.CircularUI": "1.2.0"
         },
         "runtime": {
           "GAssist.dll": {}
@@ -53,7 +52,7 @@
       },
       "Samsung.Sap/1.0.0": {
         "dependencies": {
-          "Tizen.NET": "6.0.0.14791"
+          "Tizen.NET": "4.0.0"
         }
       },
       "System.Buffers/4.4.0": {
@@ -93,16 +92,341 @@
           }
         }
       },
-      "Tizen.NET/6.0.0.14791": {
-        "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.0.0-preview5.19224.8",
-          "Tizen.NET.API6": "6.0.0.14791"
+      "Tizen.NET/4.0.0": {
+        "runtime": {
+          "lib/netstandard2.0/ElmSharp.Wearable.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          },
+          "lib/netstandard2.0/ElmSharp.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          },
+          "lib/netstandard2.0/Tizen.Account.AccountManager.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          },
+          "lib/netstandard2.0/Tizen.Account.FidoClient.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          },
+          "lib/netstandard2.0/Tizen.Account.OAuth2.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          },
+          "lib/netstandard2.0/Tizen.Account.SyncManager.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          },
+          "lib/netstandard2.0/Tizen.Applications.Alarm.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          },
+          "lib/netstandard2.0/Tizen.Applications.AttachPanel.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          },
+          "lib/netstandard2.0/Tizen.Applications.Badge.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          },
+          "lib/netstandard2.0/Tizen.Applications.Common.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          },
+          "lib/netstandard2.0/Tizen.Applications.DataControl.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          },
+          "lib/netstandard2.0/Tizen.Applications.MessagePort.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          },
+          "lib/netstandard2.0/Tizen.Applications.Notification.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          },
+          "lib/netstandard2.0/Tizen.Applications.NotificationEventListener.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          },
+          "lib/netstandard2.0/Tizen.Applications.PackageManager.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          },
+          "lib/netstandard2.0/Tizen.Applications.Preference.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          },
+          "lib/netstandard2.0/Tizen.Applications.RemoteView.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          },
+          "lib/netstandard2.0/Tizen.Applications.Service.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          },
+          "lib/netstandard2.0/Tizen.Applications.Shortcut.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          },
+          "lib/netstandard2.0/Tizen.Applications.ToastMessage.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          },
+          "lib/netstandard2.0/Tizen.Applications.UI.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          },
+          "lib/netstandard2.0/Tizen.Applications.WatchApplication.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          },
+          "lib/netstandard2.0/Tizen.Applications.WidgetApplication.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          },
+          "lib/netstandard2.0/Tizen.Applications.WidgetControl.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          },
+          "lib/netstandard2.0/Tizen.Content.Download.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          },
+          "lib/netstandard2.0/Tizen.Content.MediaContent.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          },
+          "lib/netstandard2.0/Tizen.Content.MimeType.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          },
+          "lib/netstandard2.0/Tizen.Context.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          },
+          "lib/netstandard2.0/Tizen.Location.Geofence.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          },
+          "lib/netstandard2.0/Tizen.Location.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          },
+          "lib/netstandard2.0/Tizen.Log.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          },
+          "lib/netstandard2.0/Tizen.Maps.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          },
+          "lib/netstandard2.0/Tizen.Messaging.Push.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          },
+          "lib/netstandard2.0/Tizen.Messaging.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          },
+          "lib/netstandard2.0/Tizen.Multimedia.AudioIO.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          },
+          "lib/netstandard2.0/Tizen.Multimedia.Camera.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          },
+          "lib/netstandard2.0/Tizen.Multimedia.MediaCodec.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          },
+          "lib/netstandard2.0/Tizen.Multimedia.MediaPlayer.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          },
+          "lib/netstandard2.0/Tizen.Multimedia.Metadata.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          },
+          "lib/netstandard2.0/Tizen.Multimedia.Radio.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          },
+          "lib/netstandard2.0/Tizen.Multimedia.Recorder.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          },
+          "lib/netstandard2.0/Tizen.Multimedia.Remoting.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          },
+          "lib/netstandard2.0/Tizen.Multimedia.StreamRecorder.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          },
+          "lib/netstandard2.0/Tizen.Multimedia.Util.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          },
+          "lib/netstandard2.0/Tizen.Multimedia.Vision.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          },
+          "lib/netstandard2.0/Tizen.Multimedia.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          },
+          "lib/netstandard2.0/Tizen.NUI.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          },
+          "lib/netstandard2.0/Tizen.Network.Bluetooth.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          },
+          "lib/netstandard2.0/Tizen.Network.Connection.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          },
+          "lib/netstandard2.0/Tizen.Network.IoTConnectivity.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          },
+          "lib/netstandard2.0/Tizen.Network.Nfc.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          },
+          "lib/netstandard2.0/Tizen.Network.Nsd.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          },
+          "lib/netstandard2.0/Tizen.Network.Smartcard.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          },
+          "lib/netstandard2.0/Tizen.Network.WiFi.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          },
+          "lib/netstandard2.0/Tizen.Network.WiFiDirect.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          },
+          "lib/netstandard2.0/Tizen.PhonenumberUtils.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          },
+          "lib/netstandard2.0/Tizen.Pims.Calendar.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          },
+          "lib/netstandard2.0/Tizen.Pims.Contacts.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          },
+          "lib/netstandard2.0/Tizen.Security.PrivacyPrivilegeManager.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          },
+          "lib/netstandard2.0/Tizen.Security.SecureRepository.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          },
+          "lib/netstandard2.0/Tizen.Security.TEEC.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          },
+          "lib/netstandard2.0/Tizen.Security.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          },
+          "lib/netstandard2.0/Tizen.Sensor.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          },
+          "lib/netstandard2.0/Tizen.System.Feedback.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          },
+          "lib/netstandard2.0/Tizen.System.Information.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          },
+          "lib/netstandard2.0/Tizen.System.MediaKey.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          },
+          "lib/netstandard2.0/Tizen.System.PlatformConfig.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          },
+          "lib/netstandard2.0/Tizen.System.Storage.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          },
+          "lib/netstandard2.0/Tizen.System.SystemSettings.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          },
+          "lib/netstandard2.0/Tizen.System.Usb.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          },
+          "lib/netstandard2.0/Tizen.System.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          },
+          "lib/netstandard2.0/Tizen.Telephony.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          },
+          "lib/netstandard2.0/Tizen.Tracer.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          },
+          "lib/netstandard2.0/Tizen.Uix.InputMethod.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          },
+          "lib/netstandard2.0/Tizen.Uix.InputMethodManager.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          },
+          "lib/netstandard2.0/Tizen.Uix.Stt.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          },
+          "lib/netstandard2.0/Tizen.Uix.SttEngine.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          },
+          "lib/netstandard2.0/Tizen.Uix.Tts.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          },
+          "lib/netstandard2.0/Tizen.Uix.TtsEngine.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          },
+          "lib/netstandard2.0/Tizen.Uix.VoiceControl.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          },
+          "lib/netstandard2.0/Tizen.WebView.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          },
+          "lib/netstandard2.0/Tizen.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          }
         }
       },
-      "Tizen.NET.API6/6.0.0.14791": {},
       "Tizen.Wearable.CircularUI/1.2.0": {
         "dependencies": {
-          "Xamarin.Forms": "4.0.0.425677"
+          "Xamarin.Forms": "3.5.0.129452"
         },
         "runtime": {
           "lib/netstandard2.0/Tizen.Wearable.CircularUI.Forms.dll": {
@@ -111,7 +435,7 @@
           }
         }
       },
-      "Xamarin.Forms/4.0.0.425677": {
+      "Xamarin.Forms/3.5.0.129452": {
         "runtime": {
           "lib/netstandard2.0/Xamarin.Forms.Core.dll": {
             "assemblyVersion": "2.0.0.0",
@@ -198,19 +522,12 @@
       "path": "system.runtime.compilerservices.unsafe/4.5.2",
       "hashPath": "system.runtime.compilerservices.unsafe.4.5.2.nupkg.sha512"
     },
-    "Tizen.NET/6.0.0.14791": {
+    "Tizen.NET/4.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-mQHvQDpt3daUT/LPclATM1Tm+XF6Td8OSWnREDD4Rg7fY3F9IW0jIMt6ir6RRlbdzwgtBOeGCDlUrDmQN8fnPg==",
-      "path": "tizen.net/6.0.0.14791",
-      "hashPath": "tizen.net.6.0.0.14791.nupkg.sha512"
-    },
-    "Tizen.NET.API6/6.0.0.14791": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-ZZ/FohTgPZVimxd5uyUkjwtmTVvw9L2K09Syj1SoC0cBXHBs7M7TgqzwiA+a3k2vtKIitynmRzVH+SPRior6Mg==",
-      "path": "tizen.net.api6/6.0.0.14791",
-      "hashPath": "tizen.net.api6.6.0.0.14791.nupkg.sha512"
+      "sha512": "sha512-0ykB+vO7ai1X4g1TjcDEqCIDg7tkyICaoGGSYsx+A3KnLgNW/kMhPzQMMcR8FfFB3sgBQrj6i9xNRbUcFxO4+A==",
+      "path": "tizen.net/4.0.0",
+      "hashPath": "tizen.net.4.0.0.nupkg.sha512"
     },
     "Tizen.Wearable.CircularUI/1.2.0": {
       "type": "package",
@@ -219,12 +536,12 @@
       "path": "tizen.wearable.circularui/1.2.0",
       "hashPath": "tizen.wearable.circularui.1.2.0.nupkg.sha512"
     },
-    "Xamarin.Forms/4.0.0.425677": {
+    "Xamarin.Forms/3.5.0.129452": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-drwO/MimaMUnmvkULASYjU5MRciVIJyiLxD3ihFq8P+DWynQZ2NLNej0Vrs3k2L7UdmqvcgCxEJdfT7uFl2KVg==",
-      "path": "xamarin.forms/4.0.0.425677",
-      "hashPath": "xamarin.forms.4.0.0.425677.nupkg.sha512"
+      "sha512": "sha512-gdoGJ7U7J+WDMmtp0PIZ5Bex/5KGy1wL1TMHyR2+5jbxPxVy/htyiR5wqKDmOXVJoVbeqWjcj0/7yl8ZHM7akQ==",
+      "path": "xamarin.forms/3.5.0.129452",
+      "hashPath": "xamarin.forms.3.5.0.129452.nupkg.sha512"
     }
   }
 }

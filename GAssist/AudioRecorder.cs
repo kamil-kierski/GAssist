@@ -24,7 +24,7 @@ namespace GAssist
             _token = _source.Token;
             _audioCapture.Prepare();
             Record();
-           //MainPage.createProgressPopup();
+            MainPage.CreateProgressPopup();
         }
 
         public static void StopRecording()

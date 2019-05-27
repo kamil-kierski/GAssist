@@ -56,19 +56,19 @@
     </Reference>
     <Reference URI="bin%2FGAssist.Tizen.Wearable.pdb">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
-      <DigestValue>Gwhpg47CPifAlk46KfcaA1C8Q13DI9ude7PxC3n8bOA=</DigestValue>
+      <DigestValue>dPSrH/FjTHLJwaj1Zi+VV1Pi5kt6iobN7mLmmPHM/z0=</DigestValue>
     </Reference>
     <Reference URI="bin%2FGAssist.Tizen.Wearable.dll">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
-      <DigestValue>fTit/nlig2A0PWznKQpEcPtWHGBE6/R70NOIbFbVa/0=</DigestValue>
+      <DigestValue>jdKQfHs6OXuI14G6YB2+f/x5/aurOaFPBZNiGgb0pNE=</DigestValue>
     </Reference>
     <Reference URI="bin%2FGAssist.pdb">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
-      <DigestValue>5NtpvXC8cM/QhyWEUsFXtwr1XE/oYKwu00d4E+htYDc=</DigestValue>
+      <DigestValue>mq+MV4RcQDfI6JurzM4tFqbwW6twlnYcm6g4L+Sm9LU=</DigestValue>
     </Reference>
     <Reference URI="bin%2FGAssist.dll">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
-      <DigestValue>4MgS8u9ISC5DXPNpXFr5Y9R9JY/kOMMwty9T0bRLF94=</DigestValue>
+      <DigestValue>wRQdVN93K4v558QyY6K3korrwDKUtxkVTaUr0hH7yoM=</DigestValue>
     </Reference>
     <Reference URI="#prop">
       <Transforms>
@@ -79,11 +79,11 @@
     </Reference>
   </SignedInfo>
   <SignatureValue>
-G8otmHs+DzutWncN4KfUn6s4hWQE96HLgMwNjrE3wr3TYuipJBvFG3D4qhFc3ZvR7rYAGEoZHbJA
-P7j+pBNXe1x1RHrmnxIzXzjezTnCsgx1SI7G32IYPInN5z3lem9rqDK/6EKoAseMZnDQEeEACzal
-UgITkV5U18ZQQeMTDE7wnpspWZLQWeYCFTYzaO/EnwBcf/UyLnMZwsnnNJn2stXxxgab5YXVEhXh
-tR09km6zAwaGXjlzV3fdT2gsXdWueJZoFiES+4Axx6LyfaAGP+wrt0Iynu7l58xFFwIHAtcSU4f6
-UlKNWgnXrK6/EMOgVAc/uBD2yllA2vsqicjj5Q==
+e5ML7LVce8LDzDvfnFPzyyyqdPrtRf/ONPdpjbrT5DZ4bw0dkJzDaGDEW70Q7Jmivq6cfeRk8NaT
+KVXTNhGftP5iwGW/kHeKwmbvc2S2eCh8HfzzgotXAFYrplN3jXUmFBOBaHZEB6QygKE1vAndLNPZ
+nyqjRx4SgbdRjSRuuqLmfd7se21Dspm/c+al5OaP+unfg488EO6jZV6pwO6pFv0R+Pz+VVA+5HpK
+ASPlM5UlWIEtZM5r2wHzkEDIhGLwXlk6EBAlsV95QKL4yUeoXgcOwtiiRIvBLrBoParVbWA3d9p5
++s3yoEcgrd0nsJb26x8jrDvCM/RGDykMEzi93Q==
 </SignatureValue>
   <KeyInfo>
     <X509Data>

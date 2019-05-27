@@ -8,4 +8,6 @@ C:\Users\cyber\repos_new\GAssist\GAssist\obj\Debug\netstandard2.0\GAssist.Assemb
 C:\Users\cyber\repos_new\GAssist\GAssist\obj\Debug\netstandard2.0\XamlC.stamp
 C:\Users\cyber\repos_new\GAssist\GAssist\obj\Debug\netstandard2.0\GAssist.dll
 C:\Users\cyber\repos_new\GAssist\GAssist\obj\Debug\netstandard2.0\GAssist.pdb
-C:\Users\cyber\repos_new\GAssist\GAssist\obj\Debug\netstandard2.0\GAssist.csprojAssemblyReference.cache
+C:\Users\cyber\repos_new\GAssist\GAssist\bin\Debug\netstandard2.0\Xamarin.Forms.Platform.Tizen.dll
+C:\Users\cyber\repos_new\GAssist\GAssist\bin\Debug\netstandard2.0\Xamarin.Forms.Platform.Tizen.pdb
+C:\Users\cyber\repos_new\GAssist\GAssist\obj\Debug\netstandard2.0\GAssist.csproj.CopyComplete

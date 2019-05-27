@@ -1,8 +1,17 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using ElmSharp;
+using Tizen.Network.Nfc;
 using Tizen.Wearable.CircularUI.Forms;
+using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Button = ElmSharp.Button;
+using Color = ElmSharp.Color;
+using Label = ElmSharp.Label;
+using Layout = ElmSharp.Layout;
+using ProgressBar = ElmSharp.ProgressBar;
+using TForms = Xamarin.Forms.Platform.Tizen.Forms;
 
 namespace GAssist
 {
@@ -10,12 +19,16 @@ namespace GAssist
     public partial class MainPage : IndexPage
     {
         private static MainPage Mainpage;
-        private readonly SapService _sapService;
-        private readonly Preferences pref;
 
         private static InformationPopup _progressPopUp;
-        ElmSharp.ProgressBar _progress;
-        ElmSharp.Box _box;
+        private static ProgressBar _progress;
+        private static Box _box;
+        private static Popup _popUp;
+        private static Layout _layout;
+        private static Label _progressLabel;
+        private static Button _bottomButton;
+        private readonly SapService _sapService;
+        private readonly Preferences pref;
 
         public MainPage(App app)
         {
@@ -32,15 +45,11 @@ namespace GAssist
             ActionButtonItem.Clicked += ActionButton_ButtonClicked;
             Label.Text = "GAssist.Net Demo";
 
-
             pref = new Preferences();
             Check.IsToggled = pref.GetRecordOnStart();
             Check.Toggled += Check_Toggled;
 
-            if (Check.IsToggled)
-            {
-                app.OnResumeCallback = StartListening;
-            }
+            if (Check.IsToggled) app.OnResumeCallback = StartListening;
 
             _sapService = new SapService();
             _sapService.StartAndConnect();
@@ -49,7 +58,7 @@ namespace GAssist
             //Tizen.System.Display.StateChanged += OnDisplayOn;
         }
 
-        private void Check_Toggled(object sender, Xamarin.Forms.ToggledEventArgs e)
+        private void Check_Toggled(object sender, ToggledEventArgs e)
         {
             pref.SetRecordOnStart(e.Value);
         }
@@ -69,30 +78,96 @@ namespace GAssist
             Mainpage.ActionButtonItem.Text = text;
         }
 
-        //internal void createProgressPopup()
-        //{
-        //    _box = new ElmSharp.Box(this.ev);
-        //    _box.Show();
+        internal static void CreateProgressPopup()
+        {
+            _popUp = new Popup(TForms.NativeParent);
+            _popUp.Style = "circle";
 
-        //    _progress = new ElmSharp.ProgressBar(Xamarin.Forms.Platform.Tizen.Forms.NativeParent)
-        //    {
-        //        Style = "process/popup/small",
-        //    };
-        //    _progress.Show();
-        //    _progress.PlayPulse();
-        //    _box.PackEnd(_progress);
-        //}
-        
+            _layout = new Layout(_popUp);
+            _layout.SetTheme("layout", "application", "default");
+            _popUp.SetContent(_layout);
+
+            //_box = new Box(_layout);
+            //_box.Show();
+
+            _progress = new ProgressBar(_popUp)
+            {
+                Style = "process"
+            };
+            _progress.Show();
+            _progress.PlayPulse();
+
+            //_box.PackEnd(_progress);
+            _layout.SetPartContent("elm.swallow.bg", _progress, true);
+
+            _bottomButton = new Button(_popUp)
+            {
+                WeightX = 1.0,
+                WeightY = 1.0,
+                Style = "bottom",
+                Text = "Listening"
+            };
+            _bottomButton.IsEnabled = false;
+            _popUp.SetPartContent("button1", _bottomButton);
+            _popUp.Show();
+        }
+
 
         internal static void UpdateProgressPopupText(string text)
         {
-            _progressPopUp.Text = text;
+            _layout.SetPartText("elm.text", null);
+            if (!string.IsNullOrEmpty(text))
+            {
+                if (_progressLabel == null)
+                {
+                    _box = new Box(_layout);
+                    _box.Show();
+                    _progressLabel = new ElmSharp.Label(TForms.NativeParent)
+                    {
+                        TextStyle = "DEFAULT ='font=Tizen:style=Light color=#F9F9F9FF font_size=32 align=center valign=top wrap=mixed'",
+                        LineWrapType = WrapType.Mixed,
+                        LineWrapWidth = 300
+                    };
+                }
+                _progressLabel.Text = text;
+                _progressLabel.Show();
+                if (_box != null)
+                {
+                    _box.PackEnd(_progressLabel);
+                }
+                _layout.SetPartContent("elm.swallow.content", _box, true);
+            }
+
+            //if (_progressLabel == null)
+            //{
+            //    _box = new Box(_layout);
+            //    _box.Show();
+            //    _progressLabel = new ElmSharp.Label(_popUp)
+            //    {
+            //        TextStyle = "font=Tizen:style=Regular font_size=36 color=#F9F9F9 wrap=mixed text_class=tizen"
+            //    };
+
+            //}
+            //_progressLabel.Text = text;
+            //_progressLabel.Show();
+
+
+            //_box.PackEnd(_progressLabel);
+            //_layout.SetPartContent("elm.swallow.content", _box, true);
+
+
+            //if (_box != null)
+            //{
+            //    _box.PackEnd(_progressLabel);
+            //}
+            // _layout.SetPartText("elm.text", text);
         }
 
-        internal static void dismissProgressPopup()
+        internal static void DismissProgressPopup()
         {
-            _progressPopUp?.Dismiss();
-            _progressPopUp = null;
+            _popUp.Hide();
+            _popUp = null;
+            _progressLabel = null;
         }
 
         protected override bool OnBackButtonPressed()

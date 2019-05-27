@@ -12,13 +12,8 @@ namespace GAssist
         public bool GetRecordOnStart()
         {
             if (Preference.Contains("record_on_resume"))
-            {
                 return Preference.Get<bool>("record_on_resume");
-            }
-            else
-            {
-                return false;
-            }
+            return false;
         }
     }
 }

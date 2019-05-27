@@ -17,6 +17,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Reference Include="Xamarin.Forms.Platform.Tizen">
+      <HintPath>..\..\..\.nuget\packages\xamarin.forms.platform.tizen\2.5.1.444934\lib\tizen40\Xamarin.Forms.Platform.Tizen.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Update="MainPage.xaml.cs">
       <DependentUpon>%(Filename)</DependentUpon>
     </Compile>

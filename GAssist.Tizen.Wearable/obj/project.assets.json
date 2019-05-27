@@ -1154,7 +1154,7 @@
       "tizen40": {
         "dependencies": {
           "Tizen.NET": {
-            "include": "Compile, Build, Native, ContentFiles, Analyzers",
+            "include": "Compile, Build, Native, ContentFiles, Analyzers, BuildTransitive",
             "target": "Package",
             "version": "[4.0.0, )"
           },

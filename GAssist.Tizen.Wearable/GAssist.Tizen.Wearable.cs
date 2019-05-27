@@ -18,7 +18,7 @@ using Tizen.Applications;
 using Tizen.Wearable.CircularUI.Forms.Renderer;
 using Xamarin.Forms.Platform.Tizen;
 
-namespace GAssist
+namespace GAssist.Tizen.Wearable
 {
     internal class Program : FormsApplication
     {

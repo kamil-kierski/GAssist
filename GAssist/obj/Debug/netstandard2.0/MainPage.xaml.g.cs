@@ -29,16 +29,10 @@ namespace GAssist {
         private global::Tizen.Wearable.CircularUI.Forms.ActionButtonItem ActionButtonItem;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
-        private global::Tizen.Wearable.CircularUI.Forms.CircleScrollView MyScroller;
+        private global::Tizen.Wearable.CircularUI.Forms.CirclePage SettingsPage;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
-        private global::Tizen.Wearable.CircularUI.Forms.Check Check;
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
-        private global::Tizen.Wearable.CircularUI.Forms.Check Placeholder;
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
-        private global::Tizen.Wearable.CircularUI.Forms.Check Placeholder2;
+        private global::Tizen.Wearable.CircularUI.Forms.CircleListView MyScroller;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private void InitializeComponent() {
@@ -47,10 +41,8 @@ namespace GAssist {
             ScrollView = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Tizen.Wearable.CircularUI.Forms.CircleScrollView>(this, "ScrollView");
             Label = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Label>(this, "Label");
             ActionButtonItem = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Tizen.Wearable.CircularUI.Forms.ActionButtonItem>(this, "ActionButtonItem");
-            MyScroller = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Tizen.Wearable.CircularUI.Forms.CircleScrollView>(this, "MyScroller");
-            Check = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Tizen.Wearable.CircularUI.Forms.Check>(this, "Check");
-            Placeholder = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Tizen.Wearable.CircularUI.Forms.Check>(this, "Placeholder");
-            Placeholder2 = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Tizen.Wearable.CircularUI.Forms.Check>(this, "Placeholder2");
+            SettingsPage = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Tizen.Wearable.CircularUI.Forms.CirclePage>(this, "SettingsPage");
+            MyScroller = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Tizen.Wearable.CircularUI.Forms.CircleListView>(this, "MyScroller");
         }
     }
 }

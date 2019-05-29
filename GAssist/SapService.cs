@@ -13,11 +13,12 @@ namespace GAssist
         private static Agent _agent;
         private static Connection _connection;
         private static Peer _peer;
-        private readonly Timer _reconnectTimer;
+        private static readonly Timer _reconnectTimer = new Timer(3000);
+        private readonly Action _onConnectedCallback;
 
-        public SapService()
+        public SapService(Action onConnectedCallback)
         {
-            _reconnectTimer = new Timer(3000);
+            _onConnectedCallback = onConnectedCallback;
             _reconnectTimer.Elapsed += ReconnectTimer_Elapsed;
             _reconnectTimer.AutoReset = true;
         }
@@ -39,18 +40,16 @@ namespace GAssist
                     _connection.StatusChanged += Connection_StatusChanged;
                     await _connection.Open();
                     if (_reconnectTimer.Enabled) _reconnectTimer.Stop();
-
-                    MainPage.SetActionButtonIsEnabled(true);
                 }
                 else
                 {
-                    Log.Debug("SAPSERVICE", "Any peer not found, trying to launch app");
+                    //Log.Debug("SAPSERVICE", "Any peer not found, trying to launch app");
                     StartAndConnect();
                 }
             }
             catch (Exception ex)
             {
-                MainPage.ShowMessage(ex.Message, ex.ToString());
+                // MainPage.ShowMessage(ex.Message, ex.ToString());
             }
         }
 
@@ -75,7 +74,7 @@ namespace GAssist
                 _connection.Send(_agent.Channels.First().Value, dataBytes);
         }
 
-        private void Connection_DataReceived(object sender, DataReceivedEventArgs e)
+        private static void Connection_DataReceived(object sender, DataReceivedEventArgs e)
         {
             ResponseHandler.HandleResponse(e.Data);
         }
@@ -108,15 +107,17 @@ namespace GAssist
 
                 _reconnectTimer.Start();
             }
+
+            if (e.Reason == ConnectionStatus.Connected) _onConnectedCallback();
         }
 
         private void ReconnectTimer_Elapsed(object sender, ElapsedEventArgs e)
         {
             MainPage.ShowMessage("Reconnecting...");
-            Connect();
+            StartAndConnect();
         }
 
-        private void LaunchApp()
+        private static void LaunchApp()
         {
             var appControl = new AppControl();
             appControl.Operation = AppControlOperations.Default;
@@ -134,10 +135,12 @@ namespace GAssist
             }
         }
 
-        public async void StartAndConnect()
+        public void StartAndConnect()
         {
-            await Task.Run((Action) LaunchApp);
-            await Task.Run((Action) Connect);
+            Task.Run(LaunchApp).Wait();
+            Task.Run(Connect).Wait();
+
+            MainPage.SetActionButtonIsEnabled(true);
         }
     }
 }

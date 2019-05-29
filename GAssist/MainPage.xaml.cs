@@ -1,16 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using ElmSharp;
-using Tizen.Network.Nfc;
 using Tizen.Wearable.CircularUI.Forms;
-using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using Button = ElmSharp.Button;
-using Color = ElmSharp.Color;
-using Label = ElmSharp.Label;
-using Layout = ElmSharp.Layout;
-using ProgressBar = ElmSharp.ProgressBar;
 using TForms = Xamarin.Forms.Platform.Tizen.Forms;
 
 namespace GAssist
@@ -20,7 +15,6 @@ namespace GAssist
     {
         private static MainPage Mainpage;
 
-        private static InformationPopup _progressPopUp;
         private static ProgressBar _progress;
         private static Box _box;
         private static Popup _popUp;
@@ -29,6 +23,8 @@ namespace GAssist
         private static Button _bottomButton;
         private readonly SapService _sapService;
         private readonly Preferences pref;
+        private App app;
+        private bool _isConnected;
 
         public MainPage(App app)
         {
@@ -46,21 +42,54 @@ namespace GAssist
             Label.Text = "GAssist.Net Demo";
 
             pref = new Preferences();
-            Check.IsToggled = pref.GetRecordOnStart();
-            Check.Toggled += Check_Toggled;
 
-            if (Check.IsToggled) app.OnResumeCallback = StartListening;
+            var AutoListenOnResume = new Setting
+            {
+                IsToggled = pref.GetRecordOnResume(),
+                Text = "Auto Listen On Resume"
+            };
 
-            _sapService = new SapService();
+            AutoListenOnResume.PropertyChanged += (s, e) =>
+            {
+                if (e.PropertyName == "IsToggled")
+                {
+                    pref.SetRecordOnResume(AutoListenOnResume.IsToggled);
+                    if (AutoListenOnResume.IsToggled) app.OnResumeCallback = StartListening;
+                    else app.OnResumeCallback = null;
+                }
+            };
+
+            var AutoListenOnStart = new Setting
+                {IsToggled = pref.GetRecordOnStart(), Text = "Auto Listen On Start"};
+
+            AutoListenOnStart.PropertyChanged += (s, e) =>
+            {
+                if (e.PropertyName == "IsToggled") pref.SetRecordOnStart(AutoListenOnStart.IsToggled);
+            };
+
+            Settings.Add(AutoListenOnStart);
+            Settings.Add(AutoListenOnResume);
+
+            MyScroller.ItemsSource = Settings;
+
+            _sapService = new SapService(OnConnectedCallback);
             _sapService.StartAndConnect();
+
+            if (pref.GetRecordOnResume()) app.OnResumeCallback = StartListening;
 
             AudioPlayer.OnStopCallback = OnStopCallback;
             //Tizen.System.Display.StateChanged += OnDisplayOn;
         }
 
-        private void Check_Toggled(object sender, ToggledEventArgs e)
+        public IList<Setting> Settings { get; set; } = new ObservableCollection<Setting>();
+
+        private void OnConnectedCallback()
         {
-            pref.SetRecordOnStart(e.Value);
+            if (pref.GetRecordOnStart())
+            {
+                _isConnected = true;
+                StartListening();
+            }
         }
 
         internal static void SetLabelText(string text)
@@ -122,45 +151,20 @@ namespace GAssist
                 {
                     _box = new Box(_layout);
                     _box.Show();
-                    _progressLabel = new ElmSharp.Label(TForms.NativeParent)
+                    _progressLabel = new Label(TForms.NativeParent)
                     {
-                        TextStyle = "DEFAULT ='font=Tizen:style=Light color=#F9F9F9FF font_size=32 align=center valign=top wrap=mixed'",
+                        TextStyle =
+                            "DEFAULT ='font=Tizen:style=Light color=#F9F9F9FF font_size=32 align=center valign=top wrap=mixed'",
                         LineWrapType = WrapType.Mixed,
                         LineWrapWidth = 300
                     };
                 }
+
                 _progressLabel.Text = text;
                 _progressLabel.Show();
-                if (_box != null)
-                {
-                    _box.PackEnd(_progressLabel);
-                }
+                if (_box != null) _box.PackEnd(_progressLabel);
                 _layout.SetPartContent("elm.swallow.content", _box, true);
             }
-
-            //if (_progressLabel == null)
-            //{
-            //    _box = new Box(_layout);
-            //    _box.Show();
-            //    _progressLabel = new ElmSharp.Label(_popUp)
-            //    {
-            //        TextStyle = "font=Tizen:style=Regular font_size=36 color=#F9F9F9 wrap=mixed text_class=tizen"
-            //    };
-
-            //}
-            //_progressLabel.Text = text;
-            //_progressLabel.Show();
-
-
-            //_box.PackEnd(_progressLabel);
-            //_layout.SetPartContent("elm.swallow.content", _box, true);
-
-
-            //if (_box != null)
-            //{
-            //    _box.PackEnd(_progressLabel);
-            //}
-            // _layout.SetPartText("elm.text", text);
         }
 
         internal static void DismissProgressPopup()
@@ -219,10 +223,12 @@ namespace GAssist
             {
                 AudioPlayer.Stop();
             }
-            else if (!AudioRecorder.IsRecording)
+            else if (!AudioRecorder.IsRecording && _isConnected)
             {
                 AudioRecorder.StartRecording();
                 ActionButtonItem.IsEnable = false;
+                ActionButtonItem.Text = "Listening";
+                SetLabelText("");
             }
         }
 

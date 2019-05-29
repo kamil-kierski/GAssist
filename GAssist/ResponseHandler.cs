@@ -7,6 +7,8 @@ namespace GAssist
 {
     internal static class ResponseHandler
     {
+        private static bool _first = true;
+
         public static void HandleResponse(byte[] dataBytes)
         {
             var ar = AssistResponse.Parser.ParseFrom(dataBytes);
@@ -14,17 +16,20 @@ namespace GAssist
 
             if (ar.SpeechResults?.Any(i => i.Stability > 0.01) ?? false)
             {
-                //MainPage.SetLabelText(ar.SpeechResults.First().Transcript);
+                if (_first)
+                {
+                    MainPage.CreateProgressPopup();
+                    _first = false;
+                }
 
                 MainPage.UpdateProgressPopupText(ar.SpeechResults.First().Transcript);
 
                 if (ar.SpeechResults.Any(i => i.Stability == 1))
                 {
                     AudioRecorder.StopRecording();
-                    //MainPage.SetLabelText(ar.SpeechResults.First().Transcript);
                     MainPage.DismissProgressPopup();
                     AudioPlayer.Prepare();
-                    var first = true;
+                    _first = true;
                 }
             }
 

@@ -10,8 +10,8 @@ namespace GAssist
     internal static class AudioPlayer
     {
         public static Action OnStopCallback;
-        private static Player _player;
-        public static bool IsPlaying;
+        private static readonly Player _player = new Player();
+        public static bool IsPlaying = false;
 
 
         public static FileStream BufferFileStream { get; set; }
@@ -25,7 +25,6 @@ namespace GAssist
             if (File.Exists(BufferFilePath)) File.Delete(BufferFilePath);
             BufferFileStream = File.Create(BufferFilePath);
 
-            _player = new Player();
             _player.PlaybackCompleted += Player_PlaybackCompleted;
         }
 
@@ -58,7 +57,7 @@ namespace GAssist
                 {
                     _player.Stop();
                     _player.Unprepare();
-                    _player.Dispose();
+                    // _player.Dispose();
 
                     BufferFileStream.Close();
                     BufferFileStream.Dispose();

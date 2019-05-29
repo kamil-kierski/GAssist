@@ -4,7 +4,7 @@
     <SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256" />
     <Reference URI="tizen-manifest.xml">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
-      <DigestValue>YzlGkwaV5gm9bOAbXcsbEATBhQFJaHF7aITdZ4edJgs=</DigestValue>
+      <DigestValue>9WCcw1T/VQjp9dp4V13rkoH7oIRxueysZUr6CIecVQc=</DigestValue>
     </Reference>
     <Reference URI="shared%2Fres%2FGAssist.Tizen.Wearable.png">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
@@ -64,11 +64,11 @@
     </Reference>
     <Reference URI="bin%2FGAssist.pdb">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
-      <DigestValue>mq+MV4RcQDfI6JurzM4tFqbwW6twlnYcm6g4L+Sm9LU=</DigestValue>
+      <DigestValue>tV8posVV5flRmM2LjRgWZ8f2rkrM7MiUqKYOs+pkGug=</DigestValue>
     </Reference>
     <Reference URI="bin%2FGAssist.dll">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
-      <DigestValue>wRQdVN93K4v558QyY6K3korrwDKUtxkVTaUr0hH7yoM=</DigestValue>
+      <DigestValue>d2qGMEOCQGqLrkZAUq+kBwbSr2CkS3nNdtxlajkd53Y=</DigestValue>
     </Reference>
     <Reference URI="#prop">
       <Transforms>
@@ -79,11 +79,11 @@
     </Reference>
   </SignedInfo>
   <SignatureValue>
-e5ML7LVce8LDzDvfnFPzyyyqdPrtRf/ONPdpjbrT5DZ4bw0dkJzDaGDEW70Q7Jmivq6cfeRk8NaT
-KVXTNhGftP5iwGW/kHeKwmbvc2S2eCh8HfzzgotXAFYrplN3jXUmFBOBaHZEB6QygKE1vAndLNPZ
-nyqjRx4SgbdRjSRuuqLmfd7se21Dspm/c+al5OaP+unfg488EO6jZV6pwO6pFv0R+Pz+VVA+5HpK
-ASPlM5UlWIEtZM5r2wHzkEDIhGLwXlk6EBAlsV95QKL4yUeoXgcOwtiiRIvBLrBoParVbWA3d9p5
-+s3yoEcgrd0nsJb26x8jrDvCM/RGDykMEzi93Q==
+HYm+edJlbs8FqB6qzXyXOUYKlYE+llh+tZa4MsEOLNCNa1t3b1QfYE48prYyywdKG5r1amsq+AFd
+dkgIyRNxPVPMg6n6ojZB6HoL7c8KUsiRYSjdlEZ5EK1wYHvQGxoZuJQssexKIMX0D5S2bDSPXqYb
+G/gaocOF1pap5vFnYPHTt7Zl0kkc8GiSPoJput5NDSI6K+579xkK0R2NZmxvOcWxIXEqes9uvmQe
+rdIkqpLLc9FwXf4jypk+THO7mmHgFHSE1Nx5hZXrnaCF9DzkgSr3dZzdmEmNCRtY1dXCzmtA9LWW
+lrJNO51kMvT6uLiWa0+CJC4WwBCPultFRGHlBA==
 </SignatureValue>
   <KeyInfo>
     <X509Data>

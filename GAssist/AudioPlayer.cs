@@ -1,82 +1,79 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
-using Tizen;
+using System.Security.Cryptography;
+using Google.Assistant.Embedded.V1Alpha2;
+using Google.Protobuf;
 using Tizen.Multimedia;
 using Tizen.System;
 
 namespace GAssist
 {
-    internal static class AudioPlayer
+    internal class AudioPlayer
     {
-        public static Action OnStopCallback;
-        private static readonly Player _player = new Player();
-        public static bool IsPlaying = false;
+        public readonly Player Player = new Player();
+        public volatile bool IsPlaying = false;
+        public event EventHandler PlaybackStopped;
 
-
-        public static FileStream BufferFileStream { get; set; }
+        public FileStream BufferFileStream { get; set; }
 
         private static string BufferFilePath { get; } =
             StorageManager.Storages.First().GetAbsolutePath(DirectoryType.Others)
             + @"temp.mp3";
 
-        public static void Prepare()
+        public void Prepare()
         {
             if (File.Exists(BufferFilePath)) File.Delete(BufferFilePath);
             BufferFileStream = File.Create(BufferFilePath);
 
-            _player.PlaybackCompleted += Player_PlaybackCompleted;
+            Player.SetSource(new MediaUriSource(BufferFilePath));
+            Player.PlaybackCompleted += Player_PlaybackCompleted;
         }
 
-        public static void WriteBuffer(byte[] dataBytes)
+        public async void WriteBuffer(byte[] dataBytes)
         {
-            try
+            if (BufferFileStream != null && dataBytes.Length != 0)
             {
-                BufferFileStream.Write(dataBytes, 0, dataBytes.Length);
-                if (BufferFileStream.Length != 0) BufferFileStream.Flush();
-            }
-
-            catch (ObjectDisposedException)
-            {
-                Log.Debug("AUDIO RESPONSE", "Tried to write to closed FileStream, Knownbug");
+                await BufferFileStream.WriteAsync(dataBytes, 0, dataBytes.Length);
+                if (BufferFileStream.Length != 0) await BufferFileStream.FlushAsync();
             }
         }
 
-        public static void Play()
+        public void Play()
         {
-            _player.SetSource(new MediaUriSource(BufferFilePath));
-            _player.PrepareAsync().Wait();
-            _player.Start();
+            Player.PrepareAsync().Wait();
+            Player.Start(); 
         }
 
-        public static void Stop()
+        public void Stop()
         {
-            try
-            {
-                if (_player.State == PlayerState.Playing)
-                {
-                    _player.Stop();
-                    _player.Unprepare();
-                    // _player.Dispose();
+            if (Player.State != PlayerState.Playing) return;
+            Player.Stop();
+            Player.Unprepare();
 
-                    BufferFileStream.Close();
-                    BufferFileStream.Dispose();
+            AudioInConfig aic = new AudioInConfig();
+            aic.SampleRateHertz = 16000;
+            aic.Encoding = AudioInConfig.Types.Encoding.Linear16;
 
-                    OnStopCallback();
+            SapService.SendData(aic.ToByteArray());
 
-                    if (File.Exists(BufferFilePath)) File.Delete(BufferFilePath);
-                    BufferFileStream = File.Create(BufferFilePath);
-                }
-            }
-            catch (ObjectDisposedException)
-            {
-                OnStopCallback();
-            }
+            //BufferFileStream.FlushAsync();
+            BufferFileStream.Dispose();
+            BufferFileStream = null;
+
+            //if (File.Exists(BufferFilePath)) File.Delete(BufferFilePath);
+            Player.PlaybackCompleted -= Player_PlaybackCompleted;
+            OnPlaybackStopped(EventArgs.Empty);
         }
 
-        private static void Player_PlaybackCompleted(object sender, EventArgs e)
+        private void Player_PlaybackCompleted(object sender, EventArgs e)
         {
             Stop();
+        }
+
+        protected virtual void OnPlaybackStopped(EventArgs args)
+        {
+            this.PlaybackStopped?.Invoke(this, args);
         }
     }
 }

@@ -91,11 +91,11 @@ namespace GAssist
                     AudioRecorder.IsRecording = false;
                 }
 
-                if (AudioPlayer.IsPlaying)
-                {
-                    AudioPlayer.Stop();
-                    AudioPlayer.IsPlaying = false;
-                }
+                //if (AudioPlayer.IsPlaying)
+                //{
+                //    AudioPlayer.Stop();
+                //    AudioPlayer.IsPlaying = false;
+                //}
 
                 MainPage.SetActionButtonIsEnabled(false);
                 _connection.DataReceived -= Connection_DataReceived;

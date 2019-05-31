@@ -1,6 +1,7 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
-using Tizen;
+using Google.Assistant.Embedded.V1Alpha2;
+using Google.Protobuf;
 using Tizen.Multimedia;
 
 namespace GAssist
@@ -9,7 +10,7 @@ namespace GAssist
     {
         private static readonly int _bufferSize = 1600;
 
-        private static readonly AudioCapture AudioCapture =
+        private static AudioCapture _audioCapture =
             new AudioCapture(16000, AudioChannel.Mono, AudioSampleType.S16Le);
 
         public static volatile bool IsRecording;
@@ -19,19 +20,26 @@ namespace GAssist
 
         public static void StartRecording()
         {
-            if (IsRecording) Log.Debug("AUDIORECORDER", "BAD!:RECORDING FLAG TRUE ON START RECORDING");
-            IsRecording = true;
+            _audioCapture = new AudioCapture(16000, AudioChannel.Mono, AudioSampleType.S16Le);
             _source = new CancellationTokenSource();
             _token = _source.Token;
-            AudioCapture.Prepare();
+            _audioCapture.Prepare();
+            IsRecording = true;
             Record();
+
+            AudioInConfig aic = new AudioInConfig();
+            aic.SampleRateHertz = 16000;
+            aic.Encoding = AudioInConfig.Types.Encoding.Linear16;
+
+            SapService.SendData(aic.ToByteArray());
         }
 
         public static void StopRecording()
         {
             _source.Cancel();
-            AudioCapture.Flush();
-            AudioCapture.Unprepare();
+            _audioCapture.Flush();
+            _audioCapture.Unprepare();
+            _audioCapture.Dispose();
             IsRecording = false;
         }
 
@@ -42,7 +50,15 @@ namespace GAssist
                 while (IsRecording)
                 {
                     if (_token.IsCancellationRequested) return;
-                    SapService.SendData(AudioCapture.Read(_bufferSize));
+                    //SapService.SendData(_audioCapture.Read(_bufferSize));
+                    byte[] chunk = _audioCapture.Read(_bufferSize);
+
+                    AssistRequest ar = new AssistRequest
+                    {
+                        AudioIn = ByteString.CopyFrom(chunk)
+                    };
+                    SapService.SendData(ar.ToByteArray());
+                    Tizen.Log.Debug("RECORDER", "SENT " + ar.AudioIn);
                 }
             }, _token);
         }

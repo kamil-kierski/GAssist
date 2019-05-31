@@ -2,8 +2,12 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Reactive.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using ElmSharp;
+using Scar.Common;
+using Tizen.Multimedia;
 using Tizen.Wearable.CircularUI.Forms;
 using Xamarin.Forms.Xaml;
 using TForms = Xamarin.Forms.Platform.Tizen.Forms;
@@ -14,7 +18,7 @@ namespace GAssist
     public partial class MainPage : IndexPage
     {
         private static MainPage Mainpage;
-
+        private AudioPlayer player;
         private static ProgressBar _progress;
         private static Box _box;
         private static Popup _popUp;
@@ -23,11 +27,13 @@ namespace GAssist
         private static Button _bottomButton;
         private readonly SapService _sapService;
         private readonly Preferences pref;
-        private App app;
+        private readonly RateLimiter rl = new RateLimiter();
         private bool _isConnected;
+        private App app;
 
         public MainPage(App app)
         {
+
             //AudioManager.VolumeController.Level[AudioVolumeType.Media] = 15;
 
             InitializeComponent();
@@ -36,9 +42,21 @@ namespace GAssist
 
             PermissionChecker.CheckAndRequestPermission(PermissionChecker.recorderPermission);
             PermissionChecker.CheckAndRequestPermission(PermissionChecker.mediaStoragePermission);
+            player = ResponseHandler.player;
 
-            ActionButtonItem.IsEnable = false;
-            ActionButtonItem.Clicked += ActionButton_ButtonClicked;
+            SetActionButtonIsEnabled(false);
+
+            //ActionButtonItem.Clicked += ActionButton_ButtonClicked;
+
+            var test = Observable.FromEventPattern(
+                    ev => ActionButtonItem.Clicked += ev,
+                    ev => ActionButtonItem.Clicked -= ev)
+                //.Throttle(TimeSpan.FromMilliseconds(200))
+                .Subscribe(_ => ActionButton_ButtonClicked());
+
+            //test.Subscribe(_ => rl.Throttle(TimeSpan.FromMilliseconds(1500), ActionButton_ButtonClicked, false, true));
+
+
             Label.Text = "GAssist.Net Demo";
 
             pref = new Preferences();
@@ -54,8 +72,8 @@ namespace GAssist
                 if (e.PropertyName == "IsToggled")
                 {
                     pref.SetRecordOnResume(AutoListenOnResume.IsToggled);
-                    if (AutoListenOnResume.IsToggled) app.OnResumeCallback = StartListening;
-                    else app.OnResumeCallback = null;
+                    if (AutoListenOnResume.IsToggled) app.ResumeEvent += App_ResumeEvent;
+                    else app.ResumeEvent -= App_ResumeEvent;
                 }
             };
 
@@ -75,19 +93,31 @@ namespace GAssist
             _sapService = new SapService(OnConnectedCallback);
             _sapService.StartAndConnect();
 
-            if (pref.GetRecordOnResume()) app.OnResumeCallback = StartListening;
+            if (pref.GetRecordOnResume()) app.ResumeEvent += App_ResumeEvent;
 
-            AudioPlayer.OnStopCallback = OnStopCallback;
+            player.PlaybackStopped += Player_PlaybackStopped;
             //Tizen.System.Display.StateChanged += OnDisplayOn;
+        }
+
+        private void App_ResumeEvent(object sender, EventArgs e)
+        {
+            StartListening();
+        }
+
+        private void Player_PlaybackStopped(object sender, EventArgs e)
+        {
+            ActionButtonItem.Text = "Listen";
+            ResponseHandler.player.IsPlaying = false;
         }
 
         public IList<Setting> Settings { get; set; } = new ObservableCollection<Setting>();
 
         private void OnConnectedCallback()
         {
+            _isConnected = true;
             if (pref.GetRecordOnStart())
             {
-                _isConnected = true;
+                
                 StartListening();
             }
         }
@@ -203,33 +233,31 @@ namespace GAssist
         //}
 
 
-        private void OnStopCallback()
-        {
-            Task.Factory.StartNew(() =>
-            {
-                ActionButtonItem.Text = "Listen";
-                AudioPlayer.IsPlaying = false;
-            });
-        }
+        //private void OnStopCallback(EventArgs e)
+        //{
 
-        private void ActionButton_ButtonClicked(object sender, EventArgs e)
+        //}
+
+        private async void ActionButton_ButtonClicked()
         {
-            StartListening();
+            await Task.Run(StartListening);
         }
 
         private void StartListening()
         {
-            if (AudioPlayer.IsPlaying)
+            rl.Throttle(TimeSpan.FromMilliseconds(500), () =>
             {
-                AudioPlayer.Stop();
-            }
-            else if (!AudioRecorder.IsRecording && _isConnected)
-            {
-                AudioRecorder.StartRecording();
-                ActionButtonItem.IsEnable = false;
-                ActionButtonItem.Text = "Listening";
-                SetLabelText("");
-            }
+                if (player.Player.State == PlayerState.Playing) player.Stop();
+                else if (!AudioRecorder.IsRecording && _isConnected && player.Player.State != PlayerState.Playing)
+                {
+                    AudioRecorder.StartRecording();
+                    ActionButtonItem.IsEnable = false;
+                    ActionButtonItem.Text = "Listening";
+                    SetLabelText("");
+                }
+            },false, true);
+
+
         }
 
         //private void OnScreenOnListening()

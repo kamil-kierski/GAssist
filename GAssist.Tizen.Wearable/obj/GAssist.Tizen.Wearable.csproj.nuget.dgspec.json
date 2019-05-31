@@ -51,7 +51,7 @@
             "Tizen.NET": {
               "include": "Compile, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "target": "Package",
-              "version": "[4.0.0, )"
+              "version": "[6.0.0.14792, )"
             },
             "Tizen.NET.Sdk": {
               "target": "Package",
@@ -116,11 +116,11 @@
             },
             "Google.Protobuf": {
               "target": "Package",
-              "version": "[3.8.0-rc.1, )"
+              "version": "[3.8.0, )"
             },
             "Microsoft.NETCore.Platforms": {
               "target": "Package",
-              "version": "[3.0.0-preview5.19224.8, )"
+              "version": "[2.2.1, )"
             },
             "NETStandard.Library": {
               "suppressParent": "All",
@@ -132,9 +132,17 @@
               "target": "Package",
               "version": "[1.0.0, )"
             },
+            "Scar.Common.RateLimiter": {
+              "target": "Package",
+              "version": "[1.0.7016.37702, )"
+            },
+            "System.Reactive": {
+              "target": "Package",
+              "version": "[3.1.1, )"
+            },
             "Tizen.NET": {
               "target": "Package",
-              "version": "[4.0.0, )"
+              "version": "[6.0.0.14792, )"
             },
             "Tizen.Wearable.CircularUI": {
               "target": "Package",

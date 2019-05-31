@@ -4,11 +4,15 @@
     <SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256" />
     <Reference URI="tizen-manifest.xml">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
-      <DigestValue>9WCcw1T/VQjp9dp4V13rkoH7oIRxueysZUr6CIecVQc=</DigestValue>
+      <DigestValue>5Pf4qYqxs6b5tTEL08Hq5WjYB8vjyg/L+siasiS0Ms0=</DigestValue>
     </Reference>
     <Reference URI="shared%2Fres%2FGAssist.Tizen.Wearable.png">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
       <DigestValue>/gTbhhRqVKFAMykTkZyDaEozK7OBNMSXGtsJpmRcLuE=</DigestValue>
+    </Reference>
+    <Reference URI="shared%2Fres%2FGAssist.png">
+      <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
+      <DigestValue>OCxNunnaf71Ti0A0aGKCUkpnzMKcpQDoiLcgDPJpu8I=</DigestValue>
     </Reference>
     <Reference URI="res%2Fxml%2Faccessoryservices.xml">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
@@ -42,13 +46,33 @@
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
       <DigestValue>GtLdciXVFioP06OzN6GUlEhSDjEwpLyOAQ7AL3YJdQA=</DigestValue>
     </Reference>
+    <Reference URI="bin%2FSystem.Reactive.PlatformServices.dll">
+      <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
+      <DigestValue>dgVhyZzj9Lr7cZnG7lCK1raOmK57oyEMhs5D+avUaIU=</DigestValue>
+    </Reference>
+    <Reference URI="bin%2FSystem.Reactive.Linq.dll">
+      <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
+      <DigestValue>on+HVW8c5vqtj+fVIl9t6aIwxWugfnjc6Z9rc27g0JM=</DigestValue>
+    </Reference>
+    <Reference URI="bin%2FSystem.Reactive.Interfaces.dll">
+      <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
+      <DigestValue>iYXVSL+1NnHuYoxWqiFpMytf8qQrt5R7ftzosODSyKw=</DigestValue>
+    </Reference>
+    <Reference URI="bin%2FSystem.Reactive.Core.dll">
+      <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
+      <DigestValue>MVMPWFwhSRUtX3dEQlt63yxjVVUAnuVxYhEw2XyiOcE=</DigestValue>
+    </Reference>
     <Reference URI="bin%2FSystem.Memory.dll">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
       <DigestValue>pSpWPPF3OKdhcRJ8sh3b+wNX2V8qiKuBenMHaWfI8uI=</DigestValue>
     </Reference>
+    <Reference URI="bin%2FScar.Common.RateLimiter.dll">
+      <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
+      <DigestValue>EOY/C7PhG5bDbCdno2tx9agt2+pkFnA/5yoDPQiI/to=</DigestValue>
+    </Reference>
     <Reference URI="bin%2FGoogle.Protobuf.dll">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
-      <DigestValue>yHJkQG/c5KNp3wlCEcH74KAfz3ADu4eVN1xVwh63msw=</DigestValue>
+      <DigestValue>uy4bdieZwbayDQ1HCLmzHpOuoAZ3/xy7Qja9Nsc516c=</DigestValue>
     </Reference>
     <Reference URI="bin%2FGoogle.Api.CommonProtos.dll">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
@@ -64,15 +88,15 @@
     </Reference>
     <Reference URI="bin%2FGAssist.pdb">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
-      <DigestValue>tV8posVV5flRmM2LjRgWZ8f2rkrM7MiUqKYOs+pkGug=</DigestValue>
+      <DigestValue>ZsOhWXZWcATvJScKaWCTxQ1mhDkcf7i1eowy62nuoMc=</DigestValue>
     </Reference>
     <Reference URI="bin%2FGAssist.dll">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
-      <DigestValue>d2qGMEOCQGqLrkZAUq+kBwbSr2CkS3nNdtxlajkd53Y=</DigestValue>
+      <DigestValue>thVb1ZmeMSwoOtLqXiRTLuXd7DfKbAvs/tiwlmSONPA=</DigestValue>
     </Reference>
     <Reference URI="author-signature.xml">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
-      <DigestValue>oIsX48FEC5dhImz3nkrS0rZOjcqZfZAbBSMJpYM385U=</DigestValue>
+      <DigestValue>VvYD2g1X3nflapiovbKzzksZzAr5gAwXREUpm1J87yk=</DigestValue>
     </Reference>
     <Reference URI="#prop">
       <Transforms>
@@ -83,38 +107,38 @@
     </Reference>
   </SignedInfo>
   <SignatureValue>
-SOlGw4U3n1VkuXthfwFBHbrgPspvjAOYVWzWmmwaZfT0sYcywuHckRyuDzV9Oem4ErJrqMV9pAdp
-ce7rtmrRjcMtx3mLrrhPY/mbTRY+XqebrB3i4Lent1qTJHLU1U8ay7NV/VeCHq9f6SJoPxkwpAv9
-pFmdZEx80przq+C0IaEogwITC1q63xtKve7kgkG9D2ZasDlb5T2k2cRE2lzkT7i4ivSJM+uHMFvf
-ASRVBJ8RkMEQrEDAikNPJWIqCYBfyt+I4B0zIAgeWkcdFZ+re82uOSA+6Fnfcs/+n1+tzFibj7V1
-UljN1CaEO41GihtGLY4qaSndPklbZpOlplVpZA==
+Jw8rpuIFqCbGyqJ2Bn/41f9pc6khglQTVd5fhTEbYx2Jt3rmGUQtBJL2ElD999LiSWPKKcJLGHXR
+bTmvuw2hCpj9+HLSnbzZicNWVzxIlm6b6p1gAB9FLhjAP7bXlAsqlRO/8aBqjDKn5XvUa7aoBAUm
+A76Kht/uy74vMZbcCsSHL7ZmyJTHombLWRiZezpLiXaqB1FVs1FR/dJiUKNVgIy8Y6hOkwNVqTbL
+DHF/BZUqttGoGATacK5mMhCy040OIPT+SfvRTvjrAOwm4Qn4dAUbkXLuypAnJiSi327KT5iOl7CE
+pKiux1SR8D+0DdFm2DCfDLLm57md5hXZXNyqVw==
 </SignatureValue>
   <KeyInfo>
     <X509Data>
       <X509Certificate>
-MIIFCDCCA/CgAwIBAgIBZTANBgkqhkiG9w0BAQsFADCBnjELMAkGA1UEBhMCS1IxFDASBgNVBAgM
+MIIE/TCCA+WgAwIBAgIBZTANBgkqhkiG9w0BAQsFADCBnjELMAkGA1UEBhMCS1IxFDASBgNVBAgM
 C1NvdXRoIEtvcmVhMQ4wDAYDVQQHDAVTdXdvbjEmMCQGA1UECgwdU2Ftc3VuZyBFbGVjdHJvbmlj
 cyBDby4sIEx0ZC4xDzANBgNVBAsMBk1vYmlsZTEwMC4GA1UEAwwnU2Ftc3VuZyBUaXplbiBERVZF
-TE9QRVIgUHVibGljIENBIENsYXNzMB4XDTE5MDQzMDEyNTc1OVoXDTIwMDQyOTEyNTc1OVowggGU
+TE9QRVIgUHVibGljIENBIENsYXNzMB4XDTE5MDUzMDE3MzgyMloXDTIwMDUyOTE3MzgyMlowggGJ
 MREwDwYDVQQDDAhUaXplblNESzEJMAcGA1UECwwAMQkwBwYDVQQKDAAxCTAHBgNVBAcMADEJMAcG
-A1UECAwAMQkwBwYDVQQGEwAxggFGMIIBQgYJKoZIhvcNAQkBFoIBM2N5YmVybmV0aWM4N0BnbWFp
-bC5jb20mdG9rZW5fdHlwZT1iZWFyZXImdXNlcklkPXdieGZqZmU1YWwmYWNjZXNzX3Rva2VuX2V4
-cGlyZXNfaW49ODYzOTk2JmNsaWVudF9pZD00ZmI3Zm5mM25wJmFjY2Vzc190b2tlbj1CeXE3TFBT
-YmpmJnJlZnJlc2hfdG9rZW49LTEmYXV0aF9zZXJ2ZXJfdXJsPXVzLWF1dGgyLnNhbXN1bmdvc3Au
-Y29tJnN0YXRlPWFjY291bnRjaGVja2RvZ2VuZXJhdGVkc3RhdGV0ZXh0JmNsb3NlZEFjdGlvbj1z
-aWduSW5TdWNjZXNzJmNsb3NlPXRydWUmYXBpX3NlcnZlcl91cmw9dXMtYXV0aDIuc2Ftc3VuZ29z
-cC5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCW7QYARWR5RgmQRfynA9DLxvaT
-DHyIEWoy+6B7mydCeNsYVqeQoRvX7RDmCude/aqNWkMICmE99ZYvSgc/rx2B5zuDvwfHQ+yliCJW
-+YRWhzTU3I8W8/I1cbisezgmCl/Y4JaH9b+QZy6kVDA9Q36e/ddV/7rUdCZGGhFcX5lKDJg38bmJ
-5FxYZy39+4M4f+zVGKm2Sq2BZfIRbmeAwaAK9n5fEn1n451NQmOwgA+SLTx+nYE8m2T3dkYXZFFW
-IwVjZDrfJFz6weIWgbATyC4Mw4pDqW2JHrEtgC0xe+TE+LtuUjGCXCozGKS8uChLTVPG8Tu84Eo6
-p8XiO7coZsdrAgMBAAGjWDBWMFQGA1UdEQRNMEuGFFVSTjp0aXplbjpwYWNrYWdlaWQ9hjNVUk46
-dGl6ZW46ZGV2aWNlaWQ9Mi4wI2c4VjBCQ1BGTlFuZ2FieEt4cU5JdVJ2aU9FYz0wDQYJKoZIhvcN
-AQELBQADggEBAB5xZX9DQEYPc08vr4ygk/e6IoTKKadpx87yQKtc1UH1pshs1N/WnNSTteBhEYqL
-hjQT+tbFAOJ91XaD9xgUDTQ8IZ7lIC/kAaPGkf71CEaWP/iEebT7hk/Ku5ayXLgFGUM4SlygyXr1
-xJSxdloLbiSRNlqb8MyAeST5+Yjo5qy/cx6Xy336qHjrqImhAYeHK2DXJ1FlpLYFaZTawI8u3iTZ
-JlwxucEE/97JXtm0amMmETbHg8Jga7iEfqoFFOoPpgoMIfXYzXT44PwnMnzaXNqI5BZB/AoKRRP7
-dQdjSDcAcGxGIEUre1bVPM+cSbfx/Ge3DyB/CRtb0Drre3cThOc=
+A1UECAwAMQkwBwYDVQQGEwAxggE7MIIBNwYJKoZIhvcNAQkBFoIBKHBhaWdlQG9wLnBsJnRva2Vu
+X3R5cGU9YmVhcmVyJnVzZXJJZD1na3V4dXd3dTNjJmFjY2Vzc190b2tlbl9leHBpcmVzX2luPTg2
+Mzk5NSZjbGllbnRfaWQ9NGZiN2ZuZjNucCZhY2Nlc3NfdG9rZW49YjE4NlhJc2ZyZiZyZWZyZXNo
+X3Rva2VuPS0xJmF1dGhfc2VydmVyX3VybD11cy1hdXRoMi5zYW1zdW5nb3NwLmNvbSZzdGF0ZT1h
+Y2NvdW50Y2hlY2tkb2dlbmVyYXRlZHN0YXRldGV4dCZjbG9zZWRBY3Rpb249c2lnbkluU3VjY2Vz
+cyZjbG9zZT10cnVlJmFwaV9zZXJ2ZXJfdXJsPXVzLWF1dGgyLnNhbXN1bmdvc3AuY29tMIIBIjAN
+BgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAmh8c1MD/84mW2i3Jp2R/rsw4GMxB6m9/gVNwhZCp
+5PXsyQ6db+mAG5dmZIRwsgYKcOZ3GGy43LicKlNzkaCT69j+esaJ6LSK6DcdctIwbyqW2d9b6CHE
+gfw87dRgpQp3M44nM/kqu00x9jz4Iyi1NUBqZmxux/e5aDmGc4HurMor4VmTrgJU3ZANWYnpvtg9
+eJFIBq92Bd8a2WAdnqzfobC5Omc01Y3ImyNm3aU26sd6ZCQ7Z71tMvUai8aDJYcIcM1BsYjl/jL8
+G+b0+ub88P6paW22IpX6Fnffpoz0+/YC8hRPb2MSnlIGfLyjAWXeZ3iAbVS76MqTdz53lp4/6QID
+AQABo1gwVjBUBgNVHREETTBLhhRVUk46dGl6ZW46cGFja2FnZWlkPYYzVVJOOnRpemVuOmRldmlj
+ZWlkPTIuMCNnOFYwQkNQRk5RbmdhYnhLeHFOSXVSdmlPRWM9MA0GCSqGSIb3DQEBCwUAA4IBAQAJ
+ckpSEz95i+ETAPGXI87/71DA54pZtibkI2JrxkA/NKDkjtc5WJIcgM4Pl24vpaqiYK1j9D+Wqedv
+OWN4ZZ7NPZrL1jneDw5g+i+dtreiwAe7Hc90ue/6O8uLqHUJE3fnX2d1Tc6o1UyfEv43toWM5Nvz
+f/vsPuEpxkl5pVQMBPpT14hw7deAVwYuCtEdyQazZk/fNFZbnG0zle9ZYSP6vEI9aDUWserBf/kh
+pPvYIni9f8h6p5/t+noCyX3e79A8YQAalfcKXccvLh3RKwU3MVIUbavS+AbI37aztIY9HuwHWJ1e
+kGVKpL1nWvxIHHqw9haTS3b6od6cdThZrJd0
 </X509Certificate>
       <X509Certificate>
 MIIDuzCCAqOgAwIBAgICL+cwDQYJKoZIhvcNAQELBQAwgY8xCzAJBgNVBAYTAktSMRQwEgYDVQQI

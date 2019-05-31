@@ -13,7 +13,7 @@
     <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
   </PropertyGroup>
   <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <Import Project="$(NuGetPackageRoot)tizen.net\4.0.0\build\tizen40\Tizen.NET.props" Condition="Exists('$(NuGetPackageRoot)tizen.net\4.0.0\build\tizen40\Tizen.NET.props')" />
+    <Import Project="$(NuGetPackageRoot)tizen.net\6.0.0.14792\build\tizen40\Tizen.NET.props" Condition="Exists('$(NuGetPackageRoot)tizen.net\6.0.0.14792\build\tizen40\Tizen.NET.props')" />
     <Import Project="$(NuGetPackageRoot)xamarin.forms\3.5.0.129452\build\Xamarin.Forms.props" Condition="Exists('$(NuGetPackageRoot)xamarin.forms\3.5.0.129452\build\Xamarin.Forms.props')" />
     <Import Project="$(NuGetPackageRoot)tizen.net.sdk\1.0.1\build\Tizen.NET.Sdk.props" Condition="Exists('$(NuGetPackageRoot)tizen.net.sdk\1.0.1\build\Tizen.NET.Sdk.props')" />
   </ImportGroup>

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Linq;
+using System.Threading.Tasks;
 using Google.Assistant.Embedded.V1Alpha2;
+using Scar.Common;
 using Tizen.Multimedia;
 
 namespace GAssist
@@ -8,6 +10,8 @@ namespace GAssist
     internal static class ResponseHandler
     {
         private static bool _first = true;
+        private static readonly RateLimiter rl = new RateLimiter();
+        public static readonly AudioPlayer player = new AudioPlayer();
 
         public static void HandleResponse(byte[] dataBytes)
         {
@@ -28,7 +32,7 @@ namespace GAssist
                 {
                     AudioRecorder.StopRecording();
                     MainPage.DismissProgressPopup();
-                    AudioPlayer.Prepare();
+                    player.Prepare();
                     _first = true;
                 }
             }
@@ -48,16 +52,16 @@ namespace GAssist
 
             if (ar.AudioOut?.AudioData.Length > 0)
             {
-                AudioPlayer.WriteBuffer(ar.AudioOut.AudioData.ToByteArray());
+                player.WriteBuffer(ar.AudioOut.AudioData.ToByteArray());
 
-                if (!AudioPlayer.IsPlaying && AudioPlayer.BufferFileStream.Length >= 1600)
-                {
-                    AudioPlayer.IsPlaying = true;
-                    AudioPlayer.Play();
-
-                    MainPage.SetActionButtonIsEnabled(true);
-                    MainPage.SetActionButtonText("Stop");
-                }
+                if (!player.IsPlaying && player.BufferFileStream.Length >= 1600)
+                    rl.Debounce(TimeSpan.FromMilliseconds(100), () =>
+                    {
+                        player.IsPlaying = true;
+                        Task.Run(player.Play);
+                        MainPage.SetActionButtonIsEnabled(true);
+                        MainPage.SetActionButtonText("Stop");
+                    });
             }
         }
     }

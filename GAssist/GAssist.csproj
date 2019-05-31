@@ -9,10 +9,12 @@
 
   <ItemGroup>
     <PackageReference Include="Google.Api.CommonProtos" Version="1.6.0" />
-    <PackageReference Include="Google.Protobuf" Version="3.8.0-rc.1" />
-    <PackageReference Include="Microsoft.NETCore.Platforms" Version="3.0.0-preview5.19224.8" />
+    <PackageReference Include="Google.Protobuf" Version="3.8.0" />
+    <PackageReference Include="Microsoft.NETCore.Platforms" Version="2.2.1" />
     <PackageReference Include="Samsung.Sap" Version="1.0.0" />
-    <PackageReference Include="Tizen.NET" Version="4.0.0" />
+    <PackageReference Include="Scar.Common.RateLimiter" Version="1.0.7016.37702" />
+    <PackageReference Include="System.Reactive" Version="3.1.1" />
+    <PackageReference Include="Tizen.NET" Version="6.0.0.14792" />
     <PackageReference Include="Tizen.Wearable.CircularUI" Version="1.2.0" />
   </ItemGroup>
 

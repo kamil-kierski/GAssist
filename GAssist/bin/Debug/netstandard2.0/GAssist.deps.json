@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETStandard,Version=v2.0/",
-    "signature": "a7c0c1e7ab9393448ae315734b5cb7fc307a762f"
+    "signature": "c87b2485f131ce731d9991ed636f469f501f7258"
   },
   "compilationOptions": {},
   "targets": {
@@ -10,13 +10,12 @@
       "GAssist/1.0.0": {
         "dependencies": {
           "Google.Api.CommonProtos": "1.6.0",
-          "Google.Protobuf": "3.8.0",
-          "Microsoft.NETCore.Platforms": "2.2.1",
+          "Microsoft.NETCore.Platforms": "3.0.0-preview6.19303.8",
           "NETStandard.Library": "2.0.3",
           "Samsung.Sap": "1.0.0",
           "Scar.Common.RateLimiter": "1.0.7016.37702",
           "System.Reactive": "3.1.1",
-          "Tizen.NET": "6.0.0.14792",
+          "Tizen.NET": "6.0.0.14821",
           "Tizen.Wearable.CircularUI": "1.2.0",
           "Xamarin.Forms.Platform.Tizen": "1.0.0.0"
         },
@@ -26,7 +25,7 @@
       },
       "Google.Api.CommonProtos/1.6.0": {
         "dependencies": {
-          "Google.Protobuf": "3.8.0",
+          "Google.Protobuf": "3.6.1",
           "NETStandard.Library": "2.0.3"
         },
         "runtime": {
@@ -36,27 +35,27 @@
           }
         }
       },
-      "Google.Protobuf/3.8.0": {
+      "Google.Protobuf/3.6.1": {
         "dependencies": {
-          "System.Memory": "4.5.2"
+          "NETStandard.Library": "2.0.3"
         },
         "runtime": {
-          "lib/netstandard2.0/Google.Protobuf.dll": {
-            "assemblyVersion": "3.8.0.0",
-            "fileVersion": "3.8.0.0"
+          "lib/netstandard1.0/Google.Protobuf.dll": {
+            "assemblyVersion": "3.6.1.0",
+            "fileVersion": "3.6.1.0"
           }
         }
       },
-      "Microsoft.NETCore.Platforms/2.2.1": {},
+      "Microsoft.NETCore.Platforms/3.0.0-preview6.19303.8": {},
       "Microsoft.NETCore.Targets/1.0.1": {},
       "NETStandard.Library/2.0.3": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "2.2.1"
+          "Microsoft.NETCore.Platforms": "3.0.0-preview6.19303.8"
         }
       },
       "Samsung.Sap/1.0.0": {
         "dependencies": {
-          "Tizen.NET": "6.0.0.14792"
+          "Tizen.NET": "6.0.0.14821"
         }
       },
       "Scar.Common.RateLimiter/1.0.7016.37702": {
@@ -67,17 +66,9 @@
           }
         }
       },
-      "System.Buffers/4.4.0": {
-        "runtime": {
-          "lib/netstandard2.0/System.Buffers.dll": {
-            "assemblyVersion": "4.0.2.0",
-            "fileVersion": "4.6.25519.3"
-          }
-        }
-      },
       "System.Collections/4.0.11": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "2.2.1",
+          "Microsoft.NETCore.Platforms": "3.0.0-preview6.19303.8",
           "Microsoft.NETCore.Targets": "1.0.1",
           "System.Runtime": "4.1.0"
         }
@@ -106,7 +97,7 @@
       },
       "System.Diagnostics.Debug/4.0.11": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "2.2.1",
+          "Microsoft.NETCore.Platforms": "3.0.0-preview6.19303.8",
           "Microsoft.NETCore.Targets": "1.0.1",
           "System.Runtime": "4.1.0"
         }
@@ -138,14 +129,14 @@
       },
       "System.Globalization/4.0.11": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "2.2.1",
+          "Microsoft.NETCore.Platforms": "3.0.0-preview6.19303.8",
           "Microsoft.NETCore.Targets": "1.0.1",
           "System.Runtime": "4.1.0"
         }
       },
       "System.IO/4.1.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "2.2.1",
+          "Microsoft.NETCore.Platforms": "3.0.0-preview6.19303.8",
           "Microsoft.NETCore.Targets": "1.0.1",
           "System.Runtime": "4.1.0",
           "System.Text.Encoding": "4.0.11",
@@ -191,27 +182,6 @@
           "lib/netstandard1.6/System.Linq.Expressions.dll": {
             "assemblyVersion": "4.1.0.0",
             "fileVersion": "1.0.24212.1"
-          }
-        }
-      },
-      "System.Memory/4.5.2": {
-        "dependencies": {
-          "System.Buffers": "4.4.0",
-          "System.Numerics.Vectors": "4.4.0",
-          "System.Runtime.CompilerServices.Unsafe": "4.5.2"
-        },
-        "runtime": {
-          "lib/netstandard2.0/System.Memory.dll": {
-            "assemblyVersion": "4.0.1.0",
-            "fileVersion": "4.6.27129.4"
-          }
-        }
-      },
-      "System.Numerics.Vectors/4.4.0": {
-        "runtime": {
-          "lib/netstandard2.0/System.Numerics.Vectors.dll": {
-            "assemblyVersion": "4.1.3.0",
-            "fileVersion": "4.6.25519.3"
           }
         }
       },
@@ -285,7 +255,7 @@
       },
       "System.Reflection/4.1.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "2.2.1",
+          "Microsoft.NETCore.Platforms": "3.0.0-preview6.19303.8",
           "Microsoft.NETCore.Targets": "1.0.1",
           "System.IO": "4.1.0",
           "System.Reflection.Primitives": "4.0.1",
@@ -336,7 +306,7 @@
       },
       "System.Reflection.Extensions/4.0.1": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "2.2.1",
+          "Microsoft.NETCore.Platforms": "3.0.0-preview6.19303.8",
           "Microsoft.NETCore.Targets": "1.0.1",
           "System.Reflection": "4.1.0",
           "System.Runtime": "4.1.0"
@@ -344,7 +314,7 @@
       },
       "System.Reflection.Primitives/4.0.1": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "2.2.1",
+          "Microsoft.NETCore.Platforms": "3.0.0-preview6.19303.8",
           "Microsoft.NETCore.Targets": "1.0.1",
           "System.Runtime": "4.1.0"
         }
@@ -363,7 +333,7 @@
       },
       "System.Resources.ResourceManager/4.0.1": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "2.2.1",
+          "Microsoft.NETCore.Platforms": "3.0.0-preview6.19303.8",
           "Microsoft.NETCore.Targets": "1.0.1",
           "System.Globalization": "4.0.11",
           "System.Reflection": "4.1.0",
@@ -372,21 +342,13 @@
       },
       "System.Runtime/4.1.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "2.2.1",
+          "Microsoft.NETCore.Platforms": "3.0.0-preview6.19303.8",
           "Microsoft.NETCore.Targets": "1.0.1"
-        }
-      },
-      "System.Runtime.CompilerServices.Unsafe/4.5.2": {
-        "runtime": {
-          "lib/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll": {
-            "assemblyVersion": "4.0.4.1",
-            "fileVersion": "4.6.26919.2"
-          }
         }
       },
       "System.Runtime.Extensions/4.1.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "2.2.1",
+          "Microsoft.NETCore.Platforms": "3.0.0-preview6.19303.8",
           "Microsoft.NETCore.Targets": "1.0.1",
           "System.Runtime": "4.1.0"
         }
@@ -404,7 +366,7 @@
       },
       "System.Text.Encoding/4.0.11": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "2.2.1",
+          "Microsoft.NETCore.Platforms": "3.0.0-preview6.19303.8",
           "Microsoft.NETCore.Targets": "1.0.1",
           "System.Runtime": "4.1.0"
         }
@@ -423,18 +385,18 @@
       },
       "System.Threading.Tasks/4.0.11": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "2.2.1",
+          "Microsoft.NETCore.Platforms": "3.0.0-preview6.19303.8",
           "Microsoft.NETCore.Targets": "1.0.1",
           "System.Runtime": "4.1.0"
         }
       },
-      "Tizen.NET/6.0.0.14792": {
+      "Tizen.NET/6.0.0.14821": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "2.2.1",
-          "Tizen.NET.API6": "6.0.0.14792"
+          "Microsoft.NETCore.Platforms": "3.0.0-preview6.19303.8",
+          "Tizen.NET.API6": "6.0.0.14821"
         }
       },
-      "Tizen.NET.API6/6.0.0.14792": {},
+      "Tizen.NET.API6/6.0.0.14821": {},
       "Tizen.Wearable.CircularUI/1.2.0": {
         "dependencies": {
           "Xamarin.Forms": "3.5.0.129452"
@@ -485,19 +447,19 @@
       "path": "google.api.commonprotos/1.6.0",
       "hashPath": "google.api.commonprotos.1.6.0.nupkg.sha512"
     },
-    "Google.Protobuf/3.8.0": {
+    "Google.Protobuf/3.6.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-BFgHpY9TySZWcC5FWfNio54kBx75VlgLY1uGVyYmn80xUew794FP8YHLrEuf+lEQSYT1IVyigvsAOZv+ZQkf+g==",
-      "path": "google.protobuf/3.8.0",
-      "hashPath": "google.protobuf.3.8.0.nupkg.sha512"
+      "sha512": "sha512-741fGeDQjixBJaU2j+0CbrmZXsNJkTn/hWbOh4fLVXndHsCclJmWznCPWrJmPoZKvajBvAz3e8ECJOUvRtwjNQ==",
+      "path": "google.protobuf/3.6.1",
+      "hashPath": "google.protobuf.3.6.1.nupkg.sha512"
     },
-    "Microsoft.NETCore.Platforms/2.2.1": {
+    "Microsoft.NETCore.Platforms/3.0.0-preview6.19303.8": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-QRGQDN9a/RflmqEpT47gJ04befYL1T+Z7ctRuBfc5PdUO3k5VnV5Y1glBMnWbAPGfP62x8EAwmZPNEpsYX/qig==",
-      "path": "microsoft.netcore.platforms/2.2.1",
-      "hashPath": "microsoft.netcore.platforms.2.2.1.nupkg.sha512"
+      "sha512": "sha512-9nE9InmtkWL1ZIAvzZPoe8zzr8JNrmyofR5++0NCLomrLSbR70b60hLXFE/7vXIVgbKdTo3CTsCcFTOSZoOIEw==",
+      "path": "microsoft.netcore.platforms/3.0.0-preview6.19303.8",
+      "hashPath": "microsoft.netcore.platforms.3.0.0-preview6.19303.8.nupkg.sha512"
     },
     "Microsoft.NETCore.Targets/1.0.1": {
       "type": "package",
@@ -526,13 +488,6 @@
       "sha512": "sha512-G1HR3TagzJ803lRyU5oj2gLGKdUuJyw19jjf6zxJSbOsYtOytnqACbOYkqMn6WO8vtN/0QYhY5vrK2HVGlzlWg==",
       "path": "scar.common.ratelimiter/1.0.7016.37702",
       "hashPath": "scar.common.ratelimiter.1.0.7016.37702.nupkg.sha512"
-    },
-    "System.Buffers/4.4.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-AwarXzzoDwX6BgrhjoJsk6tUezZEozOT5Y9QKF94Gl4JK91I4PIIBkBco9068Y9/Dra8Dkbie99kXB8+1BaYKw==",
-      "path": "system.buffers/4.4.0",
-      "hashPath": "system.buffers.4.4.0.nupkg.sha512"
     },
     "System.Collections/4.0.11": {
       "type": "package",
@@ -596,20 +551,6 @@
       "sha512": "sha512-I+y02iqkgmCAyfbqOmSDOgqdZQ5tTj80Akm5BPSS8EeB0VGWdy6X1KCoYe8Pk6pwDoAKZUOdLVxnTJcExiv5zw==",
       "path": "system.linq.expressions/4.1.0",
       "hashPath": "system.linq.expressions.4.1.0.nupkg.sha512"
-    },
-    "System.Memory/4.5.2": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-fvq1GNmUFwbKv+aLVYYdgu/+gc8Nu9oFujOxIjPrsf+meis9JBzTPDL6aP/eeGOz9yPj6rRLUbOjKMpsMEWpNg==",
-      "path": "system.memory/4.5.2",
-      "hashPath": "system.memory.4.5.2.nupkg.sha512"
-    },
-    "System.Numerics.Vectors/4.4.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-UiLzLW+Lw6HLed1Hcg+8jSRttrbuXv7DANVj0DkL9g6EnnzbL75EB7EWsw5uRbhxd/4YdG8li5XizGWepmG3PQ==",
-      "path": "system.numerics.vectors/4.4.0",
-      "hashPath": "system.numerics.vectors.4.4.0.nupkg.sha512"
     },
     "System.ObjectModel/4.0.12": {
       "type": "package",
@@ -716,13 +657,6 @@
       "path": "system.runtime/4.1.0",
       "hashPath": "system.runtime.4.1.0.nupkg.sha512"
     },
-    "System.Runtime.CompilerServices.Unsafe/4.5.2": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-wprSFgext8cwqymChhrBLu62LMg/1u92bU+VOwyfBimSPVFXtsNqEWC92Pf9ofzJFlk4IHmJA75EDJn1b2goAQ==",
-      "path": "system.runtime.compilerservices.unsafe/4.5.2",
-      "hashPath": "system.runtime.compilerservices.unsafe.4.5.2.nupkg.sha512"
-    },
     "System.Runtime.Extensions/4.1.0": {
       "type": "package",
       "serviceable": true,
@@ -758,19 +692,19 @@
       "path": "system.threading.tasks/4.0.11",
       "hashPath": "system.threading.tasks.4.0.11.nupkg.sha512"
     },
-    "Tizen.NET/6.0.0.14792": {
+    "Tizen.NET/6.0.0.14821": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-tM6dVy1FcApLTA8PGWlFIZ7+rte5/1Egj2a/YB24GrTBmKAm24c+mL8uIkhv4UYNKQxFLxD1kYV36vRSJ96PdA==",
-      "path": "tizen.net/6.0.0.14792",
-      "hashPath": "tizen.net.6.0.0.14792.nupkg.sha512"
+      "sha512": "sha512-7aYCnyaW6F65mXG2AevxWETWjRswUIP0ft987mdwt+vGULKp9oN8pxmWGaNSB6Y8WL1woay1NTkKz8Kh42KtUg==",
+      "path": "tizen.net/6.0.0.14821",
+      "hashPath": "tizen.net.6.0.0.14821.nupkg.sha512"
     },
-    "Tizen.NET.API6/6.0.0.14792": {
+    "Tizen.NET.API6/6.0.0.14821": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-J0w2XYO3f8gk//TVdHhAqfk2/DeoVhtI0vHG3Ef1dzDdgoIk8eHlLgqN9yXeyo/S1xmE06/W8Kfe4mz7hscx5g==",
-      "path": "tizen.net.api6/6.0.0.14792",
-      "hashPath": "tizen.net.api6.6.0.0.14792.nupkg.sha512"
+      "sha512": "sha512-L6vQ4tlUmBQy4l06Vfzb1Eh85Dn+JfpPU8UwIF7oIKpSCw1cUuBKMNcuJf7E0RdR5bPwHP4GANFIvr9EV0IyVw==",
+      "path": "tizen.net.api6/6.0.0.14821",
+      "hashPath": "tizen.net.api6.6.0.0.14821.nupkg.sha512"
     },
     "Tizen.Wearable.CircularUI/1.2.0": {
       "type": "package",

@@ -1,12 +1,10 @@
 C:\Users\cyber\repos_new\GAssist\GAssist.Tizen.Wearable\bin\Debug\tizen40\tpkroot\bin\Google.Api.CommonProtos.dll
 C:\Users\cyber\repos_new\GAssist\GAssist.Tizen.Wearable\bin\Debug\tizen40\tpkroot\bin\Google.Protobuf.dll
 C:\Users\cyber\repos_new\GAssist\GAssist.Tizen.Wearable\bin\Debug\tizen40\tpkroot\bin\Scar.Common.RateLimiter.dll
-C:\Users\cyber\repos_new\GAssist\GAssist.Tizen.Wearable\bin\Debug\tizen40\tpkroot\bin\System.Memory.dll
 C:\Users\cyber\repos_new\GAssist\GAssist.Tizen.Wearable\bin\Debug\tizen40\tpkroot\bin\System.Reactive.Core.dll
 C:\Users\cyber\repos_new\GAssist\GAssist.Tizen.Wearable\bin\Debug\tizen40\tpkroot\bin\System.Reactive.Interfaces.dll
 C:\Users\cyber\repos_new\GAssist\GAssist.Tizen.Wearable\bin\Debug\tizen40\tpkroot\bin\System.Reactive.Linq.dll
 C:\Users\cyber\repos_new\GAssist\GAssist.Tizen.Wearable\bin\Debug\tizen40\tpkroot\bin\System.Reactive.PlatformServices.dll
-C:\Users\cyber\repos_new\GAssist\GAssist.Tizen.Wearable\bin\Debug\tizen40\tpkroot\bin\System.Runtime.CompilerServices.Unsafe.dll
 C:\Users\cyber\repos_new\GAssist\GAssist.Tizen.Wearable\bin\Debug\tizen40\tpkroot\bin\Tizen.Wearable.CircularUI.Forms.Renderer.dll
 C:\Users\cyber\repos_new\GAssist\GAssist.Tizen.Wearable\bin\Debug\tizen40\tpkroot\bin\Tizen.Wearable.CircularUI.Forms.dll
 C:\Users\cyber\repos_new\GAssist\GAssist.Tizen.Wearable\bin\Debug\tizen40\tpkroot\bin\Xamarin.Forms.Core.dll
@@ -18,7 +16,11 @@ C:\Users\cyber\repos_new\GAssist\GAssist.Tizen.Wearable\bin\Debug\tizen40\tpkroo
 C:\Users\cyber\repos_new\GAssist\GAssist.Tizen.Wearable\bin\Debug\tizen40\tpkroot\bin\GAssist.Tizen.Wearable.dll
 C:\Users\cyber\repos_new\GAssist\GAssist.Tizen.Wearable\bin\Debug\tizen40\tpkroot\bin\GAssist.Tizen.Wearable.pdb
 C:\Users\cyber\repos_new\GAssist\GAssist.Tizen.Wearable\bin\Debug\tizen40\tpkroot\res\xml\accessoryservices.xml
-C:\Users\cyber\repos_new\GAssist\GAssist.Tizen.Wearable\bin\Debug\tizen40\tpkroot\shared\res\GAssist.png
-C:\Users\cyber\repos_new\GAssist\GAssist.Tizen.Wearable\bin\Debug\tizen40\tpkroot\shared\res\GAssist.Tizen.Wearable.png
+C:\Users\cyber\repos_new\GAssist\GAssist.Tizen.Wearable\bin\Debug\tizen40\tpkroot\shared\res\listen_blue.png
+C:\Users\cyber\repos_new\GAssist\GAssist.Tizen.Wearable\bin\Debug\tizen40\tpkroot\shared\res\listen_disabled_allgreyedout.png
+C:\Users\cyber\repos_new\GAssist\GAssist.Tizen.Wearable\bin\Debug\tizen40\tpkroot\shared\res\listen_green.png
+C:\Users\cyber\repos_new\GAssist\GAssist.Tizen.Wearable\bin\Debug\tizen40\tpkroot\shared\res\round_cmyk.png
+C:\Users\cyber\repos_new\GAssist\GAssist.Tizen.Wearable\bin\Debug\tizen40\tpkroot\shared\res\stop_red.png
+C:\Users\cyber\repos_new\GAssist\GAssist.Tizen.Wearable\bin\Debug\tizen40\tpkroot\shared\res\test.html
 C:\Users\cyber\repos_new\GAssist\GAssist.Tizen.Wearable\bin\Debug\tizen40\tpkroot\tizen-manifest.xml
-C:\Users\cyber\repos_new\GAssist\GAssist.Tizen.Wearable\bin\Debug\tizen40\org.tizen.cybernetic87.GAssist.Tizen.Wearable_beta-0.5.1.tpk
+C:\Users\cyber\repos_new\GAssist\GAssist.Tizen.Wearable\bin\Debug\tizen40\org.tizen.cybernetic87.GAssist.Tizen.Wearable_beta-0.7.0.tpk

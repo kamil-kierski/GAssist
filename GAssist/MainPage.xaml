@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 
 <cui:IndexPage
     x:Class="GAssist.MainPage"
@@ -12,21 +12,31 @@
         <AbsoluteLayout>
             <cui:CircleScrollView
                 x:Name="ScrollView"
-                AbsoluteLayout.LayoutBounds="0.5,0,0.8,1"
+                AbsoluteLayout.LayoutBounds="0.5,0,1,1"
                 AbsoluteLayout.LayoutFlags="XProportional,SizeProportional">
-                <Label
+                <AbsoluteLayout
+                    x:Name="AbsoluteLayout"
+                    AbsoluteLayout.LayoutBounds="0.5,0,1,1"
+                    AbsoluteLayout.LayoutFlags="XProportional,SizeProportional" />
+                <!--<Label
                     x:Name="Label"
-                    FontSize="Small"
+                    Margin="0,50,0,0"
+                    FontSize="Micro"
                     HorizontalTextAlignment="Center"
-                    VerticalTextAlignment="Center" />
+                    VerticalTextAlignment="Center" />-->
+
             </cui:CircleScrollView>
+            <ImageButton
+                x:Name="ImageButton"
+                AbsoluteLayout.LayoutBounds="0.5,1,.5,.25"
+                AbsoluteLayout.LayoutFlags="All"
+                BackgroundColor="Transparent" />
         </AbsoluteLayout>
-        <cui:CirclePage.ActionButton>
-            <cui:ActionButtonItem
-                x:Name="ActionButtonItem"
-                BackgroundColor="Default"
-                Text="Listen" />
-        </cui:CirclePage.ActionButton>
+
+        <!--<cui:CirclePage.ActionButton>
+            <cui:ActionButtonItem x:Name="ActionButtonItem" Text="Listen" />
+        </cui:CirclePage.ActionButton>-->
+
     </cui:CirclePage>
     <cui:CirclePage
         x:Name="SettingsPage"
@@ -49,11 +59,20 @@
                                 DisplayStyle="Onoff"
                                 HorizontalOptions="Center"
                                 IsToggled="{Binding IsToggled}"
-                                VerticalOptions="Center" />
+                                VerticalOptions="End" />
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
             </cui:CircleListView.ItemTemplate>
         </cui:CircleListView>
+    </cui:CirclePage>
+    <cui:CirclePage>
+        <WebView
+            x:Name="WebView"
+            AnchorX="0.5"
+            AnchorY="0.5"
+            BackgroundColor="Black"
+            HeightRequest="360"
+            WidthRequest="360" />
     </cui:CirclePage>
 </cui:IndexPage>

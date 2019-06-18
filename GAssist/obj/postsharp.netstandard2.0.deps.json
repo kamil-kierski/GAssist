@@ -1583,14 +1583,14 @@
         },
         "runtimeTargets": {}
       },
-      "Tizen.NET/6.0.0.14792": {
+      "Tizen.NET/6.0.0.14810": {
         "dependencies": {
-          "Tizen.NET.API6": "6.0.0.14792"
+          "Tizen.NET.API6": "6.0.0.14810"
         },
         "runtime": {},
         "runtimeTargets": {}
       },
-      "Tizen.NET.API6/6.0.0.14792": {
+      "Tizen.NET.API6/6.0.0.14810": {
         "dependencies": {},
         "runtime": {},
         "runtimeTargets": {}
@@ -2559,19 +2559,19 @@
       "path": "system.runtime.interopservices.windowsruntime/4.0.1",
       "hashPath": "system.runtime.interopservices.windowsruntime.4.0.1.nupkg.sha512"
     },
-    "Tizen.NET/6.0.0.14792": {
+    "Tizen.NET/6.0.0.14810": {
       "type": "package",
       "serviceable": true,
-      "sha512": "tM6dVy1FcApLTA8PGWlFIZ7+rte5/1Egj2a/YB24GrTBmKAm24c+mL8uIkhv4UYNKQxFLxD1kYV36vRSJ96PdA==",
-      "path": "tizen.net/6.0.0.14792",
-      "hashPath": "tizen.net.6.0.0.14792.nupkg.sha512"
+      "sha512": "tpCwZC4CNm7r080z8NNBXcdh18ZrynYw19xQer7P3FFDslYxdE7XQtIXuM+6LoHwno4A3MDv+Ft4KFESVlgeaw==",
+      "path": "tizen.net/6.0.0.14810",
+      "hashPath": "tizen.net.6.0.0.14810.nupkg.sha512"
     },
-    "Tizen.NET.API6/6.0.0.14792": {
+    "Tizen.NET.API6/6.0.0.14810": {
       "type": "package",
       "serviceable": true,
-      "sha512": "J0w2XYO3f8gk//TVdHhAqfk2/DeoVhtI0vHG3Ef1dzDdgoIk8eHlLgqN9yXeyo/S1xmE06/W8Kfe4mz7hscx5g==",
-      "path": "tizen.net.api6/6.0.0.14792",
-      "hashPath": "tizen.net.api6.6.0.0.14792.nupkg.sha512"
+      "sha512": "qyStzRsy818Ve+NLOVLvOal4GxwA+Lx3hrKvGQUd3WKrA/x8YH/l6EgtCDoMolqBAJALi88E8wVDCoZJAHM6Cg==",
+      "path": "tizen.net.api6/6.0.0.14810",
+      "hashPath": "tizen.net.api6.6.0.0.14810.nupkg.sha512"
     },
     "Tizen.Wearable.CircularUI/1.2.0": {
       "type": "package",

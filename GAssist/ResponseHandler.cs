@@ -7,9 +7,8 @@ using Tizen.Multimedia;
 
 namespace GAssist
 {
-    internal static class ResponseHandler
+    public static class ResponseHandler
     {
-        private static bool _first = true;
         private static readonly RateLimiter rl = new RateLimiter();
         public static readonly AudioPlayer player = new AudioPlayer();
 
@@ -17,51 +16,64 @@ namespace GAssist
         {
             var ar = AssistResponse.Parser.ParseFrom(dataBytes);
 
-
-            if (ar.SpeechResults?.Any(i => i.Stability > 0.01) ?? false)
+            //if (ar.DialogStateOut.MicrophoneMode == DialogStateOut.Types.MicrophoneMode.CloseMicrophone)
+            //{
+            //    return;
+            //}
+            if (ar.ScreenOut != null)
             {
-                if (_first)
-                {
-                    MainPage.CreateProgressPopup();
-                    _first = false;
-                }
-
-                MainPage.UpdateProgressPopupText(ar.SpeechResults.First().Transcript);
-
-                if (ar.SpeechResults.Any(i => i.Stability == 1))
-                {
-                    AudioRecorder.StopRecording();
-                    MainPage.DismissProgressPopup();
-                    player.Prepare();
-                    _first = true;
-                }
+                var parsedResponse = HtmlResponseParser.ParseHtmlResponse(ar.ScreenOut.Data.ToStringUtf8());
+                MainPage.SetHtmlView(parsedResponse);
             }
 
-            if (!string.IsNullOrEmpty(ar.DialogStateOut?.SupplementalDisplayText))
+            if (ar.EventType == AssistResponse.Types.EventType.EndOfUtterance)
+            {
+                AudioRecorder.StopRecording();
+                MainPage.DismissProgressPopup();
+                player.Prepare();
+                return;
+            }
+
+            if (MainPage.pref.GetRawVoiceRecognitionText() && (ar.SpeechResults?.Any() ?? false))
+            {
+                if (ar.SpeechResults.Any(i => i.Stability == 1)) return;
+                MainPage.UpdateProgressPopupText(ar.SpeechResults.First().Transcript);
+                return;
+            }
+
+            if (!MainPage.pref.GetRawVoiceRecognitionText() &&
+                (ar.SpeechResults?.Any(i => i.Stability > 0.01) ?? false))
+            {
+                if (ar.SpeechResults.Any(i => i.Stability == 1)) return;
+                MainPage.UpdateProgressPopupText(ar.SpeechResults.First().Transcript);
+                return;
+            }
+
+            if (!String.IsNullOrEmpty(ar.DialogStateOut?.SupplementalDisplayText))
                 MainPage.SetLabelText(ar.DialogStateOut.SupplementalDisplayText);
+            //return;
 
 
             if ((ar.DialogStateOut?.VolumePercentage ?? 0) != 0)
             {
                 var newVolumeLevel = Convert.ToInt32(15 * ar.DialogStateOut.VolumePercentage / 100);
                 AudioManager.VolumeController.Level[AudioVolumeType.Media] = newVolumeLevel;
+                MainPage.SetButtonImage("listen_blue.png");
                 MainPage.SetActionButtonIsEnabled(true);
+                return;
             }
 
-            if (ar.ScreenOut != null) MainPage.SetLabelText(ar.ScreenOut.Data.ToStringUtf8());
 
             if (ar.AudioOut?.AudioData.Length > 0)
             {
                 player.WriteBuffer(ar.AudioOut.AudioData.ToByteArray());
 
-                if (!player.IsPlaying && player.BufferFileStream.Length >= 1600)
-                    rl.Debounce(TimeSpan.FromMilliseconds(100), () =>
+                if (!player.IsPlaying && player.Buffered >= 1600)
+                    rl.Throttle(TimeSpan.FromMilliseconds(2000), () =>
                     {
                         player.IsPlaying = true;
-                        Task.Run(player.Play);
-                        MainPage.SetActionButtonIsEnabled(true);
-                        MainPage.SetActionButtonText("Stop");
-                    });
+                        Task.Run((Action) player.Play);
+                    }, false, true);
             }
         }
     }

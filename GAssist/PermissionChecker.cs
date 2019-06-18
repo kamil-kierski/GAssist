@@ -3,7 +3,7 @@ using Tizen.Security;
 
 namespace GAssist
 {
-    internal class PermissionChecker
+    public class PermissionChecker
     {
         public const string recorderPermission = "http://tizen.org/privilege/recorder";
         public const string mediaStoragePermission = "http://tizen.org/privilege/mediastorage";

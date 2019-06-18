@@ -6,11 +6,11 @@ using Tizen.Multimedia;
 
 namespace GAssist
 {
-    internal static class AudioRecorder
+    public static class AudioRecorder
     {
         private static readonly int _bufferSize = 1600;
 
-        private static AudioCapture _audioCapture =
+        private static readonly AudioCapture _audioCapture =
             new AudioCapture(16000, AudioChannel.Mono, AudioSampleType.S16Le);
 
         public static volatile bool IsRecording;
@@ -18,48 +18,62 @@ namespace GAssist
         private static CancellationToken _token;
 
 
-        public static void StartRecording()
+        public static void StartRecording(bool htmlResponse)
         {
-            _audioCapture = new AudioCapture(16000, AudioChannel.Mono, AudioSampleType.S16Le);
-            _source = new CancellationTokenSource();
-            _token = _source.Token;
-            _audioCapture.Prepare();
+            //_audioCapture = new AudioCapture(16000, AudioChannel.Mono, AudioSampleType.S16Le);
             IsRecording = true;
+
+            var ar = new AssistRequest
+            {
+                Config = new AssistConfig
+                {
+                    AudioInConfig = new AudioInConfig
+                    {
+                        SampleRateHertz = 16000,
+                        Encoding = AudioInConfig.Types.Encoding.Linear16
+                    },
+                    ScreenOutConfig = new ScreenOutConfig
+                    {
+                        ScreenMode = htmlResponse
+                            ? ScreenOutConfig.Types.ScreenMode.Playing
+                            : ScreenOutConfig.Types.ScreenMode.Unspecified
+                    }
+                }
+            };
+
+            SapService.SendData(ar.ToByteArray());
+
+            _audioCapture.Prepare();
             Record();
-
-            AudioInConfig aic = new AudioInConfig();
-            aic.SampleRateHertz = 16000;
-            aic.Encoding = AudioInConfig.Types.Encoding.Linear16;
-
-            SapService.SendData(aic.ToByteArray());
         }
 
         public static void StopRecording()
         {
             _source.Cancel();
-            _audioCapture.Flush();
-            _audioCapture.Unprepare();
-            _audioCapture.Dispose();
             IsRecording = false;
         }
 
         private static void Record()
         {
+            _source = new CancellationTokenSource();
+            _token = _source.Token;
+
+
             Task.Factory.StartNew(() =>
             {
                 while (IsRecording)
                 {
-                    if (_token.IsCancellationRequested) return;
-                    //SapService.SendData(_audioCapture.Read(_bufferSize));
-                    byte[] chunk = _audioCapture.Read(_bufferSize);
+                    if (_token.IsCancellationRequested) break;
 
-                    AssistRequest ar = new AssistRequest
+                    var ar2 = new AssistRequest
                     {
-                        AudioIn = ByteString.CopyFrom(chunk)
+                        AudioIn = ByteString.CopyFrom(_audioCapture.Read(_bufferSize))
                     };
-                    SapService.SendData(ar.ToByteArray());
-                    Tizen.Log.Debug("RECORDER", "SENT " + ar.AudioIn);
+                    SapService.SendData(ar2.ToByteArray());
                 }
+
+                _audioCapture.Flush();
+                _audioCapture.Unprepare();
             }, _token);
         }
     }

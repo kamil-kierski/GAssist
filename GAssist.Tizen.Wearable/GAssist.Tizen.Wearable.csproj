@@ -23,9 +23,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Tizen.NET" Version="6.0.0.14792">
-      <ExcludeAssets>Runtime</ExcludeAssets>
-    </PackageReference>
     <PackageReference Include="Tizen.NET.Sdk" Version="1.0.1" />
     <PackageReference Include="Xamarin.Forms.Platform.Tizen" Version="2.5.1.444934" />
   </ItemGroup>

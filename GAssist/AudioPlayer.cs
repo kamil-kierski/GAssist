@@ -1,69 +1,73 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
-using System.Security.Cryptography;
-using Google.Assistant.Embedded.V1Alpha2;
-using Google.Protobuf;
 using Tizen.Multimedia;
 using Tizen.System;
 
 namespace GAssist
 {
-    internal class AudioPlayer
+    public class AudioPlayer
     {
-        public readonly Player Player = new Player();
-        public volatile bool IsPlaying = false;
+        private const string FileName = "temp.mp3";
+        private readonly string _bufferFilePath = Path.Combine(BufferFileDir, FileName);
+
+        private readonly Player _player = new Player();
+        public long Buffered;
+        public volatile bool IsPlaying;
+
+        private static string BufferFileDir { get; } =
+            StorageManager.Storages.First().GetAbsolutePath(DirectoryType.Others);
+
+        private FileStream BufferFileStream { get; set; }
         public event EventHandler PlaybackStopped;
-
-        public FileStream BufferFileStream { get; set; }
-
-        private static string BufferFilePath { get; } =
-            StorageManager.Storages.First().GetAbsolutePath(DirectoryType.Others)
-            + @"temp.mp3";
 
         public void Prepare()
         {
-            if (File.Exists(BufferFilePath)) File.Delete(BufferFilePath);
-            BufferFileStream = File.Create(BufferFilePath);
+            Buffered = 0;
+            if (File.Exists(_bufferFilePath)) File.Delete(_bufferFilePath);
+            BufferFileStream = File.Open(_bufferFilePath, FileMode.Create, FileAccess.ReadWrite);
 
-            Player.SetSource(new MediaUriSource(BufferFilePath));
-            Player.PlaybackCompleted += Player_PlaybackCompleted;
+            if (_player.State != PlayerState.Idle) _player.Unprepare();
+            _player.SetSource(new MediaUriSource(_bufferFilePath));
+            _player.PlaybackCompleted += Player_PlaybackCompleted;
         }
 
         public async void WriteBuffer(byte[] dataBytes)
         {
-            if (BufferFileStream != null && dataBytes.Length != 0)
+            if (BufferFileStream.CanWrite && dataBytes.Length != 0)
             {
-                await BufferFileStream.WriteAsync(dataBytes, 0, dataBytes.Length);
-                if (BufferFileStream.Length != 0) await BufferFileStream.FlushAsync();
+                BufferFileStream.Write(dataBytes, 0, dataBytes.Length);
+                Buffered = BufferFileStream.Length;
+                await BufferFileStream.FlushAsync();
             }
         }
 
         public void Play()
         {
-            Player.PrepareAsync().Wait();
-            Player.Start(); 
+            _player.PrepareAsync().Wait();
+            _player.Start();
+            IsPlaying = true;
+
+            MainPage.SetButtonImage("stop_red.png");
+            MainPage.SetActionButtonIsEnabled(true);
         }
 
         public void Stop()
         {
-            if (Player.State != PlayerState.Playing) return;
-            Player.Stop();
-            Player.Unprepare();
+            if (_player.State != PlayerState.Playing) return;
+            _player.Pause();
 
-            AudioInConfig aic = new AudioInConfig();
-            aic.SampleRateHertz = 16000;
-            aic.Encoding = AudioInConfig.Types.Encoding.Linear16;
-
-            SapService.SendData(aic.ToByteArray());
-
-            //BufferFileStream.FlushAsync();
-            BufferFileStream.Dispose();
-            BufferFileStream = null;
+            IsPlaying = false;
 
             //if (File.Exists(BufferFilePath)) File.Delete(BufferFilePath);
-            Player.PlaybackCompleted -= Player_PlaybackCompleted;
+            _player.PlaybackCompleted -= Player_PlaybackCompleted;
             OnPlaybackStopped(EventArgs.Empty);
+
+            BufferFileStream.Dispose();
+
+
+            MainPage.SetButtonImage("listen_blue.png");
+            MainPage.SetActionButtonIsEnabled(true);
         }
 
         private void Player_PlaybackCompleted(object sender, EventArgs e)
@@ -73,7 +77,7 @@ namespace GAssist
 
         protected virtual void OnPlaybackStopped(EventArgs args)
         {
-            this.PlaybackStopped?.Invoke(this, args);
+            PlaybackStopped?.Invoke(this, args);
         }
     }
 }

@@ -6,10 +6,9 @@
                     role="consumer" version="1.0">
       <supportedTransports>
         <transport type="TRANSPORT_BT" />
-        <transport type="TRANSPORT_WIFI" />
       </supportedTransports>
       <serviceChannel id="104" dataRate="high" priority="high"
-                      reliability="enable">
+                      reliability="disable">
       </serviceChannel>
     </serviceProfile>
   </application>

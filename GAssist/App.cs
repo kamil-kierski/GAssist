@@ -7,7 +7,6 @@ namespace GAssist
     {
         public App()
         {
-
             MainPage = new MainPage(this);
         }
 
@@ -21,7 +20,7 @@ namespace GAssist
 
         protected virtual void OnResumeEvent(EventArgs args)
         {
-            this.ResumeEvent?.Invoke(this, args);
+            ResumeEvent?.Invoke(this, args);
         }
     }
 }

@@ -8,12 +8,12 @@ using Tizen.Applications;
 
 namespace GAssist
 {
-    internal class SapService
+    public class SapService
     {
         private static Agent _agent;
         private static Connection _connection;
         private static Peer _peer;
-        private static readonly Timer _reconnectTimer = new Timer(3000);
+        private static readonly Timer _reconnectTimer = new Timer(10000);
         private readonly Action _onConnectedCallback;
 
         public SapService(Action onConnectedCallback)
@@ -23,33 +23,45 @@ namespace GAssist
             _reconnectTimer.AutoReset = true;
         }
 
-        private async void Connect()
+        public async Task Connect()
         {
-            try
+            _agent = await Agent.GetAgent("/org/cybernetic87/gassist");
+            _agent.PeerStatusChanged += PeerStatusChanged;
+            var peers = await _agent.FindPeers();
+            foreach (var peer in peers)
             {
-                _agent = await Agent.GetAgent("/org/cybernetic87/gassist");
-                _agent.PeerStatusChanged += PeerStatusChanged;
-                var peers = await _agent.FindPeers();
-                if (peers.Any())
-                {
-                    _peer = peers.First();
-                    _connection = _peer.Connection;
-                    _connection.DataReceived -= Connection_DataReceived;
-                    _connection.DataReceived += Connection_DataReceived;
-                    _connection.StatusChanged -= Connection_StatusChanged;
-                    _connection.StatusChanged += Connection_StatusChanged;
-                    await _connection.Open();
-                    if (_reconnectTimer.Enabled) _reconnectTimer.Stop();
-                }
-                else
-                {
-                    //Log.Debug("SAPSERVICE", "Any peer not found, trying to launch app");
-                    StartAndConnect();
-                }
+                Log.Debug("PEERS", peer.ApplicationName);
+                Log.Debug("PEERS", peer.Status.ToString());
+                Log.Debug("PEERS", peer.Connection.Status.ToString());
             }
-            catch (Exception ex)
+
+            if (peers.Any())
             {
-                // MainPage.ShowMessage(ex.Message, ex.ToString());
+                _peer = peers.First();
+                _connection = _peer.Connection;
+                _connection.DataReceived -= Connection_DataReceived;
+                _connection.DataReceived += Connection_DataReceived;
+                _connection.StatusChanged -= Connection_StatusChanged;
+                _connection.StatusChanged += Connection_StatusChanged;
+                try
+                {
+                    await _connection.Open();
+                }
+                catch (Exception e)
+                {
+                    StartAndConnect();
+                    Log.Debug("CONNECTION", e.Message);
+                }
+
+
+                MainPage.SetActionButtonIsEnabled(true);
+                MainPage.SetButtonImage("listen_blue.png");
+                if (_reconnectTimer.Enabled) _reconnectTimer.Stop();
+            }
+            else
+            {
+                MainPage.ShowMessage("Can't connect to phone service...retrying in 10s");
+                _reconnectTimer.Start();
             }
         }
 
@@ -81,10 +93,17 @@ namespace GAssist
 
         private void Connection_StatusChanged(object sender, ConnectionStatusEventArgs e)
         {
+            if (e.Reason == ConnectionStatus.Connected) _onConnectedCallback();
+
             if (e.Reason == ConnectionStatus.ConnectionClosed ||
                 e.Reason == ConnectionStatus.ConnectionLost || e.Reason == ConnectionStatus.Unknown)
             {
-                MainPage.ShowMessage("Lost connection, will try to reconnect in 3 seconds");
+                _connection.Dispose();
+                MainPage.ShowMessage("Lost connection, will try to reconnect in 10 seconds");
+                MainPage.IsConnected = false;
+                MainPage.SetActionButtonIsEnabled(false);
+                MainPage.SetButtonImage("listen_disabled_allgreyedout.png");
+
                 if (AudioRecorder.IsRecording)
                 {
                     AudioRecorder.StopRecording();
@@ -96,8 +115,6 @@ namespace GAssist
                 //    AudioPlayer.Stop();
                 //    AudioPlayer.IsPlaying = false;
                 //}
-
-                MainPage.SetActionButtonIsEnabled(false);
                 _connection.DataReceived -= Connection_DataReceived;
                 _connection.StatusChanged -= Connection_StatusChanged;
                 _connection.Close();
@@ -107,8 +124,6 @@ namespace GAssist
 
                 _reconnectTimer.Start();
             }
-
-            if (e.Reason == ConnectionStatus.Connected) _onConnectedCallback();
         }
 
         private void ReconnectTimer_Elapsed(object sender, ElapsedEventArgs e)
@@ -135,12 +150,10 @@ namespace GAssist
             }
         }
 
-        public void StartAndConnect()
+        public async void StartAndConnect()
         {
-            Task.Run(LaunchApp).Wait();
-            Task.Run(Connect).Wait();
-
-            MainPage.SetActionButtonIsEnabled(true);
+            //Task.Run((Action) LaunchApp).Wait();
+            await Connect();
         }
     }
 }

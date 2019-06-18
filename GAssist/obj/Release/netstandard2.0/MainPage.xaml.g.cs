@@ -14,23 +14,39 @@ namespace GAssist {
     
     
     [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("MainPage.xaml")]
-    public partial class MainPage : global::Tizen.Wearable.CircularUI.Forms.CirclePage {
+    public partial class MainPage : global::Tizen.Wearable.CircularUI.Forms.IndexPage {
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
+        private global::Tizen.Wearable.CircularUI.Forms.CirclePage Test;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private global::Tizen.Wearable.CircularUI.Forms.CircleScrollView ScrollView;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
-        private global::Xamarin.Forms.Label label;
+        private global::Xamarin.Forms.Label Label;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
-        private global::Tizen.Wearable.CircularUI.Forms.ActionButtonItem actionButton;
+        private global::Xamarin.Forms.ImageButton ImageButton;
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
+        private global::Tizen.Wearable.CircularUI.Forms.CirclePage SettingsPage;
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
+        private global::Tizen.Wearable.CircularUI.Forms.CircleListView MyScroller;
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
+        private global::Xamarin.Forms.WebView webView;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private void InitializeComponent() {
             global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(MainPage));
+            Test = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Tizen.Wearable.CircularUI.Forms.CirclePage>(this, "Test");
             ScrollView = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Tizen.Wearable.CircularUI.Forms.CircleScrollView>(this, "ScrollView");
-            label = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Label>(this, "label");
-            actionButton = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Tizen.Wearable.CircularUI.Forms.ActionButtonItem>(this, "actionButton");
+            Label = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Label>(this, "Label");
+            ImageButton = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.ImageButton>(this, "ImageButton");
+            SettingsPage = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Tizen.Wearable.CircularUI.Forms.CirclePage>(this, "SettingsPage");
+            MyScroller = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Tizen.Wearable.CircularUI.Forms.CircleListView>(this, "MyScroller");
+            webView = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.WebView>(this, "webView");
         }
     }
 }

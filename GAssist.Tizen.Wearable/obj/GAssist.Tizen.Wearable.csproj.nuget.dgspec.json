@@ -48,18 +48,9 @@
       "frameworks": {
         "tizen40": {
           "dependencies": {
-            "Tizen.NET": {
-              "include": "Compile, Build, Native, ContentFiles, Analyzers, BuildTransitive",
-              "target": "Package",
-              "version": "[6.0.0.14792, )"
-            },
             "Tizen.NET.Sdk": {
               "target": "Package",
               "version": "[1.0.1, )"
-            },
-            "Xamarin.Forms.Platform.Tizen": {
-              "target": "Package",
-              "version": "[2.5.1.444934, )"
             }
           },
           "imports": [
@@ -114,13 +105,9 @@
               "target": "Package",
               "version": "[1.6.0, )"
             },
-            "Google.Protobuf": {
-              "target": "Package",
-              "version": "[3.8.0, )"
-            },
             "Microsoft.NETCore.Platforms": {
               "target": "Package",
-              "version": "[2.2.1, )"
+              "version": "[3.0.0-preview6.19303.8, )"
             },
             "NETStandard.Library": {
               "suppressParent": "All",
@@ -142,7 +129,7 @@
             },
             "Tizen.NET": {
               "target": "Package",
-              "version": "[6.0.0.14792, )"
+              "version": "[6.0.0.14821, )"
             },
             "Tizen.Wearable.CircularUI": {
               "target": "Package",

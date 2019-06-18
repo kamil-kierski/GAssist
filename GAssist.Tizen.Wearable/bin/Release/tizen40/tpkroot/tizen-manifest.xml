@@ -1,13 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest package="org.tizen.cybernetic87.GAssist.Tizen.Wearable" version="0.1.1" api-version="4" xmlns="http://tizen.org/ns/packages">
+
+<manifest package="org.tizen.cybernetic87.GAssist.Tizen.Wearable_beta" version="0.6.2" api-version="4" xmlns="http://tizen.org/ns/packages">
+    <author email="cybernetic87@gmail.com">Kamil Kierski</author>
     <profile name="wearable" />
-    <ui-application appid="org.tizen.cybernetic87.GAssist" exec="GAssist.Tizen.Wearable.dll" multiple="false" nodisplay="false" taskmanage="true" type="dotnet" hw-acceleration="off" splash-screen-display="false" launch_mode="single">
-        <label>GAssistNet</label>
-        <icon>GAssist.Tizen.Wearable.png</icon>
-        <metadata key="http://tizen.org/metadata/prefer_dotnet_aot" value="true" />
+    <ui-application appid="org.tizen.cybernetic87.GAssist_beta" exec="GAssist.Tizen.Wearable.dll" multiple="false" nodisplay="false" taskmanage="true" type="dotnet" hw-acceleration="off" splash-screen-display="false" launch_mode="single">
+        <label>GAssistNet_Beta</label>
+        <icon>round_cmyk.png</icon>
         <metadata key="accessory-services-location" value="/res/xml/accessoryservices.xml" />
-        <background-category value="sensor" />
-        <background-category value="media" />
+        <metadata key="http://tizen.org/metadata/prefer_dotnet_aot" value="true" />
+        <background-category value="background-network" />
         <splash-screens />
     </ui-application>
     <shortcut-list />
@@ -18,6 +19,8 @@
         <privilege>http://tizen.org/privilege/appmanager.launch</privilege>
         <privilege>http://tizen.org/privilege/mediacapture</privilege>
         <privilege>http://tizen.org/privilege/mediastorage</privilege>
+        <privilege>http://tizen.org/privilege/internet</privilege>
+        <privilege>http://tizen.org/privilege/network.get</privilege>
     </privileges>
     <provides-appdefined-privileges />
     <feature name="http://tizen.org/feature/microphone">true</feature>

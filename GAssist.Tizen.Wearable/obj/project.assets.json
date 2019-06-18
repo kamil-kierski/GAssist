@@ -15,19 +15,19 @@
           "lib/netstandard1.3/Google.Api.CommonProtos.dll": {}
         }
       },
-      "Google.Protobuf/3.8.0": {
+      "Google.Protobuf/3.6.1": {
         "type": "package",
         "dependencies": {
-          "System.Memory": "4.5.2"
+          "NETStandard.Library": "1.6.1"
         },
         "compile": {
-          "lib/netstandard2.0/Google.Protobuf.dll": {}
+          "lib/netstandard1.0/Google.Protobuf.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.0/Google.Protobuf.dll": {}
+          "lib/netstandard1.0/Google.Protobuf.dll": {}
         }
       },
-      "Microsoft.NETCore.Platforms/2.2.1": {
+      "Microsoft.NETCore.Platforms/3.0.0-preview6.19303.8": {
         "type": "package",
         "compile": {
           "lib/netstandard1.0/_._": {}
@@ -61,15 +61,6 @@
         },
         "runtime": {
           "lib/netstandard2.0/Scar.Common.RateLimiter.dll": {}
-        }
-      },
-      "System.Buffers/4.4.0": {
-        "type": "package",
-        "compile": {
-          "ref/netstandard2.0/System.Buffers.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/System.Buffers.dll": {}
         }
       },
       "System.Collections/4.0.11": {
@@ -210,29 +201,6 @@
         },
         "runtime": {
           "lib/netstandard1.6/System.Linq.Expressions.dll": {}
-        }
-      },
-      "System.Memory/4.5.2": {
-        "type": "package",
-        "dependencies": {
-          "System.Buffers": "4.4.0",
-          "System.Numerics.Vectors": "4.4.0",
-          "System.Runtime.CompilerServices.Unsafe": "4.5.2"
-        },
-        "compile": {
-          "lib/netstandard2.0/System.Memory.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/System.Memory.dll": {}
-        }
-      },
-      "System.Numerics.Vectors/4.4.0": {
-        "type": "package",
-        "compile": {
-          "ref/netstandard2.0/System.Numerics.Vectors.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/System.Numerics.Vectors.dll": {}
         }
       },
       "System.ObjectModel/4.0.12": {
@@ -426,15 +394,6 @@
           "ref/netstandard1.5/System.Runtime.dll": {}
         }
       },
-      "System.Runtime.CompilerServices.Unsafe/4.5.2": {
-        "type": "package",
-        "compile": {
-          "ref/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll": {}
-        }
-      },
       "System.Runtime.Extensions/4.1.0": {
         "type": "package",
         "dependencies": {
@@ -493,7 +452,7 @@
           "ref/netstandard1.3/System.Threading.Tasks.dll": {}
         }
       },
-      "Tizen.NET/6.0.0.14792": {
+      "Tizen.NET/6.0.0.14821": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.Platforms": "2.0.0",
@@ -653,12 +612,11 @@
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
           "Google.Api.CommonProtos": "1.6.0",
-          "Google.Protobuf": "3.8.0",
-          "Microsoft.NETCore.Platforms": "2.2.1",
+          "Microsoft.NETCore.Platforms": "3.0.0-preview6.19303.8",
           "Samsung.Sap": "1.0.0",
           "Scar.Common.RateLimiter": "1.0.7016.37702",
           "System.Reactive": "3.1.1",
-          "Tizen.NET": "6.0.0.14792",
+          "Tizen.NET": "6.0.0.14821",
           "Tizen.Wearable.CircularUI": "1.2.0"
         },
         "compile": {
@@ -688,37 +646,32 @@
         "lib/netstandard1.3/Google.Api.CommonProtos.xml"
       ]
     },
-    "Google.Protobuf/3.8.0": {
-      "sha512": "BFgHpY9TySZWcC5FWfNio54kBx75VlgLY1uGVyYmn80xUew794FP8YHLrEuf+lEQSYT1IVyigvsAOZv+ZQkf+g==",
+    "Google.Protobuf/3.6.1": {
+      "sha512": "741fGeDQjixBJaU2j+0CbrmZXsNJkTn/hWbOh4fLVXndHsCclJmWznCPWrJmPoZKvajBvAz3e8ECJOUvRtwjNQ==",
       "type": "package",
-      "path": "google.protobuf/3.8.0",
+      "path": "google.protobuf/3.6.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "google.protobuf.3.8.0.nupkg.sha512",
+        "google.protobuf.3.6.1.nupkg.sha512",
         "google.protobuf.nuspec",
         "lib/net45/Google.Protobuf.dll",
-        "lib/net45/Google.Protobuf.pdb",
         "lib/net45/Google.Protobuf.xml",
         "lib/netstandard1.0/Google.Protobuf.dll",
-        "lib/netstandard1.0/Google.Protobuf.pdb",
-        "lib/netstandard1.0/Google.Protobuf.xml",
-        "lib/netstandard2.0/Google.Protobuf.dll",
-        "lib/netstandard2.0/Google.Protobuf.pdb",
-        "lib/netstandard2.0/Google.Protobuf.xml"
+        "lib/netstandard1.0/Google.Protobuf.xml"
       ]
     },
-    "Microsoft.NETCore.Platforms/2.2.1": {
-      "sha512": "QRGQDN9a/RflmqEpT47gJ04befYL1T+Z7ctRuBfc5PdUO3k5VnV5Y1glBMnWbAPGfP62x8EAwmZPNEpsYX/qig==",
+    "Microsoft.NETCore.Platforms/3.0.0-preview6.19303.8": {
+      "sha512": "9nE9InmtkWL1ZIAvzZPoe8zzr8JNrmyofR5++0NCLomrLSbR70b60hLXFE/7vXIVgbKdTo3CTsCcFTOSZoOIEw==",
       "type": "package",
-      "path": "microsoft.netcore.platforms/2.2.1",
+      "path": "microsoft.netcore.platforms/3.0.0-preview6.19303.8",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
         "lib/netstandard1.0/_._",
-        "microsoft.netcore.platforms.2.2.1.nupkg.sha512",
+        "microsoft.netcore.platforms.3.0.0-preview6.19303.8.nupkg.sha512",
         "microsoft.netcore.platforms.nuspec",
         "runtime.json",
         "useSharedDesignerContext.txt",
@@ -763,31 +716,6 @@
         "lib/netstandard2.0/Scar.Common.RateLimiter.pdb",
         "scar.common.ratelimiter.1.0.7016.37702.nupkg.sha512",
         "scar.common.ratelimiter.nuspec"
-      ]
-    },
-    "System.Buffers/4.4.0": {
-      "sha512": "AwarXzzoDwX6BgrhjoJsk6tUezZEozOT5Y9QKF94Gl4JK91I4PIIBkBco9068Y9/Dra8Dkbie99kXB8+1BaYKw==",
-      "type": "package",
-      "path": "system.buffers/4.4.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "LICENSE.TXT",
-        "THIRD-PARTY-NOTICES.TXT",
-        "lib/netcoreapp2.0/_._",
-        "lib/netstandard1.1/System.Buffers.dll",
-        "lib/netstandard1.1/System.Buffers.xml",
-        "lib/netstandard2.0/System.Buffers.dll",
-        "lib/netstandard2.0/System.Buffers.xml",
-        "ref/netcoreapp2.0/_._",
-        "ref/netstandard1.1/System.Buffers.dll",
-        "ref/netstandard1.1/System.Buffers.xml",
-        "ref/netstandard2.0/System.Buffers.dll",
-        "ref/netstandard2.0/System.Buffers.xml",
-        "system.buffers.4.4.0.nupkg.sha512",
-        "system.buffers.nuspec",
-        "useSharedDesignerContext.txt",
-        "version.txt"
       ]
     },
     "System.Collections/4.0.11": {
@@ -1412,70 +1340,6 @@
         "runtimes/aot/lib/netcore50/System.Linq.Expressions.dll",
         "system.linq.expressions.4.1.0.nupkg.sha512",
         "system.linq.expressions.nuspec"
-      ]
-    },
-    "System.Memory/4.5.2": {
-      "sha512": "fvq1GNmUFwbKv+aLVYYdgu/+gc8Nu9oFujOxIjPrsf+meis9JBzTPDL6aP/eeGOz9yPj6rRLUbOjKMpsMEWpNg==",
-      "type": "package",
-      "path": "system.memory/4.5.2",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "LICENSE.TXT",
-        "THIRD-PARTY-NOTICES.TXT",
-        "lib/netcoreapp2.1/_._",
-        "lib/netstandard1.1/System.Memory.dll",
-        "lib/netstandard1.1/System.Memory.xml",
-        "lib/netstandard2.0/System.Memory.dll",
-        "lib/netstandard2.0/System.Memory.xml",
-        "ref/netcoreapp2.1/_._",
-        "system.memory.4.5.2.nupkg.sha512",
-        "system.memory.nuspec",
-        "useSharedDesignerContext.txt",
-        "version.txt"
-      ]
-    },
-    "System.Numerics.Vectors/4.4.0": {
-      "sha512": "UiLzLW+Lw6HLed1Hcg+8jSRttrbuXv7DANVj0DkL9g6EnnzbL75EB7EWsw5uRbhxd/4YdG8li5XizGWepmG3PQ==",
-      "type": "package",
-      "path": "system.numerics.vectors/4.4.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "LICENSE.TXT",
-        "THIRD-PARTY-NOTICES.TXT",
-        "lib/MonoAndroid10/_._",
-        "lib/MonoTouch10/_._",
-        "lib/net46/System.Numerics.Vectors.dll",
-        "lib/net46/System.Numerics.Vectors.xml",
-        "lib/netcoreapp2.0/_._",
-        "lib/netstandard1.0/System.Numerics.Vectors.dll",
-        "lib/netstandard1.0/System.Numerics.Vectors.xml",
-        "lib/netstandard2.0/System.Numerics.Vectors.dll",
-        "lib/netstandard2.0/System.Numerics.Vectors.xml",
-        "lib/portable-net45+win8+wp8+wpa81/System.Numerics.Vectors.dll",
-        "lib/portable-net45+win8+wp8+wpa81/System.Numerics.Vectors.xml",
-        "lib/xamarinios10/_._",
-        "lib/xamarinmac20/_._",
-        "lib/xamarintvos10/_._",
-        "lib/xamarinwatchos10/_._",
-        "ref/MonoAndroid10/_._",
-        "ref/MonoTouch10/_._",
-        "ref/net46/System.Numerics.Vectors.dll",
-        "ref/net46/System.Numerics.Vectors.xml",
-        "ref/netcoreapp2.0/_._",
-        "ref/netstandard1.0/System.Numerics.Vectors.dll",
-        "ref/netstandard1.0/System.Numerics.Vectors.xml",
-        "ref/netstandard2.0/System.Numerics.Vectors.dll",
-        "ref/netstandard2.0/System.Numerics.Vectors.xml",
-        "ref/xamarinios10/_._",
-        "ref/xamarinmac20/_._",
-        "ref/xamarintvos10/_._",
-        "ref/xamarinwatchos10/_._",
-        "system.numerics.vectors.4.4.0.nupkg.sha512",
-        "system.numerics.vectors.nuspec",
-        "useSharedDesignerContext.txt",
-        "version.txt"
       ]
     },
     "System.ObjectModel/4.0.12": {
@@ -2137,31 +2001,6 @@
         "system.runtime.nuspec"
       ]
     },
-    "System.Runtime.CompilerServices.Unsafe/4.5.2": {
-      "sha512": "wprSFgext8cwqymChhrBLu62LMg/1u92bU+VOwyfBimSPVFXtsNqEWC92Pf9ofzJFlk4IHmJA75EDJn1b2goAQ==",
-      "type": "package",
-      "path": "system.runtime.compilerservices.unsafe/4.5.2",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "LICENSE.TXT",
-        "THIRD-PARTY-NOTICES.TXT",
-        "lib/netcoreapp2.0/System.Runtime.CompilerServices.Unsafe.dll",
-        "lib/netcoreapp2.0/System.Runtime.CompilerServices.Unsafe.xml",
-        "lib/netstandard1.0/System.Runtime.CompilerServices.Unsafe.dll",
-        "lib/netstandard1.0/System.Runtime.CompilerServices.Unsafe.xml",
-        "lib/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll",
-        "lib/netstandard2.0/System.Runtime.CompilerServices.Unsafe.xml",
-        "ref/netstandard1.0/System.Runtime.CompilerServices.Unsafe.dll",
-        "ref/netstandard1.0/System.Runtime.CompilerServices.Unsafe.xml",
-        "ref/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll",
-        "ref/netstandard2.0/System.Runtime.CompilerServices.Unsafe.xml",
-        "system.runtime.compilerservices.unsafe.4.5.2.nupkg.sha512",
-        "system.runtime.compilerservices.unsafe.nuspec",
-        "useSharedDesignerContext.txt",
-        "version.txt"
-      ]
-    },
     "System.Runtime.Extensions/4.1.0": {
       "sha512": "CUOHjTT/vgP0qGW22U4/hDlOqXmcPq5YicBaXdUR2UiUoLwBT+olO6we4DVbq57jeX5uXH2uerVZhf0qGj+sVQ==",
       "type": "package",
@@ -2495,10 +2334,10 @@
         "system.threading.tasks.nuspec"
       ]
     },
-    "Tizen.NET/6.0.0.14792": {
-      "sha512": "tM6dVy1FcApLTA8PGWlFIZ7+rte5/1Egj2a/YB24GrTBmKAm24c+mL8uIkhv4UYNKQxFLxD1kYV36vRSJ96PdA==",
+    "Tizen.NET/6.0.0.14821": {
+      "sha512": "7aYCnyaW6F65mXG2AevxWETWjRswUIP0ft987mdwt+vGULKp9oN8pxmWGaNSB6Y8WL1woay1NTkKz8Kh42KtUg==",
       "type": "package",
-      "path": "tizen.net/6.0.0.14792",
+      "path": "tizen.net/6.0.0.14821",
       "files": [
         ".nupkg.metadata",
         "build/tizen40/LICENSE.Microsoft.NETCore.App.txt",
@@ -3018,7 +2857,7 @@
         "build/tizen50/ref/mscorlib.dll",
         "build/tizen50/ref/netstandard.dll",
         "runtime.json",
-        "tizen.net.6.0.0.14792.nupkg.sha512",
+        "tizen.net.6.0.0.14821.nupkg.sha512",
         "tizen.net.nuspec"
       ]
     },
@@ -3197,12 +3036,13 @@
       ]
     },
     "Tizen.NET.Sdk/1.0.1": {
-      "sha512": "ZVbJ3+4mlQHPOsXLT9WD3rMSEYqvs7p1mlpvMV46kKMkn2l9qYGgj58GiFi2LJxuJ+wTxmjqw29SDUG46g7A0Q==",
+      "sha512": "g3LzVzxalGn3F1H9yf2lXFT4CHlRlrzqEU8MmSASMphWc8cWYCOkVEYM8eSX4fCmAAPhSklAQR42YYXclSMa8A==",
       "type": "package",
       "path": "tizen.net.sdk/1.0.1",
       "hasTools": true,
       "files": [
         ".nupkg.metadata",
+        ".signature.p7s",
         "build/Tizen.NET.Sdk.Common.targets",
         "build/Tizen.NET.Sdk.Packaging.targets",
         "build/Tizen.NET.Sdk.VisualStudio.targets",
@@ -3398,11 +3238,12 @@
       ]
     },
     "Xamarin.Forms.Platform.Tizen/2.5.1.444934": {
-      "sha512": "ARC+xqealjefujwmdmAxwB1TXhBcv2LhwOz3v1jR3Dl5W8SZ9oVY19vQUDkrkd1hM0afPBPK4WudYMj06OztFQ==",
+      "sha512": "3A2YI1poVgQDz61Wzos2fwXWyM4TjavWapo9hYnyoQL9IZ+HVM0vDqEDfhKEgaCp+8X4Hfr/nDnuFfbNvMNuMA==",
       "type": "package",
       "path": "xamarin.forms.platform.tizen/2.5.1.444934",
       "files": [
         ".nupkg.metadata",
+        ".signature.p7s",
         "lib/tizen40/Xamarin.Forms.Platform.Tizen.dll",
         "lib/tizen40/Xamarin.Forms.Platform.Tizen.pdb",
         "xamarin.forms.platform.tizen.2.5.1.444934.nupkg.sha512",
@@ -3418,7 +3259,6 @@
   "projectFileDependencyGroups": {
     "Tizen,Version=v4.0": [
       "GAssist >= 1.0.0",
-      "Tizen.NET >= 6.0.0.14792",
       "Tizen.NET.Sdk >= 1.0.1",
       "Xamarin.Forms.Platform.Tizen >= 2.5.1.444934"
     ]
@@ -3472,11 +3312,6 @@
     "frameworks": {
       "tizen40": {
         "dependencies": {
-          "Tizen.NET": {
-            "include": "Compile, Build, Native, ContentFiles, Analyzers, BuildTransitive",
-            "target": "Package",
-            "version": "[6.0.0.14792, )"
-          },
           "Tizen.NET.Sdk": {
             "target": "Package",
             "version": "[1.0.1, )"

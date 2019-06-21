@@ -51,6 +51,10 @@
             "Tizen.NET.Sdk": {
               "target": "Package",
               "version": "[1.0.1, )"
+            },
+            "Xamarin.Forms.Platform.Tizen": {
+              "target": "Package",
+              "version": "[2.5.1.444934, )"
             }
           },
           "imports": [

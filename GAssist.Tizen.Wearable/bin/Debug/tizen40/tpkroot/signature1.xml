@@ -8,7 +8,7 @@
     </Reference>
     <Reference URI="shared%2Fres%2Ftest.html">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
-      <DigestValue>Es6KO9k6n38zwadBAdvEp/mlV7UexkzoGlpkk23duJc=</DigestValue>
+      <DigestValue>YRhlaQteDomhH3S+iYlFlZD25pd+bIqByiTp9H6p/6s=</DigestValue>
     </Reference>
     <Reference URI="shared%2Fres%2Fstop_red.png">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
@@ -88,23 +88,23 @@
     </Reference>
     <Reference URI="bin%2FGAssist.Tizen.Wearable.pdb">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
-      <DigestValue>UHVT/nWzrQjRtpmO0U+e7e7WpwSkF0eKpi2i/X82doc=</DigestValue>
+      <DigestValue>fuATiM3ZkYczxEmBCGsKc0sVSaa454R5yCXlGOjAfAo=</DigestValue>
     </Reference>
     <Reference URI="bin%2FGAssist.Tizen.Wearable.dll">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
-      <DigestValue>GeV49HCHHvv8BMqmFpQnOjPAkee8xfNjF20446+4zCc=</DigestValue>
+      <DigestValue>migk/ESRHn8rkRfE4xKxZMAQF7rLm0UuCjRuxx6sxwI=</DigestValue>
     </Reference>
     <Reference URI="bin%2FGAssist.pdb">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
-      <DigestValue>gvWuWm0ta+FJWniXE+2Dz2mCjfZXwChqktpuIawuTUc=</DigestValue>
+      <DigestValue>lSDwhKgfQZ7c/ZN2SMQzwUVkDHlowPZmTDh0tnq5WD0=</DigestValue>
     </Reference>
     <Reference URI="bin%2FGAssist.dll">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
-      <DigestValue>fPPkoz3bI7DPwG/TU0aBfOPw9GYjLuZHcIjgMnXf8W4=</DigestValue>
+      <DigestValue>EuWKP5rHOrh/lW9L3WYtWXWLfKvw+pIs2tJkSjA0vos=</DigestValue>
     </Reference>
     <Reference URI="author-signature.xml">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
-      <DigestValue>8/wt6T0np5h6CO6gWwbDd4VtBOyudWbGa38S2rnDsSY=</DigestValue>
+      <DigestValue>+X/yF7Yob0Qu/KqeCYeGpA1zHZKJjJzv8HpM51NPXEM=</DigestValue>
     </Reference>
     <Reference URI="#prop">
       <Transforms>
@@ -115,11 +115,11 @@
     </Reference>
   </SignedInfo>
   <SignatureValue>
-HJ7PWlKZK1tUnMyLyRm9zkztnrCe2lRGb9Bsv5X3hQTlZj06vJ35BGIY0Xl/N0CTAimlDh27AaWU
-YjlpWoDGEMNIoNfC5n9FXALObKPtwAHmMRiE9kCDwfyrzAr7OPxNDVy4Si1pzaiYSBgukGSgxy2i
-ZZH/vSnQUlSh3KGD17N7SArB2IJ0iu7Cs2StbHe1ZSC5fo6G7xeg6pt8VGOrwFfhGA1rzd7KIBPw
-Rl2k11GWW03WbFeyyiI0a+Je69fwYX0TA8vx9Jd18KEyFGzmsSBQ+RAH5rlBsNZ7ih9dvbT/rHYK
-gCbl14mjvm0yxEI08qUBQFIpYDMA/Rw8daWWXw==
+COxZfZ5v1zoW5L4VWHoPbEY/JNl+RFdd3rNewxRJKjdRIdzJ+fCxOkevxacicqGe4cPtQ7dF63Vx
+x8QCIEREyGNEw2KJHfdmeRpvxrJuODKmL4G5sv5iGoHiiHK9/UuWJd8S8TU1svEzmYMmkIgehCZk
+9FuYRL/iVoCgc+QqCuzEum2JjkVb7mTV9OTzKktMIAsegUfLI6b3uTxSOm7ENkTs1iqv870ufGtm
+rgz256A6GVqKM/ikgebgl/z81kS7CX6CqPkPRu6pvElIccMC5KbRPe5lNWnrS7VaIZW5fL2X4Qw3
+XCZ7YAXmGWnbraW80+alW/oEFGUFPcNyeUYaCA==
 </SignatureValue>
   <KeyInfo>
     <X509Data>

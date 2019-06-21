@@ -12,8 +12,8 @@ namespace GAssist
     {
         private static Agent _agent;
         private static Connection _connection;
-        private static Peer _peer;
-        private static readonly Timer _reconnectTimer = new Timer(10000);
+        private Peer _peer;
+        private readonly Timer _reconnectTimer = new Timer(10000);
         private readonly Action _onConnectedCallback;
 
         public SapService(Action onConnectedCallback)
@@ -23,7 +23,7 @@ namespace GAssist
             _reconnectTimer.AutoReset = true;
         }
 
-        public async Task Connect()
+        private async Task Connect()
         {
             _agent = await Agent.GetAgent("/org/cybernetic87/gassist");
             _agent.PeerStatusChanged += PeerStatusChanged;
@@ -49,7 +49,7 @@ namespace GAssist
                 }
                 catch (Exception e)
                 {
-                    StartAndConnect();
+                    await StartAndConnect();
                     Log.Debug("CONNECTION", e.Message);
                 }
 
@@ -126,10 +126,10 @@ namespace GAssist
             }
         }
 
-        private void ReconnectTimer_Elapsed(object sender, ElapsedEventArgs e)
+        private async void ReconnectTimer_Elapsed(object sender, ElapsedEventArgs e)
         {
             MainPage.ShowMessage("Reconnecting...");
-            StartAndConnect();
+            await StartAndConnect();
         }
 
         private static void LaunchApp()
@@ -137,7 +137,7 @@ namespace GAssist
             var appControl = new AppControl();
             appControl.Operation = AppControlOperations.Default;
             appControl.ApplicationId = "com.samsung.w-manager-service";
-            appControl.ExtraData.Add("deeplink", "cybernetic87://gassist");
+            appControl.ExtraData.Add("deeplink", "samsungapps://ProductDetail/com.cybernetic87.GAssist");
             appControl.ExtraData.Add("type", "phone");
 
             try
@@ -150,9 +150,9 @@ namespace GAssist
             }
         }
 
-        public async void StartAndConnect()
+        public async Task StartAndConnect()
         {
-            //Task.Run((Action) LaunchApp).Wait();
+            Task.Run(LaunchApp).Wait();
             await Connect();
         }
     }

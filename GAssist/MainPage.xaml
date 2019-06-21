@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 
 <cui:IndexPage
     x:Class="GAssist.MainPage"
@@ -72,7 +72,6 @@
             AnchorX="0.5"
             AnchorY="0.5"
             BackgroundColor="Black"
-            HeightRequest="360"
-            WidthRequest="360" />
+            Scale="0.5" />
     </cui:CirclePage>
 </cui:IndexPage>

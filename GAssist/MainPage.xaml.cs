@@ -12,6 +12,7 @@ using Tizen.Wearable.CircularUI.Forms;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Application = Tizen.Applications.Application;
+using Color = Xamarin.Forms.Color;
 using Label = Xamarin.Forms.Label;
 using Layout = ElmSharp.Layout;
 using ProgressBar = ElmSharp.ProgressBar;
@@ -23,8 +24,6 @@ namespace GAssist
     public partial class MainPage
     {
         private static MainPage Mainpage;
-        private readonly SapService _sapService;
-        private readonly App app;
 
 
         private static readonly Popup _popUp = new Popup(TForms.NativeParent)
@@ -61,6 +60,8 @@ namespace GAssist
 
         //private readonly RateLimiter rl = new RateLimiter();
         public static bool IsConnected;
+        private readonly SapService _sapService;
+        private readonly App app;
 
 
         public MainPage(App app)
@@ -91,7 +92,7 @@ namespace GAssist
 
             _sapService = new SapService(OnConnectedCallback);
 
-            Task.Run(async () => await _sapService.Connect());
+            Task.Run(async () => await _sapService.StartAndConnect());
 
             if (pref.GetRecordOnResume()) app.ResumeEvent += App_ResumeEvent;
         }
@@ -151,42 +152,42 @@ namespace GAssist
         internal static void SetHtmlView(string html)
         {
             var htmlSource = new HtmlWebViewSource();
-            var test = File.ReadAllText(Path.Combine(imageDir, "test.html"));
+            //var test = File.ReadAllText(Path.Combine(imageDir, "test.html"));
 
 
-            var html_mod = string.Format(
-                "<iframe width=\"360\" height=\"360\" src=\"{0}\" style=\"-webkit-transform:scale(0.5);-moz-transform-scale(0.5);\"></iframe>",
-                html);
+            //var html_mod = string.Format(
+            //    "<iframe width=\"360\" height=\"360\" src=\"{0}\" style=\"-webkit-transform:scale(0.5);-moz-transform-scale(0.5);\"></iframe>",
+            //    html);
 
             //htmlSource.Html = html_mod;
-            htmlSource.Html = html_mod;
+            htmlSource.Html = html;
 
 
             Mainpage.WebView.Source = htmlSource;
-            //if (Mainpage.AbsoluteLayout.Children.OfType<WebView>().Any())
-            //{
-            //    Mainpage.AbsoluteLayout.Children.OfType<WebView>().First().Source = htmlSource;
-            //}
-            //else
-            //{
-            //    Mainpage.AbsoluteLayout.Children.Clear();
-            //    Mainpage.ScrollView.Orientation = ScrollOrientation.Both;
-            //    WebView webView = new WebView
-            //    {
-            //        ScaleX = 0.4,
-            //        ScaleY = 0.4,
-            //        Margin = new Thickness(0,30),
-            //        BackgroundColor = Color.Black,
-            //        AnchorX = 0,
-            //        AnchorY = 0,
-            //        Source = htmlSource,
-            //        HeightRequest = 1600,
-            //        WidthRequest = 1300
-            //    };
+            if (Mainpage.AbsoluteLayout.Children.OfType<WebView>().Any())
+            {
+                Mainpage.AbsoluteLayout.Children.OfType<WebView>().First().Source = htmlSource;
+            }
+            else
+            {
+                Mainpage.AbsoluteLayout.Children.Clear();
+                Mainpage.ScrollView.Orientation = ScrollOrientation.Both;
+                var webView = new WebView
+                {
+                    ScaleX = 0.5,
+                    ScaleY = 0.5,
+                    //Margin = new Thickness(0, 30),
+                    BackgroundColor = Color.Black,
+                    AnchorX = 0,
+                    AnchorY = 0,
+                    Source = htmlSource,
+                    HeightRequest = 720,
+                    WidthRequest = 720
+                };
 
 
-            //    Mainpage.AbsoluteLayout.Children.Add(webView);
-            //}
+                Mainpage.AbsoluteLayout.Children.Add(webView);
+            }
         }
 
         internal static void SetButtonImage(string img)

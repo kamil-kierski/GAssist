@@ -12,6 +12,7 @@ namespace GAssist
         private static readonly RateLimiter rl = new RateLimiter();
         public static readonly AudioPlayer player = new AudioPlayer();
 
+
         public static void HandleResponse(byte[] dataBytes)
         {
             var ar = AssistResponse.Parser.ParseFrom(dataBytes);
@@ -22,7 +23,7 @@ namespace GAssist
             //}
             if (ar.ScreenOut != null)
             {
-                var parsedResponse = HtmlResponseParser.ParseHtmlResponse(ar.ScreenOut.Data.ToStringUtf8());
+                var parsedResponse = HtmlResponseParser.ParseHtmlResponse2(ar.ScreenOut.Data.ToStringUtf8());
                 MainPage.SetHtmlView(parsedResponse);
             }
 
@@ -49,7 +50,7 @@ namespace GAssist
                 return;
             }
 
-            if (!String.IsNullOrEmpty(ar.DialogStateOut?.SupplementalDisplayText))
+            if (!string.IsNullOrEmpty(ar.DialogStateOut?.SupplementalDisplayText))
                 MainPage.SetLabelText(ar.DialogStateOut.SupplementalDisplayText);
             //return;
 
@@ -72,7 +73,7 @@ namespace GAssist
                     rl.Throttle(TimeSpan.FromMilliseconds(2000), () =>
                     {
                         player.IsPlaying = true;
-                        Task.Run((Action) player.Play);
+                        Task.Run(player.Play);
                     }, false, true);
             }
         }

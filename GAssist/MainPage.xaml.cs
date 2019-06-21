@@ -6,7 +6,6 @@ using System.IO;
 using System.Linq;
 using System.Reactive.Linq;
 using System.Threading.Tasks;
-using ElmSharp;
 using Tizen.Applications;
 using Tizen.Wearable.CircularUI.Forms;
 using Xamarin.Forms;
@@ -14,28 +13,16 @@ using Xamarin.Forms.Xaml;
 using Application = Tizen.Applications.Application;
 using Color = Xamarin.Forms.Color;
 using Label = Xamarin.Forms.Label;
-using Layout = ElmSharp.Layout;
-using ProgressBar = ElmSharp.ProgressBar;
-using TForms = Xamarin.Forms.Platform.Tizen.Forms;
+
 
 namespace GAssist
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainPage
     {
-        private static MainPage Mainpage;
+        private static MainPage _mainpage;
 
-
-        private static readonly Popup _popUp = new Popup(TForms.NativeParent)
-        {
-            Style = "circle"
-        };
-
-        private static readonly ProgressBar _progress = new ProgressBar(_popUp);
-        private static readonly Layout _layout = new Layout(_popUp);
-        private static readonly Box _box = new Box(_layout);
-
-        private static readonly Label label = new Label
+        private static readonly Label Label = new Label
         {
             HorizontalTextAlignment = TextAlignment.Center,
             VerticalTextAlignment = TextAlignment.Center,
@@ -45,43 +32,34 @@ namespace GAssist
             Text = "GAssist.Net Beta"
         };
 
-        private static readonly ElmSharp.Label _progressLabel = new ElmSharp.Label(TForms.NativeParent)
-        {
-            TextStyle =
-                "DEFAULT ='font=Tizen:style=Light color=#F9F9F9FF font_size=32 align=center valign=top wrap=mixed'",
-            LineWrapType = WrapType.Mixed,
-            LineWrapWidth = 300
-        };
+        public static ProgressPopup ProgressPopup;
 
         private static readonly string imageDir =
             "/opt/usr/apps/org.tizen.cybernetic87.GAssist.Tizen.Wearable_beta/shared/res";
 
-        public static readonly Preferences pref = new Preferences();
+        public static readonly Preferences Pref = new Preferences();
 
-        //private readonly RateLimiter rl = new RateLimiter();
-        public static bool IsConnected;
+        public static volatile bool IsConnected;
         private readonly SapService _sapService;
-        private readonly App app;
+        private readonly App _app;
 
 
         public MainPage(App app)
         {
-            Mainpage = this;
-            this.app = app;
+            _mainpage = this;
+            _app = app;
             InitializeComponent();
             LoadSettings();
-            CreateProgressPopup();
 
             PermissionChecker.CheckAndRequestPermission(PermissionChecker.recorderPermission);
             PermissionChecker.CheckAndRequestPermission(PermissionChecker.mediaStoragePermission);
 
-            ResponseHandler.player.PlaybackStopped += Player_PlaybackStopped;
-
+            AbsoluteLayout.Children.Add(Label);
             SetButtonImage("listen_disabled_allgreyedout.png");
             SetActionButtonIsEnabled(false);
             ImageButton.IsVisible = true;
             ImageButton.Pressed += ImageButton_PressedAsync;
-            AbsoluteLayout.Children.Add(label);
+            
 
 
             Observable.FromEventPattern(
@@ -93,8 +71,6 @@ namespace GAssist
             _sapService = new SapService(OnConnectedCallback);
 
             Task.Run(async () => await _sapService.StartAndConnect());
-
-            if (pref.GetRecordOnResume()) app.ResumeEvent += App_ResumeEvent;
         }
 
         public IList<Setting> Settings { get; set; } = new ObservableCollection<Setting>();
@@ -109,12 +85,14 @@ namespace GAssist
         {
             if (IsConnected && !AudioRecorder.IsRecording)
             {
-                if (ResponseHandler.player.IsPlaying) ResponseHandler.player.Stop();
+                if (ResponseHandler.Player.IsPlaying) ResponseHandler.Player.Stop();
                 StartListening();
             }
             else if (!IsConnected)
             {
+#pragma warning disable 4014
                 _sapService.StartAndConnect();
+#pragma warning restore 4014
             }
         }
 
@@ -129,23 +107,25 @@ namespace GAssist
             IsConnected = true;
             SetButtonImage("listen_blue.png");
             SetActionButtonIsEnabled(true);
+            ResponseHandler.Player.PlaybackStopped -= Player_PlaybackStopped;
+            ResponseHandler.Player.PlaybackStopped += Player_PlaybackStopped;
             var appid = Application.Current.ApplicationInfo.ApplicationId;
             var arc = new ApplicationRunningContext(appid);
-            if (pref.GetRecordOnStart() && arc.State == ApplicationRunningContext.AppState.Foreground) StartListening();
+            if (Pref.GetRecordOnStart() && arc.State == ApplicationRunningContext.AppState.Foreground) StartListening();
         }
 
         internal static void SetLabelText(string text)
         {
-            if (Mainpage.AbsoluteLayout.Children.OfType<Label>().Any())
+            if (_mainpage.AbsoluteLayout.Children.OfType<Label>().Any())
             {
-                Mainpage.AbsoluteLayout.Children.OfType<Label>().First().Text = text;
+                _mainpage.AbsoluteLayout.Children.OfType<Label>().First().Text = text;
             }
             else
             {
-                Mainpage.AbsoluteLayout.Children.Clear();
-                Mainpage.ScrollView.Orientation = ScrollOrientation.Vertical;
-                label.Text = text;
-                Mainpage.AbsoluteLayout.Children.Add(label);
+                _mainpage.AbsoluteLayout.Children.Clear();
+                _mainpage.ScrollView.Orientation = ScrollOrientation.Vertical;
+                Label.Text = text;
+                _mainpage.AbsoluteLayout.Children.Add(Label);
             }
         }
 
@@ -163,15 +143,15 @@ namespace GAssist
             htmlSource.Html = html;
 
 
-            Mainpage.WebView.Source = htmlSource;
-            if (Mainpage.AbsoluteLayout.Children.OfType<WebView>().Any())
+            _mainpage.WebView.Source = htmlSource;
+            if (_mainpage.AbsoluteLayout.Children.OfType<WebView>().Any())
             {
-                Mainpage.AbsoluteLayout.Children.OfType<WebView>().First().Source = htmlSource;
+                _mainpage.AbsoluteLayout.Children.OfType<WebView>().First().Source = htmlSource;
             }
             else
             {
-                Mainpage.AbsoluteLayout.Children.Clear();
-                Mainpage.ScrollView.Orientation = ScrollOrientation.Both;
+                _mainpage.AbsoluteLayout.Children.Clear();
+                _mainpage.ScrollView.Orientation = ScrollOrientation.Both;
                 var webView = new WebView
                 {
                     ScaleX = 0.5,
@@ -186,60 +166,19 @@ namespace GAssist
                 };
 
 
-                Mainpage.AbsoluteLayout.Children.Add(webView);
+                _mainpage.AbsoluteLayout.Children.Add(webView);
             }
         }
 
         internal static void SetButtonImage(string img)
         {
-            Mainpage.ImageButton.Source = ImageSource.FromFile(Path.Combine(imageDir, img));
+            _mainpage.ImageButton.Source = ImageSource.FromFile(Path.Combine(imageDir, img));
         }
 
         internal static void SetActionButtonIsEnabled(bool isEnable)
         {
-            Mainpage.ImageButton.IsEnabled = isEnable;
+            _mainpage.ImageButton.IsEnabled = isEnable;
         }
-
-        private static void CreateProgressPopup()
-        {
-            _layout.SetTheme("layout", "application", "default");
-            _popUp.SetContent(_layout);
-
-            _progress.Style = "process";
-            _progress.Show();
-            _progressLabel.Show();
-            _box.Show();
-            _layout.SetPartContent("elm.swallow.bg", _progress, false);
-            _layout.SetPartContent("elm.swallow.content", _box, false);
-            _box.PackEnd(_progressLabel);
-        }
-
-
-        private static void ShowProgressPopup()
-        {
-            _popUp.Show();
-            _progress.PlayPulse();
-        }
-
-
-        internal static void UpdateProgressPopupText(string text)
-        {
-            _progressLabel.Text = text;
-        }
-
-        internal static void DismissProgressPopup()
-        {
-            _popUp.Hide();
-            _progressLabel.Text = null;
-            _progress.StopPulse();
-        }
-
-        protected override bool OnBackButtonPressed()
-        {
-            _sapService.Disconnect();
-            return base.OnBackButtonPressed();
-        }
-
 
         //public void OnDisplayOn(object sender, DisplayStateChangedEventArgs args)
         //{
@@ -270,9 +209,9 @@ namespace GAssist
 
         private void ActionButton_ButtonClicked()
         {
-            if (ResponseHandler.player.IsPlaying)
+            if (ResponseHandler.Player.IsPlaying)
             {
-                ResponseHandler.player.Stop();
+                ResponseHandler.Player.Stop();
             }
             else if (!AudioRecorder.IsRecording && IsConnected)
             {
@@ -285,9 +224,13 @@ namespace GAssist
         private void StartListening()
         {
             //NoResponseTimer.Start();
-            AudioRecorder.StartRecording(pref.GetHtmlResponse());
+            AudioRecorder.StartRecording(Pref.GetHtmlResponse());
 
-            ShowProgressPopup();
+            if (ProgressPopup == null)
+            {
+                ProgressPopup = new ProgressPopup();
+            }
+            ProgressPopup.Show();
             //SetActionButtonIsEnabled(false); button dissapears when listening
             //SetButtonImage("listen_green.png"); maybe animated in future
             SetLabelText("");
@@ -314,24 +257,27 @@ namespace GAssist
 
         private void LoadSettings()
         {
+
             var autoListenOnResume = new Setting
             {
-                IsToggled = pref.GetRecordOnResume(),
+                IsToggled = Pref.GetRecordOnResume(),
                 Text = "Auto Listen On Resume"
             };
+
+            if (autoListenOnResume.IsToggled) _app.ResumeEvent += App_ResumeEvent;
 
             autoListenOnResume.PropertyChanged += (s, e) =>
             {
                 if (e.PropertyName == "IsToggled")
                 {
-                    pref.SetRecordOnResume(autoListenOnResume.IsToggled);
-                    if (autoListenOnResume.IsToggled) app.ResumeEvent += App_ResumeEvent;
-                    else app.ResumeEvent -= App_ResumeEvent;
+                    Pref.SetRecordOnResume(autoListenOnResume.IsToggled);
+                    if (autoListenOnResume.IsToggled) _app.ResumeEvent += App_ResumeEvent;
+                    else _app.ResumeEvent -= App_ResumeEvent;
                 }
             };
 
             var autoListenOnStart = new Setting
-                {IsToggled = pref.GetRecordOnStart(), Text = "Auto Listen On Start"};
+                {IsToggled = Pref.GetRecordOnStart(), Text = "Auto Listen On Start"};
 
             autoListenOnStart.PropertyChanged += (s, e) =>
             {
@@ -339,37 +285,37 @@ namespace GAssist
             };
 
             var rawVoiceRecognitionText = new Setting
-                {IsToggled = pref.GetRawVoiceRecognitionText(), Text = "Raw Voice Recognition Text"};
+                {IsToggled = Pref.GetRawVoiceRecognitionText(), Text = "Raw Voice Recognition Text"};
 
             rawVoiceRecognitionText.PropertyChanged += (s, e) =>
             {
-                if (e.PropertyName == "IsToggled") pref.SetRawVoiceRecognitionText(rawVoiceRecognitionText.IsToggled);
+                if (e.PropertyName == "IsToggled") Pref.SetRawVoiceRecognitionText(rawVoiceRecognitionText.IsToggled);
             };
 
             var largerFont = new Setting
-                {IsToggled = pref.GetLargerFont(), Text = "Larger font"};
+                {IsToggled = Pref.GetLargerFont(), Text = "Larger font"};
 
             largerFont.PropertyChanged += (s, e) =>
             {
                 if (e.PropertyName == "IsToggled")
                 {
-                    pref.SetLargerFont(largerFont.IsToggled);
-                    label.FontSize = largerFont.IsToggled
+                    Pref.SetLargerFont(largerFont.IsToggled);
+                    Label.FontSize = largerFont.IsToggled
                         ? Device.GetNamedSize(NamedSize.Small, typeof(ElmSharp.Label))
                         : Device.GetNamedSize(NamedSize.Micro, typeof(ElmSharp.Label));
                 }
             };
 
-            label.FontSize = largerFont.IsToggled
+            Label.FontSize = largerFont.IsToggled
                 ? Device.GetNamedSize(NamedSize.Small, typeof(ElmSharp.Label))
                 : Device.GetNamedSize(NamedSize.Micro, typeof(ElmSharp.Label));
 
             var htmlResponse = new Setting
-                {IsToggled = pref.GetHtmlResponse(), Text = "HTML Responses"};
+                {IsToggled = Pref.GetHtmlResponse(), Text = "HTML Responses"};
 
             htmlResponse.PropertyChanged += (s, e) =>
             {
-                if (e.PropertyName == "IsToggled") pref.SetHtmlResponse(htmlResponse.IsToggled);
+                if (e.PropertyName == "IsToggled") Pref.SetHtmlResponse(htmlResponse.IsToggled);
             };
 
             Settings.Add(largerFont);

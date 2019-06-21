@@ -9,8 +9,8 @@ namespace GAssist
 {
     public static class ResponseHandler
     {
-        private static readonly RateLimiter rl = new RateLimiter();
-        public static readonly AudioPlayer player = new AudioPlayer();
+        private static readonly RateLimiter Rl = new RateLimiter();
+        public static readonly AudioPlayer Player = new AudioPlayer();
 
 
         public static void HandleResponse(byte[] dataBytes)
@@ -30,23 +30,23 @@ namespace GAssist
             if (ar.EventType == AssistResponse.Types.EventType.EndOfUtterance)
             {
                 AudioRecorder.StopRecording();
-                MainPage.DismissProgressPopup();
-                player.Prepare();
+                MainPage.ProgressPopup.Dismiss();
+                Player.Prepare();
                 return;
             }
 
-            if (MainPage.pref.GetRawVoiceRecognitionText() && (ar.SpeechResults?.Any() ?? false))
+            if (MainPage.Pref.GetRawVoiceRecognitionText() && (ar.SpeechResults?.Any() ?? false))
             {
-                if (ar.SpeechResults.Any(i => i.Stability == 1)) return;
-                MainPage.UpdateProgressPopupText(ar.SpeechResults.First().Transcript);
+                if (ar.SpeechResults.Any(i => (int)i.Stability == 1)) return;
+                MainPage.ProgressPopup.UpdateText(ar.SpeechResults.First().Transcript);
                 return;
             }
 
-            if (!MainPage.pref.GetRawVoiceRecognitionText() &&
+            if (!MainPage.Pref.GetRawVoiceRecognitionText() &&
                 (ar.SpeechResults?.Any(i => i.Stability > 0.01) ?? false))
             {
-                if (ar.SpeechResults.Any(i => i.Stability == 1)) return;
-                MainPage.UpdateProgressPopupText(ar.SpeechResults.First().Transcript);
+                if (ar.SpeechResults.Any(i => (int)i.Stability == 1)) return;
+                MainPage.ProgressPopup.UpdateText(ar.SpeechResults.First().Transcript);
                 return;
             }
 
@@ -67,13 +67,13 @@ namespace GAssist
 
             if (ar.AudioOut?.AudioData.Length > 0)
             {
-                player.WriteBuffer(ar.AudioOut.AudioData.ToByteArray());
+                Player.WriteBuffer(ar.AudioOut.AudioData.ToByteArray());
 
-                if (!player.IsPlaying && player.Buffered >= 1600)
-                    rl.Throttle(TimeSpan.FromMilliseconds(2000), () =>
+                if (!Player.IsPlaying && Player.Buffered >= 1600)
+                    Rl.Throttle(TimeSpan.FromMilliseconds(2000), () =>
                     {
-                        player.IsPlaying = true;
-                        Task.Run(player.Play);
+                        Player.IsPlaying = true;
+                        Task.Run(Player.Play);
                     }, false, true);
             }
         }

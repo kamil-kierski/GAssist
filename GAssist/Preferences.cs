@@ -1,9 +1,13 @@
-﻿using Tizen.Applications;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using Tizen.Applications;
 
 namespace GAssist
 {
     public class Preferences
     {
+        public IList<Setting> Settings { get; set; } = new ObservableCollection<Setting>();
+
         public bool GetRecordOnStart()
         {
             if (Preference.Contains("record_on_start"))
@@ -58,5 +62,6 @@ namespace GAssist
                 return Preference.Get<bool>("html_response");
             return false;
         }
+
     }
 }

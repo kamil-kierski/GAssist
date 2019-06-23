@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 
 <cui:IndexPage
     x:Class="GAssist.MainPage"
@@ -12,12 +12,8 @@
         <AbsoluteLayout>
             <cui:CircleScrollView
                 x:Name="ScrollView"
-                AbsoluteLayout.LayoutBounds="0.5,0,1,1"
-                AbsoluteLayout.LayoutFlags="XProportional,SizeProportional">
-                <AbsoluteLayout
-                    x:Name="AbsoluteLayout"
-                    AbsoluteLayout.LayoutBounds="0.5,0,1,1"
-                    AbsoluteLayout.LayoutFlags="XProportional,SizeProportional" />
+                AbsoluteLayout.LayoutBounds="0.5,0.5,1,1"
+                AbsoluteLayout.LayoutFlags="All">
                 <!--<Label
                     x:Name="Label"
                     Margin="0,50,0,0"
@@ -68,10 +64,9 @@
     </cui:CirclePage>
     <cui:CirclePage>
         <WebView
-            x:Name="WebView"
+            x:Name="WebView3"
             AnchorX="0.5"
             AnchorY="0.5"
-            BackgroundColor="Black"
-            Scale="0.5" />
+            BackgroundColor="Black" />
     </cui:CirclePage>
 </cui:IndexPage>

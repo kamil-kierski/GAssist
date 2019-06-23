@@ -23,4 +23,4 @@ C:\Users\cyber\repos_new\GAssist\GAssist.Tizen.Wearable\bin\Debug\tizen40\tpkroo
 C:\Users\cyber\repos_new\GAssist\GAssist.Tizen.Wearable\bin\Debug\tizen40\tpkroot\shared\res\stop_red.png
 C:\Users\cyber\repos_new\GAssist\GAssist.Tizen.Wearable\bin\Debug\tizen40\tpkroot\shared\res\test.html
 C:\Users\cyber\repos_new\GAssist\GAssist.Tizen.Wearable\bin\Debug\tizen40\tpkroot\tizen-manifest.xml
-C:\Users\cyber\repos_new\GAssist\GAssist.Tizen.Wearable\bin\Debug\tizen40\org.tizen.cybernetic87.GAssist.Tizen.Wearable_beta-0.7.0.tpk
+C:\Users\cyber\repos_new\GAssist\GAssist.Tizen.Wearable\bin\Debug\tizen40\org.tizen.cybernetic87.GAssist.Tizen.Wearable_beta-0.7.1.tpk

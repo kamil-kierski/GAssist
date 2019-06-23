@@ -23,8 +23,8 @@ namespace GAssist
             //}
             if (ar.ScreenOut != null)
             {
-                var parsedResponse = HtmlResponseParser.ParseHtmlResponse2(ar.ScreenOut.Data.ToStringUtf8());
-                MainPage.SetHtmlView(parsedResponse);
+                //var parsedResponse = HtmlResponseParser.ParseHtmlResponse(ar.ScreenOut.Data.ToStringUtf8());
+                MainPage.SetHtmlView(ar.ScreenOut.Data.ToStringUtf8());
             }
 
             if (ar.EventType == AssistResponse.Types.EventType.EndOfUtterance)
@@ -70,7 +70,7 @@ namespace GAssist
                 Player.WriteBuffer(ar.AudioOut.AudioData.ToByteArray());
 
                 if (!Player.IsPlaying && Player.Buffered >= 1600)
-                    Rl.Throttle(TimeSpan.FromMilliseconds(2000), () =>
+                    Rl.Throttle(TimeSpan.FromMilliseconds(1500), () =>
                     {
                         Player.IsPlaying = true;
                         Task.Run(Player.Play);

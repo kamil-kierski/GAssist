@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Reactive.Linq;
 using System.Threading.Tasks;
 using Tizen.Applications;
@@ -11,9 +10,6 @@ using Tizen.Wearable.CircularUI.Forms;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Application = Tizen.Applications.Application;
-using Color = Xamarin.Forms.Color;
-using Label = Xamarin.Forms.Label;
-
 
 namespace GAssist
 {
@@ -26,11 +22,25 @@ namespace GAssist
         {
             HorizontalTextAlignment = TextAlignment.Center,
             VerticalTextAlignment = TextAlignment.Center,
-            VerticalOptions = LayoutOptions.Center,
-            HorizontalOptions = LayoutOptions.Center,
+            VerticalOptions = LayoutOptions.CenterAndExpand,
+            HorizontalOptions = LayoutOptions.Fill,
             Margin = new Thickness(50, 50),
-            Text = "GAssist.Net Beta"
+            Text = "GAssist.Net\nPress listen button to start"
         };
+
+        private static readonly WebView WebView2 = new WebView
+        {
+            ScaleX = 0.5,
+            ScaleY = 0.5,
+            //Margin = new Thickness(0, 30),
+            BackgroundColor = Color.Black,
+            AnchorX = 0,
+            AnchorY = 0,
+            HeightRequest = 720,
+            WidthRequest = 720
+        };
+
+        public static InformationPopup TextPopUp;
 
         public static ProgressPopup ProgressPopup;
 
@@ -54,12 +64,19 @@ namespace GAssist
             PermissionChecker.CheckAndRequestPermission(PermissionChecker.recorderPermission);
             PermissionChecker.CheckAndRequestPermission(PermissionChecker.mediaStoragePermission);
 
-            AbsoluteLayout.Children.Add(Label);
+            _mainpage.ScrollView.Content = Label;
             SetButtonImage("listen_disabled_allgreyedout.png");
             SetActionButtonIsEnabled(false);
             ImageButton.IsVisible = true;
             ImageButton.Pressed += ImageButton_PressedAsync;
-            
+
+            TextPopUp = new InformationPopup();
+
+            TextPopUp.BackButtonPressed += (s, e) =>
+            {
+                TextPopUp.Dismiss();
+            };
+
 
 
             Observable.FromEventPattern(
@@ -70,7 +87,7 @@ namespace GAssist
 
             _sapService = new SapService(OnConnectedCallback);
 
-            Task.Run(async () => await _sapService.StartAndConnect());
+            Task.Run(async () => await _sapService.Connect());
         }
 
         public IList<Setting> Settings { get; set; } = new ObservableCollection<Setting>();
@@ -91,7 +108,7 @@ namespace GAssist
             else if (!IsConnected)
             {
 #pragma warning disable 4014
-                _sapService.StartAndConnect();
+                _sapService.Connect();
 #pragma warning restore 4014
             }
         }
@@ -116,16 +133,15 @@ namespace GAssist
 
         internal static void SetLabelText(string text)
         {
-            if (_mainpage.AbsoluteLayout.Children.OfType<Label>().Any())
+            if (_mainpage.ScrollView.Content == Label)
             {
-                _mainpage.AbsoluteLayout.Children.OfType<Label>().First().Text = text;
+                Label.Text = text;
             }
             else
             {
-                _mainpage.AbsoluteLayout.Children.Clear();
-                _mainpage.ScrollView.Orientation = ScrollOrientation.Vertical;
                 Label.Text = text;
-                _mainpage.AbsoluteLayout.Children.Add(Label);
+                _mainpage.ScrollView.Content = Label;
+                _mainpage.ScrollView.Orientation = ScrollOrientation.Vertical;
             }
         }
 
@@ -143,30 +159,16 @@ namespace GAssist
             htmlSource.Html = html;
 
 
-            _mainpage.WebView.Source = htmlSource;
-            if (_mainpage.AbsoluteLayout.Children.OfType<WebView>().Any())
+            //_mainpage.WebView.Source = htmlSource;
+            if (_mainpage.ScrollView.Content == WebView2)
             {
-                _mainpage.AbsoluteLayout.Children.OfType<WebView>().First().Source = htmlSource;
+                WebView2.Source = htmlSource;
             }
             else
             {
-                _mainpage.AbsoluteLayout.Children.Clear();
+                WebView2.Source = htmlSource;
+                _mainpage.ScrollView.Content = WebView2;
                 _mainpage.ScrollView.Orientation = ScrollOrientation.Both;
-                var webView = new WebView
-                {
-                    ScaleX = 0.5,
-                    ScaleY = 0.5,
-                    //Margin = new Thickness(0, 30),
-                    BackgroundColor = Color.Black,
-                    AnchorX = 0,
-                    AnchorY = 0,
-                    Source = htmlSource,
-                    HeightRequest = 720,
-                    WidthRequest = 720
-                };
-
-
-                _mainpage.AbsoluteLayout.Children.Add(webView);
             }
         }
 
@@ -329,7 +331,7 @@ namespace GAssist
 
         public static void ShowMessage(string message, string debugLog = null)
         {
-            Toast.DisplayText(message, 1000);
+            Toast.DisplayText(message, 2000);
             Debug.WriteLine("[DEBUG] " + message);
         }
     }

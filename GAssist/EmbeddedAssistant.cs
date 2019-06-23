@@ -238,7 +238,7 @@ namespace Google.Assistant.Embedded.V1Alpha2 {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(Config, other.Config)) return false;
+      if (!Equals(Config, other.Config)) return false;
       if (AudioIn != other.AudioIn) return false;
       if (TypeCase != other.TypeCase) return false;
       return Equals(_unknownFields, other._unknownFields);
@@ -501,12 +501,12 @@ namespace Google.Assistant.Embedded.V1Alpha2 {
         return true;
       }
       if (EventType != other.EventType) return false;
-      if (!object.Equals(AudioOut, other.AudioOut)) return false;
-      if (!object.Equals(ScreenOut, other.ScreenOut)) return false;
-      if (!object.Equals(DeviceAction, other.DeviceAction)) return false;
+      if (!Equals(AudioOut, other.AudioOut)) return false;
+      if (!Equals(ScreenOut, other.ScreenOut)) return false;
+      if (!Equals(DeviceAction, other.DeviceAction)) return false;
       if(!speechResults_.Equals(other.speechResults_)) return false;
-      if (!object.Equals(DialogStateOut, other.DialogStateOut)) return false;
-      if (!object.Equals(DebugInfo, other.DebugInfo)) return false;
+      if (!Equals(DialogStateOut, other.DialogStateOut)) return false;
+      if (!Equals(DebugInfo, other.DebugInfo)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -1040,13 +1040,13 @@ namespace Google.Assistant.Embedded.V1Alpha2 {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(AudioInConfig, other.AudioInConfig)) return false;
+      if (!Equals(AudioInConfig, other.AudioInConfig)) return false;
       if (TextQuery != other.TextQuery) return false;
-      if (!object.Equals(AudioOutConfig, other.AudioOutConfig)) return false;
-      if (!object.Equals(ScreenOutConfig, other.ScreenOutConfig)) return false;
-      if (!object.Equals(DialogStateIn, other.DialogStateIn)) return false;
-      if (!object.Equals(DeviceConfig, other.DeviceConfig)) return false;
-      if (!object.Equals(DebugConfig, other.DebugConfig)) return false;
+      if (!Equals(AudioOutConfig, other.AudioOutConfig)) return false;
+      if (!Equals(ScreenOutConfig, other.ScreenOutConfig)) return false;
+      if (!Equals(DialogStateIn, other.DialogStateIn)) return false;
+      if (!Equals(DeviceConfig, other.DeviceConfig)) return false;
+      if (!Equals(DebugConfig, other.DebugConfig)) return false;
       if (TypeCase != other.TypeCase) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -1982,7 +1982,7 @@ namespace Google.Assistant.Embedded.V1Alpha2 {
       }
       if (ConversationState != other.ConversationState) return false;
       if (LanguageCode != other.LanguageCode) return false;
-      if (!object.Equals(DeviceLocation, other.DeviceLocation)) return false;
+      if (!Equals(DeviceLocation, other.DeviceLocation)) return false;
       if (IsNewConversation != other.IsNewConversation) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -3434,7 +3434,7 @@ namespace Google.Assistant.Embedded.V1Alpha2 {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(Coordinates, other.Coordinates)) return false;
+      if (!Equals(Coordinates, other.Coordinates)) return false;
       if (TypeCase != other.TypeCase) return false;
       return Equals(_unknownFields, other._unknownFields);
     }

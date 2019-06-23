@@ -13,7 +13,7 @@ namespace GAssist
         private static Agent _agent;
         private static Connection _connection;
         private Peer _peer;
-        private readonly Timer _reconnectTimer = new Timer(10000);
+        private readonly Timer _reconnectTimer = new Timer(3000);
         private readonly Action _onConnectedCallback;
 
         public SapService(Action onConnectedCallback)
@@ -23,17 +23,11 @@ namespace GAssist
             _reconnectTimer.AutoReset = true;
         }
 
-        private async Task Connect()
+        public async Task Connect()
         {
             _agent = await Agent.GetAgent("/org/cybernetic87/gassist");
             _agent.PeerStatusChanged += PeerStatusChanged;
             var peers = await _agent.FindPeers();
-            foreach (var peer in peers)
-            {
-                Log.Debug("PEERS", peer.ApplicationName);
-                Log.Debug("PEERS", peer.Status.ToString());
-                Log.Debug("PEERS", peer.Connection.Status.ToString());
-            }
 
             if (peers.Any())
             {
@@ -49,7 +43,7 @@ namespace GAssist
                 }
                 catch (Exception e)
                 {
-                    await StartAndConnect();
+                    await Connect();
                     Log.Debug("CONNECTION", e.Message);
                 }
 
@@ -60,8 +54,10 @@ namespace GAssist
             }
             else
             {
-                MainPage.ShowMessage("Can't connect to phone service...retrying in 10s");
-                _reconnectTimer.Start();
+                MainPage.TextPopUp.Text = "Companion app is not installed, check your phone.";
+                MainPage.TextPopUp.Show();
+                //MainPage.ShowMessage("Companion app is not installed, check your phone.");
+                LaunchApp();
             }
         }
 
@@ -75,9 +71,10 @@ namespace GAssist
             _agent = null;
         }
 
-        private static void PeerStatusChanged(object sender, PeerStatusEventArgs e)
+        private async void PeerStatusChanged(object sender, PeerStatusEventArgs e)
         {
-            //if (e.Peer == peer) ShowMessage($"Peer Available: {e.Available}, Status: {e.Peer.Status}");
+            MainPage.TextPopUp.Text = "Configure companion app on phone";
+            await Connect();
         }
 
         internal static void SendData(byte[] dataBytes)
@@ -93,7 +90,11 @@ namespace GAssist
 
         private void Connection_StatusChanged(object sender, ConnectionStatusEventArgs e)
         {
-            if (e.Reason == ConnectionStatus.Connected) _onConnectedCallback();
+            if (e.Reason == ConnectionStatus.Connected)
+            {
+                MainPage.TextPopUp.Dismiss();
+                _onConnectedCallback();
+            }
 
             if (e.Reason == ConnectionStatus.ConnectionClosed ||
                 e.Reason == ConnectionStatus.ConnectionLost || e.Reason == ConnectionStatus.Unknown)
@@ -129,7 +130,7 @@ namespace GAssist
         private async void ReconnectTimer_Elapsed(object sender, ElapsedEventArgs e)
         {
             MainPage.ShowMessage("Reconnecting...");
-            await StartAndConnect();
+            await Connect();
         }
 
         private static void LaunchApp()
@@ -137,7 +138,7 @@ namespace GAssist
             var appControl = new AppControl();
             appControl.Operation = AppControlOperations.Default;
             appControl.ApplicationId = "com.samsung.w-manager-service";
-            appControl.ExtraData.Add("deeplink", "samsungapps://ProductDetail/com.cybernetic87.GAssist");
+            appControl.ExtraData.Add("deeplink", "https://play.google.com/store/apps/details?id=com.cybernetic87.GAssist");
             appControl.ExtraData.Add("type", "phone");
 
             try
@@ -148,12 +149,6 @@ namespace GAssist
             {
                 Log.Debug("APPLAUNCH", "APP NOT FOUND ?");
             }
-        }
-
-        public async Task StartAndConnect()
-        {
-            Task.Run(LaunchApp).Wait();
-            await Connect();
         }
     }
 }

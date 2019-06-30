@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System.Runtime.CompilerServices;
+using System.Threading;
 using System.Threading.Tasks;
 using Google.Assistant.Embedded.V1Alpha2;
 using Google.Protobuf;
@@ -13,10 +14,10 @@ namespace GAssist
         private static readonly AudioCapture _audioCapture =
             new AudioCapture(16000, AudioChannel.Mono, AudioSampleType.S16Le);
 
-        public static volatile bool IsRecording;
         private static CancellationTokenSource _source;
         private static CancellationToken _token;
 
+        public static bool IsRecording { get; [MethodImpl(MethodImplOptions.Synchronized)]private set; }
 
         public static void StartRecording(bool htmlResponse)
         {
@@ -49,8 +50,9 @@ namespace GAssist
 
         public static void StopRecording()
         {
-            _source.Cancel();
             IsRecording = false;
+            _source.Cancel();
+            
         }
 
         private static void Record()
@@ -59,12 +61,10 @@ namespace GAssist
             _token = _source.Token;
 
 
-            Task.Factory.StartNew(() =>
+            Task.Run(() =>
             {
-                while (IsRecording)
+                while (!_token.IsCancellationRequested)
                 {
-                    if (_token.IsCancellationRequested) break;
-
                     var ar2 = new AssistRequest
                     {
                         AudioIn = ByteString.CopyFrom(_audioCapture.Read(_bufferSize))

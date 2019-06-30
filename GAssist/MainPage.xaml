@@ -5,34 +5,20 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:cui="clr-namespace:Tizen.Wearable.CircularUI.Forms;assembly=Tizen.Wearable.CircularUI.Forms"
-    xmlns:local="clr-namespace:GAssist;assembly=GAssist"
-    xmlns:sys="clr-namespace:System;assembly=netstandard">
+    xmlns:local="clr-namespace:GAssist;assembly=GAssist">
 
-    <cui:CirclePage x:Name="Test" RotaryFocusObject="{x:Reference ScrollView}">
+    <cui:CirclePage RotaryFocusObject="{x:Reference ScrollView}">
         <AbsoluteLayout>
             <cui:CircleScrollView
                 x:Name="ScrollView"
                 AbsoluteLayout.LayoutBounds="0.5,0.5,1,1"
-                AbsoluteLayout.LayoutFlags="All">
-                <!--<Label
-                    x:Name="Label"
-                    Margin="0,50,0,0"
-                    FontSize="Micro"
-                    HorizontalTextAlignment="Center"
-                    VerticalTextAlignment="Center" />-->
-
-            </cui:CircleScrollView>
+                AbsoluteLayout.LayoutFlags="All" />
             <ImageButton
                 x:Name="ImageButton"
                 AbsoluteLayout.LayoutBounds="0.5,1,.5,.25"
                 AbsoluteLayout.LayoutFlags="All"
                 BackgroundColor="Transparent" />
         </AbsoluteLayout>
-
-        <!--<cui:CirclePage.ActionButton>
-            <cui:ActionButtonItem x:Name="ActionButtonItem" Text="Listen" />
-        </cui:CirclePage.ActionButton>-->
-
     </cui:CirclePage>
     <cui:CirclePage
         x:Name="SettingsPage"
@@ -61,12 +47,5 @@
                 </DataTemplate>
             </cui:CircleListView.ItemTemplate>
         </cui:CircleListView>
-    </cui:CirclePage>
-    <cui:CirclePage>
-        <WebView
-            x:Name="WebView3"
-            AnchorX="0.5"
-            AnchorY="0.5"
-            BackgroundColor="Black" />
     </cui:CirclePage>
 </cui:IndexPage>

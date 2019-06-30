@@ -13,8 +13,11 @@ namespace GAssist
         private static Agent _agent;
         private static Connection _connection;
         private Peer _peer;
-        private readonly Timer _reconnectTimer = new Timer(3000);
+        private readonly Timer _reconnectTimer = new Timer(5000);
         private readonly Action _onConnectedCallback;
+        private ResponseHandler responseHandler;
+
+        public static bool IsConnected { get; private set; }
 
         public SapService(Action onConnectedCallback)
         {
@@ -43,8 +46,10 @@ namespace GAssist
                 }
                 catch (Exception e)
                 {
+                    MainPage.TextPopUp.Text = "Phone app is not configured configure the phone app.";
+                    MainPage.TextPopUp.Show();
+                    await Task.Delay(2000);
                     await Connect();
-                    Log.Debug("CONNECTION", e.Message);
                 }
 
 
@@ -60,6 +65,8 @@ namespace GAssist
                 LaunchApp();
             }
         }
+
+
 
         public void Disconnect()
         {
@@ -83,32 +90,34 @@ namespace GAssist
                 _connection.Send(_agent.Channels.First().Value, dataBytes);
         }
 
-        private static void Connection_DataReceived(object sender, DataReceivedEventArgs e)
+        private async void Connection_DataReceived(object sender, DataReceivedEventArgs e)
         {
-            ResponseHandler.HandleResponse(e.Data);
+            await responseHandler.HandleResponse(e.Data);
         }
 
         private void Connection_StatusChanged(object sender, ConnectionStatusEventArgs e)
         {
             if (e.Reason == ConnectionStatus.Connected)
             {
+                IsConnected = true;
                 MainPage.TextPopUp.Dismiss();
                 _onConnectedCallback();
+                if(responseHandler == null) responseHandler = new ResponseHandler();
+
             }
 
             if (e.Reason == ConnectionStatus.ConnectionClosed ||
                 e.Reason == ConnectionStatus.ConnectionLost || e.Reason == ConnectionStatus.Unknown)
             {
+                IsConnected = false;
                 _connection.Dispose();
                 MainPage.ShowMessage("Lost connection, will try to reconnect in 10 seconds");
-                MainPage.IsConnected = false;
                 MainPage.SetActionButtonIsEnabled(false);
                 MainPage.SetButtonImage("listen_disabled_allgreyedout.png");
 
                 if (AudioRecorder.IsRecording)
                 {
                     AudioRecorder.StopRecording();
-                    AudioRecorder.IsRecording = false;
                 }
 
                 //if (AudioPlayer.IsPlaying)

@@ -1,12 +1,20 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using Tizen.Applications;
+using Xamarin.Forms;
 
 namespace GAssist
 {
     public class Preferences
     {
         public IList<Setting> Settings { get; set; } = new ObservableCollection<Setting>();
+        private readonly App _app;
+        private readonly MainPage mainPage;
+        public Preferences (App app, MainPage mainPage)
+        {
+            _app = app;
+            this.mainPage = mainPage;
+        }
 
         public bool GetRecordOnStart()
         {
@@ -61,6 +69,76 @@ namespace GAssist
             if (Preference.Contains("html_response"))
                 return Preference.Get<bool>("html_response");
             return false;
+        }
+
+        public void LoadSettings()
+        {
+
+            var autoListenOnResume = new Setting
+            {
+                IsToggled = GetRecordOnResume(),
+                Text = "Auto Listen On Resume"
+            };
+
+            if (autoListenOnResume.IsToggled) _app.ResumeEvent += mainPage.App_ResumeEvent;
+
+            autoListenOnResume.PropertyChanged += (s, e) =>
+            {
+                if (e.PropertyName == "IsToggled")
+                {
+                    SetRecordOnResume(autoListenOnResume.IsToggled);
+                    if (autoListenOnResume.IsToggled) _app.ResumeEvent += mainPage.App_ResumeEvent;
+                    else _app.ResumeEvent -= mainPage.App_ResumeEvent;
+                }
+            };
+
+            var autoListenOnStart = new Setting
+            { IsToggled = GetRecordOnStart(), Text = "Auto Listen On Start" };
+
+            autoListenOnStart.PropertyChanged += (s, e) =>
+            {
+                if (e.PropertyName == "IsToggled") Preference.Set("record_on_start", autoListenOnStart.IsToggled);
+            };
+
+            var rawVoiceRecognitionText = new Setting
+            { IsToggled = GetRawVoiceRecognitionText(), Text = "Raw Voice Recognition Text" };
+
+            rawVoiceRecognitionText.PropertyChanged += (s, e) =>
+            {
+                if (e.PropertyName == "IsToggled") SetRawVoiceRecognitionText(rawVoiceRecognitionText.IsToggled);
+            };
+
+            var largerFont = new Setting
+            { IsToggled = GetLargerFont(), Text = "Larger font" };
+
+            largerFont.PropertyChanged += (s, e) =>
+            {
+                if (e.PropertyName == "IsToggled")
+                {
+                    SetLargerFont(largerFont.IsToggled);
+                    MainPage.Label.FontSize = largerFont.IsToggled
+                        ? Device.GetNamedSize(NamedSize.Large, typeof(ElmSharp.Label))
+                        : Device.GetNamedSize(NamedSize.Micro, typeof(ElmSharp.Label));
+                }
+            };
+
+            MainPage.Label.FontSize = largerFont.IsToggled
+                ? Device.GetNamedSize(NamedSize.Large, typeof(ElmSharp.Label))
+                : Device.GetNamedSize(NamedSize.Micro, typeof(ElmSharp.Label));
+
+            var htmlResponse = new Setting
+            { IsToggled = GetHtmlResponse(), Text = "HTML Responses" };
+
+            htmlResponse.PropertyChanged += (s, e) =>
+            {
+                if (e.PropertyName == "IsToggled") SetHtmlResponse(htmlResponse.IsToggled);
+            };
+
+            Settings.Add(largerFont);
+            Settings.Add(autoListenOnStart);
+            Settings.Add(autoListenOnResume);
+            Settings.Add(rawVoiceRecognitionText);
+            Settings.Add(htmlResponse);
         }
 
     }

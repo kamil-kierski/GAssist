@@ -31,8 +31,9 @@ namespace GAssist
                 if (!string.IsNullOrEmpty(ar.DialogStateOut?.SupplementalDisplayText))
                 {
                     MainPage.SetLabelText(ar.DialogStateOut.SupplementalDisplayText);
-                    MainPage.SetActionButtonIsEnabled(true);
+                    
                 }
+                MainPage.SetActionButtonIsEnabled(true);
             }
 
             if (ar.SpeechResults != null && !ar.SpeechResults.Any(i => (int)i.Stability == 1))

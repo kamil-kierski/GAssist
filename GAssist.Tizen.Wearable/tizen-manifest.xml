@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 
-<manifest package="com.cybernetic87.GAssist.Tizen.Wearable" version="0.8.5" api-version="4" xmlns="http://tizen.org/ns/packages">
+<manifest package="com.cybernetic87.GAssist.Tizen.Wearable" version="0.8.9" api-version="4" xmlns="http://tizen.org/ns/packages">
     <author email="cybernetic87@gmail.com">Kamil Kierski</author>
     <profile name="wearable" />
     <ui-application appid="com.cybernetic87.GAssist" exec="GAssist.Tizen.Wearable.dll" multiple="false" nodisplay="false" taskmanage="true" type="dotnet" hw-acceleration="on" splash-screen-display="false" launch_mode="single">

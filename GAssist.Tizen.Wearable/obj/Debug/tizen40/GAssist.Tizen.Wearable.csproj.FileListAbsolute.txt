@@ -10,3 +10,4 @@ C:\Users\cyber\repos_new\GAssist\GAssist.Tizen.Wearable\obj\Debug\tizen40\GAssis
 C:\Users\cyber\repos_new\GAssist\GAssist.Tizen.Wearable\obj\Debug\tizen40\GAssist.Tizen.Wearable.csproj.CopyComplete
 C:\Users\cyber\repos_new\GAssist\GAssist.Tizen.Wearable\obj\Debug\tizen40\GAssist.Tizen.Wearable.dll
 C:\Users\cyber\repos_new\GAssist\GAssist.Tizen.Wearable\obj\Debug\tizen40\GAssist.Tizen.Wearable.pdb
+C:\Users\cyber\repos_new\GAssist\GAssist.Tizen.Wearable\obj\Debug\tizen40\XamlC.stamp

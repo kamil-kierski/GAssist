@@ -11,11 +11,12 @@
         <AbsoluteLayout>
             <cui:CircleScrollView
                 x:Name="ScrollView"
-                AbsoluteLayout.LayoutBounds="0.5,0.5,1,1"
+                Margin="50,50,50,80"
+                AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
                 AbsoluteLayout.LayoutFlags="All" />
             <ImageButton
                 x:Name="ImageButton"
-                AbsoluteLayout.LayoutBounds="0.5,1,.5,.25"
+                AbsoluteLayout.LayoutBounds="0.5, 1, .5, .25"
                 AbsoluteLayout.LayoutFlags="All"
                 BackgroundColor="Transparent" />
         </AbsoluteLayout>

@@ -86,7 +86,7 @@
           "lib/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll": {}
         }
       },
-      "Tizen.NET/6.0.0.14837": {
+      "Tizen.NET/6.0.0.14842": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.Platforms": "2.0.0",
@@ -249,7 +249,7 @@
           "Google.Protobuf": "3.9.0-rc1",
           "Microsoft.NETCore.Platforms": "3.0.0-preview6.19303.8",
           "Samsung.Sap": "1.0.0",
-          "Tizen.NET": "6.0.0.14837",
+          "Tizen.NET": "6.0.0.14842",
           "Tizen.Wearable.CircularUI": "1.3.0-pre1-00043"
         },
         "compile": {
@@ -442,10 +442,10 @@
         "version.txt"
       ]
     },
-    "Tizen.NET/6.0.0.14837": {
-      "sha512": "w+X24aTPRqcJliwk/tPjC1Fq8ImZAZ6MBAU6h7dEvDnPNkzilJAkS26F/xFsVFcArVzUkdh2QxEySKNwoc/UVg==",
+    "Tizen.NET/6.0.0.14842": {
+      "sha512": "Eh2EwWv8ac0QrbE2YNRrgVIO7gPRq2ft4/vSUhDoyrjse1TTps9S+5KeVwdzXh0lita6/vGMvDm6cOr3f9+cIg==",
       "type": "package",
-      "path": "tizen.net/6.0.0.14837",
+      "path": "tizen.net/6.0.0.14842",
       "files": [
         ".nupkg.metadata",
         "build/tizen40/LICENSE.Microsoft.NETCore.App.txt",
@@ -965,7 +965,7 @@
         "build/tizen50/ref/mscorlib.dll",
         "build/tizen50/ref/netstandard.dll",
         "runtime.json",
-        "tizen.net.6.0.0.14837.nupkg.sha512",
+        "tizen.net.6.0.0.14842.nupkg.sha512",
         "tizen.net.nuspec"
       ]
     },

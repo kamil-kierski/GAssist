@@ -138,7 +138,7 @@ namespace GAssist
             Settings.Add(autoListenOnStart);
             Settings.Add(autoListenOnResume);
             Settings.Add(rawVoiceRecognitionText);
-            Settings.Add(htmlResponse);
+            //Settings.Add(htmlResponse);
         }
 
     }

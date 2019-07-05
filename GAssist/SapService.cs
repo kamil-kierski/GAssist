@@ -50,6 +50,9 @@ namespace GAssist
                     MainPage.TextPopUp.Show();
                     await Task.Delay(2000);
                     await Connect();
+
+                    Tizen.Log.Debug("GASSIST_SAP", e.Message);
+                    Tizen.Log.Debug("GASSIST_SAP", e.StackTrace);
                 }
 
 
@@ -80,6 +83,7 @@ namespace GAssist
 
         private async void PeerStatusChanged(object sender, PeerStatusEventArgs e)
         {
+            Tizen.Log.Debug("GASSIST_SAP", e.Peer.ToString());
             MainPage.TextPopUp.Text = "Configure companion app on phone";
             await Connect();
         }
@@ -97,6 +101,7 @@ namespace GAssist
 
         private void Connection_StatusChanged(object sender, ConnectionStatusEventArgs e)
         {
+            Tizen.Log.Debug("GASSIST_SAP", e.Reason.ToString());
             if (e.Reason == ConnectionStatus.Connected)
             {
                 IsConnected = true;

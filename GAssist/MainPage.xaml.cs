@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
 using Tizen.Applications;
+using Tizen.Multimedia;
 using Tizen.Wearable.CircularUI.Forms;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -21,7 +22,7 @@ namespace GAssist
             VerticalTextAlignment = TextAlignment.Center,
             VerticalOptions = LayoutOptions.FillAndExpand,
             HorizontalOptions = LayoutOptions.FillAndExpand,
-            Margin = new Thickness(50, 50, 50, 50),
+            //Margin = new Thickness(50, 0, 50, 0),
             Text = "GAssist.Net\n\nPress listen button to start"
         };
 
@@ -87,17 +88,20 @@ namespace GAssist
 
         public void App_ResumeEvent(object sender, EventArgs e)
         {
-            if (SapService.IsConnected && !AudioRecorder.IsRecording)
+            var appid = Application.Current.ApplicationInfo.ApplicationId;
+            var arc = new ApplicationRunningContext(appid);
+
+            if (SapService.IsConnected && !AudioRecorder.IsRecording && arc.State == ApplicationRunningContext.AppState.Background)
             {
                 if (AudioPlayer.IsPlaying) ResponseHandler.Player.Stop();
                 StartListening();
             }
-            else if (!SapService.IsConnected)
-            {
-#pragma warning disable 4014
-                _sapService.Connect();
-#pragma warning restore 4014
-            }
+//            else if (!SapService.IsConnected)
+//            {
+//#pragma warning disable 4014
+//                _sapService.Connect();
+//#pragma warning restore 4014
+//            }
         }
 
         private void Player_PlaybackStopped(object sender, EventArgs e)
@@ -117,13 +121,9 @@ namespace GAssist
 
         internal static void SetLabelText(string text)
         {
-            if (_mainpage.ScrollView.Content == Label)
+            Label.Text = text.TrimEnd(Environment.NewLine.ToCharArray());
+            if (_mainpage.ScrollView.Content != Label)
             {
-                Label.Text = text;
-            }
-            else
-            {
-                Label.Text = text;
                 _mainpage.ScrollView.Content = Label;
                 _mainpage.ScrollView.Orientation = ScrollOrientation.Vertical;
             }
@@ -191,7 +191,8 @@ namespace GAssist
         }
 
         private void StartListening()
-        {
+        {   //Task.Run(() => 
+            WavPlayer.StartAsync(Path.Combine(imageDir, "ding.wav"), new AudioStreamPolicy(AudioStreamType.Media));
             //NoResponseTimer.Start();
             AudioRecorder.StartRecording(Pref.GetHtmlResponse());
 

@@ -48,13 +48,13 @@
       "frameworks": {
         "tizen40": {
           "dependencies": {
+            "Tizen.NET": {
+              "target": "Package",
+              "version": "[6.0.0.14844, )"
+            },
             "Tizen.NET.Sdk": {
               "target": "Package",
               "version": "[1.0.1, )"
-            },
-            "Xamarin.Forms.Platform.Tizen": {
-              "target": "Package",
-              "version": "[2.5.1.444934, )"
             }
           },
           "imports": [
@@ -129,7 +129,7 @@
             },
             "Tizen.NET": {
               "target": "Package",
-              "version": "[6.0.0.14842, )"
+              "version": "[6.0.0.14844, )"
             },
             "Tizen.Wearable.CircularUI": {
               "target": "Package",

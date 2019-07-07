@@ -1,10 +1,11 @@
-﻿using System;
+﻿using Samsung.Sap;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Timers;
-using Samsung.Sap;
 using Tizen;
 using Tizen.Applications;
+using Tizen.Network.Bluetooth;
 
 namespace GAssist
 {
@@ -26,11 +27,24 @@ namespace GAssist
             _reconnectTimer.AutoReset = true;
         }
 
+        private void PromptBluetooth()
+        {
+            if (!BluetoothAdapter.IsBluetoothEnabled)
+            {
+                AppControl myAppControl = new AppControl
+                {
+                    Operation = AppControlOperations.SettingBluetoothEnable
+                };
+                AppControl.SendLaunchRequest(myAppControl);
+                return;
+            }
+        }
+
         public async Task Connect()
         {
-            _agent = await Agent.GetAgent("/org/cybernetic87/gassist");
+            _agent = await Agent.GetAgent("/org/cybernetic87/gassist").ConfigureAwait(false);
             _agent.PeerStatusChanged += PeerStatusChanged;
-            var peers = await _agent.FindPeers();
+            var peers = await _agent.FindPeers().ConfigureAwait(false);
 
             if (peers.Any())
             {
@@ -42,34 +56,31 @@ namespace GAssist
                 _connection.StatusChanged += Connection_StatusChanged;
                 try
                 {
-                    await _connection.Open();
+                    await _connection.Open().ConfigureAwait(false);
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     MainPage.TextPopUp.Text = "Phone app is not configured configure the phone app.";
                     MainPage.TextPopUp.Show();
-                    await Task.Delay(2000);
-                    await Connect();
-
-                    Tizen.Log.Debug("GASSIST_SAP", e.Message);
-                    Tizen.Log.Debug("GASSIST_SAP", e.StackTrace);
+                    await Task.Delay(2000).ConfigureAwait(false);
+                    await Connect().ConfigureAwait(false);
                 }
-
-
-                MainPage.SetActionButtonIsEnabled(true);
-                MainPage.SetButtonImage("listen_blue.png");
                 if (_reconnectTimer.Enabled) _reconnectTimer.Stop();
             }
             else
             {
-                MainPage.TextPopUp.Text = "Companion app is not installed, check your phone.";
-                MainPage.TextPopUp.Show();
-                //MainPage.ShowMessage("Companion app is not installed, check your phone.");
-                LaunchApp();
+                if (BluetoothAdapter.IsBluetoothEnabled)
+                {
+                    MainPage.TextPopUp.Text = "Companion app is not installed, check your phone.";
+                    MainPage.TextPopUp.Show();
+                    LaunchApp();
+                }
+                else
+                {
+                    PromptBluetooth();
+                }
             }
         }
-
-
 
         public void Disconnect()
         {
@@ -83,20 +94,19 @@ namespace GAssist
 
         private async void PeerStatusChanged(object sender, PeerStatusEventArgs e)
         {
-            Tizen.Log.Debug("GASSIST_SAP", e.Peer.ToString());
             MainPage.TextPopUp.Text = "Configure companion app on phone";
-            await Connect();
+            await Connect().ConfigureAwait(false);
         }
 
         internal static void SendData(byte[] dataBytes)
         {
-            if (_connection != null && _agent != null && _agent.Channels.Count > 0)
+            if (_connection != null && _agent?.Channels.Count > 0)
                 _connection.Send(_agent.Channels.First().Value, dataBytes);
         }
 
         private async void Connection_DataReceived(object sender, DataReceivedEventArgs e)
         {
-            await responseHandler.HandleResponse(e.Data);
+            await responseHandler.HandleResponse(e.Data).ConfigureAwait(false);
         }
 
         private void Connection_StatusChanged(object sender, ConnectionStatusEventArgs e)
@@ -107,12 +117,10 @@ namespace GAssist
                 IsConnected = true;
                 MainPage.TextPopUp.Dismiss();
                 _onConnectedCallback();
-                if(responseHandler == null) responseHandler = new ResponseHandler();
-
+                if (responseHandler == null) responseHandler = new ResponseHandler();
             }
 
-            if (e.Reason == ConnectionStatus.ConnectionClosed ||
-                e.Reason == ConnectionStatus.ConnectionLost || e.Reason == ConnectionStatus.Unknown)
+            if (e.Reason == ConnectionStatus.ConnectionClosed || e.Reason == ConnectionStatus.ConnectionLost || e.Reason == ConnectionStatus.Unknown)
             {
                 IsConnected = false;
                 _connection.Dispose();
@@ -144,14 +152,16 @@ namespace GAssist
         private async void ReconnectTimer_Elapsed(object sender, ElapsedEventArgs e)
         {
             MainPage.ShowMessage("Reconnecting...");
-            await Connect();
+            await Connect().ConfigureAwait(false);
         }
 
         private static void LaunchApp()
         {
-            var appControl = new AppControl();
-            appControl.Operation = AppControlOperations.Default;
-            appControl.ApplicationId = "com.samsung.w-manager-service";
+            var appControl = new AppControl
+            {
+                Operation = AppControlOperations.Default,
+                ApplicationId = "com.samsung.w-manager-service"
+            };
             appControl.ExtraData.Add("deeplink", "https://play.google.com/store/apps/details?id=com.cybernetic87.GAssist");
             appControl.ExtraData.Add("type", "phone");
 

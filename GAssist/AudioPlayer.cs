@@ -1,5 +1,4 @@
-﻿using Google.Assistant.Embedded.V1Alpha2;
-using Google.Protobuf;
+﻿using Google.Protobuf;
 using System;
 using System.IO;
 using System.Linq;
@@ -100,9 +99,9 @@ namespace GAssist
         {
             if (IsPrepared && BufferFileStream.CanWrite && dataBytes.Length != 0)
             {
-                await BufferFileStream.WriteAsync(dataBytes, 0, dataBytes.Length, _token);
+                await BufferFileStream.WriteAsync(dataBytes, 0, dataBytes.Length, _token).ConfigureAwait(false);
                 Buffered += dataBytes.LongLength;
-                await BufferFileStream.FlushAsync(_token);
+                await BufferFileStream.FlushAsync(_token).ConfigureAwait(false);
             }
         }
 

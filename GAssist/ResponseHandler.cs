@@ -1,5 +1,4 @@
-﻿using Google.Assistant.Embedded.V1Alpha2;
-using System;
+﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Tizen.Multimedia;
@@ -10,7 +9,6 @@ namespace GAssist
     {
         public static readonly AudioPlayer Player = new AudioPlayer();
 
-
         public async Task HandleResponse(byte[] dataBytes)
         {
             var ar = AssistResponse.Parser.ParseFrom(dataBytes);
@@ -20,23 +18,26 @@ namespace GAssist
             //    return;
             //}
 
-
             if (ar.EventType == AssistResponse.Types.EventType.EndOfUtterance)
             {
-
                 AudioRecorder.StopRecording();
-                MainPage.ProgressPopup.Dismiss();
-                MainPage.ProgressPopup.UpdateText(string.Empty);
-                Player.Prepare();
+
                 if (!string.IsNullOrEmpty(ar.DialogStateOut?.SupplementalDisplayText))
                 {
                     MainPage.SetLabelText(ar.DialogStateOut.SupplementalDisplayText);
-                    
                 }
+
+                if (string.IsNullOrEmpty(MainPage.ProgressPopup.GetText()))
+                {
+                    MainPage.SetButtonImage("listen_blue.png");
+                }
+
+                MainPage.ProgressPopup.Dismiss();
+                await Task.Run(Player.Prepare).ConfigureAwait(false);
                 MainPage.SetActionButtonIsEnabled(true);
             }
 
-            if (ar.SpeechResults != null && !ar.SpeechResults.Any(i => (int)i.Stability == 1))
+            if (ar.SpeechResults?.Any(i => (int)i.Stability == 1) == false)
             {
                 if (MainPage.Pref.GetRawVoiceRecognitionText())
                 {
@@ -62,7 +63,6 @@ namespace GAssist
                 }
             }
 
-
             if (!string.IsNullOrEmpty(ar.DialogStateOut?.SupplementalDisplayText))
             {
                 MainPage.SetLabelText(ar.DialogStateOut.SupplementalDisplayText);
@@ -75,7 +75,6 @@ namespace GAssist
                 MainPage.SetHtmlView(ar.ScreenOut.Data.ToStringUtf8());
             }
 
-
             if ((ar.DialogStateOut?.VolumePercentage ?? 0) != 0)
             {
                 var newVolumeLevel = Convert.ToInt32(15 * ar.DialogStateOut.VolumePercentage / 100);
@@ -85,15 +84,14 @@ namespace GAssist
                 return;
             }
 
-
             if (ar.AudioOut?.AudioData.Length > 0)
             {
-                await Player.WriteBuffer(ar.AudioOut.AudioData.ToByteArray());
+                await Player.WriteBuffer(ar.AudioOut.AudioData.ToByteArray()).ConfigureAwait(false);
 
                 if (AudioPlayer.IsPrepared && !AudioPlayer.IsPlaying && Player.Buffered >= 1600)
                 {
                     AudioPlayer.IsPlaying = true;
-                    await Task.Run(Player.Play);
+                    await Task.Run(Player.Play).ConfigureAwait(false);
                 }
                 //Rl.Throttle(TimeSpan.FromMilliseconds(1500), () =>
                 //{

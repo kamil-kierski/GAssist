@@ -1,12 +1,11 @@
-﻿using System.Collections.Generic;
-using ElmSharp;
+﻿using ElmSharp;
+using System.Collections.Generic;
 using TForms = Xamarin.Forms.Platform.Tizen.Forms;
 
 namespace GAssist
 {
     public class ProgressPopup
     {
-
         private readonly Popup _popUp = new Popup(TForms.NativeParent)
         {
             Style = "circle"
@@ -49,7 +48,6 @@ namespace GAssist
             _progress.PlayPulse();
         }
 
-
         public void UpdateText(string text)
         {
             //string[] incomingWords = text.Split();
@@ -61,6 +59,11 @@ namespace GAssist
             //    }
             //}
             _progressLabel.Text = text;
+        }
+
+        public string GetText()
+        {
+            return _progressLabel.Text;
         }
 
         public void Dismiss()

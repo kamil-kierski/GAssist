@@ -1,5 +1,6 @@
 using System;
 using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace GAssist
@@ -12,6 +13,16 @@ namespace GAssist
         }
 
         public event EventHandler ResumeEvent;
+
+        protected override void OnStart()
+        {
+            Task.Run(() =>
+            {
+                PermissionChecker.CheckAndRequestPermission(PermissionChecker.recorderPermission);
+                PermissionChecker.CheckAndRequestPermission(PermissionChecker.mediaStoragePermission);
+            });
+            base.OnStart();
+        }
 
         protected override void OnResume()
         {

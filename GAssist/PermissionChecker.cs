@@ -3,7 +3,7 @@ using Tizen.Security;
 
 namespace GAssist
 {
-    public class PermissionChecker
+    public static class PermissionChecker
     {
         public const string recorderPermission = "http://tizen.org/privilege/recorder";
         public const string mediaStoragePermission = "http://tizen.org/privilege/mediastorage";
@@ -11,8 +11,7 @@ namespace GAssist
         public static void CheckAndRequestPermission(string permission)
         {
             SetupPPMHandler(permission);
-            try
-            {
+
                 var result = PrivacyPrivilegeManager.CheckPermission(permission);
                 switch (result)
                 {
@@ -28,11 +27,6 @@ namespace GAssist
                         PrivacyPrivilegeManager.RequestPermission(permission);
                         break;
                 }
-            }
-            catch (Exception)
-            {
-                /// Handle exception
-            }
         }
 
         private static void SetupPPMHandler(string privilege)

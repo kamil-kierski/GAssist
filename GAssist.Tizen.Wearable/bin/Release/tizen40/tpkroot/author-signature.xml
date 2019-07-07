@@ -4,7 +4,7 @@
     <SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256" />
     <Reference URI="tizen-manifest.xml">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
-      <DigestValue>YR4qXEaB7QMBmP17FNTnbS0gBneUKS+fmKt8cjpbAco=</DigestValue>
+      <DigestValue>9vVF82HTJ5oJZmt3Ks+PPof/Fyx4RWLgelA81sWNPg8=</DigestValue>
     </Reference>
     <Reference URI="shared%2Fres%2Fstop_red.png">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
@@ -22,9 +22,9 @@
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
       <DigestValue>0F9f0QzAcXq0yREk3VmpDjuv3aXSL5/qrZkG8OvTcQ4=</DigestValue>
     </Reference>
-    <Reference URI="shared%2Fres%2Fding.wav">
+    <Reference URI="shared%2Fres%2Fding.mp3">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
-      <DigestValue>WMR15ZL42FETw9vZrdIra5N0Vtc0sABnEDeuFjGOfNc=</DigestValue>
+      <DigestValue>wevjzw2rV1Iun4ifIMYOdnuoJFI7xKguxvxJRIhXll0=</DigestValue>
     </Reference>
     <Reference URI="res%2Fxml%2Faccessoryservices.xml">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
@@ -72,15 +72,15 @@
     </Reference>
     <Reference URI="bin%2FGAssist.Tizen.Wearable.dll">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
-      <DigestValue>i2wBX95Nvh+Ockieicw1tOwpLrIN5s01F9L3OyNk5JU=</DigestValue>
+      <DigestValue>wKk9YpggKUzJfPs8YbyLs0oTXe91utvEaL8zvAu2Jko=</DigestValue>
     </Reference>
     <Reference URI="bin%2FGAssist.pdb">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
-      <DigestValue>zTiSPULJwmJ/jmYaAKl9V1uM1YqQt3i1S8ASJ8Y5hd0=</DigestValue>
+      <DigestValue>uRLanNjnEteRtUc/YRWBmX7zaKKdPAcO4Yb0JtaaVwk=</DigestValue>
     </Reference>
     <Reference URI="bin%2FGAssist.dll">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
-      <DigestValue>KxbFnY4y4fIxlftjhw1PPo1N9yEiTtGRYz3bw7d6TBM=</DigestValue>
+      <DigestValue>sr1J8DrS68isRf18zoAgCvpSdq8KONaDM3312TPxvoc=</DigestValue>
     </Reference>
     <Reference URI="#prop">
       <Transforms>
@@ -91,11 +91,11 @@
     </Reference>
   </SignedInfo>
   <SignatureValue>
-YcXcPqyA/7AFrHuLnueN6HABc/KldKCmFNXS9puLOu3ZVY4eGhhScZ4GOkA1ZqNnJAt5b4UNtZ6F
-I4sUhs6oeeN+gapq46sC98lFkR7PdE1r1yC2l2MObmuE2Sb8ZVDeY50gmR7jh/4hvnwnn/odvAlW
-6Ji0K5h/7jJkfSrqaI5WuRaPGGD6HTW+VF809fq1FDk0NjLV/fsZy5QdeUuIoXkx+o2rL11jpkqY
-BWUmVX0RkBEnMTVBbJ4Olo9ZG9jhfxm0t5NQGRagH+sd94ZnJr5ZeUqms8NMxRAZRfYP9MZpe7yJ
-+gVW6cDcOv12fDX+JDacaRXDWPEFWlflkBrI3w==
+NqNsufaroUvrIQMk5LMEleaCaX/hBoESYVIPJpf0TMR199KfC6f8VqMhu8E58KJxAuOe4TLXB0Q7
+wNBMQuAbu7dYX91IP/Ojke3QC6jIeeuvHDP+qo2BD+U18W1b2hQd3Tw/Rp/73CQ7lIJzakm2NcYR
+Q7Lli1Ot1V35kzcNHyPPMF0rpir5FwpupkrS8gA3mkb6tpgxfgTis1qsp+jON6LjnWYlpdLQrlZl
+jqwLcHHdF54oGwU8zOguI9Aa9ZnB9acC5TnSSoN7znRA1qp5borN2OXQx/pJSpB60/Tjhva5Ydu2
+NpXWxalABFOsUDtoRZxm3N4AFV21I4+el5rXpg==
 </SignatureValue>
   <KeyInfo>
     <X509Data>

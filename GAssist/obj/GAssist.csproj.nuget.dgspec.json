@@ -68,7 +68,7 @@
             },
             "Tizen.NET": {
               "target": "Package",
-              "version": "[6.0.0.14842, )"
+              "version": "[6.0.0.14844, )"
             },
             "Tizen.Wearable.CircularUI": {
               "target": "Package",

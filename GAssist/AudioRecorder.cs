@@ -1,8 +1,7 @@
-﻿using System.Runtime.CompilerServices;
+﻿using Google.Protobuf;
+using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
-using Google.Assistant.Embedded.V1Alpha2;
-using Google.Protobuf;
 using Tizen.Multimedia;
 
 namespace GAssist
@@ -52,7 +51,7 @@ namespace GAssist
         {
             IsRecording = false;
             _source.Cancel();
-            
+
         }
 
         private static void Record()

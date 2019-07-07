@@ -10,7 +10,7 @@ namespace GAssist
         public IList<Setting> Settings { get; set; } = new ObservableCollection<Setting>();
         private readonly App _app;
         private readonly MainPage mainPage;
-        public Preferences (App app, MainPage mainPage)
+        public Preferences(App app, MainPage mainPage)
         {
             _app = app;
             this.mainPage = mainPage;
@@ -44,7 +44,7 @@ namespace GAssist
         {
             if (Preference.Contains("raw_voice_recognition"))
                 return Preference.Get<bool>("raw_voice_recognition");
-            return false;
+            return true;
         }
 
         public void SetLargerFont(bool setting)
@@ -69,6 +69,30 @@ namespace GAssist
             if (Preference.Contains("html_response"))
                 return Preference.Get<bool>("html_response");
             return false;
+        }
+
+        public void SetSoundFeedback(bool setting)
+        {
+            Preference.Set("sound_feedback", setting);
+        }
+
+        public bool GetSoundFeedback()
+        {
+            if (Preference.Contains("sound_feedback"))
+                return Preference.Get<bool>("sound_feedback");
+            return true;
+        }
+
+        public void SetVibrateFeedback(bool setting)
+        {
+            Preference.Set("vibrate_feedback", setting);
+        }
+
+        public bool GetVibrateFeedback()
+        {
+            if (Preference.Contains("vibrate_feedback"))
+                return Preference.Get<bool>("vibrate_feedback");
+            return true;
         }
 
         public void LoadSettings()
@@ -134,11 +158,29 @@ namespace GAssist
                 if (e.PropertyName == "IsToggled") SetHtmlResponse(htmlResponse.IsToggled);
             };
 
+            var soundFeedback = new Setting
+            { IsToggled = GetSoundFeedback(), Text = "Sound effect on" };
+
+            soundFeedback.PropertyChanged += (s, e) =>
+            {
+                if (e.PropertyName == "IsToggled") SetSoundFeedback(soundFeedback.IsToggled);
+            };
+
+            var vibrateFeedback = new Setting
+            { IsToggled = GetVibrateFeedback(), Text = "Vibrate on" };
+
+            vibrateFeedback.PropertyChanged += (s, e) =>
+            {
+                if (e.PropertyName == "IsToggled") SetVibrateFeedback(vibrateFeedback.IsToggled);
+            };
+
             Settings.Add(largerFont);
             Settings.Add(autoListenOnStart);
             Settings.Add(autoListenOnResume);
             Settings.Add(rawVoiceRecognitionText);
-            //Settings.Add(htmlResponse);
+            Settings.Add(htmlResponse);
+            Settings.Add(soundFeedback);
+            Settings.Add(vibrateFeedback);
         }
 
     }

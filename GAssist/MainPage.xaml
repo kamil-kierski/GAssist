@@ -11,7 +11,6 @@
         <AbsoluteLayout>
             <cui:CircleScrollView
                 x:Name="ScrollView"
-                Margin="50,50,50,80"
                 AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
                 AbsoluteLayout.LayoutFlags="All" />
             <ImageButton

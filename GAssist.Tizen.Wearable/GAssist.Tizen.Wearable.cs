@@ -14,13 +14,10 @@
  * limitations under the License.
  */
 
-using Tizen.Applications;
-using Tizen.Wearable.CircularUI.Forms.Renderer;
-using Xamarin.Forms.Platform.Tizen;
 
 namespace GAssist.Tizen.Wearable
 {
-    internal class Program : FormsApplication
+    internal class Program : global::Xamarin.Forms.Platform.Tizen.FormsApplication
     {
         protected override void OnCreate()
         {
@@ -28,16 +25,11 @@ namespace GAssist.Tizen.Wearable
             LoadApplication(new App());
         }
 
-        protected override void OnAppControlReceived(AppControlReceivedEventArgs e)
-        {
-            base.OnAppControlReceived(e);
-        }
-
         private static void Main(string[] args)
         {
             var app = new Program();
-            Forms.Init(app);
-            FormsCircularUI.Init();
+            global::Xamarin.Forms.Platform.Tizen.Forms.Init(app);
+            global::Tizen.Wearable.CircularUI.Forms.Renderer.FormsCircularUI.Init();
             app.Run(args);
         }
     }

@@ -4,6 +4,7 @@ using System.IO;
 using System.Threading.Tasks;
 using Tizen.Applications;
 using Tizen.Multimedia;
+using Tizen.System;
 using Tizen.Wearable.CircularUI.Forms;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -16,13 +17,15 @@ namespace GAssist
     {
         private static MainPage _mainpage;
         public static Preferences Pref;
+
+
         public static readonly Label Label = new Label
         {
             HorizontalTextAlignment = TextAlignment.Center,
             VerticalTextAlignment = TextAlignment.Center,
             VerticalOptions = LayoutOptions.FillAndExpand,
             HorizontalOptions = LayoutOptions.FillAndExpand,
-            //Margin = new Thickness(50, 0, 50, 0),
+            Margin = new Thickness(50, 50, 50, 80),
             Text = "GAssist.Net\n\nPress listen button to start"
         };
 
@@ -32,10 +35,11 @@ namespace GAssist
 
         public static ProgressPopup ProgressPopup;
 
-        private static readonly string imageDir =
+        private const string imageDir =
             "/opt/usr/apps/com.cybernetic87.GAssist.Tizen.Wearable/shared/res";
 
-        private readonly SapService _sapService;
+        private Player _player;
+        private SapService _sapService;
         private readonly App _app;
 
 
@@ -44,18 +48,16 @@ namespace GAssist
             _mainpage = this;
             _app = app;
             InitializeComponent();
-
             Pref = new Preferences(app, this);
             Pref.LoadSettings();
             SettingsPage.Appearing += SettingsPage_Appearing;
-            
-
-            PermissionChecker.CheckAndRequestPermission(PermissionChecker.recorderPermission);
-            PermissionChecker.CheckAndRequestPermission(PermissionChecker.mediaStoragePermission);
 
             _mainpage.ScrollView.Content = Label;
+
             SetButtonImage("listen_disabled_allgreyedout.png");
             SetActionButtonIsEnabled(false);
+
+            ImageButton.Clicked += ActionButton_ButtonClicked;
             ImageButton.Pressed += ImageButton_PressedAsync;
 
             TextPopUp = new InformationPopup();
@@ -65,12 +67,24 @@ namespace GAssist
                 TextPopUp.Dismiss();
             };
 
-            ImageButton.Clicked += ActionButton_ButtonClicked;
 
-            _sapService = new SapService(OnConnectedCallback);
 
-            Task.Run(async () => await _sapService.Connect());
+            Task.Run(async () =>
+            {
+                _sapService = new SapService(OnConnectedCallback);
+                await _sapService.Connect().ConfigureAwait(false);
+            });
+
+            Task.Run(() =>
+            {
+                _player = new Player();
+                _player.SetSource(new MediaBufferSource(File.ReadAllBytes(Path.Combine(imageDir, "ding.mp3"))));
+                _player.PrepareAsync();
+                _player.PlaybackCompleted += delegate { _player.Stop(); };
+            }
+            );
         }
+
 
         private void SettingsPage_Appearing(object sender, EventArgs e)
         {
@@ -82,8 +96,8 @@ namespace GAssist
 
         private async void ImageButton_PressedAsync(object sender, EventArgs e)
         {
-            await ImageButton.FadeTo(0.5, 300);
-            await ImageButton.FadeTo(1, 300);
+            await ImageButton.FadeTo(0.5, 300).ConfigureAwait(false);
+            await ImageButton.FadeTo(1, 300).ConfigureAwait(false);
         }
 
         public void App_ResumeEvent(object sender, EventArgs e)
@@ -96,12 +110,12 @@ namespace GAssist
                 if (AudioPlayer.IsPlaying) ResponseHandler.Player.Stop();
                 StartListening();
             }
-//            else if (!SapService.IsConnected)
-//            {
-//#pragma warning disable 4014
-//                _sapService.Connect();
-//#pragma warning restore 4014
-//            }
+            //            else if (!SapService.IsConnected)
+            //            {
+            //#pragma warning disable 4014
+            //                _sapService.Connect();
+            //#pragma warning restore 4014
+            //            }
         }
 
         private void Player_PlaybackStopped(object sender, EventArgs e)
@@ -112,58 +126,51 @@ namespace GAssist
 
         private void OnConnectedCallback()
         {
+            var arc = new ApplicationRunningContext(Application.Current.ApplicationInfo.ApplicationId);
+            if (Pref.GetRecordOnStart() && arc.State == ApplicationRunningContext.AppState.Foreground)
+            {
+                StartListening();
+                return;
+            }
+
             SetButtonImage("listen_blue.png");
             SetActionButtonIsEnabled(true);
-            var appid = Application.Current.ApplicationInfo.ApplicationId;
-            var arc = new ApplicationRunningContext(appid);
-            if (Pref.GetRecordOnStart() && arc.State == ApplicationRunningContext.AppState.Foreground) StartListening();
         }
 
         internal static void SetLabelText(string text)
         {
-            Label.Text = text.TrimEnd(Environment.NewLine.ToCharArray());
             if (_mainpage.ScrollView.Content != Label)
             {
+                _mainpage.ScrollView.Margin = new Thickness(50, 50, 50, 80);
                 _mainpage.ScrollView.Content = Label;
                 _mainpage.ScrollView.Orientation = ScrollOrientation.Vertical;
             }
+            Label.Text = text.TrimEnd(Environment.NewLine.ToCharArray());
         }
 
         internal static void SetHtmlView(string html)
         {
-            var htmlSource = new HtmlWebViewSource();
-            //var test = File.ReadAllText(Path.Combine(imageDir, "test.html"));
-
-
-            //var html_mod = string.Format(
-            //    "<iframe width=\"360\" height=\"360\" src=\"{0}\" style=\"-webkit-transform:scale(0.5);-moz-transform-scale(0.5);\"></iframe>",
-            //    html);
-
-            //htmlSource.Html = html_mod;
-            htmlSource.Html = html; //HtmlResponseParser.ParseHtmlResponse(html);
-
-
-            //_mainpage.WebView.Source = htmlSource;
-            if (_mainpage.ScrollView.Content == WebView2)
+            var htmlSource = new HtmlWebViewSource
             {
-                WebView2.Source = htmlSource;
-            }
-            else
+                Html = HtmlResponseParser.ParseHtmlResponse(html)
+            };
+            //htmlSource.Html = HtmlResponseParser.ParseHtmlResponse2(parsed);
+
+            if (_mainpage.ScrollView.Content != WebView2)
             {
                 WebView2 = new WebView
                 {
-                    //Margin = new Thickness(0, 30),
                     BackgroundColor = Color.Black,
                     AnchorX = 0.5,
-                    AnchorY = 0.5,
-                    Scale = 0.5,
-                    WidthRequest = 720,
-                    HeightRequest = 720
+                    AnchorY = 0.5
                 };
-                WebView2.Source = htmlSource;
+
                 _mainpage.ScrollView.Content = WebView2;
                 _mainpage.ScrollView.Orientation = ScrollOrientation.Both;
+                _mainpage.ScrollView.Margin = new Thickness(0, 0, 0, 0);
             }
+
+            WebView2.Source = htmlSource;
         }
 
         internal static void SetButtonImage(string img)
@@ -185,24 +192,37 @@ namespace GAssist
             else if (!AudioRecorder.IsRecording && SapService.IsConnected)
             {
                 StartListening();
-                SetActionButtonIsEnabled(false);
-                SetButtonImage("listen_disabled_allgreyedout.png");
             }
         }
 
         private void StartListening()
-        {   //Task.Run(() => 
-            WavPlayer.StartAsync(Path.Combine(imageDir, "ding.wav"), new AudioStreamPolicy(AudioStreamType.Media));
+        {
+            Task.Run(() => Parallel.Invoke(
+            () =>
+            {
+                if (Pref.GetSoundFeedback())
+                {
+                    _player.Start();
+                }
+                //WavPlayer.StartAsync(Path.Combine(imageDir, "ding.wav"), new AudioStreamPolicy(AudioStreamType.Media));
+            },
+            () =>
+            {
+                if (Pref.GetVibrateFeedback())
+                {
+                    Vibrator vibrator = Vibrator.Vibrators[0];
+                    vibrator.Vibrate(200, 100);
+                }
+            }
+            ));
+
             //NoResponseTimer.Start();
             AudioRecorder.StartRecording(Pref.GetHtmlResponse());
+            (ProgressPopup ?? (ProgressPopup = new ProgressPopup())).Show();
 
-            if (ProgressPopup == null)
-            {
-                ProgressPopup = new ProgressPopup();
-            }
-            ProgressPopup.Show();
+            SetActionButtonIsEnabled(false);
+            SetButtonImage("listen_disabled_allgreyedout.png");
             //SetActionButtonIsEnabled(false); button dissapears when listening
-            //SetButtonImage("listen_green.png"); maybe animated in future
             SetLabelText(string.Empty);
         }
 

@@ -1,5 +1,4 @@
-﻿using System;
-using Tizen.Security;
+﻿using Tizen.Security;
 
 namespace GAssist
 {
@@ -12,21 +11,21 @@ namespace GAssist
         {
             SetupPPMHandler(permission);
 
-                var result = PrivacyPrivilegeManager.CheckPermission(permission);
-                switch (result)
-                {
-                    case CheckResult.Allow:
-                        /// Update UI and start accessing protected functionality
-                        break;
+            var result = PrivacyPrivilegeManager.CheckPermission(permission);
+            switch (result)
+            {
+                case CheckResult.Allow:
+                    /// Update UI and start accessing protected functionality
+                    break;
 
-                    case CheckResult.Deny:
-                        PrivacyPrivilegeManager.RequestPermission(permission);
-                        break;
+                case CheckResult.Deny:
+                    PrivacyPrivilegeManager.RequestPermission(permission);
+                    break;
 
-                    case CheckResult.Ask:
-                        PrivacyPrivilegeManager.RequestPermission(permission);
-                        break;
-                }
+                case CheckResult.Ask:
+                    PrivacyPrivilegeManager.RequestPermission(permission);
+                    break;
+            }
         }
 
         private static void SetupPPMHandler(string privilege)

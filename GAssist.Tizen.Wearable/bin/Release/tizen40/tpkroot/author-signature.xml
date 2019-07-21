@@ -4,7 +4,7 @@
     <SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256" />
     <Reference URI="tizen-manifest.xml">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
-      <DigestValue>9vVF82HTJ5oJZmt3Ks+PPof/Fyx4RWLgelA81sWNPg8=</DigestValue>
+      <DigestValue>aqF7Kh+Z6lLQnaoHMIvT302rOns3xiJgwtuR/M1VQAY=</DigestValue>
     </Reference>
     <Reference URI="shared%2Fres%2Fstop_red.png">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
@@ -29,6 +29,10 @@
     <Reference URI="res%2Fxml%2Faccessoryservices.xml">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
       <DigestValue>uKs1k2bTIpaP6xtKgA/wly/4yPlV80Spk+GGAHSWoPQ=</DigestValue>
+    </Reference>
+    <Reference URI="GAssist.Tizen.Wearable.deps.json">
+      <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
+      <DigestValue>G2T0YQvGBcxqFStDH5ncwJEwrPnCLc7M4VwhNY9gI/4=</DigestValue>
     </Reference>
     <Reference URI="bin%2FXamarin.Forms.Xaml.dll">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
@@ -68,7 +72,7 @@
     </Reference>
     <Reference URI="bin%2FGoogle.Api.CommonProtos.dll">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
-      <DigestValue>4rLp4Kd7XZeE37UazAC4SOPDGsoDqJQEBJYM8G5kd4Y=</DigestValue>
+      <DigestValue>Z3+WR+SYdbYftkofUtzq0fU7j+PJEsWYXCHlQpqRZ34=</DigestValue>
     </Reference>
     <Reference URI="bin%2FGAssist.Tizen.Wearable.dll">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
@@ -76,11 +80,11 @@
     </Reference>
     <Reference URI="bin%2FGAssist.pdb">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
-      <DigestValue>uRLanNjnEteRtUc/YRWBmX7zaKKdPAcO4Yb0JtaaVwk=</DigestValue>
+      <DigestValue>Dmry7wu5keR6darCieO8DhlYTJx8izDU6XOfp2mquWw=</DigestValue>
     </Reference>
     <Reference URI="bin%2FGAssist.dll">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
-      <DigestValue>sr1J8DrS68isRf18zoAgCvpSdq8KONaDM3312TPxvoc=</DigestValue>
+      <DigestValue>RO9GFXel941z+tF68MFxYICZOS0jk/oI1QHUi+NJfek=</DigestValue>
     </Reference>
     <Reference URI="#prop">
       <Transforms>
@@ -91,11 +95,11 @@
     </Reference>
   </SignedInfo>
   <SignatureValue>
-NqNsufaroUvrIQMk5LMEleaCaX/hBoESYVIPJpf0TMR199KfC6f8VqMhu8E58KJxAuOe4TLXB0Q7
-wNBMQuAbu7dYX91IP/Ojke3QC6jIeeuvHDP+qo2BD+U18W1b2hQd3Tw/Rp/73CQ7lIJzakm2NcYR
-Q7Lli1Ot1V35kzcNHyPPMF0rpir5FwpupkrS8gA3mkb6tpgxfgTis1qsp+jON6LjnWYlpdLQrlZl
-jqwLcHHdF54oGwU8zOguI9Aa9ZnB9acC5TnSSoN7znRA1qp5borN2OXQx/pJSpB60/Tjhva5Ydu2
-NpXWxalABFOsUDtoRZxm3N4AFV21I4+el5rXpg==
+3SWxPUETNeTp80jLutOB1TxS4ICr3EHqkIvFV8E04PputMtHOHCORDOXwV+3xv/uSZ8K9xx4kHSt
+VTCYNCPnvr+lNVLgxgbF85waWN+EXfPaM0kQyorX577FYtsykqFkgbCRqwfEFB9sxWcWoeg0i1wQ
+d+eOx/3EPvbiPV0QQkWSewoLckbGF0Si5qVSF4gD0wLX7/5AcVyZZWrmO0s6VG3xe+8jcM7hQK43
+8RIpo+hDDiyS+PeqgYQjFk9Ta/O51XyrVvi64Nm+JzlkQSrZ2V/cDlCx22Lf4d0kHYoissIF6qP/
+7X8X1nsS5ZQz49GYrTHM254P1fk9F/0/uOl6RQ==
 </SignatureValue>
   <KeyInfo>
     <X509Data>

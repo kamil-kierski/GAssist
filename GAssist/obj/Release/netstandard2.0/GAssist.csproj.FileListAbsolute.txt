@@ -7,7 +7,7 @@ C:\Users\cyber\repos_new\GAssist\GAssist\obj\Release\netstandard2.0\MainPage.xam
 C:\Users\cyber\repos_new\GAssist\GAssist\obj\Release\netstandard2.0\GAssist.csproj.CoreCompileInputs.cache
 C:\Users\cyber\repos_new\GAssist\GAssist\obj\Release\netstandard2.0\GAssist.AssemblyInfoInputs.cache
 C:\Users\cyber\repos_new\GAssist\GAssist\obj\Release\netstandard2.0\GAssist.AssemblyInfo.cs
+C:\Users\cyber\repos_new\GAssist\GAssist\obj\Release\netstandard2.0\XamlC.stamp
 C:\Users\cyber\repos_new\GAssist\GAssist\obj\Release\netstandard2.0\GAssist.csproj.CopyComplete
 C:\Users\cyber\repos_new\GAssist\GAssist\obj\Release\netstandard2.0\GAssist.dll
 C:\Users\cyber\repos_new\GAssist\GAssist\obj\Release\netstandard2.0\GAssist.pdb
-C:\Users\cyber\repos_new\GAssist\GAssist\obj\Release\netstandard2.0\XamlC.stamp

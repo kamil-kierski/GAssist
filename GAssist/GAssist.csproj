@@ -8,12 +8,13 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <Optimize>true</Optimize>
+    <Optimize>false</Optimize>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DefineConstants />
+    <Optimize>true</Optimize>
   </PropertyGroup>
 
   <ItemGroup>
@@ -21,11 +22,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Google.Api.CommonProtos" Version="1.6.0" />
+    <PackageReference Include="Google.Api.CommonProtos" Version="1.7.0" />
     <PackageReference Include="Google.Protobuf" Version="3.9.0-rc1" />
     <PackageReference Include="Microsoft.NETCore.Platforms" Version="3.0.0-preview6.19303.8" />
     <PackageReference Include="Samsung.Sap" Version="1.0.0" />
-    <PackageReference Include="Tizen.NET" Version="6.0.0.14844" />
+    <PackageReference Include="Tizen.NET" Version="6.0.0.14853" />
     <PackageReference Include="Tizen.Wearable.CircularUI" Version="1.3.0-pre1-00043" />
   </ItemGroup>
 

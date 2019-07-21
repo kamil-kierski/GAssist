@@ -6,7 +6,13 @@
     <Version>0.2.0</Version>
     <ApplicationIcon />
     <StartupObject>GAssist.Tizen.Wearable.Program</StartupObject>
+    <TargetFrameworkIdentifier>Tizen</TargetFrameworkIdentifier>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Tizen.NET" Version="6.0.0.14853" />
+    <PackageReference Include="Tizen.NET.Sdk" Version="1.0.3" />
+  </ItemGroup>
 
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>portable</DebugType>
@@ -18,15 +24,11 @@
     <DebugType>None</DebugType>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DefineConstants />
+    <WarningLevel>0</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="lib\" />
     <Folder Include="res\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Tizen.NET" Version="6.0.0.14844" />
-    <PackageReference Include="Tizen.NET.Sdk" Version="1.0.1" />
   </ItemGroup>
 
   <ItemGroup>

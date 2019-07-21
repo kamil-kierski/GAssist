@@ -29,6 +29,7 @@ namespace GAssist
 
         private static string BufferFileDir { get; } =
             StorageManager.Storages.First().GetAbsolutePath(DirectoryType.Others);
+
         private FileStream BufferFileStream { get; set; }
 
         protected virtual void OnPlaybackStopped(EventArgs args)
@@ -41,7 +42,6 @@ namespace GAssist
             IsPlaying = true;
             _player.PrepareAsync().Wait();
             _player.Start();
-
 
             MainPage.SetButtonImage("stop_red.png");
             MainPage.SetActionButtonIsEnabled(true);

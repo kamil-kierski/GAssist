@@ -15,8 +15,13 @@ namespace GAssist
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainPage
     {
+
+        private const string imageDir =
+            "/opt/usr/apps/com.cybernetic87.GAssist.Tizen.Wearable/shared/res";
+
         private static MainPage _mainpage;
-        public static Preferences Pref;
+
+        private static WebView WebView2;
 
 
         public static readonly Label Label = new Label
@@ -28,55 +33,35 @@ namespace GAssist
             Margin = new Thickness(50, 50, 50, 80),
             Text = "GAssist.Net\n\nPress listen button to start"
         };
-
-        private static WebView WebView2;
-
-        public static InformationPopup TextPopUp;
+        public static Preferences Pref;
 
         public static ProgressPopup ProgressPopup;
 
-        private const string imageDir =
-            "/opt/usr/apps/com.cybernetic87.GAssist.Tizen.Wearable/shared/res";
-
         private Player _player;
         private SapService _sapService;
-        private readonly App _app;
 
 
         public MainPage(App app)
         {
             _mainpage = this;
-            _app = app;
             InitializeComponent();
-            Pref = new Preferences(app, this);
-            Pref.LoadSettings();
-            SettingsPage.Appearing += SettingsPage_Appearing;
 
-            _mainpage.ScrollView.Content = Label;
+            ScrollView.Content = Label;
 
             SetButtonImage("listen_disabled_allgreyedout.png");
-            SetActionButtonIsEnabled(false);
+            //SetActionButtonIsEnabled(false);
 
-            ImageButton.Clicked += ActionButton_ButtonClicked;
-            ImageButton.Pressed += ImageButton_PressedAsync;
+            //ImageButton.Clicked += ActionButton_ButtonClicked;
+            //ImageButton.Pressed += ImageButton_PressedAsync;
+            _sapService = new SapService(OnConnectedCallback);
 
-            TextPopUp = new InformationPopup();
-
-            TextPopUp.BackButtonPressed += (s, e) =>
-            {
-                TextPopUp.Dismiss();
-            };
-
-
-
-            Task.Run(async () =>
-            {
-                _sapService = new SapService(OnConnectedCallback);
-                await _sapService.Connect().ConfigureAwait(false);
-            });
+            Task.Run(async () => await _sapService.Connect().ConfigureAwait(false));
 
             Task.Run(() =>
             {
+                Pref = new Preferences(app, this);
+                Pref.LoadSettings();
+
                 _player = new Player();
                 _player.SetSource(new MediaBufferSource(File.ReadAllBytes(Path.Combine(imageDir, "ding.mp3"))));
                 _player.PrepareAsync();
@@ -86,11 +71,15 @@ namespace GAssist
         }
 
 
-        private void SettingsPage_Appearing(object sender, EventArgs e)
+        private void ActionButton_ButtonClicked(object sender, EventArgs e)
         {
-            if (MyScroller.ItemsSource == null)
+            if (AudioPlayer.IsPlaying)
             {
-                MyScroller.ItemsSource = Pref.Settings;
+                ResponseHandler.Player.Stop();
+            }
+            else if (!AudioRecorder.IsRecording && SapService.IsConnected)
+            {
+                StartListening();
             }
         }
 
@@ -100,29 +89,12 @@ namespace GAssist
             await ImageButton.FadeTo(1, 300).ConfigureAwait(false);
         }
 
-        public void App_ResumeEvent(object sender, EventArgs e)
-        {
-            var appid = Application.Current.ApplicationInfo.ApplicationId;
-            var arc = new ApplicationRunningContext(appid);
-
-            if (SapService.IsConnected && !AudioRecorder.IsRecording && arc.State == ApplicationRunningContext.AppState.Background)
-            {
-                if (AudioPlayer.IsPlaying) ResponseHandler.Player.Stop();
-                StartListening();
-            }
-            //            else if (!SapService.IsConnected)
-            //            {
-            //#pragma warning disable 4014
-            //                _sapService.Connect();
-            //#pragma warning restore 4014
-            //            }
-        }
-
-        private void Player_PlaybackStopped(object sender, EventArgs e)
-        {
-            SetButtonImage("listen_blue.png");
-            SetActionButtonIsEnabled(true);
-        }
+        //protected override bool OnBackButtonPressed()
+        //{
+        //    this.Unfocus();
+        //    Application.Current.
+        //    return false;
+        //}
 
         private void OnConnectedCallback()
         {
@@ -137,15 +109,58 @@ namespace GAssist
             SetActionButtonIsEnabled(true);
         }
 
-        internal static void SetLabelText(string text)
+        private void Player_PlaybackStopped(object sender, EventArgs e)
         {
-            if (_mainpage.ScrollView.Content != Label)
+            SetButtonImage("listen_blue.png");
+            SetActionButtonIsEnabled(true);
+        }
+
+        private void SettingsPage_Appearing(object sender, EventArgs e)
+        {
+            if (MyScroller.ItemsSource == null)
             {
-                _mainpage.ScrollView.Margin = new Thickness(50, 50, 50, 80);
-                _mainpage.ScrollView.Content = Label;
-                _mainpage.ScrollView.Orientation = ScrollOrientation.Vertical;
+                MyScroller.ItemsSource = Pref.Settings;
             }
-            Label.Text = text.TrimEnd(Environment.NewLine.ToCharArray());
+        }
+
+
+        private void StartListening()
+        {
+            PowerLock.RequestScreenLock(10);
+            SetLabelText(string.Empty);
+            Task.Run(() => Parallel.Invoke(
+            () =>
+            {
+                if (Pref.GetSoundFeedback())
+                {
+                    _player.Start();
+                }
+            },
+            () =>
+            {
+                if (Pref.GetVibrateFeedback())
+                {
+                    Vibrator vibrator = Vibrator.Vibrators[0];
+                    vibrator.Vibrate(200, 100);
+                }
+            }
+            ));
+
+            AudioRecorder.StartRecording(Pref.GetHtmlResponse());
+            (ProgressPopup ?? (ProgressPopup = new ProgressPopup())).Show();
+
+            SetActionButtonIsEnabled(false);
+            SetButtonImage("listen_disabled_allgreyedout.png");
+        }
+
+        internal static void SetActionButtonIsEnabled(bool isEnable)
+        {
+            _mainpage.ImageButton.IsEnabled = isEnable;
+        }
+
+        internal static void SetButtonImage(string img)
+        {
+            _mainpage.ImageButton.Source = ImageSource.FromFile(Path.Combine(imageDir, img));
         }
 
         internal static void SetHtmlView(string html)
@@ -173,57 +188,33 @@ namespace GAssist
             WebView2.Source = htmlSource;
         }
 
-        internal static void SetButtonImage(string img)
+        internal static void SetLabelText(string text)
         {
-            _mainpage.ImageButton.Source = ImageSource.FromFile(Path.Combine(imageDir, img));
-        }
-
-        internal static void SetActionButtonIsEnabled(bool isEnable)
-        {
-            _mainpage.ImageButton.IsEnabled = isEnable;
-        }
-
-        private void ActionButton_ButtonClicked(object sender, EventArgs e)
-        {
-            if (AudioPlayer.IsPlaying)
+            if (_mainpage.ScrollView.Content != Label)
             {
-                ResponseHandler.Player.Stop();
+                _mainpage.ScrollView.Margin = new Thickness(50, 50, 50, 80);
+                _mainpage.ScrollView.Content = Label;
+                _mainpage.ScrollView.Orientation = ScrollOrientation.Vertical;
             }
-            else if (!AudioRecorder.IsRecording && SapService.IsConnected)
+            Label.Text = text.TrimEnd(Environment.NewLine.ToCharArray());
+        }
+
+        public void App_ResumeEvent(object sender, EventArgs e)
+        {
+            var appid = Application.Current.ApplicationInfo.ApplicationId;
+            var arc = new ApplicationRunningContext(appid);
+
+            if (SapService.IsConnected && !AudioRecorder.IsRecording && arc.State == ApplicationRunningContext.AppState.Background)
             {
+                if (AudioPlayer.IsPlaying) ResponseHandler.Player.Stop();
                 StartListening();
             }
-        }
-
-        private void StartListening()
-        {
-            Task.Run(() => Parallel.Invoke(
-            () =>
-            {
-                if (Pref.GetSoundFeedback())
-                {
-                    _player.Start();
-                }
-                //WavPlayer.StartAsync(Path.Combine(imageDir, "ding.wav"), new AudioStreamPolicy(AudioStreamType.Media));
-            },
-            () =>
-            {
-                if (Pref.GetVibrateFeedback())
-                {
-                    Vibrator vibrator = Vibrator.Vibrators[0];
-                    vibrator.Vibrate(200, 100);
-                }
-            }
-            ));
-
-            //NoResponseTimer.Start();
-            AudioRecorder.StartRecording(Pref.GetHtmlResponse());
-            (ProgressPopup ?? (ProgressPopup = new ProgressPopup())).Show();
-
-            SetActionButtonIsEnabled(false);
-            SetButtonImage("listen_disabled_allgreyedout.png");
-            //SetActionButtonIsEnabled(false); button dissapears when listening
-            SetLabelText(string.Empty);
+            //            else if (!SapService.IsConnected)
+            //            {
+            //#pragma warning disable 4014
+            //                _sapService.Connect();
+            //#pragma warning restore 4014
+            //            }
         }
 
 

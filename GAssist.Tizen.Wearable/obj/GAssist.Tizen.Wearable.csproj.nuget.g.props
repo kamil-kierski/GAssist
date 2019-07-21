@@ -13,10 +13,11 @@
     <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
   </PropertyGroup>
   <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <Import Project="$(NuGetPackageRoot)tizen.net\6.0.0.14844\build\tizen40\Tizen.NET.props" Condition="Exists('$(NuGetPackageRoot)tizen.net\6.0.0.14844\build\tizen40\Tizen.NET.props')" />
-    <Import Project="$(NuGetPackageRoot)tizen.net.sdk\1.0.1\build\Tizen.NET.Sdk.props" Condition="Exists('$(NuGetPackageRoot)tizen.net.sdk\1.0.1\build\Tizen.NET.Sdk.props')" />
+    <Import Project="$(NuGetPackageRoot)tizen.net.api4\4.0.1.14164\build\tizen40\Tizen.NET.API4.props" Condition="Exists('$(NuGetPackageRoot)tizen.net.api4\4.0.1.14164\build\tizen40\Tizen.NET.API4.props')" />
+    <Import Project="$(NuGetPackageRoot)tizen.net\6.0.0.14853\build\tizen40\Tizen.NET.props" Condition="Exists('$(NuGetPackageRoot)tizen.net\6.0.0.14853\build\tizen40\Tizen.NET.props')" />
+    <Import Project="$(NuGetPackageRoot)tizen.net.sdk\1.0.3\build\Tizen.NET.Sdk.props" Condition="Exists('$(NuGetPackageRoot)tizen.net.sdk\1.0.3\build\Tizen.NET.Sdk.props')" />
   </ImportGroup>
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <PkgTizen_NET_Sdk Condition=" '$(PkgTizen_NET_Sdk)' == '' ">C:\Users\cyber\.nuget\packages\tizen.net.sdk\1.0.1</PkgTizen_NET_Sdk>
+    <PkgTizen_NET_Sdk Condition=" '$(PkgTizen_NET_Sdk)' == '' ">C:\Users\cyber\.nuget\packages\tizen.net.sdk\1.0.3</PkgTizen_NET_Sdk>
   </PropertyGroup>
 </Project>

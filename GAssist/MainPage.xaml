@@ -4,8 +4,7 @@
     x:Class="GAssist.MainPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:cui="clr-namespace:Tizen.Wearable.CircularUI.Forms;assembly=Tizen.Wearable.CircularUI.Forms"
-    xmlns:local="clr-namespace:GAssist;assembly=GAssist">
+    xmlns:cui="clr-namespace:Tizen.Wearable.CircularUI.Forms;assembly=Tizen.Wearable.CircularUI.Forms">
 
     <cui:CirclePage RotaryFocusObject="{x:Reference ScrollView}">
         <AbsoluteLayout>
@@ -17,11 +16,15 @@
                 x:Name="ImageButton"
                 AbsoluteLayout.LayoutBounds="0.5, 1, .5, .25"
                 AbsoluteLayout.LayoutFlags="All"
-                BackgroundColor="Transparent" />
+                BackgroundColor="Transparent"
+                Clicked="ActionButton_ButtonClicked"
+                IsEnabled="False"
+                Pressed="ImageButton_PressedAsync" />
         </AbsoluteLayout>
     </cui:CirclePage>
     <cui:CirclePage
         x:Name="SettingsPage"
+        Appearing="SettingsPage_Appearing"
         BindingContext="local:"
         RotaryFocusObject="{x:Reference MyScroller}">
         <cui:CircleListView x:Name="MyScroller" HorizontalOptions="CenterAndExpand">

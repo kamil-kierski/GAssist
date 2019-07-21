@@ -45,10 +45,6 @@ namespace GAssist
                     {
                         MainPage.ProgressPopup.UpdateText(transcript);
                     }
-
-                    //if (ar.SpeechResults.Any(i => (int)i.Stability == 1)) return;
-                    //MainPage.ProgressPopup.UpdateText(ar.SpeechResults.First().Transcript);
-                    //return;
                 }
 
                 if (!MainPage.Pref.GetRawVoiceRecognitionText() && ar.SpeechResults.Any(i => i.Stability > 0.01))
@@ -57,9 +53,6 @@ namespace GAssist
                     {
                         MainPage.ProgressPopup.UpdateText(transcript);
                     }
-                    //if (ar.SpeechResults.Any(i => (int)i.Stability == 1)) return;
-                    //MainPage.ProgressPopup.UpdateText(ar.SpeechResults.First().Transcript);
-                    //return;
                 }
             }
 
@@ -71,7 +64,6 @@ namespace GAssist
 
             if (ar.ScreenOut != null)
             {
-                //var parsedResponse = HtmlResponseParser.ParseHtmlResponse(ar.ScreenOut.Data.ToStringUtf8());
                 MainPage.SetHtmlView(ar.ScreenOut.Data.ToStringUtf8());
             }
 
@@ -91,12 +83,8 @@ namespace GAssist
                 if (AudioPlayer.IsPrepared && !AudioPlayer.IsPlaying && Player.Buffered >= 1600)
                 {
                     AudioPlayer.IsPlaying = true;
-                    await Task.Run(Player.Play).ConfigureAwait(false);
+                    Player.Play();
                 }
-                //Rl.Throttle(TimeSpan.FromMilliseconds(1500), () =>
-                //{
-
-                //}, false, true);
             }
         }
     }

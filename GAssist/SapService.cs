@@ -6,6 +6,7 @@ using System.Timers;
 using Tizen;
 using Tizen.Applications;
 using Tizen.Network.Bluetooth;
+using Tizen.Wearable.CircularUI.Forms;
 
 namespace GAssist
 {
@@ -17,6 +18,7 @@ namespace GAssist
         private readonly Timer _reconnectTimer = new Timer(5000);
         private readonly Action _onConnectedCallback;
         private ResponseHandler responseHandler;
+        public static InformationPopup TextPopUp;
 
         public static bool IsConnected { get; private set; }
 
@@ -25,6 +27,13 @@ namespace GAssist
             _onConnectedCallback = onConnectedCallback;
             _reconnectTimer.Elapsed += ReconnectTimer_Elapsed;
             _reconnectTimer.AutoReset = true;
+
+            TextPopUp = new InformationPopup();
+
+            TextPopUp.BackButtonPressed += (s, e) =>
+            {
+                TextPopUp.Dismiss();
+            };
         }
 
         private void PromptBluetooth()
@@ -60,8 +69,8 @@ namespace GAssist
                 }
                 catch (Exception)
                 {
-                    MainPage.TextPopUp.Text = "Phone app is not configured configure the phone app.";
-                    MainPage.TextPopUp.Show();
+                    TextPopUp.Text = "Phone app is not configured. Configure the phone app.";
+                    TextPopUp.Show();
                     await Task.Delay(2000).ConfigureAwait(false);
                     await Connect().ConfigureAwait(false);
                 }
@@ -71,9 +80,20 @@ namespace GAssist
             {
                 if (BluetoothAdapter.IsBluetoothEnabled)
                 {
-                    MainPage.TextPopUp.Text = "Companion app is not installed, check your phone.";
-                    MainPage.TextPopUp.Show();
-                    LaunchApp();
+                    if (BluetoothAdapter
+                        .GetBondedDevices()
+                        .First(x => x.Class.MajorDeviceClassType == BluetoothMajorDeviceClassType.Phone)
+                        .IsConnected)
+                    {
+                        TextPopUp.Text = "Companion app is not installed, check your phone.";
+                        TextPopUp.Show();
+                        LaunchApp();
+                    }
+                    else
+                    {
+                        TextPopUp.Text = "Unable to connect to phone. Please check if Bluetooth is turned on both devices.";
+                        TextPopUp.Show();
+                    }
                 }
                 else
                 {
@@ -94,7 +114,7 @@ namespace GAssist
 
         private async void PeerStatusChanged(object sender, PeerStatusEventArgs e)
         {
-            MainPage.TextPopUp.Text = "Configure companion app on phone";
+            //TextPopUp.Text = "Configure companion app on phone";
             await Connect().ConfigureAwait(false);
         }
 
@@ -111,11 +131,10 @@ namespace GAssist
 
         private void Connection_StatusChanged(object sender, ConnectionStatusEventArgs e)
         {
-            Tizen.Log.Debug("GASSIST_SAP", e.Reason.ToString());
             if (e.Reason == ConnectionStatus.Connected)
             {
                 IsConnected = true;
-                MainPage.TextPopUp.Dismiss();
+                TextPopUp.Dismiss();
                 _onConnectedCallback();
                 if (responseHandler == null) responseHandler = new ResponseHandler();
             }
@@ -124,7 +143,8 @@ namespace GAssist
             {
                 IsConnected = false;
                 _connection.Dispose();
-                MainPage.ShowMessage("Lost connection, will try to reconnect in 10 seconds");
+                TextPopUp.Text = "Connection lost. Trying to reconnect in 5s.";
+                TextPopUp.Show();
                 MainPage.SetActionButtonIsEnabled(false);
                 MainPage.SetButtonImage("listen_disabled_allgreyedout.png");
 
@@ -136,7 +156,6 @@ namespace GAssist
                 //if (AudioPlayer.IsPlaying)
                 //{
                 //    AudioPlayer.Stop();
-                //    AudioPlayer.IsPlaying = false;
                 //}
                 _connection.DataReceived -= Connection_DataReceived;
                 _connection.StatusChanged -= Connection_StatusChanged;
@@ -151,7 +170,7 @@ namespace GAssist
 
         private async void ReconnectTimer_Elapsed(object sender, ElapsedEventArgs e)
         {
-            MainPage.ShowMessage("Reconnecting...");
+            TextPopUp.Text = "Reconnecting...";
             await Connect().ConfigureAwait(false);
         }
 

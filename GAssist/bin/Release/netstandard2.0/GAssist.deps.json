@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETStandard,Version=v2.0/",
-    "signature": "f9da01911ef643358fafef2db374ffa0977980b8"
+    "signature": "a40db7030833376db238dcfc7a546183ec5f25e1"
   },
   "compilationOptions": {},
   "targets": {
@@ -9,12 +9,12 @@
     ".NETStandard,Version=v2.0/": {
       "GAssist/1.0.0": {
         "dependencies": {
-          "Google.Api.CommonProtos": "1.6.0",
+          "Google.Api.CommonProtos": "1.7.0",
           "Google.Protobuf": "3.9.0-rc1",
           "Microsoft.NETCore.Platforms": "3.0.0-preview6.19303.8",
           "NETStandard.Library": "2.0.3",
           "Samsung.Sap": "1.0.0",
-          "Tizen.NET": "6.0.0.14844",
+          "Tizen.NET": "6.0.0.14853",
           "Tizen.Wearable.CircularUI": "1.3.0-pre1-00043",
           "Xamarin.Forms.Platform.Tizen": "1.0.0.0"
         },
@@ -22,15 +22,14 @@
           "GAssist.dll": {}
         }
       },
-      "Google.Api.CommonProtos/1.6.0": {
+      "Google.Api.CommonProtos/1.7.0": {
         "dependencies": {
-          "Google.Protobuf": "3.9.0-rc1",
-          "NETStandard.Library": "2.0.3"
+          "Google.Protobuf": "3.9.0-rc1"
         },
         "runtime": {
-          "lib/netstandard1.3/Google.Api.CommonProtos.dll": {
-            "assemblyVersion": "1.6.0.0",
-            "fileVersion": "1.6.0.0"
+          "lib/netstandard2.0/Google.Api.CommonProtos.dll": {
+            "assemblyVersion": "1.7.0.0",
+            "fileVersion": "1.7.0.0"
           }
         }
       },
@@ -53,7 +52,7 @@
       },
       "Samsung.Sap/1.0.0": {
         "dependencies": {
-          "Tizen.NET": "6.0.0.14844"
+          "Tizen.NET": "6.0.0.14853"
         }
       },
       "System.Buffers/4.4.0": {
@@ -93,13 +92,13 @@
           }
         }
       },
-      "Tizen.NET/6.0.0.14844": {
+      "Tizen.NET/6.0.0.14853": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "3.0.0-preview6.19303.8",
-          "Tizen.NET.API6": "6.0.0.14844"
+          "Tizen.NET.API6": "6.0.0.14853"
         }
       },
-      "Tizen.NET.API6/6.0.0.14844": {},
+      "Tizen.NET.API6/6.0.0.14853": {},
       "Tizen.Wearable.CircularUI/1.3.0-pre1-00043": {
         "dependencies": {
           "Xamarin.Forms": "3.5.0.129452"
@@ -143,12 +142,12 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Google.Api.CommonProtos/1.6.0": {
+    "Google.Api.CommonProtos/1.7.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-/Bclx4K+zptvxIk+AQSzmIkuMNAnAdgjBv0bwhsZn0d6SLOof16lVe/tfD+ZFrmKVcOHJDJIDSiSzan3FIglQw==",
-      "path": "google.api.commonprotos/1.6.0",
-      "hashPath": "google.api.commonprotos.1.6.0.nupkg.sha512"
+      "sha512": "sha512-RQG8nYUb+B1CKxXqtXBy7Kfj4r0c3mE4itQaFHuLzf7BXPeAOHPRKgU02kemBmuNMeJ+GSK+6D/RrFkjSFxvOA==",
+      "path": "google.api.commonprotos/1.7.0",
+      "hashPath": "google.api.commonprotos.1.7.0.nupkg.sha512"
     },
     "Google.Protobuf/3.9.0-rc1": {
       "type": "package",
@@ -206,19 +205,19 @@
       "path": "system.runtime.compilerservices.unsafe/4.5.2",
       "hashPath": "system.runtime.compilerservices.unsafe.4.5.2.nupkg.sha512"
     },
-    "Tizen.NET/6.0.0.14844": {
+    "Tizen.NET/6.0.0.14853": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-ncfSjN92TX32fUagdTjCkyrIi2s5Ggv/w4UMtRsXl0k7QGo7UMGX04Se+ae11iCIEIaVephzUxDiuhj4gN0hdg==",
-      "path": "tizen.net/6.0.0.14844",
-      "hashPath": "tizen.net.6.0.0.14844.nupkg.sha512"
+      "sha512": "sha512-aPEkDeTZSHnYe8+lsSUpIadxL4uv3j2+p1YmODgJU+8cViMeXA6nXRqR+ZzTX5wxNrVNY+4/iTkCKuVrcWQNZg==",
+      "path": "tizen.net/6.0.0.14853",
+      "hashPath": "tizen.net.6.0.0.14853.nupkg.sha512"
     },
-    "Tizen.NET.API6/6.0.0.14844": {
+    "Tizen.NET.API6/6.0.0.14853": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-l6wiunjVvZ1IBn/lOfJFzY13sE8i0pxG+418yOenhLwUG3gwV6utkpYMCevcmqHSyPYy+rEqaZdc8A2c60HXYA==",
-      "path": "tizen.net.api6/6.0.0.14844",
-      "hashPath": "tizen.net.api6.6.0.0.14844.nupkg.sha512"
+      "sha512": "sha512-b9o3Q+lNE0akPfOer85hXqKzK7kXUojwaIQQdWbwTUg8C4zRLya0UYRlZqZMIae0jshVKK9WESFu6qF221Lpag==",
+      "path": "tizen.net.api6/6.0.0.14853",
+      "hashPath": "tizen.net.api6.6.0.0.14853.nupkg.sha512"
     },
     "Tizen.Wearable.CircularUI/1.3.0-pre1-00043": {
       "type": "package",

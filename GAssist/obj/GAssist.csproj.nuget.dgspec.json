@@ -46,7 +46,7 @@
           "dependencies": {
             "Google.Api.CommonProtos": {
               "target": "Package",
-              "version": "[1.6.0, )"
+              "version": "[1.7.0, )"
             },
             "Google.Protobuf": {
               "target": "Package",
@@ -68,7 +68,7 @@
             },
             "Tizen.NET": {
               "target": "Package",
-              "version": "[6.0.0.14844, )"
+              "version": "[6.0.0.14853, )"
             },
             "Tizen.Wearable.CircularUI": {
               "target": "Package",

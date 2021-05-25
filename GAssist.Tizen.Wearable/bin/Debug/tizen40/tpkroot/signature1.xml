@@ -4,39 +4,59 @@
     <SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256" />
     <Reference URI="tizen-manifest.xml">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
-      <DigestValue>SwZCZvu29rS7fbUu2lEsgmWP7CKUdqaFbck7iHRwdIU=</DigestValue>
+      <DigestValue>aqF7Kh+Z6lLQnaoHMIvT302rOns3xiJgwtuR/M1VQAY=</DigestValue>
     </Reference>
-    <Reference URI="shared%2Fres%2FGAssist.Tizen.Wearable.png">
+    <Reference URI="shared%2Fres%2Fstop_red.png">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
-      <DigestValue>/gTbhhRqVKFAMykTkZyDaEozK7OBNMSXGtsJpmRcLuE=</DigestValue>
+      <DigestValue>jHXHBDyW7vJIPBOePPADZUGw1neA41x0Rj/UQ49csOQ=</DigestValue>
+    </Reference>
+    <Reference URI="shared%2Fres%2Fround_cmyk.png">
+      <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
+      <DigestValue>XdKBB0bmBptocJtvmlqWVKpkJ9s8i+2uWkNpNGzUOnM=</DigestValue>
+    </Reference>
+    <Reference URI="shared%2Fres%2Flisten_disabled_allgreyedout.png">
+      <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
+      <DigestValue>fzVmBUyGxFsW4E60rBUhRagi+vTITa7uSDo8NMa3edc=</DigestValue>
+    </Reference>
+    <Reference URI="shared%2Fres%2Flisten_blue.png">
+      <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
+      <DigestValue>0F9f0QzAcXq0yREk3VmpDjuv3aXSL5/qrZkG8OvTcQ4=</DigestValue>
+    </Reference>
+    <Reference URI="shared%2Fres%2Fding.mp3">
+      <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
+      <DigestValue>wevjzw2rV1Iun4ifIMYOdnuoJFI7xKguxvxJRIhXll0=</DigestValue>
     </Reference>
     <Reference URI="res%2Fxml%2Faccessoryservices.xml">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
-      <DigestValue>JXkbLWaSVZaMbOd1IwCjTuq9iU27we/gdjh2GWYkvAA=</DigestValue>
+      <DigestValue>uKs1k2bTIpaP6xtKgA/wly/4yPlV80Spk+GGAHSWoPQ=</DigestValue>
+    </Reference>
+    <Reference URI="GAssist.Tizen.Wearable.deps.json">
+      <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
+      <DigestValue>G2T0YQvGBcxqFStDH5ncwJEwrPnCLc7M4VwhNY9gI/4=</DigestValue>
     </Reference>
     <Reference URI="bin%2FXamarin.Forms.Xaml.dll">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
-      <DigestValue>doVQHw+tLLiOufs1rfjjpaLi5KPHtVyhWOQQF6RVP8s=</DigestValue>
+      <DigestValue>6yjFiUGTCDKDF8Pe6k5NSIASW1Id7P8cDsN85Od2aRc=</DigestValue>
     </Reference>
     <Reference URI="bin%2FXamarin.Forms.Platform.Tizen.dll">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
-      <DigestValue>xtt2VppZwiMuyaSqQae2sYCaO9u+HX0lDIHguMZZYNE=</DigestValue>
+      <DigestValue>3TPugJ+EiMTOsI3dYaZVmsD4HSwkqB+WCiUIKMYQ+xY=</DigestValue>
     </Reference>
     <Reference URI="bin%2FXamarin.Forms.Platform.dll">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
-      <DigestValue>/ve0n4PKixQ68P9MdMciW7UYqrjXn0nRRmkhlUXxy24=</DigestValue>
+      <DigestValue>Y7gVBBozAxlVCyhPb6Sgxv+xYMWVhWRBImzThygPdG8=</DigestValue>
     </Reference>
     <Reference URI="bin%2FXamarin.Forms.Core.dll">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
-      <DigestValue>n23oqlzVAMkPon2EZ4l3+0zUpHMgTgUqowbVx0gNDgQ=</DigestValue>
+      <DigestValue>VsR6FOYvZ+UGg85xQRHByDhiaoHxrc2AeyQ56NEDcT0=</DigestValue>
     </Reference>
     <Reference URI="bin%2FTizen.Wearable.CircularUI.Forms.Renderer.dll">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
-      <DigestValue>UT8qESv8Q9Uv/vS3I29iDgV2QDCC64QdwDtXjvyBmBA=</DigestValue>
+      <DigestValue>bccmAkM/lFTYu/CysCNI1D4WOGBE2swIOVhpxVSQCHU=</DigestValue>
     </Reference>
     <Reference URI="bin%2FTizen.Wearable.CircularUI.Forms.dll">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
-      <DigestValue>2C/hDnr4gSUNBKUyrS08ujKECN+nXPAjdOmGbAVzTuY=</DigestValue>
+      <DigestValue>h5nhGoP8MnjJEiHFJKbn161VQibedmeQaEB1qyb5QAk=</DigestValue>
     </Reference>
     <Reference URI="bin%2FSystem.Runtime.CompilerServices.Unsafe.dll">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
@@ -48,31 +68,31 @@
     </Reference>
     <Reference URI="bin%2FGoogle.Protobuf.dll">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
-      <DigestValue>yHJkQG/c5KNp3wlCEcH74KAfz3ADu4eVN1xVwh63msw=</DigestValue>
+      <DigestValue>NT+LICR7RRESfDBKK0khRiRjakE5Xr7bRmy+DTwtop0=</DigestValue>
     </Reference>
     <Reference URI="bin%2FGoogle.Api.CommonProtos.dll">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
-      <DigestValue>4rLp4Kd7XZeE37UazAC4SOPDGsoDqJQEBJYM8G5kd4Y=</DigestValue>
+      <DigestValue>Z3+WR+SYdbYftkofUtzq0fU7j+PJEsWYXCHlQpqRZ34=</DigestValue>
     </Reference>
     <Reference URI="bin%2FGAssist.Tizen.Wearable.pdb">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
-      <DigestValue>8IHUrislivprzdcwggO3E73ovgTst3ZyLtb0+gZPEco=</DigestValue>
+      <DigestValue>vCATkkM1cvnfQ7ERVod44gjIUdfJPxH12wLONIJ3s+E=</DigestValue>
     </Reference>
     <Reference URI="bin%2FGAssist.Tizen.Wearable.dll">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
-      <DigestValue>gaIQ2Jj+pCW/BRKZxC09WMQDFKdDbftzpEfE8xWDH2Q=</DigestValue>
+      <DigestValue>Y0eUnJbMQwcODIIFZePsQQwXH+pIf+Zrqlt2ZE2dEwY=</DigestValue>
     </Reference>
     <Reference URI="bin%2FGAssist.pdb">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
-      <DigestValue>OP5r0bS/4Z78otZtVe0p+dBUGe96djkAB08xCCwdMD0=</DigestValue>
+      <DigestValue>UYO4a4kBhEUYMem5P3MH/TOWBQgW09OIF43qLZI0tqQ=</DigestValue>
     </Reference>
     <Reference URI="bin%2FGAssist.dll">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
-      <DigestValue>6sWywl9vvXjHGgn6WkuQmb2+/NXLGHyCtAb/eM7k2XU=</DigestValue>
+      <DigestValue>2CjezTiYRt5tppEcYiAHshmFWOL6nOaQbG4EOEZ5qKc=</DigestValue>
     </Reference>
     <Reference URI="author-signature.xml">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
-      <DigestValue>lQhAiF/493wE8bX3fvtkTsXTy1rOMD5gzhhgAgSHul4=</DigestValue>
+      <DigestValue>eDFoImaxGHGzqvVUdNZqpln5pX4RqT1GDbcSQ3isELU=</DigestValue>
     </Reference>
     <Reference URI="#prop">
       <Transforms>
@@ -83,38 +103,38 @@
     </Reference>
   </SignedInfo>
   <SignatureValue>
-R5kAq4G+E7iBz6i7M4Xi0fOIAizkRAU1c2ncVnQNtrcVlxGKoz6kCZn6OfdBAAmR0yy+V06QavWc
-db3/s05loxH5SqVaq0NR62NAX/FDl490bzmpDNtBbLBnRfBQLoyR16/NyLZZyon9gSEWqAHJ9yUq
-MdO6r5Z9xoD8Ai9TVwCRIYq1FzpqILXVBEB/qPtyzVWVA8s+OIHwTgX0ZRLD+rjuCSI+IZGMQnWW
-mfD5A+9LieSgDuZq3qjJ3S/oxi5G18FbCg67csHHVfZI4C5BBnzNyHRLPP7e/XUGNK2+lSCxuy5e
-mGBTx6xvMH0tGO3zGNg/+Tqt2owdDWUoarVESQ==
+MZuTRSj+x4EA2iR9KF+/0ZwmcJPmlAY3uei02/5e3X404oD/wKcPIHPhvkCAMmRjCuGV9xt4ZVZ4
+1gcekN7cy3o27ThexEmhJmqPqNwZZjkRE2CXeHx1/GodsEQGORT+2Ik7lMcXbMh9ag8WbhkVwe4L
+nWkyVFWqkbHgLVBmAxsX3k1HR7j8v3foak41Mb5mO4Y/c7bcXykdiGwQnK/oTJ7mJKC1d/Mfp8Np
+bfD1hxf17cghZBfnuglRQaCr1kfGHz2++d3jNkeD6dROyzEcvpZQsoGkF9mrFMpfJs8ioF6ShcVg
+tNXUiZTCd3cWLXemh59+DL0ljc9mORo1ljdhWQ==
 </SignatureValue>
   <KeyInfo>
     <X509Data>
       <X509Certificate>
-MIIFCDCCA/CgAwIBAgIBZTANBgkqhkiG9w0BAQsFADCBnjELMAkGA1UEBhMCS1IxFDASBgNVBAgM
+MIIE/TCCA+WgAwIBAgIBZTANBgkqhkiG9w0BAQsFADCBnjELMAkGA1UEBhMCS1IxFDASBgNVBAgM
 C1NvdXRoIEtvcmVhMQ4wDAYDVQQHDAVTdXdvbjEmMCQGA1UECgwdU2Ftc3VuZyBFbGVjdHJvbmlj
 cyBDby4sIEx0ZC4xDzANBgNVBAsMBk1vYmlsZTEwMC4GA1UEAwwnU2Ftc3VuZyBUaXplbiBERVZF
-TE9QRVIgUHVibGljIENBIENsYXNzMB4XDTE5MDQzMDEyNTc1OVoXDTIwMDQyOTEyNTc1OVowggGU
+TE9QRVIgUHVibGljIENBIENsYXNzMB4XDTE5MDUzMDE3MzgyMloXDTIwMDUyOTE3MzgyMlowggGJ
 MREwDwYDVQQDDAhUaXplblNESzEJMAcGA1UECwwAMQkwBwYDVQQKDAAxCTAHBgNVBAcMADEJMAcG
-A1UECAwAMQkwBwYDVQQGEwAxggFGMIIBQgYJKoZIhvcNAQkBFoIBM2N5YmVybmV0aWM4N0BnbWFp
-bC5jb20mdG9rZW5fdHlwZT1iZWFyZXImdXNlcklkPXdieGZqZmU1YWwmYWNjZXNzX3Rva2VuX2V4
-cGlyZXNfaW49ODYzOTk2JmNsaWVudF9pZD00ZmI3Zm5mM25wJmFjY2Vzc190b2tlbj1CeXE3TFBT
-YmpmJnJlZnJlc2hfdG9rZW49LTEmYXV0aF9zZXJ2ZXJfdXJsPXVzLWF1dGgyLnNhbXN1bmdvc3Au
-Y29tJnN0YXRlPWFjY291bnRjaGVja2RvZ2VuZXJhdGVkc3RhdGV0ZXh0JmNsb3NlZEFjdGlvbj1z
-aWduSW5TdWNjZXNzJmNsb3NlPXRydWUmYXBpX3NlcnZlcl91cmw9dXMtYXV0aDIuc2Ftc3VuZ29z
-cC5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCW7QYARWR5RgmQRfynA9DLxvaT
-DHyIEWoy+6B7mydCeNsYVqeQoRvX7RDmCude/aqNWkMICmE99ZYvSgc/rx2B5zuDvwfHQ+yliCJW
-+YRWhzTU3I8W8/I1cbisezgmCl/Y4JaH9b+QZy6kVDA9Q36e/ddV/7rUdCZGGhFcX5lKDJg38bmJ
-5FxYZy39+4M4f+zVGKm2Sq2BZfIRbmeAwaAK9n5fEn1n451NQmOwgA+SLTx+nYE8m2T3dkYXZFFW
-IwVjZDrfJFz6weIWgbATyC4Mw4pDqW2JHrEtgC0xe+TE+LtuUjGCXCozGKS8uChLTVPG8Tu84Eo6
-p8XiO7coZsdrAgMBAAGjWDBWMFQGA1UdEQRNMEuGFFVSTjp0aXplbjpwYWNrYWdlaWQ9hjNVUk46
-dGl6ZW46ZGV2aWNlaWQ9Mi4wI2c4VjBCQ1BGTlFuZ2FieEt4cU5JdVJ2aU9FYz0wDQYJKoZIhvcN
-AQELBQADggEBAB5xZX9DQEYPc08vr4ygk/e6IoTKKadpx87yQKtc1UH1pshs1N/WnNSTteBhEYqL
-hjQT+tbFAOJ91XaD9xgUDTQ8IZ7lIC/kAaPGkf71CEaWP/iEebT7hk/Ku5ayXLgFGUM4SlygyXr1
-xJSxdloLbiSRNlqb8MyAeST5+Yjo5qy/cx6Xy336qHjrqImhAYeHK2DXJ1FlpLYFaZTawI8u3iTZ
-JlwxucEE/97JXtm0amMmETbHg8Jga7iEfqoFFOoPpgoMIfXYzXT44PwnMnzaXNqI5BZB/AoKRRP7
-dQdjSDcAcGxGIEUre1bVPM+cSbfx/Ge3DyB/CRtb0Drre3cThOc=
+A1UECAwAMQkwBwYDVQQGEwAxggE7MIIBNwYJKoZIhvcNAQkBFoIBKHBhaWdlQG9wLnBsJnRva2Vu
+X3R5cGU9YmVhcmVyJnVzZXJJZD1na3V4dXd3dTNjJmFjY2Vzc190b2tlbl9leHBpcmVzX2luPTg2
+Mzk5NSZjbGllbnRfaWQ9NGZiN2ZuZjNucCZhY2Nlc3NfdG9rZW49YjE4NlhJc2ZyZiZyZWZyZXNo
+X3Rva2VuPS0xJmF1dGhfc2VydmVyX3VybD11cy1hdXRoMi5zYW1zdW5nb3NwLmNvbSZzdGF0ZT1h
+Y2NvdW50Y2hlY2tkb2dlbmVyYXRlZHN0YXRldGV4dCZjbG9zZWRBY3Rpb249c2lnbkluU3VjY2Vz
+cyZjbG9zZT10cnVlJmFwaV9zZXJ2ZXJfdXJsPXVzLWF1dGgyLnNhbXN1bmdvc3AuY29tMIIBIjAN
+BgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAmh8c1MD/84mW2i3Jp2R/rsw4GMxB6m9/gVNwhZCp
+5PXsyQ6db+mAG5dmZIRwsgYKcOZ3GGy43LicKlNzkaCT69j+esaJ6LSK6DcdctIwbyqW2d9b6CHE
+gfw87dRgpQp3M44nM/kqu00x9jz4Iyi1NUBqZmxux/e5aDmGc4HurMor4VmTrgJU3ZANWYnpvtg9
+eJFIBq92Bd8a2WAdnqzfobC5Omc01Y3ImyNm3aU26sd6ZCQ7Z71tMvUai8aDJYcIcM1BsYjl/jL8
+G+b0+ub88P6paW22IpX6Fnffpoz0+/YC8hRPb2MSnlIGfLyjAWXeZ3iAbVS76MqTdz53lp4/6QID
+AQABo1gwVjBUBgNVHREETTBLhhRVUk46dGl6ZW46cGFja2FnZWlkPYYzVVJOOnRpemVuOmRldmlj
+ZWlkPTIuMCNnOFYwQkNQRk5RbmdhYnhLeHFOSXVSdmlPRWM9MA0GCSqGSIb3DQEBCwUAA4IBAQAJ
+ckpSEz95i+ETAPGXI87/71DA54pZtibkI2JrxkA/NKDkjtc5WJIcgM4Pl24vpaqiYK1j9D+Wqedv
+OWN4ZZ7NPZrL1jneDw5g+i+dtreiwAe7Hc90ue/6O8uLqHUJE3fnX2d1Tc6o1UyfEv43toWM5Nvz
+f/vsPuEpxkl5pVQMBPpT14hw7deAVwYuCtEdyQazZk/fNFZbnG0zle9ZYSP6vEI9aDUWserBf/kh
+pPvYIni9f8h6p5/t+noCyX3e79A8YQAalfcKXccvLh3RKwU3MVIUbavS+AbI37aztIY9HuwHWJ1e
+kGVKpL1nWvxIHHqw9haTS3b6od6cdThZrJd0
 </X509Certificate>
       <X509Certificate>
 MIIDuzCCAqOgAwIBAgICL+cwDQYJKoZIhvcNAQELBQAwgY8xCzAJBgNVBAYTAktSMRQwEgYDVQQI

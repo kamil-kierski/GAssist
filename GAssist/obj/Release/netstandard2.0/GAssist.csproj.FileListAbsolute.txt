@@ -1,11 +1,13 @@
 C:\Users\cyber\repos_new\GAssist\GAssist\bin\Release\netstandard2.0\GAssist.deps.json
 C:\Users\cyber\repos_new\GAssist\GAssist\bin\Release\netstandard2.0\GAssist.dll
 C:\Users\cyber\repos_new\GAssist\GAssist\bin\Release\netstandard2.0\GAssist.pdb
+C:\Users\cyber\repos_new\GAssist\GAssist\bin\Release\netstandard2.0\Xamarin.Forms.Platform.Tizen.dll
+C:\Users\cyber\repos_new\GAssist\GAssist\bin\Release\netstandard2.0\Xamarin.Forms.Platform.Tizen.pdb
 C:\Users\cyber\repos_new\GAssist\GAssist\obj\Release\netstandard2.0\MainPage.xaml.g.cs
 C:\Users\cyber\repos_new\GAssist\GAssist\obj\Release\netstandard2.0\GAssist.csproj.CoreCompileInputs.cache
 C:\Users\cyber\repos_new\GAssist\GAssist\obj\Release\netstandard2.0\GAssist.AssemblyInfoInputs.cache
 C:\Users\cyber\repos_new\GAssist\GAssist\obj\Release\netstandard2.0\GAssist.AssemblyInfo.cs
 C:\Users\cyber\repos_new\GAssist\GAssist\obj\Release\netstandard2.0\XamlC.stamp
+C:\Users\cyber\repos_new\GAssist\GAssist\obj\Release\netstandard2.0\GAssist.csproj.CopyComplete
 C:\Users\cyber\repos_new\GAssist\GAssist\obj\Release\netstandard2.0\GAssist.dll
 C:\Users\cyber\repos_new\GAssist\GAssist\obj\Release\netstandard2.0\GAssist.pdb
-C:\Users\cyber\repos_new\GAssist\GAssist\obj\Release\netstandard2.0\GAssist.csprojAssemblyReference.cache

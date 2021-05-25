@@ -1,15 +1,16 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
 <resources>
-	<application name="org.tizen.cybernetic87.GAssist.Tizen.Wearable">
-		<serviceProfile id="/org/cybernetic87/gassist" name="GAssist"
-			role="consumer" version="1.0">
-			<supportedTransports>
-				<transport type="TRANSPORT_BT" />
-				<transport type="TRANSPORT_WIFI" />
-			</supportedTransports>
-			<serviceChannel id="104" dataRate="high" priority="high"
-				reliability="enable">
-			</serviceChannel>
-		</serviceProfile>
-	</application>
+  <application name="org.tizen.cybernetic87.GAssist.Tizen.Wearable">
+    <serviceProfile id="/org/cybernetic87/gassist" name="gassist"
+                    role="consumer" version="1.0">
+      <supportedTransports>
+        <transport type="TRANSPORT_BT" />
+        <transport type="TRANSPORT_WIFI" />
+      </supportedTransports>
+      <serviceChannel id="172" dataRate="high" priority="high"
+                      reliability="disable">
+      </serviceChannel>
+    </serviceProfile>
+  </application>
 </resources>

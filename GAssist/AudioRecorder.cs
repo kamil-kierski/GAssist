@@ -1,73 +1,79 @@
-﻿using Samsung.Sap;
-using System.Linq;
+﻿using Google.Protobuf;
+using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
 using Tizen.Multimedia;
 
 namespace GAssist
 {
-    internal class AudioRecorder
+    public static class AudioRecorder
     {
-        private Agent agent;
-        private Connection connection;
-        private byte[] chunk;
-        public volatile bool isRecording;
-        private int bufferSize;
-        private CancellationTokenSource source;
-        private CancellationToken token;
+        private static readonly int _bufferSize = 1600;
 
-        private AudioCapture audioCapture;
+        private static readonly AudioCapture _audioCapture =
+            new AudioCapture(16000, AudioChannel.Mono, AudioSampleType.S16Le);
 
-        public AudioRecorder(Connection connection, Agent agent, int bufferSize)
+        private static CancellationTokenSource _source;
+        private static CancellationToken _token;
+
+        public static bool IsRecording { get; [MethodImpl(MethodImplOptions.Synchronized)]private set; }
+
+        public static void StartRecording(bool htmlResponse)
         {
-            this.connection = connection;
-            this.agent = agent;
-            this.bufferSize = bufferSize;
-        }
+            //_audioCapture = new AudioCapture(16000, AudioChannel.Mono, AudioSampleType.S16Le);
+            IsRecording = true;
 
-        public void StartRecording()
-        {
-            if (isRecording)
+            var ar = new AssistRequest
             {
-                Tizen.Log.Debug("AUDIORECORDER", "BAD!:RECORDING FLAG TRUE ON START RECORDING");
-            }
-            audioCapture = new AudioCapture(16000, AudioChannel.Mono, AudioSampleType.S16Le);
-            isRecording = true;
-            source = new CancellationTokenSource();
-            token = source.Token;
-            audioCapture.Prepare();
+                Config = new AssistConfig
+                {
+                    AudioInConfig = new AudioInConfig
+                    {
+                        SampleRateHertz = 16000,
+                        Encoding = AudioInConfig.Types.Encoding.Linear16
+                    },
+                    ScreenOutConfig = new ScreenOutConfig
+                    {
+                        ScreenMode = htmlResponse
+                            ? ScreenOutConfig.Types.ScreenMode.Playing
+                            : ScreenOutConfig.Types.ScreenMode.Unspecified
+                    }
+                }
+            };
+
+            SapService.SendData(ar.ToByteArray());
+
+            _audioCapture.Prepare();
             Record();
         }
 
-        public void StopRecording()
+        public static void StopRecording()
         {
-            source.Cancel();
-            chunk = null;
-            audioCapture.Flush();
-            audioCapture.Unprepare();
-            audioCapture.Dispose();
-            isRecording = false;
+            IsRecording = false;
+            _source.Cancel();
+
         }
 
-        public void Record()
+        private static void Record()
         {
-            Task.Factory.StartNew(() =>
-            {
-                while (isRecording)
-                {
-                    if (token.IsCancellationRequested)
-                    {
-                        return;
-                    }
-                    //chunk = new byte[bufferSize];
-                    chunk = audioCapture.Read(bufferSize);
+            _source = new CancellationTokenSource();
+            _token = _source.Token;
 
-                    if (connection != null && agent != null && agent.Channels.Count > 0)
+
+            Task.Run(() =>
+            {
+                while (!_token.IsCancellationRequested)
+                {
+                    var ar2 = new AssistRequest
                     {
-                        connection.Send(agent.Channels.First().Value, chunk);
-                    }
+                        AudioIn = ByteString.CopyFrom(_audioCapture.Read(_bufferSize))
+                    };
+                    SapService.SendData(ar2.ToByteArray());
                 }
-            }, token);
+
+                _audioCapture.Flush();
+                _audioCapture.Unprepare();
+            }, _token);
         }
     }
 }

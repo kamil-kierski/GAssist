@@ -14,9 +14,8 @@
  * limitations under the License.
  */
 
-using Tizen.Applications;
 
-namespace GAssist
+namespace GAssist.Tizen.Wearable
 {
     internal class Program : global::Xamarin.Forms.Platform.Tizen.FormsApplication
     {
@@ -24,11 +23,6 @@ namespace GAssist
         {
             base.OnCreate();
             LoadApplication(new App());
-        }
-
-        protected override void OnAppControlReceived(AppControlReceivedEventArgs e)
-        {
-            base.OnAppControlReceived(e);
         }
 
         private static void Main(string[] args)

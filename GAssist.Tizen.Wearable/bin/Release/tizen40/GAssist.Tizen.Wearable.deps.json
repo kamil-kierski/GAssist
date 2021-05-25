@@ -1,192 +1,100 @@
 {
   "runtimeTarget": {
     "name": "Tizen,Version=v4.0/",
-    "signature": "198646991da9b1668aad57fbac96c5f849ddcbf3"
+    "signature": "4ffaf225a76806ade3376ea5c9978b3e4a185eb7"
   },
   "compilationOptions": {},
   "targets": {
     "Tizen,Version=v4.0": {},
     "Tizen,Version=v4.0/": {
-      "GAssist.Tizen.Wearable/1.0.0": {
+      "GAssist.Tizen.Wearable/0.2.0": {
         "dependencies": {
           "GAssist": "1.0.0",
-          "Tizen.NET": "4.0.0",
-          "Tizen.NET.Sdk": "1.0.1"
+          "Tizen.NET": "6.0.0.14853",
+          "Tizen.NET.Sdk": "1.0.3"
         },
         "runtime": {
           "GAssist.Tizen.Wearable.dll": {}
         }
       },
-      "Google.Api.CommonProtos/1.6.0": {
+      "Google.Api.CommonProtos/1.7.0": {
         "dependencies": {
-          "Google.Protobuf": "3.7.0"
+          "Google.Protobuf": "3.9.0-rc1"
         },
         "runtime": {
-          "lib/netstandard1.3/Google.Api.CommonProtos.dll": {
-            "assemblyVersion": "1.6.0.0",
-            "fileVersion": "1.6.0.0"
+          "lib/netstandard2.0/Google.Api.CommonProtos.dll": {
+            "assemblyVersion": "1.7.0.0",
+            "fileVersion": "1.7.0.0"
           }
         }
       },
-      "Google.Api.Gax/2.7.0": {
+      "Google.Protobuf/3.9.0-rc1": {
         "dependencies": {
-          "Newtonsoft.Json": "11.0.2",
-          "System.Interactive.Async": "3.2.0"
+          "System.Memory": "4.5.2"
         },
         "runtime": {
-          "lib/netstandard2.0/Google.Api.Gax.dll": {
-            "assemblyVersion": "2.7.0.0",
-            "fileVersion": "2.7.0.0"
+          "lib/netstandard2.0/Google.Protobuf.dll": {
+            "assemblyVersion": "3.9.0.0",
+            "fileVersion": "3.9.0.0"
           }
         }
       },
-      "Google.Api.Gax.Grpc/2.7.0": {
-        "dependencies": {
-          "Google.Api.CommonProtos": "1.6.0",
-          "Google.Api.Gax": "2.7.0",
-          "Google.Apis.Auth": "1.39.0",
-          "Grpc.Auth": "1.20.1",
-          "Grpc.Core": "1.20.1"
-        },
-        "runtime": {
-          "lib/netstandard2.0/Google.Api.Gax.Grpc.dll": {
-            "assemblyVersion": "2.7.0.0",
-            "fileVersion": "2.7.0.0"
-          }
-        }
-      },
-      "Google.Apis/1.39.0": {
-        "dependencies": {
-          "Google.Apis.Core": "1.39.0",
-          "Newtonsoft.Json": "11.0.2"
-        },
-        "runtime": {
-          "lib/netstandard2.0/Google.Apis.dll": {
-            "assemblyVersion": "1.39.0.0",
-            "fileVersion": "1.39.0.0"
-          }
-        }
-      },
-      "Google.Apis.Auth/1.39.0": {
-        "dependencies": {
-          "Google.Apis": "1.39.0",
-          "Google.Apis.Core": "1.39.0"
-        },
-        "runtime": {
-          "lib/netstandard2.0/Google.Apis.Auth.PlatformServices.dll": {
-            "assemblyVersion": "1.39.0.0",
-            "fileVersion": "1.39.0.0"
-          },
-          "lib/netstandard2.0/Google.Apis.Auth.dll": {
-            "assemblyVersion": "1.39.0.0",
-            "fileVersion": "1.39.0.0"
-          }
-        }
-      },
-      "Google.Apis.Core/1.39.0": {
-        "dependencies": {
-          "Newtonsoft.Json": "11.0.2"
-        },
-        "runtime": {
-          "lib/netstandard2.0/Google.Apis.Core.dll": {
-            "assemblyVersion": "1.39.0.0",
-            "fileVersion": "1.39.0.0"
-          }
-        }
-      },
-      "Google.Protobuf/3.7.0": {
-        "runtime": {
-          "lib/netstandard1.0/Google.Protobuf.dll": {
-            "assemblyVersion": "3.7.0.0",
-            "fileVersion": "3.7.0.0"
-          }
-        }
-      },
-      "Grpc.Auth/1.20.1": {
-        "dependencies": {
-          "Google.Apis.Auth": "1.39.0",
-          "Grpc.Core": "1.20.1"
-        },
-        "runtime": {
-          "lib/netstandard2.0/Grpc.Auth.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.20.1.0"
-          }
-        }
-      },
-      "Grpc.Core/1.20.1": {
-        "dependencies": {
-          "Grpc.Core.Api": "1.20.1",
-          "System.Interactive.Async": "3.2.0"
-        },
-        "runtime": {
-          "lib/netstandard2.0/Grpc.Core.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.20.1.0"
-          }
-        }
-      },
-      "Grpc.Core.Api/1.20.1": {
-        "dependencies": {
-          "System.Interactive.Async": "3.2.0"
-        },
-        "runtime": {
-          "lib/netstandard2.0/Grpc.Core.Api.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.20.1.0"
-          }
-        }
-      },
-      "NAudio/1.9.0": {
-        "runtime": {
-          "lib/netstandard2.0/NAudio.dll": {
-            "assemblyVersion": "1.9.0.0",
-            "fileVersion": "1.9.0.0"
-          }
-        }
-      },
-      "Newtonsoft.Json/11.0.2": {
-        "runtime": {
-          "lib/netstandard2.0/Newtonsoft.Json.dll": {
-            "assemblyVersion": "11.0.0.0",
-            "fileVersion": "11.0.2.21924"
-          }
-        }
-      },
+      "Microsoft.NETCore.Platforms/3.0.0-preview6.19303.8": {},
       "Samsung.Sap/1.0.0": {
         "dependencies": {
-          "Tizen.NET": "4.0.0"
+          "Tizen.NET": "6.0.0.14853"
         }
       },
-      "System.Interactive.Async/3.2.0": {
+      "System.Buffers/4.4.0": {},
+      "System.Memory/4.5.2": {
+        "dependencies": {
+          "System.Buffers": "4.4.0",
+          "System.Numerics.Vectors": "4.4.0",
+          "System.Runtime.CompilerServices.Unsafe": "4.5.2"
+        },
         "runtime": {
-          "lib/netstandard2.0/System.Interactive.Async.dll": {
-            "assemblyVersion": "3.2.0.0",
-            "fileVersion": "3.2.0.702"
+          "lib/netstandard2.0/System.Memory.dll": {
+            "assemblyVersion": "4.0.1.0",
+            "fileVersion": "4.6.27129.4"
           }
         }
       },
-      "Tizen.NET/4.0.0": {},
-      "Tizen.NET.Sdk/1.0.1": {},
-      "Tizen.Wearable.CircularUI/1.2.0": {
+      "System.Numerics.Vectors/4.4.0": {},
+      "System.Runtime.CompilerServices.Unsafe/4.5.2": {
+        "runtime": {
+          "lib/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll": {
+            "assemblyVersion": "4.0.4.1",
+            "fileVersion": "4.6.26919.2"
+          }
+        }
+      },
+      "Tizen.NET/6.0.0.14853": {
         "dependencies": {
-          "Tizen.NET": "4.0.0",
+          "Microsoft.NETCore.Platforms": "3.0.0-preview6.19303.8",
+          "Tizen.NET.API4": "4.0.1.14164"
+        }
+      },
+      "Tizen.NET.API4/4.0.1.14164": {},
+      "Tizen.NET.Sdk/1.0.3": {},
+      "Tizen.Wearable.CircularUI/1.3.0-pre1-00043": {
+        "dependencies": {
+          "Tizen.NET": "6.0.0.14853",
           "Xamarin.Forms": "3.5.0.129452"
         },
         "runtime": {
           "lib/tizen40/Tizen.Wearable.CircularUI.Forms.Renderer.dll": {
-            "assemblyVersion": "1.2.0.0",
-            "fileVersion": "1.2.0.0"
+            "assemblyVersion": "1.3.0.0",
+            "fileVersion": "1.3.0.0"
           },
           "lib/tizen40/Tizen.Wearable.CircularUI.Forms.dll": {
-            "assemblyVersion": "1.2.0.0",
-            "fileVersion": "1.2.0.0"
+            "assemblyVersion": "1.3.0.0",
+            "fileVersion": "1.3.0.0"
           }
         }
       },
       "Xamarin.Forms/3.5.0.129452": {
         "dependencies": {
-          "Tizen.NET": "4.0.0"
+          "Tizen.NET": "6.0.0.14853"
         },
         "runtime": {
           "lib/tizen40/Xamarin.Forms.Core.dll": {
@@ -209,11 +117,12 @@
       },
       "GAssist/1.0.0": {
         "dependencies": {
-          "Google.Api.Gax.Grpc": "2.7.0",
-          "Google.Protobuf": "3.7.0",
-          "NAudio": "1.9.0",
+          "Google.Api.CommonProtos": "1.7.0",
+          "Google.Protobuf": "3.9.0-rc1",
+          "Microsoft.NETCore.Platforms": "3.0.0-preview6.19303.8",
           "Samsung.Sap": "1.0.0",
-          "Tizen.Wearable.CircularUI": "1.2.0"
+          "Tizen.NET": "6.0.0.14853",
+          "Tizen.Wearable.CircularUI": "1.3.0-pre1-00043"
         },
         "runtime": {
           "GAssist.dll": {}
@@ -222,94 +131,31 @@
     }
   },
   "libraries": {
-    "GAssist.Tizen.Wearable/1.0.0": {
+    "GAssist.Tizen.Wearable/0.2.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "Google.Api.CommonProtos/1.6.0": {
+    "Google.Api.CommonProtos/1.7.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-/Bclx4K+zptvxIk+AQSzmIkuMNAnAdgjBv0bwhsZn0d6SLOof16lVe/tfD+ZFrmKVcOHJDJIDSiSzan3FIglQw==",
-      "path": "google.api.commonprotos/1.6.0",
-      "hashPath": "google.api.commonprotos.1.6.0.nupkg.sha512"
+      "sha512": "sha512-RQG8nYUb+B1CKxXqtXBy7Kfj4r0c3mE4itQaFHuLzf7BXPeAOHPRKgU02kemBmuNMeJ+GSK+6D/RrFkjSFxvOA==",
+      "path": "google.api.commonprotos/1.7.0",
+      "hashPath": "google.api.commonprotos.1.7.0.nupkg.sha512"
     },
-    "Google.Api.Gax/2.7.0": {
+    "Google.Protobuf/3.9.0-rc1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-HDZFdXYrAUukdQnF3gMl9oAazq1oHWlbbNoLJ7aYIJFPlznmbsUE+VD+tn5S/4qYJat7jUNrraUOX4meoTE4Qw==",
-      "path": "google.api.gax/2.7.0",
-      "hashPath": "google.api.gax.2.7.0.nupkg.sha512"
+      "sha512": "sha512-Xcx/wQKfjG2NUpGkYYsE97x3dX4++aGAU5KxPx2Tu+lcmK37yh37lSS3L53A1uB6BjkqNr2LILJfb2yf2uAyTA==",
+      "path": "google.protobuf/3.9.0-rc1",
+      "hashPath": "google.protobuf.3.9.0-rc1.nupkg.sha512"
     },
-    "Google.Api.Gax.Grpc/2.7.0": {
+    "Microsoft.NETCore.Platforms/3.0.0-preview6.19303.8": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-J5tjiK6DAACEt+2g7EY1+mTEb+r2kQQ/zwbQXOFzGOTix/J7Fuj5754icsX7YYy/q2YSn4+4Sm/sMFy3y0Ai7Q==",
-      "path": "google.api.gax.grpc/2.7.0",
-      "hashPath": "google.api.gax.grpc.2.7.0.nupkg.sha512"
-    },
-    "Google.Apis/1.39.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-Xu9rUYKUpGu6AYg0KRQtq5AueObZ6HpOq7zhkEVqCP6Dndf0PaTjNdkiDvG2AoDY5wo5Z4AOMnCjWR7AaIoHZw==",
-      "path": "google.apis/1.39.0",
-      "hashPath": "google.apis.1.39.0.nupkg.sha512"
-    },
-    "Google.Apis.Auth/1.39.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-gvcNdiPJnzl9YDRuQVLOzch5pJXmvW7kL9DYHB5UOMWQ5LS/7FnZixtugbyAOnD7+Wof+Lw/DRGrZ/bY3icKfQ==",
-      "path": "google.apis.auth/1.39.0",
-      "hashPath": "google.apis.auth.1.39.0.nupkg.sha512"
-    },
-    "Google.Apis.Core/1.39.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-GJtdPO3/Yc78lvVZu/rhww2AztgMpKB7k1V06zrRjvEnKAgSWG8GTNpfMlPMbnxMews/T2NKik1tpeSGT67FnQ==",
-      "path": "google.apis.core/1.39.0",
-      "hashPath": "google.apis.core.1.39.0.nupkg.sha512"
-    },
-    "Google.Protobuf/3.7.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-OvssyqQTrpJgdH4fjztsCV9AhUo9jgGpDbZ5XAAqC+X6MIUsifHk8Woeom1HXlHdqo/XebiEMpYySE9AxybJ9g==",
-      "path": "google.protobuf/3.7.0",
-      "hashPath": "google.protobuf.3.7.0.nupkg.sha512"
-    },
-    "Grpc.Auth/1.20.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-P3IY3iWXHE5/QEV8qWPlAbQ/KIGEY2oq1i1TPvXCCuSV8hXp0FLZoMIrsKeTCphus2928sBXBZsxKzlUivCotg==",
-      "path": "grpc.auth/1.20.1",
-      "hashPath": "grpc.auth.1.20.1.nupkg.sha512"
-    },
-    "Grpc.Core/1.20.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-69bHUrKzD8O6js+aFzU8mEWMF0Nt7jEqlloONcVpauuxsg/1pDdIxBAisWu/K+IY5SEeshn+4oAchf9rJoFQzw==",
-      "path": "grpc.core/1.20.1",
-      "hashPath": "grpc.core.1.20.1.nupkg.sha512"
-    },
-    "Grpc.Core.Api/1.20.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-gXJoNYR97iQ3mlQ34TCCENJWQUTEl61Y/23/Sjv3dmYv59MppAPUjgSaXzHa20Rj4mNNvddgxTgwOGB+srprEQ==",
-      "path": "grpc.core.api/1.20.1",
-      "hashPath": "grpc.core.api.1.20.1.nupkg.sha512"
-    },
-    "NAudio/1.9.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-PjcPhL5AnbF1YmZxqFYuAEVVRNCNWWIm6Gi32AGQ0dmHF9+s7TUFfVxEo46MbeIfpUE+Wz60ZNTLMXTxBI1m9w==",
-      "path": "naudio/1.9.0",
-      "hashPath": "naudio.1.9.0.nupkg.sha512"
-    },
-    "Newtonsoft.Json/11.0.2": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-IvJe1pj7JHEsP8B8J8DwlMEx8UInrs/x+9oVY+oCD13jpLu4JbJU2WCIsMRn5C4yW9+DgkaO8uiVE5VHKjpmdQ==",
-      "path": "newtonsoft.json/11.0.2",
-      "hashPath": "newtonsoft.json.11.0.2.nupkg.sha512"
+      "sha512": "sha512-9nE9InmtkWL1ZIAvzZPoe8zzr8JNrmyofR5++0NCLomrLSbR70b60hLXFE/7vXIVgbKdTo3CTsCcFTOSZoOIEw==",
+      "path": "microsoft.netcore.platforms/3.0.0-preview6.19303.8",
+      "hashPath": "microsoft.netcore.platforms.3.0.0-preview6.19303.8.nupkg.sha512"
     },
     "Samsung.Sap/1.0.0": {
       "type": "package",
@@ -318,33 +164,61 @@
       "path": "samsung.sap/1.0.0",
       "hashPath": "samsung.sap.1.0.0.nupkg.sha512"
     },
-    "System.Interactive.Async/3.2.0": {
+    "System.Buffers/4.4.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-C07p0dAA5lGqYUPiPCK3paR709gqS4aMDDsje0v0pvffwzLaxmsn5YQTfZbyNG5qrudPx+BCxTqISnncQ3wIoQ==",
-      "path": "system.interactive.async/3.2.0",
-      "hashPath": "system.interactive.async.3.2.0.nupkg.sha512"
+      "sha512": "sha512-AwarXzzoDwX6BgrhjoJsk6tUezZEozOT5Y9QKF94Gl4JK91I4PIIBkBco9068Y9/Dra8Dkbie99kXB8+1BaYKw==",
+      "path": "system.buffers/4.4.0",
+      "hashPath": "system.buffers.4.4.0.nupkg.sha512"
     },
-    "Tizen.NET/4.0.0": {
+    "System.Memory/4.5.2": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-e/q/gwwzrcR6LRsQiZbpKYN+GJsiA7/lh6p8ztANDoJLnIlKPmiNsBXxm6Tt8yHzwMywmAXBwyp4mpLCRG0J+A==",
-      "path": "tizen.net/4.0.0",
-      "hashPath": "tizen.net.4.0.0.nupkg.sha512"
+      "sha512": "sha512-fvq1GNmUFwbKv+aLVYYdgu/+gc8Nu9oFujOxIjPrsf+meis9JBzTPDL6aP/eeGOz9yPj6rRLUbOjKMpsMEWpNg==",
+      "path": "system.memory/4.5.2",
+      "hashPath": "system.memory.4.5.2.nupkg.sha512"
     },
-    "Tizen.NET.Sdk/1.0.1": {
+    "System.Numerics.Vectors/4.4.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-g3LzVzxalGn3F1H9yf2lXFT4CHlRlrzqEU8MmSASMphWc8cWYCOkVEYM8eSX4fCmAAPhSklAQR42YYXclSMa8A==",
-      "path": "tizen.net.sdk/1.0.1",
-      "hashPath": "tizen.net.sdk.1.0.1.nupkg.sha512"
+      "sha512": "sha512-UiLzLW+Lw6HLed1Hcg+8jSRttrbuXv7DANVj0DkL9g6EnnzbL75EB7EWsw5uRbhxd/4YdG8li5XizGWepmG3PQ==",
+      "path": "system.numerics.vectors/4.4.0",
+      "hashPath": "system.numerics.vectors.4.4.0.nupkg.sha512"
     },
-    "Tizen.Wearable.CircularUI/1.2.0": {
+    "System.Runtime.CompilerServices.Unsafe/4.5.2": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-UdS/8RBb2tmM/KRAUFv5/QwNm5asB+1mFYiAh6gXAipQDQ6Eqf9IqhdbjzfGRngrcCGhZohwrOnxtc77JU3S3w==",
-      "path": "tizen.wearable.circularui/1.2.0",
-      "hashPath": "tizen.wearable.circularui.1.2.0.nupkg.sha512"
+      "sha512": "sha512-wprSFgext8cwqymChhrBLu62LMg/1u92bU+VOwyfBimSPVFXtsNqEWC92Pf9ofzJFlk4IHmJA75EDJn1b2goAQ==",
+      "path": "system.runtime.compilerservices.unsafe/4.5.2",
+      "hashPath": "system.runtime.compilerservices.unsafe.4.5.2.nupkg.sha512"
+    },
+    "Tizen.NET/6.0.0.14853": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-aPEkDeTZSHnYe8+lsSUpIadxL4uv3j2+p1YmODgJU+8cViMeXA6nXRqR+ZzTX5wxNrVNY+4/iTkCKuVrcWQNZg==",
+      "path": "tizen.net/6.0.0.14853",
+      "hashPath": "tizen.net.6.0.0.14853.nupkg.sha512"
+    },
+    "Tizen.NET.API4/4.0.1.14164": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-am7z1aeIm4/q+3/kQYh9GH0wfdW3O6Z2imzw7sPyya4gnV5qwJ4HzgDwWs/0Krr6oBZxncDAlOaOCN9n61pqVw==",
+      "path": "tizen.net.api4/4.0.1.14164",
+      "hashPath": "tizen.net.api4.4.0.1.14164.nupkg.sha512"
+    },
+    "Tizen.NET.Sdk/1.0.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-me3jeTDeHpH/4iv56Df0o5NSeSVnN+pvnYyIy0zZHwIgpYrEQ/JzY1BIUun7bP7jOl5DTuPzN1KQtWKV/S/1kA==",
+      "path": "tizen.net.sdk/1.0.3",
+      "hashPath": "tizen.net.sdk.1.0.3.nupkg.sha512"
+    },
+    "Tizen.Wearable.CircularUI/1.3.0-pre1-00043": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-tw1ahtb+1Po6uZiAvJt1rw6KKKhWo5X7nl1hqvKzIkWQAu/vOZY2Gi9nAGHCGTS+fwTzhmeVpHHw9KEry1aisQ==",
+      "path": "tizen.wearable.circularui/1.3.0-pre1-00043",
+      "hashPath": "tizen.wearable.circularui.1.3.0-pre1-00043.nupkg.sha512"
     },
     "Xamarin.Forms/3.5.0.129452": {
       "type": "package",
